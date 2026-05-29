@@ -650,8 +650,9 @@ def page_results(bank):
     # ── Plot 4: Per-question timing vs AI avg ──────────────────────────
     st.subheader("Per-Question Timing (you vs AI average)")
 
-    q_indices = list(range(len(st.session_state.q_times)))
-    user_q_times = st.session_state.q_times
+    n_q = min(len(st.session_state.q_times), len(questions))
+    q_indices = list(range(n_q))
+    user_q_times = st.session_state.q_times[:n_q]
     ai_avg_times = [questions[i]["avg_ai_time"] for i in q_indices]
 
     fig4, ax4 = plt.subplots(figsize=(12, 5))
