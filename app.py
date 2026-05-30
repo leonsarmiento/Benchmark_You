@@ -370,45 +370,91 @@ def parse_response_file(filepath):
         time_m = re.search(r"^Time: ([\d.]+)s$", body, re.M)
         q_time = float(time_m.group(1)) if time_m else 0.0
 
-        # Extract question text: find the LAST "Question:" line, capture until
-        # the first standalone lettered option line (A.-J.) that starts the choices.
-        # SafetyBench has inner numbered items (1. 2.) in the question body, so
-        # we must not stop at those — only at real A-J options.
+        # Extract question text:
+        # Format varies by benchmark:
+        #   BBQ/HellaSwag: Context: ... then Question: ... then options
+        #   TruthfulQA/SafetyBench: Question: (instruction) then Question: (actual) then options
+        #   WinoGrande: Question: (instruction) then Sentence: ... then numeric options
+        #   MMLU/ARC/MathQA: Question: (instruction) then Question: (actual) then options
+        #
+        # Strategy: capture everything between the FIRST "Question:" (or "Context:"/Sentence:")
+        # and the first option line (lettered A-J or numbered for WinoGrande-only cases).
         question_text = ""
-        # Find all "Question:" positions, use the last one
-        q_positions = [m.end() for m in re.finditer(r"^Question:\s*", body, re.M)]
-        if q_positions:
-            rest = body[q_positions[-1]:]
-            # Look for the first line that is a lettered option: starts with A.-J.
-            # But skip lines inside numbered lists (1. 2. etc.) that happen to start with A.
-            # Strategy: split into lines, accumulate until we hit a line that is ONLY
-            # a letter option at the start of the options block.
+        # Find the position of the first "Question:" line (the instruction line)
+        q_positions = [m.start() for m in re.finditer(r"^Question:\s*", body, re.M)]
+        # Also find "Context:" and "Sentence:" positions — they may precede the actual question
+        ctx_positions = [m.start() for m in re.finditer(r"^Context:\s*", body, re.M)]
+        sent_positions = [m.start() for m in re.finditer(r"^Sentence:\s*", body, re.M)]
+        
+        # The content starts at whichever comes first: Context, Sentence, or first Question
+        all_starts = []
+        for p in q_positions:
+            all_starts.append(('q', p))
+        for p in ctx_positions:
+            all_starts.append(('c', p))
+        for p in sent_positions:
+            all_starts.append(('s', p))
+        all_starts.sort(key=lambda x: x[1])
+        
+        if all_starts:
+            # Start from the earliest relevant line
+            start_pos = all_starts[0][1]
+            rest = body[start_pos:]
+            
+            # Split into lines and accumulate until we hit options
             lines = rest.split('\n')
             q_lines = []
             for line in lines:
-                # A real option line: "^A. something" where A is uppercase letter
+                # Stop at lettered option lines (A.-J.) that start the answer block
                 if re.match(r'^[A-J]\.\s+\S', line) and q_lines:
-                    # Check if this looks like the start of the options block:
-                    # First option is almost always "A."
-                    if re.match(r'^A\.\s+', line):
-                        break
-                    # Or if we already saw "A." earlier, these are continuation options
-                    if any(re.match(r'^A\.\s+', l) for l in q_lines):
-                        break
+                    break
+                # Stop at "Answer:" line
+                if re.match(r'^Answer:\s*$', line):
+                    break
                 q_lines.append(line)
-            question_text = '\n'.join(q_lines).strip()
-            # Strip trailing numbered items that are actually part of the context
-            # (they get included in options extraction separately)
+            
+            # Now strip the instruction line(s) — keep only from the LAST
+            # "Question:"/"Context:"/"Sentence:" onwards, but re-include
+            # Context/Sentence if they precede the actual question.
+            full_text = '\n'.join(q_lines)
+            
+            # Find the last Question:/Context:/Sentence: position within our captured text
+            # We want to keep Context/Sentence if they come BEFORE the last Question:
+            last_q = None
+            last_ctx = None
+            last_sent = None
+            for m in re.finditer(r'^Question:\s*', full_text, re.M):
+                last_q = m.start()
+            for m in re.finditer(r'^Context:\s*', full_text, re.M):
+                last_ctx = m.start()
+            for m in re.finditer(r'^Sentence:\s*', full_text, re.M):
+                last_sent = m.start()
+            
+            # If there's a Context: or Sentence: BEFORE the last Question:, include it
+            content_start = last_q if last_q is not None else 0
+            if last_ctx is not None and last_ctx < content_start:
+                content_start = last_ctx
+            if last_sent is not None and last_sent < content_start:
+                content_start = last_sent
+            
+            if content_start > 0:
+                question_text = full_text[content_start:].strip()
+            else:
+                question_text = full_text.strip()
+            
+            # Strip the "Question:" prefix from the actual question line
+            question_text = re.sub(r'^Question:\s*', '', question_text, count=1)
         
         if not question_text:
             q_m2 = re.search(r"Question:\s*\n(.*?)(?=\nAnswer:)", body, re.DOTALL)
             question_text = q_m2.group(1).strip() if q_m2 else ""
+        
         # If no lettered options, strip trailing numbered option lines from question text
         has_lettered = bool(re.findall(r'^[A-J]\.\s+(.+)$', body, re.M))
         if not has_lettered:
             question_text = re.sub(r'\n\d+\.\s+.*$', '', question_text, flags=re.M).strip()
         # Strip any trailing Answer:/Expected:/Time: lines that leaked in
-        question_text = re.sub(r'\n(?:Answer:|Expected:|Predicted:).*$', '', question_text, flags=re.M|re.DOTALL).strip()
+        question_text = re.sub(r'\n(?:Answer:|Expected:|Predicted:|Raw response:).*$', '', question_text, flags=re.M|re.DOTALL).strip()
 
         options = re.findall(r"^([A-J])\.\s+(.+)$", body, re.M)
         # WinoGrande uses "1." / "2." instead of "A." / "B."
@@ -517,81 +563,43 @@ def page_setup(bank):
     st.subheader("Choose a Benchmark")
     st.markdown("Select which benchmark you want to test yourself on:")
 
-    if "bench_choice" not in st.session_state:
-        st.session_state.bench_choice = BENCHMARKS_MC[0]
-
-    # Sync dropdown widget value to bench_choice on every render
-    if "dropdown_bench" in st.session_state:
-        st.session_state.bench_choice = st.session_state.dropdown_bench
-
     for bkey in BENCHMARKS_MC:
         with st.container():
             col_sel, col_info = st.columns([1, 6])
             with col_sel:
-                selected = st.button("Select", key=f"sel_{bkey}", use_container_width=True)
+                selected = st.button("Start", key=f"sel_{bkey}", use_container_width=True, type="primary")
             with col_info:
                 num_q = len(bank.get(bkey, []))
-                # Highlight the currently selected one
-                if bkey == st.session_state.bench_choice:
-                    st.markdown(f"**{BENCH_SHORT[bkey]}** — {num_q} questions  **(selected)**")
-                else:
-                    st.markdown(f"**{BENCH_SHORT[bkey]}** — {num_q} questions")
+                st.markdown(f"**{BENCH_SHORT[bkey]}** — {num_q} questions")
                 st.caption(BENCH_DESC[bkey])
             if selected:
-                st.session_state.bench_choice = bkey
-                st.session_state.dropdown_bench = bkey
+                st.session_state.benchmark = bkey
+                st.session_state.page = "quiz"
+                st.session_state.current_q = 0
+                st.session_state.answers = {}
+                st.session_state.start_time = time.time()
+                st.session_state.q_start_time = time.time()
+                st.session_state.q_times = []
+                st.rerun()
+                return
             st.markdown("---")
 
-    bench_choice = st.session_state.bench_choice
-
-    # Dropdown as alternative selector — syncs both ways
+    # Dropdown as alternative selector — launches quiz on change
     def on_dropdown_change():
-        st.session_state.bench_choice = st.session_state.dropdown_bench
-
-    st.selectbox("Or pick from dropdown:", BENCHMARKS_MC,
-                 format_func=lambda b: f"{BENCH_SHORT[b]}  ({len(bank.get(b, []))} questions)",
-                 index=BENCHMARKS_MC.index(st.session_state.bench_choice),
-                 key="dropdown_bench",
-                 on_change=on_dropdown_change)
-
-    st.markdown("---")
-
-    col1, col2 = st.columns([2, 1])
-    with col1:
-        st.markdown("### Models you'll compete against")
-        for model in MODELS:
-            s = SUMMARY.get((model, bench_choice), {})
-            st.markdown(
-                f"- **{SHORT[model]}** — {s.get('acc', 0):.1f}% accuracy, "
-                f"{s.get('time', 0):.0f}s total, "
-                f"~{int(s.get('time', 0) * TOKENS_PER_SEC)} est. tokens"
-            )
-
-    with col2:
-        st.markdown("### Quick Stats")
-        st.metric("Questions", len(bank.get(bench_choice, [])))
-        _setup_models = [m for m in MODELS if (m, bench_choice) in SUMMARY]
-        times = [(SHORT[m], SUMMARY[(m, bench_choice)]["time"]) for m in _setup_models]
-        fastest = min(times, key=lambda x: x[1])
-        st.metric("Fastest AI", f"{fastest[0]} ({fastest[1]:.0f}s)")
-        best_acc = [(SHORT[m], SUMMARY[(m, bench_choice)]["acc"]) for m in _setup_models]
-        top = max(best_acc, key=lambda x: x[1])
-        st.metric("Top Accuracy", f"{top[0]} ({top[1]:.1f}%)")
-
-    st.markdown(
-        "Your time per question will be tracked. "
-        "After finishing all questions, you'll see how you compare to the models."
-    )
-
-    if st.button(f"Start {BENCH_SHORT[bench_choice]} Quiz", type="primary", use_container_width=True, key="btn_start_quiz"):
-        st.session_state.benchmark = bench_choice
+        bkey = st.session_state.dropdown_bench
+        st.session_state.benchmark = bkey
         st.session_state.page = "quiz"
         st.session_state.current_q = 0
         st.session_state.answers = {}
         st.session_state.start_time = time.time()
         st.session_state.q_start_time = time.time()
         st.session_state.q_times = []
-        st.rerun()
+
+    st.selectbox("Or pick from dropdown:", BENCHMARKS_MC,
+                 format_func=lambda b: f"{BENCH_SHORT[b]}  ({len(bank.get(b, []))} questions)",
+                 index=0,
+                 key="dropdown_bench",
+                 on_change=on_dropdown_change)
 
 
 def page_quiz(bank):
