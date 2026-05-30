@@ -676,6 +676,12 @@ def page_quiz(bank):
         else:
             st.info("Select an answer to continue.")
 
+    # Live leaderboard: cumulative accuracy after questions answered so far
+    n_answered = len(st.session_state.answers)
+    if n_answered > 0:
+        st.markdown("---")
+        _draw_live_leaderboard(bank, bench, questions, n_answered)
+
     # Sidebar: answer grid
     with st.sidebar:
         st.markdown("### Answer Grid")
@@ -687,6 +693,62 @@ def page_quiz(bank):
                     st.markdown(f"**{i+1}**: {st.session_state.answers[i]}")
                 else:
                     st.markdown(f"{i+1}: __")
+
+
+def _draw_live_leaderboard(bank, bench, questions, n_answered):
+    """Draw a horizontal bar chart of cumulative accuracy (sorted high→low)
+    comparing the user against all AI models on the questions answered so far."""
+    answers = st.session_state.answers
+    answered_indices = sorted(answers.keys())[:n_answered]
+
+    # User accuracy on answered questions
+    user_correct = sum(
+        1 for i in answered_indices
+        if i < len(questions) and answers[i] == questions[i]["expected"]
+    )
+    user_acc = user_correct / len(answered_indices) * 100 if answered_indices else 0.0
+
+    # AI accuracy on the same questions
+    rows = [("You", user_acc, "#FFD700")]  # gold for user
+    for model in MODELS:
+        if (model, bench) not in SUMMARY:
+            continue
+        ai_correct = 0
+        for i in answered_indices:
+            if i < len(questions):
+                q = questions[i]
+                m_short = SHORT[model]
+                if q["model_correct"].get(m_short, False):
+                    ai_correct += 1
+        ai_acc = ai_correct / len(answered_indices) * 100 if answered_indices else 0.0
+        rows.append((SHORT[model], ai_acc, COLORS[model]))
+
+    # Sort by accuracy descending; ties broken by name
+    rows.sort(key=lambda r: (-r[1], r[0]))
+
+    names = [r[0] for r in rows]
+    accs = [r[1] for r in rows]
+    colors = [r[2] for r in rows]
+
+    fig, ax = plt.subplots(figsize=(8, max(3, len(rows) * 0.45)))
+    y_pos = range(len(names))
+    bars = ax.barh(y_pos, accs, color=colors, edgecolor="black", linewidth=0.5, height=0.6)
+    ax.set_yticks(y_pos)
+    ax.set_yticklabels(names, fontsize=10)
+    ax.invert_yaxis()  # highest at top
+    ax.set_xlim(0, 105)
+    ax.set_xlabel("Accuracy (%)", fontsize=10)
+    ax.set_title(f"Live Leaderboard  ({len(answered_indices)} questions answered)", fontsize=12, fontweight="bold")
+
+    # Value labels
+    for bar, acc in zip(bars, accs):
+        ax.text(min(acc + 1.5, 88), bar.get_y() + bar.get_height() / 2,
+                f"{acc:.1f}%", va="center", fontsize=9, fontweight="bold")
+
+    ax.grid(True, axis="x", alpha=0.3)
+    plt.tight_layout()
+    st.pyplot(fig, use_container_width=True)
+    plt.close(fig)
 
 
 def page_results(bank):
