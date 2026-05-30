@@ -182,6 +182,7 @@ MODELS = [
     "Hypnos-i1-8B-8bit-mlx",
     "gemma-4-E4B-it-MLX-8bit",
     "Qwen3-Coder-30B-A3B-Instruct-MLX-6bit",
+    "Nemotron-3-Nano-Omni-30B-A3B-Reasoning-6bit",
 ]
 SHORT = {
     "Qwen3-30B-A3B-MegaScience-8bit-mlx": "MegaScience",
@@ -197,6 +198,7 @@ SHORT = {
     "Hypnos-i1-8B-8bit-mlx": "Hypnos-8B",
     "gemma-4-E4B-it-MLX-8bit": "gemma-4-E4B",
     "Qwen3-Coder-30B-A3B-Instruct-MLX-6bit": "Qwen3-Coder",
+    "Nemotron-3-Nano-Omni-30B-A3B-Reasoning-6bit": "Nemotron-30B",
 }
 COLORS = {
     "Qwen3-30B-A3B-MegaScience-8bit-mlx": "#1f77b4",
@@ -212,6 +214,7 @@ COLORS = {
     "Hypnos-i1-8B-8bit-mlx": "#17becf",
     "gemma-4-E4B-it-MLX-8bit": "#aec7e8",
     "Qwen3-Coder-30B-A3B-Instruct-MLX-6bit": "#dbdb8d",
+    "Nemotron-3-Nano-Omni-30B-A3B-Reasoning-6bit": "#c49c94",
 }
 COLORS_SHORT = {SHORT[m]: COLORS[m] for m in MODELS}
 
@@ -354,6 +357,15 @@ SUMMARY = {
     ("Qwen3-Coder-30B-A3B-Instruct-MLX-6bit", "MATHQA"):         {"acc": 60.0, "correct": 18, "total": 30, "time": 17.7},
     ("Qwen3-Coder-30B-A3B-Instruct-MLX-6bit", "BBQ"):            {"acc": 86.7, "correct": 26, "total": 30, "time": 16.5},
     ("Qwen3-Coder-30B-A3B-Instruct-MLX-6bit", "SAFETYBENCH"):    {"acc": 80.0, "correct": 24, "total": 30, "time": 14.4},
+    # Nemotron-3-Nano-Omni-30B
+    ("Nemotron-3-Nano-Omni-30B-A3B-Reasoning-6bit", "MMLU_PRO"):       {"acc": 66.7, "correct": 20, "total": 30, "time": 940.3},
+    ("Nemotron-3-Nano-Omni-30B-A3B-Reasoning-6bit", "HELLASWAG"):      {"acc": 70.0, "correct": 21, "total": 30, "time": 182.6},
+    ("Nemotron-3-Nano-Omni-30B-A3B-Reasoning-6bit", "TRUTHFULQA"):     {"acc": 83.3, "correct": 25, "total": 30, "time": 237.2},
+    ("Nemotron-3-Nano-Omni-30B-A3B-Reasoning-6bit", "ARC_CHALLENGE"):  {"acc": 80.0, "correct": 24, "total": 30, "time": 75.5},
+    ("Nemotron-3-Nano-Omni-30B-A3B-Reasoning-6bit", "WINOGRANDE"):     {"acc": 76.7, "correct": 23, "total": 30, "time": 166.5},
+    ("Nemotron-3-Nano-Omni-30B-A3B-Reasoning-6bit", "MATHQA"):         {"acc": 90.0, "correct": 27, "total": 30, "time": 663.1},
+    ("Nemotron-3-Nano-Omni-30B-A3B-Reasoning-6bit", "BBQ"):            {"acc": 96.7, "correct": 29, "total": 30, "time": 55.2},
+    ("Nemotron-3-Nano-Omni-30B-A3B-Reasoning-6bit", "SAFETYBENCH"):    {"acc": 90.0, "correct": 27, "total": 30, "time": 97.1},
 }
 
 # ── Parser ──────────────────────────────────────────────────────────────────
