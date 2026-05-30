@@ -1,0 +1,588 @@
+Model: gemma-4-E4B-it-MLX-8bit
+Benchmark: MATHQA
+Accuracy: 93.3% (28/30)
+Time: 840.1s
+
+--- Q2619 [CORRECT] ---
+Category: other
+Question: Solve the following math problem. Answer with just the letter.
+
+Problem: bag contains 7 green and 8 white balls . if two balls are drawn simultaneously , the probability that both are of the same colour is - .
+
+A. 7 / 15
+B. 2 / 8
+C. 7 / 11
+D. 13 / 5
+E. 87
+
+Answer:
+Expected: A
+Predicted: A
+Raw response: A
+Time: 13.196s
+
+--- Q456 [CORRECT] ---
+Category: general
+Question: Solve the following math problem. Answer with just the letter.
+
+Problem: the product of two numbers is 2028 and their h . c . f is 13 . the number of such pairs is :
+
+A. 1
+B. 2
+C. 3
+D. 4
+E. 5
+
+Answer:
+Expected: B
+Predicted: B
+Raw response: B
+Time: 18.862s
+
+--- Q102 [CORRECT] ---
+Category: physics
+Question: Solve the following math problem. Answer with just the letter.
+
+Problem: there are 28 stations between ernakulam and chennai . how many second class tickets have to be printed , so that a passenger can travel from one station to any other station ?
+
+A. 800
+B. 820
+C. 850
+D. 870
+E. 900
+
+Answer:
+Expected: D
+Predicted: D
+Raw response: D
+Time: 17.105s
+
+--- Q1126 [CORRECT] ---
+Category: gain
+Question: Solve the following math problem. Answer with just the letter.
+
+Problem: the sale price sarees listed for rs . 500 after successive discount is 10 % and 5 % is ?
+
+A. 427.5
+B. 277
+C. 342
+D. 882
+E. 212
+
+Answer:
+Expected: A
+Predicted: A
+Raw response: A
+Time: 9.766s
+
+--- Q1003 [CORRECT] ---
+Category: general
+Question: Solve the following math problem. Answer with just the letter.
+
+Problem: from below option 48 is divisible by which one ?
+
+A. a ) 3
+B. b ) 5
+C. c ) 9
+D. d ) 7
+E. e ) 11
+
+Answer:
+Expected: A
+Predicted: A
+Raw response: A
+Time: 7.812s
+
+--- Q914 [CORRECT] ---
+Category: gain
+Question: Solve the following math problem. Answer with just the letter.
+
+Problem: running at the same constant rate , 6 identical machines can produce a total of 270 pens per minute . at this rate , how many pens could 10 such machines produce in 4 minutes ?
+
+A. 1500
+B. 1545.6
+C. 1640.33
+D. 1800
+E. none of these
+
+Answer:
+Expected: D
+Predicted: D
+Raw response: D
+Time: 11.692s
+
+--- Q571 [CORRECT] ---
+Category: general
+Question: Solve the following math problem. Answer with just the letter.
+
+Problem: if 20 liters of chemical x are added to 80 liters of a mixture that is 15 % chemical x and 85 % chemical y , then what percentage of the resulting mixture is chemical x ?
+
+A. 30 %
+B. 32 %
+C. 35 %
+D. 38 %
+E. 40 %
+
+Answer:
+Expected: B
+Predicted: B
+Raw response: B
+Time: 13.09s
+
+--- Q419 [CORRECT] ---
+Category: general
+Question: Solve the following math problem. Answer with just the letter.
+
+Problem: a business executive and his client are charging their dinner tab on the executive ' s expense account . the company will only allow them to spend a total of 60 $ for the meal . assuming that they will pay 7 % in sales tax for the meal and leave a 15 % tip , what is the most their food can cost ?
+
+A. 39.55 $
+B. 40.63 $
+C. 41.63 $
+D. 42.15 $
+E. 48.7 $
+
+Answer:
+Expected: E
+Predicted: E
+Raw response: E
+Time: 33.986s
+
+--- Q2771 [CORRECT] ---
+Category: physics
+Question: Solve the following math problem. Answer with just the letter.
+
+Problem: a train is 360 meter long is running at a speed of 45 km / hour . in what time will it pass a bridge of 240 meter length ?
+
+A. 65 seconds
+B. 46 seconds
+C. 40 seconds
+D. 97 seconds
+E. 48 seconds
+
+Answer:
+Expected: E
+Predicted: E
+Raw response: E
+Time: 21.618s
+
+--- Q2233 [WRONG] ---
+Category: general
+Question: Solve the following math problem. Answer with just the letter.
+
+Problem: in the game of dubblefud , red chips , blue chips and green chips are each worth 2 , 4 and 5 points respectively . in a certain selection of chips , the product of the point values of the chips is 16000 . if the number of blue chips in this selection doubles the number of green chips , how many red chips are in the selection ?
+
+A. 1
+B. 2
+C. 3
+D. 4
+E. 5
+
+Answer:
+Expected: B
+Predicted: A
+Raw response: The point values are:
+Red chip ($V_R$): 2
+Blue chip ($V_B$): 4
+Green chip ($V_G$): 5
+
+Let $R, B, G$ be the number of red, blue, and green chips, respectively.
+The product of the point values is given by:
+$$P = V_R^R \cdot V_B^B \cdot V_G^G$$
+$$P = 2^R \cdot 4^B \cdot 5^G$$
+Since $4 = 2^2$, we rewrite the product:
+$$P = 2^R \cdot (2^2)^B \cdot 5^G = 2^{R + 2B} \cdot 5^G$$
+
+We are given $P = 16000$. We find the prime factorization of 16000:
+$$16000 = 16 \cdot 1000 = 2^4 \cdot (10^3) = 2^4 \cdot (2 \cdot 5)^3 = 2^4 \cdot 2^3 \cdot 5^3 = 2^7 \cdot 5^3$$
+
+Equating the prime factorizations:
+$$2^{R + 2B} \cdot 5^G = 2^7 \cdot 5^3$$
+
+By comparing the exponents:
+1) $G = 3$
+2) $R + 2B = 7$
+
+We are given the relationship: "the number of blue chips in this selection doubles the number of green chips."
+$$B = 2G$$
+
+Substituting $G=3$ into this relationship:
+$$B = 2(3) = 6$$
+
+Now substitute $B=6$ into equation (2):
+$$R + 2(6) = 7$$
+$$R + 12 = 7$$
+$$R = -5$$
+
+Since the number of chips must be non-negative, the problem as stated has no solution. Assuming there is a typo in the problem statement, we consider the most likely intended relationship that yields a valid integer solution among the options.
+
+If we assume the intended relationship was $B=G$ (the number of blue chips equals the number of green chips):
+$$B = G = 3$$
+Substitute $B=3$ into equation (2):
+$$R + 2(3) = 7$$
+$$R + 6 = 7$$
+$$R = 1$$
+
+This solution $(R, B, G) = (1, 3, 3)$ satisfies the product constraint $P=16000$ and yields $R=1$, which is option A.
+
+Answer: A
+Time: 96.172s
+
+--- Q356 [CORRECT] ---
+Category: general
+Question: Solve the following math problem. Answer with just the letter.
+
+Problem: a man is 30 years older than his son . in two years , his age will be twice the age of his son . the present age of the son is
+
+A. 14 years
+B. 28 years
+C. 20 years
+D. 22 years
+E. none
+
+Answer:
+Expected: B
+Predicted: B
+Raw response: B
+Time: 10.153s
+
+--- Q2418 [CORRECT] ---
+Category: general
+Question: Solve the following math problem. Answer with just the letter.
+
+Problem: what is the total number of integers between 20 and 100 that are divisible by 9 ?
+
+A. 5
+B. 15
+C. 12
+D. 7
+E. 9
+
+Answer:
+Expected: E
+Predicted: E
+Raw response: E
+Time: 12.281s
+
+--- Q1728 [CORRECT] ---
+Category: physics
+Question: Solve the following math problem. Answer with just the letter.
+
+Problem: a , b , c , d and e are 5 consecutive points on a straight line . if bc = 2 cd , de = 5 , ab = 5 and ac = 11 , what is the length of ae ?
+
+A. 19
+B. 21
+C. 23
+D. 25
+E. 27
+
+Answer:
+Expected: A
+Predicted: A
+Raw response: A
+Time: 16.045s
+
+--- Q130 [CORRECT] ---
+Category: physics
+Question: Solve the following math problem. Answer with just the letter.
+
+Problem: if 8 men or 12 women can do a piece of work in 25 days , in how many days can the same work be done by 6 men and 11 women ?
+
+A. 10 days
+B. 11 days
+C. 13 days
+D. 15 days
+E. 17 days
+
+Answer:
+Expected: D
+Predicted: D
+Raw response: D
+Time: 20.115s
+
+--- Q122 [CORRECT] ---
+Category: other
+Question: Solve the following math problem. Answer with just the letter.
+
+Problem: at the faculty of aerospace engineering , 312 students study random - processing methods , 232 students study scramjet rocket engines and 112 students study them both . if every student in the faculty has to study one of the two subjects , how many students are there in the faculty of aerospace engineering ?
+
+A. 424 .
+B. 428 .
+C. 430 .
+D. 432 .
+E. 436
+
+Answer:
+Expected: D
+Predicted: D
+Raw response: D
+Time: 8.486s
+
+--- Q383 [WRONG] ---
+Category: physics
+Question: Solve the following math problem. Answer with just the letter.
+
+Problem: a can do a piece of work in 5 days and b can do it in 4 days how long will they both work together to complete the work ?
+
+A. 6 / 11
+B. 8 / 11
+C. 7 / 9
+D. 2 / 9
+E. 10 / 11
+
+Answer:
+Expected: D
+Predicted: C
+Raw response: C
+Time: 59.604s
+
+--- Q895 [CORRECT] ---
+Category: other
+Question: Solve the following math problem. Answer with just the letter.
+
+Problem: the incomes of two persons a and b are in the ratio 3 : 4 . if each saves rs . 100 per month , the ratio of their expenditures is 1 : 4 . find their incomes ?
+
+A. 112.5 , 158.5
+B. 180.5 , 150
+C. 100 , 200
+D. 112.5 , 150
+E. 122.5 , 150
+
+Answer:
+Expected: D
+Predicted: D
+Raw response: D
+Time: 22.839s
+
+--- Q952 [CORRECT] ---
+Category: physics
+Question: Solve the following math problem. Answer with just the letter.
+
+Problem: 6 people can do work in 80 days how much people they required to complete the work in 16 days ?
+
+A. 10
+B. 20
+C. 30
+D. 40
+E. 50
+
+Answer:
+Expected: C
+Predicted: C
+Raw response: C
+Time: 8.329s
+
+--- Q2069 [CORRECT] ---
+Category: general
+Question: Solve the following math problem. Answer with just the letter.
+
+Problem: 15 lts are taken of from a container full of liquid a and replaced with liquid b . again 15 more lts of the mixture is taken and replaced with liquid b . after this process , if the container contains liquid a and b in the ratio 9 : 16 , what is the capacity of the container h ?
+
+A. a : 45
+B. b : 25
+C. c : 37.5
+D. d : 36
+E. e : 42
+
+Answer:
+Expected: C
+Predicted: C
+Raw response: C
+Time: 51.473s
+
+--- Q2465 [CORRECT] ---
+Category: general
+Question: Solve the following math problem. Answer with just the letter.
+
+Problem: a man saves a certain portion of his income during a year and spends the remaining portion on his personal expenses . next year his income increases by 40 % but his savings increase by 100 % . if his total expenditure in 2 years is double his expenditure in 1 st year , what % age of his income in the first year did he save ?
+
+A. 45 %
+B. 40 %
+C. 25 %
+D. 28 %
+E. 33.33 %
+
+Answer:
+Expected: B
+Predicted: B
+Raw response: B
+Time: 21.007s
+
+--- Q108 [CORRECT] ---
+Category: gain
+Question: Solve the following math problem. Answer with just the letter.
+
+Problem: if 5 % more is gained by selling an article for rs . 1000 than by selling it for rs . 20 , the cost of the article is ?
+
+A. 127
+B. 1600
+C. 1200
+D. 1680
+E. 1800
+
+Answer:
+Expected: B
+Predicted: B
+Raw response: B
+Time: 148.151s
+
+--- Q2298 [CORRECT] ---
+Category: physics
+Question: Solve the following math problem. Answer with just the letter.
+
+Problem: working together , printer a and printer b would finish the task in 15 minutes . printer a alone would finish the task in 45 minutes . how many pages does the task contain if printer b prints 3 pages a minute more than printer a ?
+
+A. 125
+B. 135
+C. 145
+D. 155
+E. 165
+
+Answer:
+Expected: B
+Predicted: B
+Raw response: B
+Time: 17.18s
+
+--- Q814 [CORRECT] ---
+Category: physics
+Question: Solve the following math problem. Answer with just the letter.
+
+Problem: the angle between the minute hand and the hour hand of a clock when the time is 4.20 , is
+
+A. 0 °
+B. 5 °
+C. 10 °
+D. 20 °
+E. none
+
+Answer:
+Expected: C
+Predicted: C
+Raw response: C
+Time: 13.314s
+
+--- Q2932 [CORRECT] ---
+Category: general
+Question: Solve the following math problem. Answer with just the letter.
+
+Problem: mark bought a set of 6 flower pots of different sizes at a total cost of $ 8.00 . each pot cost 0.25 more than the next one below it in size . what was the cost , in dollars , of the largest pot ?
+
+A. $ 1.75
+B. $ 1.96
+C. $ 2.00
+D. $ 2.15
+E. $ 2.30
+
+Answer:
+Expected: B
+Predicted: B
+Raw response: B
+Time: 40.072s
+
+--- Q2661 [CORRECT] ---
+Category: general
+Question: Solve the following math problem. Answer with just the letter.
+
+Problem: a man covers a certain distance q in a train . if the train moved 4 km / hr faster , it would take 30 min less . if it moved 2 km / hr slower , it would take 20 mins more . find the distance ?
+
+A. 200 km
+B. 50 km
+C. 20 km
+D. 60 km
+E. 80 km
+
+Answer:
+Expected: D
+Predicted: D
+Raw response: D
+Time: 20.418s
+
+--- Q2872 [CORRECT] ---
+Category: geometry
+Question: Solve the following math problem. Answer with just the letter.
+
+Problem: the parameter of a square is equal to the perimeter of a rectangle of length 16 cm and breadth 14 cm . find the circumference of a semicircle whose diameter is equal to the side of the square . ( round off your answer to two decimal places
+
+A. 34
+B. 35
+C. 56
+D. 67
+E. 23.57
+
+Answer:
+Expected: E
+Predicted: E
+Raw response: E
+Time: 51.082s
+
+--- Q2232 [CORRECT] ---
+Category: other
+Question: Solve the following math problem. Answer with just the letter.
+
+Problem: what is the characteristic of the logarithm of 0.0000134 ?
+
+A. 5
+B. - 5
+C. 6
+D. - 6
+E. 7
+
+Answer:
+Expected: B
+Predicted: B
+Raw response: B
+Time: 13.387s
+
+--- Q1718 [CORRECT] ---
+Category: general
+Question: Solve the following math problem. Answer with just the letter.
+
+Problem: a group of 55 adults and 70 children go for trekking . if there is meal for either 70 adults or 90 children and if 28 adults have their meal , find the total number of children that can be catered with the remaining food .
+
+A. 33
+B. 54
+C. 18
+D. 17
+E. 01
+
+Answer:
+Expected: B
+Predicted: B
+Raw response: B
+Time: 18.776s
+
+--- Q902 [CORRECT] ---
+Category: physics
+Question: Solve the following math problem. Answer with just the letter.
+
+Problem: the speeds of three asteroids were compared . asteroids x - 13 and y - 14 were observed for identical durations , while asteroid z - 15 was observed for 2 seconds longer . during its period of observation , asteroid y - 14 traveled three times the distance x - 13 traveled , and therefore y - 14 was found to be faster than x - 13 by 1000 kilometers per second . asteroid z - 15 had an identical speed as that of x - 13 , but because z - 15 was observed for a longer period , it traveled five times the distance x - 13 traveled during x - 13 ' s inspection . asteroid x - 13 traveled how many kilometers during its observation ?
+
+A. 250
+B. 1,600 / 3
+C. 1,000
+D. 1,500
+E. 2,500
+
+Answer:
+Expected: A
+Predicted: A
+Raw response: A
+Time: 28.575s
+
+--- Q1839 [CORRECT] ---
+Category: other
+Question: Solve the following math problem. Answer with just the letter.
+
+Problem: the l . c . m of two numbers is 48 . the numbers are in the ratio 2 : 3 . the sum of numbers is :
+
+A. 28
+B. 30
+C. 40
+D. 50
+E. 60
+
+Answer:
+Expected: C
+Predicted: C
+Raw response: C
+Time: 15.476s

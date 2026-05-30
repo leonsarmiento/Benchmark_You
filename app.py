@@ -182,6 +182,7 @@ MODELS = [
     "Assistant_Pepe_8B-8bit-mlx",
     "Llama-3.3-8B-Instruct-128K_Abliterated-8bit-mlx",
     "Hypnos-i1-8B-8bit-mlx",
+    "gemma-4-E4B-it-MLX-8bit",
 ]
 SHORT = {
     "Qwen3-30B-A3B-MegaScience-8bit-mlx": "MegaScience",
@@ -194,6 +195,7 @@ SHORT = {
     "Assistant_Pepe_8B-8bit-mlx": "Pepe-8B",
     "Llama-3.3-8B-Instruct-128K_Abliterated-8bit-mlx": "Llama3.3-8B",
     "Hypnos-i1-8B-8bit-mlx": "Hypnos-8B",
+    "gemma-4-E4B-it-MLX-8bit": "gemma-4-E4B",
 }
 COLORS = {
     "Qwen3-30B-A3B-MegaScience-8bit-mlx": "#1f77b4",
@@ -206,6 +208,7 @@ COLORS = {
     "Assistant_Pepe_8B-8bit-mlx": "#7f7f7f",
     "Llama-3.3-8B-Instruct-128K_Abliterated-8bit-mlx": "#bcbd22",
     "Hypnos-i1-8B-8bit-mlx": "#17becf",
+    "gemma-4-E4B-it-MLX-8bit": "#aec7e8",
 }
 COLORS_SHORT = {SHORT[m]: COLORS[m] for m in MODELS}
 
@@ -291,6 +294,9 @@ SUMMARY = {
     ("Qwen3.5-2B-MLX-8bit", "MATHQA"):              {"acc": 66.7, "correct": 20, "total": 30, "time": 1520.2},
     ("Qwen3.5-2B-MLX-8bit", "HELLASWAG"):           {"acc": 43.3, "correct": 13, "total": 30, "time": 1560.3},
     ("Qwen3.5-2B-MLX-8bit", "BBQ"):                 {"acc": 83.3, "correct": 25, "total": 30, "time": 780.1},
+    ("Qwen3.5-2B-MLX-8bit", "TRUTHFULQA"):          {"acc": 36.7, "correct": 11, "total": 30, "time": 1883.1},
+    ("Qwen3.5-2B-MLX-8bit", "WINOGRANDE"):          {"acc": 66.7, "correct": 20, "total": 30, "time": 1673.1},
+    ("Qwen3.5-2B-MLX-8bit", "SAFETYBENCH"):         {"acc": 83.3, "correct": 25, "total": 30, "time": 1197.0},
     # Assistant_Pepe_8B
     ("Assistant_Pepe_8B-8bit-mlx", "MMLU_PRO"):     {"acc": 40.0, "correct": 12, "total": 30, "time": 19.1},
     ("Assistant_Pepe_8B-8bit-mlx", "HELLASWAG"):    {"acc": 66.7, "correct": 20, "total": 30, "time": 17.9},
@@ -318,6 +324,15 @@ SUMMARY = {
     ("Hypnos-i1-8B-8bit-mlx", "MATHQA"):        {"acc": 30.0, "correct": 9, "total": 30, "time": 16.3},
     ("Hypnos-i1-8B-8bit-mlx", "BBQ"):           {"acc": 60.0, "correct": 18, "total": 30, "time": 16.6},
     ("Hypnos-i1-8B-8bit-mlx", "SAFETYBENCH"):   {"acc": 83.3, "correct": 25, "total": 30, "time": 19.7},
+    # gemma-4-E4B-it
+    ("gemma-4-E4B-it-MLX-8bit", "MMLU_PRO"):       {"acc": 76.7, "correct": 23, "total": 30, "time": 834.2},
+    ("gemma-4-E4B-it-MLX-8bit", "HELLASWAG"):      {"acc": 70.0, "correct": 21, "total": 30, "time": 412.7},
+    ("gemma-4-E4B-it-MLX-8bit", "TRUTHFULQA"):     {"acc": 66.7, "correct": 20, "total": 30, "time": 316.1},
+    ("gemma-4-E4B-it-MLX-8bit", "ARC_CHALLENGE"):  {"acc": 86.7, "correct": 26, "total": 30, "time": 235.6},
+    ("gemma-4-E4B-it-MLX-8bit", "WINOGRANDE"):     {"acc": 83.3, "correct": 25, "total": 30, "time": 233.1},
+    ("gemma-4-E4B-it-MLX-8bit", "MATHQA"):         {"acc": 93.3, "correct": 28, "total": 30, "time": 840.1},
+    ("gemma-4-E4B-it-MLX-8bit", "BBQ"):            {"acc": 93.3, "correct": 28, "total": 30, "time": 213.4},
+    ("gemma-4-E4B-it-MLX-8bit", "SAFETYBENCH"):    {"acc": 83.3, "correct": 25, "total": 30, "time": 307.3},
 }
 
 # ── Parser ──────────────────────────────────────────────────────────────────
