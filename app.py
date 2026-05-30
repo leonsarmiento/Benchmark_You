@@ -660,21 +660,17 @@ def page_quiz(bank):
 
     # Navigation
     st.markdown("---")
-    col_nav1, col_nav2, col_nav3 = st.columns([1, 2, 1])
+    col_quit, col_next = st.columns([1, 1])
 
-    with col_nav1:
-        if q_idx > 0:
-            if st.button("Previous"):
-                st.session_state.current_q = q_idx - 1
-                st.session_state.q_start_time = time.time()
-                st.rerun()
+    with col_quit:
+        if st.button("I quit, choose another quiz", use_container_width=True):
+            st.session_state.page = "setup"
+            st.rerun()
 
-    with col_nav3:
+    with col_next:
         if choice is not None:
-            # Extract letter from choice
             selected_letter = choice[0]
             if st.button("Next  >>", type="primary", use_container_width=True):
-                # Record answer and timing
                 q_elapsed = time.time() - st.session_state.q_start_time
                 st.session_state.answers[q_idx] = selected_letter
                 st.session_state.q_times.append(q_elapsed)
