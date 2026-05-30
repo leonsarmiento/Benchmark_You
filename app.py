@@ -162,79 +162,162 @@ import numpy as np
 import pandas as pd
 
 # ── Config ──────────────────────────────────────────────────────────────────
-BASE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data")
+APP_DIR = os.path.dirname(os.path.abspath(__file__))
+DATA_DIR = os.path.join(APP_DIR, "data")
+# For local dashboard: data lives in parent dir. For deployment: data/ subfolder
+BASE = DATA_DIR if os.path.isdir(DATA_DIR) else os.path.dirname(APP_DIR)
+TOKENS_PER_SEC = 40.0
+
+
 TOKENS_PER_SEC = 40.0
 
 MODELS = [
-    "GLM-4.7-Flash-6bit-mlx",
-    "gpt-oss-20b-MXFP4-Q8",
+    "Qwen3-30B-A3B-MegaScience-8bit-mlx",
+    "Huihui-Qwen3.6-35B-A3B-6bit-mlx",
     "Qwen3.6-35B-A3B-MLX-oQ6",
+    "GLM-4.7-Flash-6bit-mlx",
     "gemma-4-26B-A4B-it-MLX-8bit",
+    "gpt-oss-20b-MXFP4-Q8",
     "Qwen3.5-2B-MLX-8bit",
+    "Assistant_Pepe_8B-8bit-mlx",
+    "Llama-3.3-8B-Instruct-128K_Abliterated-8bit-mlx",
+    "Hypnos-i1-8B-8bit-mlx",
 ]
 SHORT = {
-    "GLM-4.7-Flash-6bit-mlx": "GLM-4.7",
-    "gpt-oss-20b-MXFP4-Q8": "gpt-oss-20b",
+    "Qwen3-30B-A3B-MegaScience-8bit-mlx": "MegaScience",
+    "Huihui-Qwen3.6-35B-A3B-6bit-mlx": "Huihui-Qwen3.6",
     "Qwen3.6-35B-A3B-MLX-oQ6": "Qwen3.6",
+    "GLM-4.7-Flash-6bit-mlx": "GLM-4.7",
     "gemma-4-26B-A4B-it-MLX-8bit": "gemma-4-26b",
+    "gpt-oss-20b-MXFP4-Q8": "gpt-oss-20b",
     "Qwen3.5-2B-MLX-8bit": "Qwen3.5-2B",
+    "Assistant_Pepe_8B-8bit-mlx": "Pepe-8B",
+    "Llama-3.3-8B-Instruct-128K_Abliterated-8bit-mlx": "Llama3.3-8B",
+    "Hypnos-i1-8B-8bit-mlx": "Hypnos-8B",
 }
 COLORS = {
-    "GLM-4.7-Flash-6bit-mlx": "#4C72B0",
-    "gpt-oss-20b-MXFP4-Q8": "#DD8452",
-    "Qwen3.6-35B-A3B-MLX-oQ6": "#55A868",
-    "gemma-4-26B-A4B-it-MLX-8bit": "#C44E52",
-    "Qwen3.5-2B-MLX-8bit": "#8172B3",
+    "Qwen3-30B-A3B-MegaScience-8bit-mlx": "#1f77b4",
+    "Huihui-Qwen3.6-35B-A3B-6bit-mlx": "#ff7f0e",
+    "Qwen3.6-35B-A3B-MLX-oQ6": "#2ca02c",
+    "GLM-4.7-Flash-6bit-mlx": "#d62728",
+    "gemma-4-26B-A4B-it-MLX-8bit": "#9467bd",
+    "gpt-oss-20b-MXFP4-Q8": "#8c564b",
+    "Qwen3.5-2B-MLX-8bit": "#e377c2",
+    "Assistant_Pepe_8B-8bit-mlx": "#7f7f7f",
+    "Llama-3.3-8B-Instruct-128K_Abliterated-8bit-mlx": "#bcbd22",
+    "Hypnos-i1-8B-8bit-mlx": "#17becf",
 }
 COLORS_SHORT = {SHORT[m]: COLORS[m] for m in MODELS}
 
-BENCHMARKS_MC = ["MMLU_PRO", "ARC_CHALLENGE", "MATHQA", "HELLASWAG", "BBQ"]  # multiple-choice only
+BENCHMARKS_MC = ["MMLU_PRO", "ARC_CHALLENGE", "MATHQA", "HELLASWAG", "BBQ", "TRUTHFULQA", "WINOGRANDE", "SAFETYBENCH"]
 BENCH_SHORT = {
     "MMLU_PRO": "MMLU-Pro",
     "ARC_CHALLENGE": "ARC-Challenge",
     "MATHQA": "MathQA",
     "HELLASWAG": "HellaSwag",
     "BBQ": "BBQ (Bias)",
+    "TRUTHFULQA": "TruthfulQA",
+    "WINOGRANDE": "WinoGrande",
+    "SAFETYBENCH": "SafetyBench",
 }
 BENCH_DESC = {
-    "MMLU_PRO": "Massive Multitask Language Understanding (Professional) tests knowledge across 14 academic and professional domains — biology, chemistry, physics, law, economics, computer science, and more. Questions are multiple-choice with up to 10 options, making guessing nearly useless. It measures breadth and depth of general knowledge.",
-    "ARC_CHALLENGE": "AI2 Reasoning Challenge (Challenge set) contains grade-school science questions that require genuine reasoning, not just recall. Only questions that retrieval-based methods fail are included, so these are the hard ones — think balancing chemical equations, identifying energy types, and interpreting experimental results.",
-    "MATHQA": "MathQA tests quantitative reasoning with real-world math word problems — percentages, probability, geometry, gain/loss, physics calculations, and more. Each question has 5 answer choices. It measures whether you (or an AI) can set up and solve practical math problems correctly.",
-    "HELLASWAG": "HellaSwag tests commonsense natural language inference — given a context (a video description or wikiHow step), you must pick the most plausible continuation from 4 options. It sounds easy but the wrong answers are carefully chosen to be adversarial. It measures whether a model (or human) understands everyday situations.",
-    "BBQ": "BBQ (Bias Benchmark for QA) presents short scenarios involving people described by demographics (age, gender, disability, etc.) and asks who did what. It tests both reading comprehension and the ability to avoid biased assumptions — many questions are deliberately ambiguous ('can't be determined' is often correct).",
+    "MMLU_PRO": "Massive Multitask Language Understanding (Professional) tests knowledge across 14 academic and professional domains - biology, chemistry, physics, law, economics, computer science, and more. Questions are multiple-choice with up to 10 options, making guessing nearly useless. It measures breadth and depth of general knowledge.",
+    "ARC_CHALLENGE": "AI2 Reasoning Challenge (Challenge set) contains grade-school science questions that require genuine reasoning, not just recall. Only questions that retrieval-based methods fail are included, so these are the hard ones - think balancing chemical equations, identifying energy types, and interpreting experimental results.",
+    "MATHQA": "MathQA tests quantitative reasoning with real-world math word problems - percentages, probability, geometry, gain/loss, physics calculations, and more. Each question has 5 answer choices. It measures whether you (or an AI) can set up and solve practical math problems correctly.",
+    "HELLASWAG": "HellaSwag tests commonsense natural language inference - given a context (a video description or wikiHow step), you must pick the most plausible continuation from 4 options. It sounds easy but the wrong answers are carefully chosen to be adversarial. It measures whether a model (or human) understands everyday situations.",
+    "BBQ": "BBQ (Bias Benchmark for QA) presents short scenarios involving people described by demographics (age, gender, disability, etc.) and asks who did what. It tests both reading comprehension and the ability to avoid biased assumptions - many questions are deliberately ambiguous.",
+    "TRUTHFULQA": "TruthfulQA measures whether a model generates truthful answers to questions that humans commonly get wrong due to misconceptions, myths, and popular but false beliefs. Questions span health, law, finance, politics, and more. Many wrong answers sound very plausible - it tests actual knowledge, not confidence.",
+    "WINOGRANDE": "WinoGrande is a coreference resolution benchmark - you read a sentence with a blank and decide which of two options fills it. It sounds simple but requires deep understanding of context, common sense, and social situations. Inspired by Winograd Schemas but at much larger scale.",
+    "SAFETYBENCH": "SafetyBench evaluates safety awareness across categories like privacy, unfairness, bias, toxicity, and ethics. Questions present scenarios and ask you to identify risks, violations, or appropriate behaviors. It measures whether an AI (or human) can recognize and avoid harmful outputs.",
 }
-
 SUMMARY = {
+    # Qwen3-30B-MegaScience
+    ("Qwen3-30B-A3B-MegaScience-8bit-mlx", "MMLU_PRO"):       {"acc": 73.3, "correct": 22, "total": 30, "time": 351.8},
+    ("Qwen3-30B-A3B-MegaScience-8bit-mlx", "HELLASWAG"):      {"acc": 86.7, "correct": 26, "total": 30, "time": 211.5},
+    ("Qwen3-30B-A3B-MegaScience-8bit-mlx", "TRUTHFULQA"):     {"acc": 93.3, "correct": 28, "total": 30, "time": 187.9},
+    ("Qwen3-30B-A3B-MegaScience-8bit-mlx", "ARC_CHALLENGE"):  {"acc": 86.7, "correct": 26, "total": 30, "time": 165.3},
+    ("Qwen3-30B-A3B-MegaScience-8bit-mlx", "WINOGRANDE"):     {"acc": 73.3, "correct": 22, "total": 30, "time": 44.0},
+    ("Qwen3-30B-A3B-MegaScience-8bit-mlx", "MATHQA"):         {"acc": 90.0, "correct": 27, "total": 30, "time": 704.3},
+    ("Qwen3-30B-A3B-MegaScience-8bit-mlx", "BBQ"):            {"acc": 90.0, "correct": 27, "total": 30, "time": 118.6},
+    ("Qwen3-30B-A3B-MegaScience-8bit-mlx", "SAFETYBENCH"):    {"acc": 83.3, "correct": 25, "total": 30, "time": 160.3},
+    # Huihui-Qwen3.6-35B-A3B
+    ("Huihui-Qwen3.6-35B-A3B-6bit-mlx", "MMLU_PRO"):          {"acc": 70.0, "correct": 21, "total": 30, "time": 1867.6},
+    ("Huihui-Qwen3.6-35B-A3B-6bit-mlx", "HELLASWAG"):         {"acc": 90.0, "correct": 27, "total": 30, "time": 561.3},
+    ("Huihui-Qwen3.6-35B-A3B-6bit-mlx", "TRUTHFULQA"):        {"acc": 83.3, "correct": 25, "total": 30, "time": 575.1},
+    ("Huihui-Qwen3.6-35B-A3B-6bit-mlx", "ARC_CHALLENGE"):     {"acc": 93.3, "correct": 28, "total": 30, "time": 709.8},
+    ("Huihui-Qwen3.6-35B-A3B-6bit-mlx", "WINOGRANDE"):        {"acc": 90.0, "correct": 27, "total": 30, "time": 545.7},
+    ("Huihui-Qwen3.6-35B-A3B-6bit-mlx", "MATHQA"):            {"acc": 90.0, "correct": 27, "total": 30, "time": 1413.9},
+    ("Huihui-Qwen3.6-35B-A3B-6bit-mlx", "BBQ"):               {"acc": 90.0, "correct": 27, "total": 30, "time": 401.3},
+    ("Huihui-Qwen3.6-35B-A3B-6bit-mlx", "SAFETYBENCH"):       {"acc": 86.7, "correct": 26, "total": 30, "time": 550.5},
+    # Qwen3.6-35B-A3B
+    ("Qwen3.6-35B-A3B-MLX-oQ6", "MMLU_PRO"):       {"acc": 66.7, "correct": 20, "total": 30, "time": 1412.0},
+    ("Qwen3.6-35B-A3B-MLX-oQ6", "ARC_CHALLENGE"):  {"acc": 90.0, "correct": 27, "total": 30, "time": 389.8},
+    ("Qwen3.6-35B-A3B-MLX-oQ6", "MATHQA"):         {"acc": 90.0, "correct": 27, "total": 30, "time": 1100.0},
+    ("Qwen3.6-35B-A3B-MLX-oQ6", "HELLASWAG"):      {"acc": 86.7, "correct": 26, "total": 30, "time": 477.9},
+    ("Qwen3.6-35B-A3B-MLX-oQ6", "BBQ"):            {"acc": 93.3, "correct": 28, "total": 30, "time": 292.4},
+    ("Qwen3.6-35B-A3B-MLX-oQ6", "TRUTHFULQA"):     {"acc": 96.7, "correct": 29, "total": 30, "time": 442.9},
+    ("Qwen3.6-35B-A3B-MLX-oQ6", "WINOGRANDE"):     {"acc": 86.7, "correct": 26, "total": 30, "time": 472.4},
+    ("Qwen3.6-35B-A3B-MLX-oQ6", "SAFETYBENCH"):    {"acc": 86.7, "correct": 26, "total": 30, "time": 357.9},
     # GLM-4.7-Flash
     ("GLM-4.7-Flash-6bit-mlx", "MMLU_PRO"):       {"acc": 70.0, "correct": 21, "total": 30, "time": 1952.1},
     ("GLM-4.7-Flash-6bit-mlx", "ARC_CHALLENGE"):   {"acc": 80.0, "correct": 24, "total": 30, "time": 334.4},
     ("GLM-4.7-Flash-6bit-mlx", "MATHQA"):          {"acc": 90.0, "correct": 27, "total": 30, "time": 1366.6},
     ("GLM-4.7-Flash-6bit-mlx", "HELLASWAG"):       {"acc": 73.3, "correct": 22, "total": 30, "time": 1289.7},
     ("GLM-4.7-Flash-6bit-mlx", "BBQ"):             {"acc": 90.0, "correct": 27, "total": 30, "time": 519.0},
-    # gpt-oss-20b
-    ("gpt-oss-20b-MXFP4-Q8", "MMLU_PRO"):          {"acc": 80.0, "correct": 24, "total": 30, "time": 237.0},
-    ("gpt-oss-20b-MXFP4-Q8", "ARC_CHALLENGE"):     {"acc": 86.7, "correct": 26, "total": 30, "time": 72.0},
-    ("gpt-oss-20b-MXFP4-Q8", "MATHQA"):            {"acc": 93.3, "correct": 28, "total": 30, "time": 413.4},
-    ("gpt-oss-20b-MXFP4-Q8", "HELLASWAG"):         {"acc": 76.7, "correct": 23, "total": 30, "time": 201.9},
-    ("gpt-oss-20b-MXFP4-Q8", "BBQ"):               {"acc": 93.3, "correct": 28, "total": 30, "time": 148.9},
-    # Qwen3.6-35B
-    ("Qwen3.6-35B-A3B-MLX-oQ6", "MMLU_PRO"):       {"acc": 66.7, "correct": 20, "total": 30, "time": 1412.0},
-    ("Qwen3.6-35B-A3B-MLX-oQ6", "ARC_CHALLENGE"):  {"acc": 90.0, "correct": 27, "total": 30, "time": 389.8},
-    ("Qwen3.6-35B-A3B-MLX-oQ6", "MATHQA"):         {"acc": 90.0, "correct": 27, "total": 30, "time": 1100.0},
-    ("Qwen3.6-35B-A3B-MLX-oQ6", "HELLASWAG"):      {"acc": 86.7, "correct": 26, "total": 30, "time": 477.9},
-    ("Qwen3.6-35B-A3B-MLX-oQ6", "BBQ"):            {"acc": 93.3, "correct": 28, "total": 30, "time": 292.4},
+    ("GLM-4.7-Flash-6bit-mlx", "TRUTHFULQA"):      {"acc": 76.7, "correct": 23, "total": 30, "time": 1223.8},
+    ("GLM-4.7-Flash-6bit-mlx", "WINOGRANDE"):      {"acc": 90.0, "correct": 27, "total": 30, "time": 499.2},
+    ("GLM-4.7-Flash-6bit-mlx", "SAFETYBENCH"):     {"acc": 96.7, "correct": 29, "total": 30, "time": 353.7},
     # gemma-4-26B
     ("gemma-4-26B-A4B-it-MLX-8bit", "MMLU_PRO"):    {"acc": 53.3, "correct": 16, "total": 30, "time": 3299.5},
     ("gemma-4-26B-A4B-it-MLX-8bit", "ARC_CHALLENGE"):{"acc": 90.0, "correct": 27, "total": 30, "time": 431.5},
     ("gemma-4-26B-A4B-it-MLX-8bit", "MATHQA"):      {"acc": 66.7, "correct": 20, "total": 30, "time": 2676.6},
     ("gemma-4-26B-A4B-it-MLX-8bit", "HELLASWAG"):   {"acc": 83.3, "correct": 25, "total": 30, "time": 1063.1},
     ("gemma-4-26B-A4B-it-MLX-8bit", "BBQ"):         {"acc": 93.3, "correct": 28, "total": 30, "time": 232.7},
+    ("gemma-4-26B-A4B-it-MLX-8bit", "TRUTHFULQA"):  {"acc": 80.0, "correct": 24, "total": 30, "time": 1435.9},
+    ("gemma-4-26B-A4B-it-MLX-8bit", "WINOGRANDE"):  {"acc": 100.0, "correct": 30, "total": 30, "time": 617.2},
+    ("gemma-4-26B-A4B-it-MLX-8bit", "SAFETYBENCH"): {"acc": 93.3, "correct": 28, "total": 30, "time": 562.2},
+    # gpt-oss-20b
+    ("gpt-oss-20b-MXFP4-Q8", "MMLU_PRO"):          {"acc": 80.0, "correct": 24, "total": 30, "time": 237.0},
+    ("gpt-oss-20b-MXFP4-Q8", "ARC_CHALLENGE"):     {"acc": 86.7, "correct": 26, "total": 30, "time": 72.0},
+    ("gpt-oss-20b-MXFP4-Q8", "MATHQA"):            {"acc": 93.3, "correct": 28, "total": 30, "time": 413.4},
+    ("gpt-oss-20b-MXFP4-Q8", "HELLASWAG"):         {"acc": 76.7, "correct": 23, "total": 30, "time": 201.9},
+    ("gpt-oss-20b-MXFP4-Q8", "BBQ"):               {"acc": 93.3, "correct": 28, "total": 30, "time": 148.9},
+    ("gpt-oss-20b-MXFP4-Q8", "TRUTHFULQA"):        {"acc": 86.7, "correct": 26, "total": 30, "time": 117.4},
+    ("gpt-oss-20b-MXFP4-Q8", "WINOGRANDE"):        {"acc": 70.0, "correct": 21, "total": 30, "time": 139.6},
+    ("gpt-oss-20b-MXFP4-Q8", "SAFETYBENCH"):       {"acc": 96.7, "correct": 29, "total": 30, "time": 102.8},
     # Qwen3.5-2B
     ("Qwen3.5-2B-MLX-8bit", "MMLU_PRO"):            {"acc": 33.3, "correct": 10, "total": 30, "time": 1999.6},
     ("Qwen3.5-2B-MLX-8bit", "ARC_CHALLENGE"):       {"acc": 76.7, "correct": 23, "total": 30, "time": 745.0},
     ("Qwen3.5-2B-MLX-8bit", "MATHQA"):              {"acc": 66.7, "correct": 20, "total": 30, "time": 1520.2},
     ("Qwen3.5-2B-MLX-8bit", "HELLASWAG"):           {"acc": 43.3, "correct": 13, "total": 30, "time": 1560.3},
     ("Qwen3.5-2B-MLX-8bit", "BBQ"):                 {"acc": 83.3, "correct": 25, "total": 30, "time": 780.1},
+    # Assistant_Pepe_8B
+    ("Assistant_Pepe_8B-8bit-mlx", "MMLU_PRO"):     {"acc": 40.0, "correct": 12, "total": 30, "time": 19.1},
+    ("Assistant_Pepe_8B-8bit-mlx", "HELLASWAG"):    {"acc": 66.7, "correct": 20, "total": 30, "time": 17.9},
+    ("Assistant_Pepe_8B-8bit-mlx", "TRUTHFULQA"):   {"acc": 46.7, "correct": 14, "total": 30, "time": 16.9},
+    ("Assistant_Pepe_8B-8bit-mlx", "ARC_CHALLENGE"):{"acc": 70.0, "correct": 21, "total": 30, "time": 15.4},
+    ("Assistant_Pepe_8B-8bit-mlx", "WINOGRANDE"):   {"acc": 63.3, "correct": 19, "total": 30, "time": 15.2},
+    ("Assistant_Pepe_8B-8bit-mlx", "MATHQA"):       {"acc": 43.3, "correct": 13, "total": 30, "time": 18.4},
+    ("Assistant_Pepe_8B-8bit-mlx", "BBQ"):          {"acc": 56.7, "correct": 17, "total": 30, "time": 20.0},
+    ("Assistant_Pepe_8B-8bit-mlx", "SAFETYBENCH"):  {"acc": 93.3, "correct": 28, "total": 30, "time": 19.5},
+    # Llama-3.3-8B-Abliterated
+    ("Llama-3.3-8B-Instruct-128K_Abliterated-8bit-mlx", "MMLU_PRO"):      {"acc": 36.7, "correct": 11, "total": 30, "time": 62.3},
+    ("Llama-3.3-8B-Instruct-128K_Abliterated-8bit-mlx", "HELLASWAG"):     {"acc": 76.7, "correct": 23, "total": 30, "time": 15.8},
+    ("Llama-3.3-8B-Instruct-128K_Abliterated-8bit-mlx", "TRUTHFULQA"):    {"acc": 70.0, "correct": 21, "total": 30, "time": 18.2},
+    ("Llama-3.3-8B-Instruct-128K_Abliterated-8bit-mlx", "ARC_CHALLENGE"): {"acc": 66.7, "correct": 20, "total": 30, "time": 16.5},
+    ("Llama-3.3-8B-Instruct-128K_Abliterated-8bit-mlx", "WINOGRANDE"):    {"acc": 63.3, "correct": 19, "total": 30, "time": 13.8},
+    ("Llama-3.3-8B-Instruct-128K_Abliterated-8bit-mlx", "MATHQA"):        {"acc": 43.3, "correct": 13, "total": 30, "time": 40.7},
+    ("Llama-3.3-8B-Instruct-128K_Abliterated-8bit-mlx", "BBQ"):           {"acc": 73.3, "correct": 22, "total": 30, "time": 17.9},
+    ("Llama-3.3-8B-Instruct-128K_Abliterated-8bit-mlx", "SAFETYBENCH"):   {"acc": 90.0, "correct": 27, "total": 30, "time": 19.1},
+    # Hypnos-i1-8B
+    ("Hypnos-i1-8B-8bit-mlx", "MMLU_PRO"):      {"acc": 30.0, "correct": 9, "total": 30, "time": 25.8},
+    ("Hypnos-i1-8B-8bit-mlx", "HELLASWAG"):     {"acc": 73.3, "correct": 22, "total": 30, "time": 24.2},
+    ("Hypnos-i1-8B-8bit-mlx", "TRUTHFULQA"):    {"acc": 56.7, "correct": 17, "total": 30, "time": 18.7},
+    ("Hypnos-i1-8B-8bit-mlx", "ARC_CHALLENGE"): {"acc": 63.3, "correct": 19, "total": 30, "time": 14.6},
+    ("Hypnos-i1-8B-8bit-mlx", "WINOGRANDE"):    {"acc": 40.0, "correct": 12, "total": 30, "time": 13.6},
+    ("Hypnos-i1-8B-8bit-mlx", "MATHQA"):        {"acc": 30.0, "correct": 9, "total": 30, "time": 16.3},
+    ("Hypnos-i1-8B-8bit-mlx", "BBQ"):           {"acc": 60.0, "correct": 18, "total": 30, "time": 16.6},
+    ("Hypnos-i1-8B-8bit-mlx", "SAFETYBENCH"):   {"acc": 83.3, "correct": 25, "total": 30, "time": 19.7},
 }
 
 # ── Parser ──────────────────────────────────────────────────────────────────
@@ -261,24 +344,63 @@ def parse_response_file(filepath):
         predicted_m = re.search(r"^Predicted: (.+)$", body, re.M)
         expected = expected_m.group(1).strip() if expected_m else ""
         predicted = predicted_m.group(1).strip() if predicted_m else ""
-        # Convert numeric expected (0,1,2,...) to letter (A,B,C,...) for HellaSwag
+        # Convert numeric expected to letter for HellaSwag (0=A) and WinoGrande (1=A)
         if expected.isdigit():
-            expected = chr(ord('A') + int(expected))
-        if predicted.isdigit() and predicted.isdigit() and len(predicted) == 1:
-            predicted = chr(ord('A') + int(predicted))
+            ev = int(expected)
+            # WinoGrande uses 1-indexed; HellaSwag uses 0-indexed
+            expected = chr(ord('A') + (ev - 1 if ev > 0 else ev))
+        if predicted.isdigit() and len(predicted) == 1:
+            pv = int(predicted)
+            predicted = chr(ord('A') + (pv - 1 if pv > 0 else pv))
         time_m = re.search(r"^Time: ([\d.]+)s$", body, re.M)
         q_time = float(time_m.group(1)) if time_m else 0.0
 
-        # Extract question text
-        q_m = re.search(r"Question:\s*(.*?)\n(?=[A-J]\.\s)", body, re.DOTALL)
-        if q_m:
-            question_text = q_m.group(1).strip()
-        else:
+        # Extract question text: find the LAST "Question:" line, capture until
+        # the first standalone lettered option line (A.-J.) that starts the choices.
+        # SafetyBench has inner numbered items (1. 2.) in the question body, so
+        # we must not stop at those — only at real A-J options.
+        question_text = ""
+        # Find all "Question:" positions, use the last one
+        q_positions = [m.end() for m in re.finditer(r"^Question:\s*", body, re.M)]
+        if q_positions:
+            rest = body[q_positions[-1]:]
+            # Look for the first line that is a lettered option: starts with A.-J.
+            # But skip lines inside numbered lists (1. 2. etc.) that happen to start with A.
+            # Strategy: split into lines, accumulate until we hit a line that is ONLY
+            # a letter option at the start of the options block.
+            lines = rest.split('\n')
+            q_lines = []
+            for line in lines:
+                # A real option line: "^A. something" where A is uppercase letter
+                if re.match(r'^[A-J]\.\s+\S', line) and q_lines:
+                    # Check if this looks like the start of the options block:
+                    # First option is almost always "A."
+                    if re.match(r'^A\.\s+', line):
+                        break
+                    # Or if we already saw "A." earlier, these are continuation options
+                    if any(re.match(r'^A\.\s+', l) for l in q_lines):
+                        break
+                q_lines.append(line)
+            question_text = '\n'.join(q_lines).strip()
+            # Strip trailing numbered items that are actually part of the context
+            # (they get included in options extraction separately)
+        
+        if not question_text:
             q_m2 = re.search(r"Question:\s*\n(.*?)(?=\nAnswer:)", body, re.DOTALL)
             question_text = q_m2.group(1).strip() if q_m2 else ""
-            question_text = re.sub(r"\n[A-J]\.\s+.*$", "", question_text, flags=re.DOTALL).strip()
+        # If no lettered options, strip trailing numbered option lines from question text
+        has_lettered = bool(re.findall(r'^[A-J]\.\s+(.+)$', body, re.M))
+        if not has_lettered:
+            question_text = re.sub(r'\n\d+\.\s+.*$', '', question_text, flags=re.M).strip()
+        # Strip any trailing Answer:/Expected:/Time: lines that leaked in
+        question_text = re.sub(r'\n(?:Answer:|Expected:|Predicted:).*$', '', question_text, flags=re.M|re.DOTALL).strip()
 
         options = re.findall(r"^([A-J])\.\s+(.+)$", body, re.M)
+        # WinoGrande uses "1." / "2." instead of "A." / "B."
+        if not options:
+            num_opts = re.findall(r"^(\d+)\.\s+(.+)$", body, re.M)
+            if num_opts:
+                options = [(chr(ord('A') + int(n) - 1), t) for n, t in num_opts]
         raw_m = re.search(r"^Raw response: (.+?)$", body, re.M)
         raw_response = raw_m.group(1).strip() if raw_m else ""
 
@@ -562,7 +684,7 @@ def page_results(bank):
     user_correct = sum(
         1 for i, q in enumerate(questions) if i in answers and answers[i] == q["expected"]
     )
-    user_acc = user_correct / total * 100
+    user_acc = user_correct / total * 100 if total > 0 else 0.0
 
     st.title("Results")
     st.balloons()
@@ -571,7 +693,7 @@ def page_results(bank):
     col_m1, col_m2, col_m3 = st.columns(3)
     col_m1.metric("Your Accuracy", f"{user_acc:.1f}%", f"{user_correct}/{total} correct")
     col_m2.metric("Your Time", f"{total_time:.1f}s")
-    col_m3.metric("Your Avg/q", f"{total_time/total:.1f}s")
+    col_m3.metric("Your Avg/q", f"{total_time/max(total,1):.1f}s")
 
     st.markdown("---")
 
