@@ -555,8 +555,8 @@ def init_state():
 # ── Pages ───────────────────────────────────────────────────────────────────
 
 def page_setup(bank):
-    st.title("LLM Benchmark Quiz")
-    st.markdown("Test yourself against local open-source LLMs on real benchmark questions.")
+    st.title("Benchmark-yourself: LLM Benchmark Quiz")
+    st.markdown("Test yourself against open-source models that can run in laptops, smartphones or even potatoes (for free) on real benchmark questions.")
     st.markdown("---")
 
     # Benchmark selection cards
