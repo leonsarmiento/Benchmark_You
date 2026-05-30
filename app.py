@@ -168,12 +168,10 @@ DATA_DIR = os.path.join(APP_DIR, "data")
 BASE = DATA_DIR if os.path.isdir(DATA_DIR) else os.path.dirname(APP_DIR)
 TOKENS_PER_SEC = 40.0
 
-
-TOKENS_PER_SEC = 40.0
-
 MODELS = [
     "Qwen3-30B-A3B-MegaScience-8bit-mlx",
     "Huihui-Qwen3.6-35B-A3B-6bit-mlx",
+    "Qwen3.5-35B-A3B-6bit-mlx",
     "Qwen3.6-35B-A3B-MLX-oQ6",
     "GLM-4.7-Flash-6bit-mlx",
     "gemma-4-26B-A4B-it-oQ6",
@@ -183,10 +181,12 @@ MODELS = [
     "Llama-3.3-8B-Instruct-128K_Abliterated-8bit-mlx",
     "Hypnos-i1-8B-8bit-mlx",
     "gemma-4-E4B-it-MLX-8bit",
+    "Qwen3-Coder-30B-A3B-Instruct-MLX-6bit",
 ]
 SHORT = {
     "Qwen3-30B-A3B-MegaScience-8bit-mlx": "MegaScience",
     "Huihui-Qwen3.6-35B-A3B-6bit-mlx": "Huihui-Qwen3.6",
+    "Qwen3.5-35B-A3B-6bit-mlx": "Qwen3.5-35B",
     "Qwen3.6-35B-A3B-MLX-oQ6": "Qwen3.6",
     "GLM-4.7-Flash-6bit-mlx": "GLM-4.7",
     "gemma-4-26B-A4B-it-oQ6": "gemma-4-26b",
@@ -196,10 +196,12 @@ SHORT = {
     "Llama-3.3-8B-Instruct-128K_Abliterated-8bit-mlx": "Llama3.3-8B",
     "Hypnos-i1-8B-8bit-mlx": "Hypnos-8B",
     "gemma-4-E4B-it-MLX-8bit": "gemma-4-E4B",
+    "Qwen3-Coder-30B-A3B-Instruct-MLX-6bit": "Qwen3-Coder",
 }
 COLORS = {
     "Qwen3-30B-A3B-MegaScience-8bit-mlx": "#1f77b4",
     "Huihui-Qwen3.6-35B-A3B-6bit-mlx": "#ff7f0e",
+    "Qwen3.5-35B-A3B-6bit-mlx": "#98df8a",
     "Qwen3.6-35B-A3B-MLX-oQ6": "#2ca02c",
     "GLM-4.7-Flash-6bit-mlx": "#d62728",
     "gemma-4-26B-A4B-it-oQ6": "#9467bd",
@@ -209,6 +211,7 @@ COLORS = {
     "Llama-3.3-8B-Instruct-128K_Abliterated-8bit-mlx": "#bcbd22",
     "Hypnos-i1-8B-8bit-mlx": "#17becf",
     "gemma-4-E4B-it-MLX-8bit": "#aec7e8",
+    "Qwen3-Coder-30B-A3B-Instruct-MLX-6bit": "#dbdb8d",
 }
 COLORS_SHORT = {SHORT[m]: COLORS[m] for m in MODELS}
 
@@ -252,6 +255,15 @@ SUMMARY = {
     ("Huihui-Qwen3.6-35B-A3B-6bit-mlx", "MATHQA"):            {"acc": 90.0, "correct": 27, "total": 30, "time": 1413.9},
     ("Huihui-Qwen3.6-35B-A3B-6bit-mlx", "BBQ"):               {"acc": 90.0, "correct": 27, "total": 30, "time": 401.3},
     ("Huihui-Qwen3.6-35B-A3B-6bit-mlx", "SAFETYBENCH"):       {"acc": 86.7, "correct": 26, "total": 30, "time": 550.5},
+    # Qwen3.5-35B-A3B
+    ("Qwen3.5-35B-A3B-6bit-mlx", "MMLU_PRO"):       {"acc": 76.7, "correct": 23, "total": 30, "time": 1693.6},
+    ("Qwen3.5-35B-A3B-6bit-mlx", "HELLASWAG"):      {"acc": 90.0, "correct": 27, "total": 30, "time": 718.4},
+    ("Qwen3.5-35B-A3B-6bit-mlx", "TRUTHFULQA"):     {"acc": 100.0, "correct": 30, "total": 30, "time": 742.0},
+    ("Qwen3.5-35B-A3B-6bit-mlx", "ARC_CHALLENGE"):  {"acc": 90.0, "correct": 27, "total": 30, "time": 456.5},
+    ("Qwen3.5-35B-A3B-6bit-mlx", "WINOGRANDE"):     {"acc": 96.7, "correct": 29, "total": 30, "time": 925.0},
+    ("Qwen3.5-35B-A3B-6bit-mlx", "MATHQA"):         {"acc": 93.3, "correct": 28, "total": 30, "time": 1139.2},
+    ("Qwen3.5-35B-A3B-6bit-mlx", "BBQ"):            {"acc": 93.3, "correct": 28, "total": 30, "time": 766.5},
+    ("Qwen3.5-35B-A3B-6bit-mlx", "SAFETYBENCH"):    {"acc": 86.7, "correct": 26, "total": 30, "time": 893.5},
     # Qwen3.6-35B-A3B
     ("Qwen3.6-35B-A3B-MLX-oQ6", "MMLU_PRO"):       {"acc": 66.7, "correct": 20, "total": 30, "time": 1412.0},
     ("Qwen3.6-35B-A3B-MLX-oQ6", "ARC_CHALLENGE"):  {"acc": 90.0, "correct": 27, "total": 30, "time": 389.8},
@@ -333,6 +345,15 @@ SUMMARY = {
     ("gemma-4-E4B-it-MLX-8bit", "MATHQA"):         {"acc": 93.3, "correct": 28, "total": 30, "time": 840.1},
     ("gemma-4-E4B-it-MLX-8bit", "BBQ"):            {"acc": 93.3, "correct": 28, "total": 30, "time": 213.4},
     ("gemma-4-E4B-it-MLX-8bit", "SAFETYBENCH"):    {"acc": 83.3, "correct": 25, "total": 30, "time": 307.3},
+    # Qwen3-Coder-30B
+    ("Qwen3-Coder-30B-A3B-Instruct-MLX-6bit", "MMLU_PRO"):       {"acc": 46.7, "correct": 14, "total": 30, "time": 41.0},
+    ("Qwen3-Coder-30B-A3B-Instruct-MLX-6bit", "HELLASWAG"):      {"acc": 73.3, "correct": 22, "total": 30, "time": 22.5},
+    ("Qwen3-Coder-30B-A3B-Instruct-MLX-6bit", "TRUTHFULQA"):     {"acc": 70.0, "correct": 21, "total": 30, "time": 14.1},
+    ("Qwen3-Coder-30B-A3B-Instruct-MLX-6bit", "ARC_CHALLENGE"):  {"acc": 86.7, "correct": 26, "total": 30, "time": 13.3},
+    ("Qwen3-Coder-30B-A3B-Instruct-MLX-6bit", "WINOGRANDE"):     {"acc": 83.3, "correct": 25, "total": 30, "time": 14.4},
+    ("Qwen3-Coder-30B-A3B-Instruct-MLX-6bit", "MATHQA"):         {"acc": 60.0, "correct": 18, "total": 30, "time": 17.7},
+    ("Qwen3-Coder-30B-A3B-Instruct-MLX-6bit", "BBQ"):            {"acc": 86.7, "correct": 26, "total": 30, "time": 16.5},
+    ("Qwen3-Coder-30B-A3B-Instruct-MLX-6bit", "SAFETYBENCH"):    {"acc": 80.0, "correct": 24, "total": 30, "time": 14.4},
 }
 
 # ── Parser ──────────────────────────────────────────────────────────────────
