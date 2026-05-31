@@ -160,6 +160,8 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+import plotly.express as px
+import plotly.graph_objects as go
 
 # ── Config ──────────────────────────────────────────────────────────────────
 APP_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -255,6 +257,31 @@ COLORS = {
     "Devstral-Small-2-24B-Instruct-2512-4bit": "#393b79",
 }
 COLORS_SHORT = {SHORT[m]: COLORS[m] for m in MODELS}
+
+
+def _family(model):
+    """Return the family name for a model (for grouping in interactive plots)."""
+    ml = model.lower()
+    if "qwen3.5" in ml: return "Qwen3.5"
+    if "huihui-qwen3.6" in ml or "qwen3.6" in ml: return "Qwen3.6"
+    if "qwen3-" in ml or "megascience" in ml: return "Qwen3"
+    if "gemma" in ml: return "Gemma"
+    if "glm" in ml: return "GLM"
+    if "gpt-oss" in ml: return "GPT-OSS"
+    if "pepe" in ml: return "Pepe"
+    if "llama" in ml: return "Llama"
+    if "hypnos" in ml: return "Hypnos"
+    if "nemotron" in ml: return "Nemotron"
+    if "devstral" in ml: return "Devstral"
+    return "Other"
+
+
+# One representative color per family (taken from the largest model in that family)
+FAMILY_COLORS = {}
+for _m in MODELS:
+    _f = _family(_m)
+    if _f not in FAMILY_COLORS:
+        FAMILY_COLORS[_f] = COLORS[_m]
 
 BENCHMARKS_MC = ["MMLU_PRO", "ARC_CHALLENGE", "MATHQA", "HELLASWAG", "BBQ", "TRUTHFULQA", "WINOGRANDE", "SAFETYBENCH"]
 BENCH_SHORT = {
@@ -670,6 +697,141 @@ def init_state():
 
 # ── Pages ───────────────────────────────────────────────────────────────────
 
+def _draw_interactive_pareto():
+    """Draw an interactive Plotly pareto chart: overall accuracy vs total wall time,
+    with toggleable benchmark and family filters."""
+    st.markdown("---")
+    st.subheader("Interactive Pareto: Overall Accuracy vs Total Time")
+    st.caption("Click legend items to toggle families. Use the benchmark checklist to filter. Hover points for details.")
+
+    # Benchmark filter
+    bench_cols = st.columns(2)
+    with bench_cols[0]:
+        selected_benches = st.multiselect(
+            "Include benchmarks:",
+            BENCHMARKS_MC,
+            default=BENCHMARKS_MC,
+            format_func=lambda b: BENCH_SHORT.get(b, b),
+            key="pareto_bench_filter",
+        )
+    with bench_cols[1]:
+        # Family filter
+        all_families = sorted(set(_family(m) for m in MODELS))
+        selected_families = st.multiselect(
+            "Include families:",
+            all_families,
+            default=all_families,
+            key="pareto_family_filter",
+        )
+
+    if not selected_benches or not selected_families:
+        st.info("Select at least one benchmark and one family.")
+        return
+
+    # Build dataframe
+    rows = []
+    for model in MODELS:
+        fam = _family(model)
+        if fam not in selected_families:
+            continue
+        total_correct = 0
+        total_n = 0
+        total_time = 0.0
+        has_data = False
+        for bench in selected_benches:
+            s = SUMMARY.get((model, bench))
+            if s:
+                total_correct += s["correct"]
+                total_n += s["total"]
+                total_time += s["time"]
+                has_data = True
+        if not has_data or total_n == 0:
+            continue
+        overall_acc = total_correct / total_n * 100
+        rows.append({
+            "Model": SHORT[model],
+            "Family": fam,
+            "Type": _mtype(model),
+            "Accuracy (%)": round(overall_acc, 1),
+            "Total Time (s)": round(total_time, 1),
+            "Benchmarks": len([b for b in selected_benches if (model, b) in SUMMARY]),
+            "Correct": total_correct,
+            "Total Q": total_n,
+        })
+
+    if not rows:
+        st.info("No data for selected filters.")
+        return
+
+    df = pd.DataFrame(rows)
+
+    # Build one trace per family so labels are correct per-group
+    fig = go.Figure()
+    for fam in df["Family"].unique():
+        sub = df[df["Family"] == fam]
+        fig.add_trace(go.Scatter(
+            x=sub["Total Time (s)"],
+            y=sub["Accuracy (%)"],
+            name=fam,
+            legendgroup=fam,
+            mode="markers+text",
+            text=sub["Model"],
+            textposition="top center",
+            textfont=dict(size=9),
+            marker=dict(
+                size=sub["Total Q"].map(lambda q: 8 + q * 0.05),
+                color=FAMILY_COLORS.get(fam, "#888888"),
+                line=dict(width=1, color="black"),
+                symbol=sub["Type"].map({"MoE": "diamond", "Dense": "circle"}),
+            ),
+            customdata=sub[["Type", "Accuracy (%)", "Total Time (s)", "Correct", "Total Q", "Benchmarks"]],
+            hovertemplate=(
+                "<b>%{text}</b><br>"
+                "Family: " + fam + "<br>"
+                "Type: %{customdata[0]}<br>"
+                "Accuracy: %{customdata[1]:.1f}%<br>"
+                "Time: %{customdata[2]:.1f}s<br>"
+                "Correct: %{customdata[3]}/%{customdata[4]}<br>"
+                "Benchmarks: %{customdata[5]}"
+                "<extra></extra>"
+            ),
+        ))
+
+    fig.update_layout(
+        height=600,
+        legend_title_text="Family (click to toggle)",
+        xaxis_title="Total Wall Time (seconds, lower is better)",
+        yaxis_title="Overall Accuracy % (higher is better)",
+        font=dict(size=12),
+        title=f"Pareto: Overall Accuracy vs Total Wall Time ({len(selected_benches)} benchmarks)",
+    )
+
+    # ── Pareto frontier (dotted line) ──────────────────────────────
+    # Points on the frontier: no other point is both faster AND more accurate
+    pts = list(zip(df["Total Time (s)"], df["Accuracy (%)"]))
+    # Sort by time ascending, then compute frontier by tracking max accuracy so far
+    sorted_pts = sorted(pts, key=lambda p: p[0])
+    frontier = []
+    best_acc = -1
+    for t, a in sorted_pts:
+        if a > best_acc:
+            frontier.append((t, a))
+            best_acc = a
+    if len(frontier) >= 2:
+        fx = [p[0] for p in frontier]
+        fy = [p[1] for p in frontier]
+        fig.add_trace(go.Scatter(
+            x=fx, y=fy,
+            mode="lines",
+            line=dict(dash="dot", width=2, color="black"),
+            hoverinfo="skip",
+            showlegend=True,
+            name="Pareto frontier",
+        ))
+
+    st.plotly_chart(fig, use_container_width=True, theme="streamlit")
+
+
 def page_setup(bank):
     st.title("Benchmark-yourself: LLM Benchmark Quiz")
     st.markdown("Test yourself against open-source models that can run in laptops, smartphones or even potatoes (for free) on real benchmark questions.")
@@ -716,6 +878,9 @@ def page_setup(bank):
                  index=0,
                  key="dropdown_bench",
                  on_change=on_dropdown_change)
+
+    # Interactive Plotly pareto chart
+    _draw_interactive_pareto()
 
 
 def page_quiz(bank):
