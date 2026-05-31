@@ -186,6 +186,8 @@ MODELS = [
     "Assistant_Pepe_32B-mlx-4Bit",
     "Qwen3.6-27B-oQ4-mtp",
     "Devstral-Small-2-24B-Instruct-2512-4bit",
+    "Qwen3.5-4B-MLX-8bit",
+    "Qwen3.5-9B-8bit",
 ]
 # MoE models have "A3B" or "A4B" in name
 # MoE detection: regex + manual overrides (gpt-oss is MoE despite no A3B in name)
@@ -207,6 +209,8 @@ SHORT = {
     "gemma-4-26B-A4B-it-oQ6": "gemma-4-26b",
     "gpt-oss-20b-MXFP4-Q8": "gpt-oss-20b",
     "Qwen3.5-2B-MLX-8bit": "Qwen3.5-2B",
+    "Qwen3.5-4B-MLX-8bit": "Qwen3.5-4B",
+    "Qwen3.5-9B-8bit": "Qwen3.5-9B",
     "Assistant_Pepe_8B-8bit-mlx": "Pepe-8B",
     "Llama-3.3-8B-Instruct-128K_Abliterated-8bit-mlx": "Llama3.3-8B",
     "Hypnos-i1-8B-8bit-mlx": "Hypnos-8B",
@@ -217,23 +221,37 @@ SHORT = {
     "Qwen3.6-27B-oQ4-mtp": "Qwen3.6-27B",
     "Devstral-Small-2-24B-Instruct-2512-4bit": "Devstral-24B",
 }
+# Family-based colors: same hue per family, shade varies by model size/variant
 COLORS = {
-    "Qwen3-30B-A3B-MegaScience-8bit-mlx": "#1f77b4",
-    "Huihui-Qwen3.6-35B-A3B-6bit-mlx": "#ff7f0e",
-    "Qwen3.5-35B-A3B-6bit-mlx": "#98df8a",
+    # Qwen3.5 family — pinks/rose
+    "Qwen3.5-2B-MLX-8bit":      "#f7b6d2",
+    "Qwen3.5-4B-MLX-8bit":      "#e377c2",
+    "Qwen3.5-9B-8bit":          "#d63384",
+    "Qwen3.5-35B-A3B-6bit-mlx": "#a51d6c",
+    # Qwen3.6 family — greens
+    "Qwen3.6-27B-oQ4-mtp":      "#98df8a",
+    "Huihui-Qwen3.6-35B-A3B-6bit-mlx": "#5cb85c",
     "Qwen3.6-35B-A3B-MLX-oQ6": "#2ca02c",
-    "GLM-4.7-Flash-6bit-mlx": "#d62728",
-    "gemma-4-26B-A4B-it-oQ6": "#9467bd",
-    "gpt-oss-20b-MXFP4-Q8": "#8c564b",
-    "Qwen3.5-2B-MLX-8bit": "#e377c2",
-    "Assistant_Pepe_8B-8bit-mlx": "#7f7f7f",
+    # Qwen3 family — blues
+    "Qwen3-30B-A3B-MegaScience-8bit-mlx": "#6baed6",
+    "Qwen3-Coder-30B-A3B-Instruct-MLX-6bit": "#2171b5",
+    # Gemma family — purples
+    "gemma-4-E4B-it-MLX-8bit":  "#dadaeb",
+    "gemma-4-26B-A4B-it-oQ6":   "#807dba",
+    # GLM family — reds
+    "GLM-4.7-Flash-6bit-mlx":   "#d62728",
+    # GPT-OSS family — browns
+    "gpt-oss-20b-MXFP4-Q8":     "#8c564b",
+    # Pepe family — oranges
+    "Assistant_Pepe_8B-8bit-mlx":  "#fdae6b",
+    "Assistant_Pepe_32B-mlx-4Bit": "#e6550d",
+    # Llama family — yellow-green
     "Llama-3.3-8B-Instruct-128K_Abliterated-8bit-mlx": "#bcbd22",
-    "Hypnos-i1-8B-8bit-mlx": "#17becf",
-    "gemma-4-E4B-it-MLX-8bit": "#aec7e8",
-    "Qwen3-Coder-30B-A3B-Instruct-MLX-6bit": "#dbdb8d",
-    "Nemotron-3-Nano-Omni-30B-A3B-Reasoning-6bit": "#c49c94",
-    "Assistant_Pepe_32B-mlx-4Bit": "#ff9896",
-    "Qwen3.6-27B-oQ4-mtp": "#c5b0d5",
+    # Hypnos — cyan
+    "Hypnos-i1-8B-8bit-mlx":    "#17becf",
+    # Nemotron — salmon
+    "Nemotron-3-Nano-Omni-30B-A3B-Reasoning-6bit": "#e88e6d",
+    # Devstral — dark indigo
     "Devstral-Small-2-24B-Instruct-2512-4bit": "#393b79",
 }
 COLORS_SHORT = {SHORT[m]: COLORS[m] for m in MODELS}
@@ -323,15 +341,33 @@ SUMMARY = {
     ("gpt-oss-20b-MXFP4-Q8", "TRUTHFULQA"):        {"acc": 86.7, "correct": 26, "total": 30, "time": 117.4},
     ("gpt-oss-20b-MXFP4-Q8", "WINOGRANDE"):        {"acc": 70.0, "correct": 21, "total": 30, "time": 139.6},
     ("gpt-oss-20b-MXFP4-Q8", "SAFETYBENCH"):       {"acc": 96.7, "correct": 29, "total": 30, "time": 102.8},
-    # Qwen3.5-2B
-    ("Qwen3.5-2B-MLX-8bit", "MMLU_PRO"):            {"acc": 33.3, "correct": 10, "total": 30, "time": 1999.6},
-    ("Qwen3.5-2B-MLX-8bit", "ARC_CHALLENGE"):       {"acc": 76.7, "correct": 23, "total": 30, "time": 745.0},
-    ("Qwen3.5-2B-MLX-8bit", "MATHQA"):              {"acc": 66.7, "correct": 20, "total": 30, "time": 1520.2},
-    ("Qwen3.5-2B-MLX-8bit", "HELLASWAG"):           {"acc": 43.3, "correct": 13, "total": 30, "time": 1560.3},
-    ("Qwen3.5-2B-MLX-8bit", "BBQ"):                 {"acc": 83.3, "correct": 25, "total": 30, "time": 780.1},
-    ("Qwen3.5-2B-MLX-8bit", "TRUTHFULQA"):          {"acc": 36.7, "correct": 11, "total": 30, "time": 1883.1},
-    ("Qwen3.5-2B-MLX-8bit", "WINOGRANDE"):          {"acc": 66.7, "correct": 20, "total": 30, "time": 1673.1},
-    ("Qwen3.5-2B-MLX-8bit", "SAFETYBENCH"):         {"acc": 83.3, "correct": 25, "total": 30, "time": 1197.0},
+    # Qwen3.5-2B (updated)
+    ("Qwen3.5-2B-MLX-8bit", "MMLU_PRO"):            {"acc": 23.3, "correct": 7, "total": 30, "time": 11.6},
+    ("Qwen3.5-2B-MLX-8bit", "ARC_CHALLENGE"):       {"acc": 66.7, "correct": 20, "total": 30, "time": 9.3},
+    ("Qwen3.5-2B-MLX-8bit", "MATHQA"):              {"acc": 23.3, "correct": 7, "total": 30, "time": 11.1},
+    ("Qwen3.5-2B-MLX-8bit", "HELLASWAG"):           {"acc": 76.7, "correct": 23, "total": 30, "time": 11.5},
+    ("Qwen3.5-2B-MLX-8bit", "BBQ"):                 {"acc": 70.0, "correct": 21, "total": 30, "time": 10.8},
+    ("Qwen3.5-2B-MLX-8bit", "TRUTHFULQA"):          {"acc": 40.0, "correct": 12, "total": 30, "time": 9.6},
+    ("Qwen3.5-2B-MLX-8bit", "WINOGRANDE"):          {"acc": 53.3, "correct": 16, "total": 30, "time": 9.3},
+    ("Qwen3.5-2B-MLX-8bit", "SAFETYBENCH"):         {"acc": 73.3, "correct": 22, "total": 30, "time": 11.2},
+    # Qwen3.5-4B
+    ("Qwen3.5-4B-MLX-8bit", "MMLU_PRO"):            {"acc": 46.7, "correct": 14, "total": 30, "time": 20.7},
+    ("Qwen3.5-4B-MLX-8bit", "ARC_CHALLENGE"):       {"acc": 80.0, "correct": 24, "total": 30, "time": 14.6},
+    ("Qwen3.5-4B-MLX-8bit", "MATHQA"):              {"acc": 40.0, "correct": 12, "total": 30, "time": 15.3},
+    ("Qwen3.5-4B-MLX-8bit", "HELLASWAG"):           {"acc": 73.3, "correct": 22, "total": 30, "time": 19.6},
+    ("Qwen3.5-4B-MLX-8bit", "BBQ"):                 {"acc": 90.0, "correct": 27, "total": 30, "time": 14.2},
+    ("Qwen3.5-4B-MLX-8bit", "TRUTHFULQA"):          {"acc": 63.3, "correct": 19, "total": 30, "time": 14.8},
+    ("Qwen3.5-4B-MLX-8bit", "WINOGRANDE"):          {"acc": 80.0, "correct": 24, "total": 30, "time": 14.6},
+    ("Qwen3.5-4B-MLX-8bit", "SAFETYBENCH"):         {"acc": 76.7, "correct": 23, "total": 30, "time": 14.6},
+    # Qwen3.5-9B
+    ("Qwen3.5-9B-8bit", "MMLU_PRO"):                {"acc": 63.3, "correct": 19, "total": 30, "time": 30.4},
+    ("Qwen3.5-9B-8bit", "ARC_CHALLENGE"):           {"acc": 86.7, "correct": 26, "total": 30, "time": 18.6},
+    ("Qwen3.5-9B-8bit", "MATHQA"):                  {"acc": 40.0, "correct": 12, "total": 30, "time": 20.7},
+    ("Qwen3.5-9B-8bit", "HELLASWAG"):               {"acc": 90.0, "correct": 27, "total": 30, "time": 28.7},
+    ("Qwen3.5-9B-8bit", "BBQ"):                     {"acc": 96.7, "correct": 29, "total": 30, "time": 20.1},
+    ("Qwen3.5-9B-8bit", "TRUTHFULQA"):              {"acc": 86.7, "correct": 26, "total": 30, "time": 20.1},
+    ("Qwen3.5-9B-8bit", "WINOGRANDE"):              {"acc": 83.3, "correct": 25, "total": 30, "time": 17.9},
+    ("Qwen3.5-9B-8bit", "SAFETYBENCH"):             {"acc": 86.7, "correct": 26, "total": 30, "time": 21.2},
     # Assistant_Pepe_8B
     ("Assistant_Pepe_8B-8bit-mlx", "MMLU_PRO"):     {"acc": 40.0, "correct": 12, "total": 30, "time": 19.1},
     ("Assistant_Pepe_8B-8bit-mlx", "HELLASWAG"):    {"acc": 66.7, "correct": 20, "total": 30, "time": 17.9},

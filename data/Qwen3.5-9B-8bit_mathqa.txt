@@ -1,9 +1,9 @@
-Model: Qwen3.5-2B-MLX-8bit
+Model: Qwen3.5-9B-8bit
 Benchmark: MATHQA
-Accuracy: 23.3% (7/30)
-Time: 11.1s
+Accuracy: 40.0% (12/30)
+Time: 20.7s
 
---- Q2619 [WRONG] ---
+--- Q2619 [CORRECT] ---
 Category: other
 Question: Solve the following math problem. Answer with just the letter.
 
@@ -17,9 +17,9 @@ E. 87
 
 Answer:
 Expected: A
-Predicted: C
-Raw response: C
-Time: 0.354s
+Predicted: A
+Raw response: A
+Time: 0.701s
 
 --- Q456 [CORRECT] ---
 Category: general
@@ -37,7 +37,7 @@ Answer:
 Expected: B
 Predicted: B
 Raw response: B
-Time: 0.307s
+Time: 0.575s
 
 --- Q102 [WRONG] ---
 Category: physics
@@ -53,11 +53,11 @@ E. 900
 
 Answer:
 Expected: D
-Predicted: C
-Raw response: C
-Time: 0.313s
+Predicted: B
+Raw response: B
+Time: 0.67s
 
---- Q1126 [WRONG] ---
+--- Q1126 [CORRECT] ---
 Category: gain
 Question: Solve the following math problem. Answer with just the letter.
 
@@ -71,11 +71,11 @@ E. 212
 
 Answer:
 Expected: A
-Predicted: B
-Raw response: B
-Time: 0.3s
+Predicted: A
+Raw response: A
+Time: 0.613s
 
---- Q1003 [WRONG] ---
+--- Q1003 [CORRECT] ---
 Category: general
 Question: Solve the following math problem. Answer with just the letter.
 
@@ -89,11 +89,11 @@ E. e ) 11
 
 Answer:
 Expected: A
-Predicted: B
-Raw response: B
-Time: 0.368s
+Predicted: A
+Raw response: A
+Time: 0.58s
 
---- Q914 [WRONG] ---
+--- Q914 [CORRECT] ---
 Category: gain
 Question: Solve the following math problem. Answer with just the letter.
 
@@ -107,9 +107,9 @@ E. none of these
 
 Answer:
 Expected: D
-Predicted: B
-Raw response: B
-Time: 0.391s
+Predicted: D
+Raw response: D
+Time: 0.69s
 
 --- Q571 [WRONG] ---
 Category: general
@@ -127,7 +127,7 @@ Answer:
 Expected: B
 Predicted: C
 Raw response: C
-Time: 0.533s
+Time: 0.662s
 
 --- Q419 [WRONG] ---
 Category: general
@@ -145,7 +145,7 @@ Answer:
 Expected: E
 Predicted: C
 Raw response: C
-Time: 0.392s
+Time: 0.751s
 
 --- Q2771 [WRONG] ---
 Category: physics
@@ -163,9 +163,9 @@ Answer:
 Expected: E
 Predicted: C
 Raw response: C
-Time: 0.361s
+Time: 0.698s
 
---- Q2233 [CORRECT] ---
+--- Q2233 [WRONG] ---
 Category: general
 Question: Solve the following math problem. Answer with just the letter.
 
@@ -179,9 +179,9 @@ E. 5
 
 Answer:
 Expected: B
-Predicted: B
-Raw response: B
-Time: 0.419s
+Predicted: C
+Raw response: C
+Time: 0.783s
 
 --- Q356 [WRONG] ---
 Category: general
@@ -197,9 +197,9 @@ E. none
 
 Answer:
 Expected: B
-Predicted: C
-Raw response: C
-Time: 0.371s
+Predicted: A
+Raw response: A
+Time: 0.631s
 
 --- Q2418 [WRONG] ---
 Category: general
@@ -215,9 +215,9 @@ E. 9
 
 Answer:
 Expected: E
-Predicted: B
-Raw response: B
-Time: 0.34s
+Predicted: D
+Raw response: D
+Time: 0.641s
 
 --- Q1728 [WRONG] ---
 Category: physics
@@ -233,9 +233,9 @@ E. 27
 
 Answer:
 Expected: A
-Predicted: B
-Raw response: B
-Time: 0.404s
+Predicted: C
+Raw response: C
+Time: 0.775s
 
 --- Q130 [WRONG] ---
 Category: physics
@@ -253,9 +253,9 @@ Answer:
 Expected: D
 Predicted: C
 Raw response: C
-Time: 0.346s
+Time: 0.667s
 
---- Q122 [WRONG] ---
+--- Q122 [CORRECT] ---
 Category: other
 Question: Solve the following math problem. Answer with just the letter.
 
@@ -269,9 +269,9 @@ E. 436
 
 Answer:
 Expected: D
-Predicted: B
-Raw response: B
-Time: 0.343s
+Predicted: D
+Raw response: D
+Time: 0.754s
 
 --- Q383 [WRONG] ---
 Category: physics
@@ -289,7 +289,7 @@ Answer:
 Expected: D
 Predicted: B
 Raw response: B
-Time: 0.367s
+Time: 0.696s
 
 --- Q895 [CORRECT] ---
 Category: other
@@ -307,7 +307,7 @@ Answer:
 Expected: D
 Predicted: D
 Raw response: D
-Time: 0.395s
+Time: 0.749s
 
 --- Q952 [WRONG] ---
 Category: physics
@@ -325,7 +325,7 @@ Answer:
 Expected: C
 Predicted: B
 Raw response: B
-Time: 0.327s
+Time: 0.588s
 
 --- Q2069 [WRONG] ---
 Category: general
@@ -343,7 +343,7 @@ Answer:
 Expected: C
 Predicted: D
 Raw response: D
-Time: 0.414s
+Time: 0.779s
 
 --- Q2465 [WRONG] ---
 Category: general
@@ -361,7 +361,7 @@ Answer:
 Expected: B
 Predicted: C
 Raw response: C
-Time: 0.372s
+Time: 0.75s
 
 --- Q108 [WRONG] ---
 Category: gain
@@ -377,9 +377,9 @@ E. 1800
 
 Answer:
 Expected: B
-Predicted: C
-Raw response: C
-Time: 0.377s
+Predicted: A
+Raw response: A
+Time: 0.666s
 
 --- Q2298 [CORRECT] ---
 Category: physics
@@ -397,7 +397,7 @@ Answer:
 Expected: B
 Predicted: B
 Raw response: B
-Time: 0.37s
+Time: 0.705s
 
 --- Q814 [CORRECT] ---
 Category: physics
@@ -415,7 +415,7 @@ Answer:
 Expected: C
 Predicted: C
 Raw response: C
-Time: 0.353s
+Time: 0.581s
 
 --- Q2932 [WRONG] ---
 Category: general
@@ -431,9 +431,9 @@ E. $ 2.30
 
 Answer:
 Expected: B
-Predicted: C
-Raw response: C
-Time: 0.364s
+Predicted: A
+Raw response: A
+Time: 0.76s
 
 --- Q2661 [WRONG] ---
 Category: general
@@ -449,11 +449,11 @@ E. 80 km
 
 Answer:
 Expected: D
-Predicted: C
-Raw response: C
-Time: 0.388s
+Predicted: A
+Raw response: A
+Time: 0.69s
 
---- Q2872 [WRONG] ---
+--- Q2872 [CORRECT] ---
 Category: geometry
 Question: Solve the following math problem. Answer with just the letter.
 
@@ -467,9 +467,9 @@ E. 23.57
 
 Answer:
 Expected: E
-Predicted: C
-Raw response: C
-Time: 0.348s
+Predicted: E
+Raw response: E
+Time: 0.666s
 
 --- Q2232 [CORRECT] ---
 Category: other
@@ -487,7 +487,7 @@ Answer:
 Expected: B
 Predicted: B
 Raw response: B
-Time: 0.321s
+Time: 0.618s
 
 --- Q1718 [WRONG] ---
 Category: general
@@ -503,11 +503,11 @@ E. 01
 
 Answer:
 Expected: B
-Predicted: C
-Raw response: C
-Time: 0.388s
+Predicted: D
+Raw response: D
+Time: 0.676s
 
---- Q902 [CORRECT] ---
+--- Q902 [WRONG] ---
 Category: physics
 Question: Solve the following math problem. Answer with just the letter.
 
@@ -521,11 +521,11 @@ E. 2,500
 
 Answer:
 Expected: A
-Predicted: A
-Raw response: A.
-Time: 0.435s
+Predicted: D
+Raw response: D
+Time: 1.01s
 
---- Q1839 [WRONG] ---
+--- Q1839 [CORRECT] ---
 Category: other
 Question: Solve the following math problem. Answer with just the letter.
 
@@ -539,6 +539,6 @@ E. 60
 
 Answer:
 Expected: C
-Predicted: B
-Raw response: B
-Time: 0.34s
+Predicted: C
+Raw response: C
+Time: 0.609s

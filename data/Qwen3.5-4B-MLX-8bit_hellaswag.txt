@@ -1,9 +1,9 @@
-Model: Qwen3.5-2B-MLX-8bit
+Model: Qwen3.5-4B-MLX-8bit
 Benchmark: HELLASWAG
-Accuracy: 76.7% (23/30)
-Time: 11.5s
+Accuracy: 73.3% (22/30)
+Time: 19.6s
 
---- Q28016 [WRONG] ---
+--- Q28016 [CORRECT] ---
 Category: Playing polo
 Question: Choose the most plausible continuation. Answer with just the letter (A, B, C, or D).
 
@@ -16,9 +16,9 @@ D. , a man is thrown into a pile of wood by someone riding a motor bike in the w
 
 Answer:
 Expected: 0
-Predicted: B
-Raw response: B
-Time: 0.33s
+Predicted: A
+Raw response: A
+Time: 0.581s
 
 --- Q5823 [WRONG] ---
 Category: Powerbocking
@@ -35,7 +35,7 @@ Answer:
 Expected: 0
 Predicted: D
 Raw response: D
-Time: 0.308s
+Time: 0.509s
 
 --- Q9715 [CORRECT] ---
 Category: Personal Care and Style
@@ -52,7 +52,7 @@ Answer:
 Expected: 3
 Predicted: D
 Raw response: D
-Time: 0.428s
+Time: 0.759s
 
 --- Q5867 [CORRECT] ---
 Category: Health
@@ -69,7 +69,7 @@ Answer:
 Expected: 3
 Predicted: D
 Raw response: D
-Time: 0.403s
+Time: 0.71s
 
 --- Q3190 [CORRECT] ---
 Category: Pets and Animals
@@ -86,7 +86,7 @@ Answer:
 Expected: 2
 Predicted: C
 Raw response: C
-Time: 0.413s
+Time: 0.724s
 
 --- Q35259 [CORRECT] ---
 Category: Cutting the grass
@@ -103,7 +103,7 @@ Answer:
 Expected: 2
 Predicted: C
 Raw response: C
-Time: 0.47s
+Time: 0.484s
 
 --- Q25693 [WRONG] ---
 Category: Playing polo
@@ -120,9 +120,9 @@ Answer:
 Expected: 3
 Predicted: B
 Raw response: B
-Time: 0.298s
+Time: 0.45s
 
---- Q42181 [WRONG] ---
+--- Q42181 [CORRECT] ---
 Category: Health
 Question: Choose the most plausible continuation. Answer with just the letter (A, B, C, or D).
 
@@ -135,9 +135,9 @@ D. Letting go of these feelings sends the message to your brain that you are not
 
 Answer:
 Expected: 1
-Predicted: D
-Raw response: D
-Time: 0.382s
+Predicted: B
+Raw response: B
+Time: 0.668s
 
 --- Q21145 [WRONG] ---
 Category: Making a lemonade
@@ -154,9 +154,9 @@ Answer:
 Expected: 0
 Predicted: B
 Raw response: B
-Time: 0.337s
+Time: 0.491s
 
---- Q47659 [CORRECT] ---
+--- Q47659 [WRONG] ---
 Category: Home and Garden
 Question: Choose the most plausible continuation. Answer with just the letter (A, B, C, or D).
 
@@ -169,9 +169,9 @@ D. [substeps] Call the store where your car seat came from or look online to see
 
 Answer:
 Expected: 3
-Predicted: D
-Raw response: D
-Time: 0.402s
+Predicted: A
+Raw response: A
+Time: 0.782s
 
 --- Q27210 [CORRECT] ---
 Category: Personal Care and Style
@@ -188,7 +188,7 @@ Answer:
 Expected: 1
 Predicted: B
 Raw response: B
-Time: 0.416s
+Time: 0.769s
 
 --- Q7413 [CORRECT] ---
 Category: Hitting a pinata
@@ -205,7 +205,7 @@ Answer:
 Expected: 3
 Predicted: D
 Raw response: D
-Time: 0.377s
+Time: 0.58s
 
 --- Q6841 [CORRECT] ---
 Category: Playing violin
@@ -222,7 +222,7 @@ Answer:
 Expected: 3
 Predicted: D
 Raw response: D
-Time: 0.315s
+Time: 0.593s
 
 --- Q22911 [WRONG] ---
 Category: Sharpening knives
@@ -239,7 +239,7 @@ Answer:
 Expected: 3
 Predicted: B
 Raw response: B
-Time: 0.309s
+Time: 0.498s
 
 --- Q2648 [CORRECT] ---
 Category: Food and Entertaining
@@ -256,7 +256,7 @@ Answer:
 Expected: 1
 Predicted: B
 Raw response: B
-Time: 0.417s
+Time: 0.703s
 
 --- Q4343 [CORRECT] ---
 Category: Computers and Electronics
@@ -273,7 +273,7 @@ Answer:
 Expected: 1
 Predicted: B
 Raw response: B
-Time: 0.4s
+Time: 0.712s
 
 --- Q37099 [CORRECT] ---
 Category: Pets and Animals
@@ -290,7 +290,7 @@ Answer:
 Expected: 3
 Predicted: D
 Raw response: D
-Time: 0.399s
+Time: 0.729s
 
 --- Q49158 [CORRECT] ---
 Category: Food and Entertaining
@@ -307,7 +307,7 @@ Answer:
 Expected: 1
 Predicted: B
 Raw response: B
-Time: 0.436s
+Time: 0.766s
 
 --- Q6190 [CORRECT] ---
 Category: Doing kickboxing
@@ -324,7 +324,7 @@ Answer:
 Expected: 2
 Predicted: C
 Raw response: C
-Time: 0.311s
+Time: 0.492s
 
 --- Q43998 [CORRECT] ---
 Category: Personal Care and Style
@@ -341,9 +341,9 @@ Answer:
 Expected: 3
 Predicted: D
 Raw response: D
-Time: 0.377s
+Time: 0.714s
 
---- Q160 [CORRECT] ---
+--- Q160 [WRONG] ---
 Category: Personal Care and Style
 Question: Choose the most plausible continuation. Answer with just the letter (A, B, C, or D).
 
@@ -356,9 +356,9 @@ D. Running in place when you roll the sock up helps distribute the hair evenly t
 
 Answer:
 Expected: 2
-Predicted: C
-Raw response: C
-Time: 0.429s
+Predicted: A
+Raw response: A
+Time: 0.726s
 
 --- Q42099 [CORRECT] ---
 Category: Personal Care and Style
@@ -375,7 +375,7 @@ Answer:
 Expected: 2
 Predicted: C
 Raw response: C
-Time: 0.399s
+Time: 0.722s
 
 --- Q26875 [CORRECT] ---
 Category: Finance and Business
@@ -392,9 +392,9 @@ Answer:
 Expected: 3
 Predicted: D
 Raw response: D
-Time: 0.381s
+Time: 0.713s
 
---- Q2829 [WRONG] ---
+--- Q2829 [CORRECT] ---
 Category: Food and Entertaining
 Question: Choose the most plausible continuation. Answer with just the letter (A, B, C, or D).
 
@@ -407,9 +407,9 @@ D. [step] As your pregnancy progresses, your fetus will acquire more skills. He/
 
 Answer:
 Expected: 3
-Predicted: C
-Raw response: C
-Time: 0.437s
+Predicted: D
+Raw response: D
+Time: 0.714s
 
 --- Q30606 [CORRECT] ---
 Category: Youth
@@ -426,7 +426,7 @@ Answer:
 Expected: 2
 Predicted: C
 Raw response: C
-Time: 0.422s
+Time: 0.77s
 
 --- Q47444 [CORRECT] ---
 Category: Personal Care and Style
@@ -443,7 +443,7 @@ Answer:
 Expected: 3
 Predicted: D
 Raw response: D
-Time: 0.399s
+Time: 0.76s
 
 --- Q10105 [CORRECT] ---
 Category: Personal Care and Style
@@ -460,9 +460,9 @@ Answer:
 Expected: 0
 Predicted: A
 Raw response: A
-Time: 0.42s
+Time: 0.66s
 
---- Q1494 [CORRECT] ---
+--- Q1494 [WRONG] ---
 Category: Paintball
 Question: Choose the most plausible continuation. Answer with just the letter (A, B, C, or D).
 
@@ -475,9 +475,9 @@ D. finish and walk into each other holding a pose and cheering.
 
 Answer:
 Expected: 2
-Predicted: C
-Raw response: C
-Time: 0.331s
+Predicted: D
+Raw response: D
+Time: 0.572s
 
 --- Q39911 [CORRECT] ---
 Category: Clipping cat claws
@@ -494,9 +494,9 @@ Answer:
 Expected: 3
 Predicted: D
 Raw response: D
-Time: 0.308s
+Time: 0.49s
 
---- Q27262 [CORRECT] ---
+--- Q27262 [WRONG] ---
 Category: Youth
 Question: Choose the most plausible continuation. Answer with just the letter (A, B, C, or D).
 
@@ -509,6 +509,6 @@ D. Also, you should wipe off any make-up and wash your face to prevent future pi
 
 Answer:
 Expected: 3
-Predicted: D
-Raw response: D
-Time: 0.444s
+Predicted: A
+Raw response: A
+Time: 0.798s

@@ -1,7 +1,7 @@
-Model: Qwen3.5-2B-MLX-8bit
+Model: Qwen3.5-9B-8bit
 Benchmark: ARC_CHALLENGE
-Accuracy: 66.7% (20/30)
-Time: 9.3s
+Accuracy: 86.7% (26/30)
+Time: 18.6s
 
 --- QMercury_7043820 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -17,7 +17,7 @@ Answer:
 Expected: B
 Predicted: B
 Raw response: B
-Time: 0.336s
+Time: 0.585s
 
 --- QMCAS_2003_5_33 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -33,9 +33,9 @@ Answer:
 Expected: C
 Predicted: C
 Raw response: C
-Time: 0.301s
+Time: 0.619s
 
---- QMercury_7219678 [WRONG] ---
+--- QMercury_7219678 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
 
 Question: Desalination removes salt from water. Removing salt from water can be risky because the process is expensive and slow. Sometimes the technology does not work. A beach community's surface and ground water was decreasing. The community decided to construct a large-scale plant to remove salt from the bay water. The plan to construct a salt-removing plant was accepted because the community
@@ -47,11 +47,11 @@ D. needed to ease social pressures.
 
 Answer:
 Expected: A
-Predicted: B
-Raw response: B
-Time: 0.417s
+Predicted: A
+Raw response: A
+Time: 0.749s
 
---- QAKDE&ED_2008_8_48 [WRONG] ---
+--- QAKDE&ED_2008_8_48 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
 
 Question: Which process will most likely lead to the scientific acceptance of a hypothesis?
@@ -63,9 +63,9 @@ D. changing the experimental procedures
 
 Answer:
 Expected: A
-Predicted: B
-Raw response: B
-Time: 0.329s
+Predicted: A
+Raw response: A
+Time: 0.591s
 
 --- QMercury_7210455 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -81,7 +81,7 @@ Answer:
 Expected: C
 Predicted: C
 Raw response: C
-Time: 0.298s
+Time: 0.58s
 
 --- QMercury_407517 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -97,7 +97,7 @@ Answer:
 Expected: C
 Predicted: C
 Raw response: C
-Time: 0.289s
+Time: 0.586s
 
 --- QTIMSS_2007_8_pg109 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -113,7 +113,7 @@ Answer:
 Expected: C
 Predicted: C
 Raw response: C
-Time: 0.294s
+Time: 0.609s
 
 --- QMercury_SC_400134 [WRONG] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -129,7 +129,7 @@ Answer:
 Expected: D
 Predicted: B
 Raw response: B
-Time: 0.331s
+Time: 0.579s
 
 --- QMercury_402501 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -145,9 +145,9 @@ Answer:
 Expected: B
 Predicted: B
 Raw response: B
-Time: 0.295s
+Time: 0.686s
 
---- QMercury_400084 [WRONG] ---
+--- QMercury_400084 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
 
 Question: An unbalanced equation for the reaction of methane gas (CH_{4}) with oxygen is shown below. CH_{4} + \Box O_{2} -> 2CO_{2} + 4H_{2}O How many molecules of oxygen gas (O_{2}) are needed to properly balance this equation?
@@ -159,9 +159,9 @@ D. 4
 
 Answer:
 Expected: D
-Predicted: B
-Raw response: B
-Time: 0.313s
+Predicted: D
+Raw response: D
+Time: 0.668s
 
 --- QMercury_406777 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -177,7 +177,7 @@ Answer:
 Expected: A
 Predicted: A
 Raw response: A
-Time: 0.293s
+Time: 0.601s
 
 --- QMercury_SC_416529 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -193,7 +193,7 @@ Answer:
 Expected: B
 Predicted: B
 Raw response: B
-Time: 0.331s
+Time: 0.572s
 
 --- QMercury_SC_413549 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -209,9 +209,9 @@ Answer:
 Expected: B
 Predicted: B
 Raw response: B
-Time: 0.309s
+Time: 0.665s
 
---- QMercury_SC_400162 [WRONG] ---
+--- QMercury_SC_400162 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
 
 Question: It is important to use recycled paper because it
@@ -223,9 +223,9 @@ D. reduces the number of trees cut down.
 
 Answer:
 Expected: D
-Predicted: C
-Raw response: C
-Time: 0.293s
+Predicted: D
+Raw response: D
+Time: 0.599s
 
 --- QMercury_7056823 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -241,9 +241,9 @@ Answer:
 Expected: B
 Predicted: B
 Raw response: B
-Time: 0.29s
+Time: 0.578s
 
---- QNAEP_2000_8_S11+10 [WRONG] ---
+--- QNAEP_2000_8_S11+10 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
 
 Question: All of the following would be helpful in separating a mixture of sand and salt EXCEPT
@@ -255,9 +255,9 @@ D. water
 
 Answer:
 Expected: A
-Predicted: B
-Raw response: B
-Time: 0.326s
+Predicted: A
+Raw response: A
+Time: 0.605s
 
 --- QMercury_7235638 [WRONG] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -273,7 +273,7 @@ Answer:
 Expected: C
 Predicted: B
 Raw response: B
-Time: 0.293s
+Time: 0.58s
 
 --- QMercury_SC_LBS10662 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -289,7 +289,7 @@ Answer:
 Expected: C
 Predicted: C
 Raw response: C
-Time: 0.311s
+Time: 0.63s
 
 --- QMercury_175053 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -305,7 +305,7 @@ Answer:
 Expected: D
 Predicted: D
 Raw response: D
-Time: 0.316s
+Time: 0.659s
 
 --- QTIMSS_2003_8_pg87 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -321,7 +321,7 @@ Answer:
 Expected: B
 Predicted: B
 Raw response: B
-Time: 0.332s
+Time: 0.672s
 
 --- QMercury_SC_400052 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -337,7 +337,7 @@ Answer:
 Expected: B
 Predicted: B
 Raw response: B
-Time: 0.279s
+Time: 0.496s
 
 --- QMercury_7236740 [WRONG] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -353,7 +353,7 @@ Answer:
 Expected: B
 Predicted: C
 Raw response: C
-Time: 0.309s
+Time: 0.668s
 
 --- QVASoL_2009_3_23 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -369,9 +369,9 @@ Answer:
 Expected: D
 Predicted: D
 Raw response: D
-Time: 0.326s
+Time: 0.611s
 
---- QMercury_SC_407400 [WRONG] ---
+--- QMercury_SC_407400 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
 
 Question: A class plans an investigation to see which brand of light bulb lasts the longest. Which of these steps should come first?
@@ -383,9 +383,9 @@ D. Make daily observations of the light bulbs.
 
 Answer:
 Expected: C
-Predicted: D
-Raw response: D
-Time: 0.296s
+Predicted: C
+Raw response: C
+Time: 0.623s
 
 --- QMercury_7068583 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -401,7 +401,7 @@ Answer:
 Expected: B
 Predicted: B
 Raw response: B
-Time: 0.278s
+Time: 0.652s
 
 --- QMercury_7139650 [WRONG] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -417,7 +417,7 @@ Answer:
 Expected: C
 Predicted: B
 Raw response: B
-Time: 0.292s
+Time: 0.594s
 
 --- QMercury_SC_400985 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -433,7 +433,7 @@ Answer:
 Expected: C
 Predicted: C
 Raw response: C
-Time: 0.331s
+Time: 0.605s
 
 --- QMCAS_2006_8_24 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -449,7 +449,7 @@ Answer:
 Expected: A
 Predicted: A
 Raw response: A
-Time: 0.338s
+Time: 0.767s
 
 --- QMercury_SC_405710 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -465,7 +465,7 @@ Answer:
 Expected: D
 Predicted: D
 Raw response: D
-Time: 0.293s
+Time: 0.581s
 
 --- QACTAAP_2014_7_5 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -481,4 +481,4 @@ Answer:
 Expected: D
 Predicted: D
 Raw response: D
-Time: 0.294s
+Time: 0.609s

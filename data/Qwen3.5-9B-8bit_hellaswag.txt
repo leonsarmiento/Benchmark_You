@@ -1,9 +1,9 @@
-Model: Qwen3.5-2B-MLX-8bit
+Model: Qwen3.5-9B-8bit
 Benchmark: HELLASWAG
-Accuracy: 76.7% (23/30)
-Time: 11.5s
+Accuracy: 90.0% (27/30)
+Time: 28.7s
 
---- Q28016 [WRONG] ---
+--- Q28016 [CORRECT] ---
 Category: Playing polo
 Question: Choose the most plausible continuation. Answer with just the letter (A, B, C, or D).
 
@@ -16,11 +16,11 @@ D. , a man is thrown into a pile of wood by someone riding a motor bike in the w
 
 Answer:
 Expected: 0
-Predicted: B
-Raw response: B
-Time: 0.33s
+Predicted: A
+Raw response: A
+Time: 0.768s
 
---- Q5823 [WRONG] ---
+--- Q5823 [CORRECT] ---
 Category: Powerbocking
 Question: Choose the most plausible continuation. Answer with just the letter (A, B, C, or D).
 
@@ -33,9 +33,9 @@ D. bounce and flip over a wobbly bar onto a mat.
 
 Answer:
 Expected: 0
-Predicted: D
-Raw response: D
-Time: 0.308s
+Predicted: A
+Raw response: A
+Time: 0.702s
 
 --- Q9715 [CORRECT] ---
 Category: Personal Care and Style
@@ -52,7 +52,7 @@ Answer:
 Expected: 3
 Predicted: D
 Raw response: D
-Time: 0.428s
+Time: 1.099s
 
 --- Q5867 [CORRECT] ---
 Category: Health
@@ -69,7 +69,7 @@ Answer:
 Expected: 3
 Predicted: D
 Raw response: D
-Time: 0.403s
+Time: 1.126s
 
 --- Q3190 [CORRECT] ---
 Category: Pets and Animals
@@ -86,7 +86,7 @@ Answer:
 Expected: 2
 Predicted: C
 Raw response: C
-Time: 0.413s
+Time: 1.13s
 
 --- Q35259 [CORRECT] ---
 Category: Cutting the grass
@@ -103,7 +103,7 @@ Answer:
 Expected: 2
 Predicted: C
 Raw response: C
-Time: 0.47s
+Time: 0.673s
 
 --- Q25693 [WRONG] ---
 Category: Playing polo
@@ -120,9 +120,9 @@ Answer:
 Expected: 3
 Predicted: B
 Raw response: B
-Time: 0.298s
+Time: 0.582s
 
---- Q42181 [WRONG] ---
+--- Q42181 [CORRECT] ---
 Category: Health
 Question: Choose the most plausible continuation. Answer with just the letter (A, B, C, or D).
 
@@ -135,9 +135,9 @@ D. Letting go of these feelings sends the message to your brain that you are not
 
 Answer:
 Expected: 1
-Predicted: D
-Raw response: D
-Time: 0.382s
+Predicted: B
+Raw response: B
+Time: 1.032s
 
 --- Q21145 [WRONG] ---
 Category: Making a lemonade
@@ -154,7 +154,7 @@ Answer:
 Expected: 0
 Predicted: B
 Raw response: B
-Time: 0.337s
+Time: 0.712s
 
 --- Q47659 [CORRECT] ---
 Category: Home and Garden
@@ -171,7 +171,7 @@ Answer:
 Expected: 3
 Predicted: D
 Raw response: D
-Time: 0.402s
+Time: 1.098s
 
 --- Q27210 [CORRECT] ---
 Category: Personal Care and Style
@@ -188,7 +188,7 @@ Answer:
 Expected: 1
 Predicted: B
 Raw response: B
-Time: 0.416s
+Time: 1.189s
 
 --- Q7413 [CORRECT] ---
 Category: Hitting a pinata
@@ -205,7 +205,7 @@ Answer:
 Expected: 3
 Predicted: D
 Raw response: D
-Time: 0.377s
+Time: 0.848s
 
 --- Q6841 [CORRECT] ---
 Category: Playing violin
@@ -222,7 +222,7 @@ Answer:
 Expected: 3
 Predicted: D
 Raw response: D
-Time: 0.315s
+Time: 0.717s
 
 --- Q22911 [WRONG] ---
 Category: Sharpening knives
@@ -239,7 +239,7 @@ Answer:
 Expected: 3
 Predicted: B
 Raw response: B
-Time: 0.309s
+Time: 0.729s
 
 --- Q2648 [CORRECT] ---
 Category: Food and Entertaining
@@ -256,7 +256,7 @@ Answer:
 Expected: 1
 Predicted: B
 Raw response: B
-Time: 0.417s
+Time: 1.091s
 
 --- Q4343 [CORRECT] ---
 Category: Computers and Electronics
@@ -273,7 +273,7 @@ Answer:
 Expected: 1
 Predicted: B
 Raw response: B
-Time: 0.4s
+Time: 1.158s
 
 --- Q37099 [CORRECT] ---
 Category: Pets and Animals
@@ -290,7 +290,7 @@ Answer:
 Expected: 3
 Predicted: D
 Raw response: D
-Time: 0.399s
+Time: 1.128s
 
 --- Q49158 [CORRECT] ---
 Category: Food and Entertaining
@@ -307,7 +307,7 @@ Answer:
 Expected: 1
 Predicted: B
 Raw response: B
-Time: 0.436s
+Time: 1.126s
 
 --- Q6190 [CORRECT] ---
 Category: Doing kickboxing
@@ -324,7 +324,7 @@ Answer:
 Expected: 2
 Predicted: C
 Raw response: C
-Time: 0.311s
+Time: 0.669s
 
 --- Q43998 [CORRECT] ---
 Category: Personal Care and Style
@@ -341,7 +341,7 @@ Answer:
 Expected: 3
 Predicted: D
 Raw response: D
-Time: 0.377s
+Time: 1.008s
 
 --- Q160 [CORRECT] ---
 Category: Personal Care and Style
@@ -358,7 +358,7 @@ Answer:
 Expected: 2
 Predicted: C
 Raw response: C
-Time: 0.429s
+Time: 1.097s
 
 --- Q42099 [CORRECT] ---
 Category: Personal Care and Style
@@ -375,7 +375,7 @@ Answer:
 Expected: 2
 Predicted: C
 Raw response: C
-Time: 0.399s
+Time: 1.095s
 
 --- Q26875 [CORRECT] ---
 Category: Finance and Business
@@ -392,9 +392,9 @@ Answer:
 Expected: 3
 Predicted: D
 Raw response: D
-Time: 0.381s
+Time: 1.007s
 
---- Q2829 [WRONG] ---
+--- Q2829 [CORRECT] ---
 Category: Food and Entertaining
 Question: Choose the most plausible continuation. Answer with just the letter (A, B, C, or D).
 
@@ -407,9 +407,9 @@ D. [step] As your pregnancy progresses, your fetus will acquire more skills. He/
 
 Answer:
 Expected: 3
-Predicted: C
-Raw response: C
-Time: 0.437s
+Predicted: D
+Raw response: D
+Time: 1.097s
 
 --- Q30606 [CORRECT] ---
 Category: Youth
@@ -426,7 +426,7 @@ Answer:
 Expected: 2
 Predicted: C
 Raw response: C
-Time: 0.422s
+Time: 1.182s
 
 --- Q47444 [CORRECT] ---
 Category: Personal Care and Style
@@ -443,7 +443,7 @@ Answer:
 Expected: 3
 Predicted: D
 Raw response: D
-Time: 0.399s
+Time: 1.111s
 
 --- Q10105 [CORRECT] ---
 Category: Personal Care and Style
@@ -460,7 +460,7 @@ Answer:
 Expected: 0
 Predicted: A
 Raw response: A
-Time: 0.42s
+Time: 1.028s
 
 --- Q1494 [CORRECT] ---
 Category: Paintball
@@ -477,7 +477,7 @@ Answer:
 Expected: 2
 Predicted: C
 Raw response: C
-Time: 0.331s
+Time: 0.748s
 
 --- Q39911 [CORRECT] ---
 Category: Clipping cat claws
@@ -494,7 +494,7 @@ Answer:
 Expected: 3
 Predicted: D
 Raw response: D
-Time: 0.308s
+Time: 0.669s
 
 --- Q27262 [CORRECT] ---
 Category: Youth
@@ -511,4 +511,4 @@ Answer:
 Expected: 3
 Predicted: D
 Raw response: D
-Time: 0.444s
+Time: 1.092s

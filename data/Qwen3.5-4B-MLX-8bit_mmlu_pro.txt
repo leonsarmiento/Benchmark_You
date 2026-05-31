@@ -1,9 +1,9 @@
-Model: Qwen3.5-2B-MLX-8bit
+Model: Qwen3.5-4B-MLX-8bit
 Benchmark: MMLU_PRO
-Accuracy: 23.3% (7/30)
-Time: 11.6s
+Accuracy: 46.7% (14/30)
+Time: 20.7s
 
---- Q3342 [WRONG] ---
+--- Q3342 [CORRECT] ---
 Category: biology
 Question: Answer the following question. Answer with just the letter.
 
@@ -22,11 +22,11 @@ J. Phenotypic ratio: checkered red 2, checkered brown 6, plain red 3, plain brow
 
 Answer:
 Expected: C
-Predicted: B
-Raw response: B
-Time: 0.56s
+Predicted: C
+Raw response: C
+Time: 1.211s
 
---- Q2802 [WRONG] ---
+--- Q2802 [CORRECT] ---
 Category: biology
 Question: Answer the following question. Answer with just the letter.
 
@@ -45,11 +45,11 @@ J. The vesicle merges with a peroxisome.
 
 Answer:
 Expected: F
-Predicted: D
-Raw response: D
-Time: 0.383s
+Predicted: F
+Raw response: F
+Time: 0.683s
 
---- Q25 [WRONG] ---
+--- Q25 [CORRECT] ---
 Category: business
 Question: Answer the following question. Answer with just the letter.
 
@@ -68,9 +68,9 @@ J. (A) Liability section, (B) Owner's Equity section, (C) Owner's Equity section
 
 Answer:
 Expected: J
-Predicted: B
-Raw response: B
-Time: 0.466s
+Predicted: J
+Raw response: J
+Time: 0.916s
 
 --- Q759 [CORRECT] ---
 Category: business
@@ -93,7 +93,7 @@ Answer:
 Expected: E
 Predicted: E
 Raw response: E
-Time: 0.386s
+Time: 0.652s
 
 --- Q3968 [WRONG] ---
 Category: chemistry
@@ -114,9 +114,9 @@ J. 1
 
 Answer:
 Expected: D
-Predicted: A
-Raw response: A.
-Time: 0.331s
+Predicted: E
+Raw response: E
+Time: 0.548s
 
 --- Q3906 [WRONG] ---
 Category: chemistry
@@ -139,9 +139,9 @@ Answer:
 Expected: I
 Predicted: B
 Raw response: B
-Time: 0.317s
+Time: 0.578s
 
---- Q3862 [WRONG] ---
+--- Q3862 [CORRECT] ---
 Category: chemistry
 Question: Answer the following question. Answer with just the letter.
 
@@ -156,9 +156,9 @@ F. Hydrogen bond < induced dipole < dipole-dipole
 
 Answer:
 Expected: D
-Predicted: B
-Raw response: B
-Time: 0.364s
+Predicted: D
+Raw response: D
+Time: 0.54s
 
 --- Q10225 [WRONG] ---
 Category: computer science
@@ -179,9 +179,9 @@ J. 250
 
 Answer:
 Expected: J
-Predicted: B
-Raw response: B
-Time: 0.328s
+Predicted: A
+Raw response: A
+Time: 0.573s
 
 --- Q7414 [CORRECT] ---
 Category: economics
@@ -199,7 +199,7 @@ Answer:
 Expected: C
 Predicted: C
 Raw response: C
-Time: 0.299s
+Time: 0.498s
 
 --- Q6764 [WRONG] ---
 Category: economics
@@ -222,7 +222,7 @@ Answer:
 Expected: C
 Predicted: J
 Raw response: J
-Time: 0.499s
+Time: 0.701s
 
 --- Q11755 [WRONG] ---
 Category: engineering
@@ -243,11 +243,11 @@ J. 0.9876 kJ
 
 Answer:
 Expected: H
-Predicted: B
-Raw response: B
-Time: 0.377s
+Predicted: A
+Raw response: A
+Time: 0.665s
 
---- Q11821 [WRONG] ---
+--- Q11821 [CORRECT] ---
 Category: engineering
 Question: Answer the following question. Answer with just the letter.
 
@@ -266,11 +266,11 @@ J. 263050 Btu/hr-ft^2
 
 Answer:
 Expected: A
-Predicted: C
-Raw response: C
-Time: 0.369s
+Predicted: A
+Raw response: A
+Time: 0.686s
 
---- Q6400 [WRONG] ---
+--- Q6400 [CORRECT] ---
 Category: health
 Question: Answer the following question. Answer with just the letter.
 
@@ -290,9 +290,9 @@ J. If the population's overall health improves.
 
 Answer:
 Expected: D
-Predicted: C
-Raw response: C
-Time: 0.367s
+Predicted: D
+Raw response: D
+Time: 0.715s
 
 --- Q5931 [WRONG] ---
 Category: health
@@ -315,7 +315,7 @@ Answer:
 Expected: G
 Predicted: A
 Raw response: A
-Time: 0.322s
+Time: 0.54s
 
 --- Q4839 [CORRECT] ---
 Category: history
@@ -344,7 +344,7 @@ Answer:
 Expected: B
 Predicted: B
 Raw response: B
-Time: 0.469s
+Time: 0.917s
 
 --- Q1653 [WRONG] ---
 Category: law
@@ -365,11 +365,11 @@ J. Yes, because the evidence of established industry practice may explain the am
 
 Answer:
 Expected: D
-Predicted: B
-Raw response: B
-Time: 0.483s
+Predicted: J
+Raw response: J
+Time: 0.959s
 
---- Q854 [CORRECT] ---
+--- Q854 [WRONG] ---
 Category: law
 Question: Answer the following question. Answer with just the letter.
 
@@ -387,9 +387,9 @@ I. Yes, because the mother suffered severe emotional distress as a result of vie
 
 Answer:
 Expected: B
-Predicted: B
-Raw response: B
-Time: 0.41s
+Predicted: G
+Raw response: G
+Time: 0.832s
 
 --- Q850 [WRONG] ---
 Category: law
@@ -408,9 +408,9 @@ H. No, because the builder did not specify the reason for rejection in the fax.
 
 Answer:
 Expected: E
-Predicted: B
-Raw response: B
-Time: 0.481s
+Predicted: F
+Raw response: F
+Time: 0.851s
 
 --- Q7695 [WRONG] ---
 Category: math
@@ -433,9 +433,9 @@ Answer:
 Expected: C
 Predicted: B
 Raw response: B
-Time: 0.398s
+Time: 0.837s
 
---- Q7951 [WRONG] ---
+--- Q7951 [CORRECT] ---
 Category: math
 Question: Answer the following question. Answer with just the letter.
 
@@ -454,9 +454,9 @@ J. 600 and 799
 
 Answer:
 Expected: D
-Predicted: H
-Raw response: H
-Time: 0.336s
+Predicted: D
+Raw response: D
+Time: 0.614s
 
 --- Q7980 [WRONG] ---
 Category: math
@@ -477,9 +477,9 @@ J. 9
 
 Answer:
 Expected: I
-Predicted: B
-Raw response: B
-Time: 0.358s
+Predicted: A
+Raw response: A
+Time: 0.534s
 
 --- Q5435 [CORRECT] ---
 Category: other
@@ -501,7 +501,7 @@ Answer:
 Expected: A
 Predicted: A
 Raw response: A
-Time: 0.29s
+Time: 0.473s
 
 --- Q5534 [WRONG] ---
 Category: other
@@ -522,9 +522,9 @@ J. 50,000 liters
 
 Answer:
 Expected: D
-Predicted: B
-Raw response: B
-Time: 0.321s
+Predicted: C
+Raw response: C
+Time: 0.544s
 
 --- Q10577 [WRONG] ---
 Category: philosophy
@@ -547,7 +547,7 @@ Answer:
 Expected: D
 Predicted: B
 Raw response: B
-Time: 0.404s
+Time: 0.71s
 
 --- Q10004 [CORRECT] ---
 Category: physics
@@ -570,7 +570,7 @@ Answer:
 Expected: I
 Predicted: I
 Raw response: I
-Time: 0.475s
+Time: 0.91s
 
 --- Q9262 [WRONG] ---
 Category: physics
@@ -591,9 +591,9 @@ J. $2.8 \mathrm{~m} / \mathrm{s}$
 
 Answer:
 Expected: C
-Predicted: B
-Raw response: B
-Time: 0.4s
+Predicted: A
+Raw response: A
+Time: 0.725s
 
 --- Q9971 [CORRECT] ---
 Category: physics
@@ -616,7 +616,7 @@ Answer:
 Expected: A
 Predicted: A
 Raw response: A
-Time: 0.359s
+Time: 0.589s
 
 --- Q2319 [WRONG] ---
 Category: psychology
@@ -639,9 +639,9 @@ Answer:
 Expected: D
 Predicted: B
 Raw response: B
-Time: 0.327s
+Time: 0.537s
 
---- Q2115 [WRONG] ---
+--- Q2115 [CORRECT] ---
 Category: psychology
 Question: Answer the following question. Answer with just the letter.
 
@@ -660,9 +660,9 @@ J. both children are more likely to manifest a delayed behavior problem
 
 Answer:
 Expected: E
-Predicted: B
-Raw response: B
-Time: 0.375s
+Predicted: E
+Raw response: E
+Time: 0.71s
 
 --- Q2349 [WRONG] ---
 Category: psychology
@@ -683,6 +683,6 @@ J. severe depression.
 
 Answer:
 Expected: J
-Predicted: C
-Raw response: C
-Time: 0.339s
+Predicted: E
+Raw response: E
+Time: 0.494s
