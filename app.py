@@ -183,12 +183,26 @@ MODELS = [
     "gemma-4-E4B-it-MLX-8bit",
     "Qwen3-Coder-30B-A3B-Instruct-MLX-6bit",
     "Nemotron-3-Nano-Omni-30B-A3B-Reasoning-6bit",
+    "Assistant_Pepe_32B-mlx-4Bit",
+    "Qwen3.6-27B-oQ4-mtp",
+    "Devstral-Small-2-24B-Instruct-2512-4bit",
 ]
+# MoE models have "A3B" or "A4B" in name
+# MoE detection: regex + manual overrides (gpt-oss is MoE despite no A3B in name)
+MOE_MODELS = {m for m in MODELS if re.search(r"A[34]B|E[34]B", m)}
+MOE_MODELS.add("gpt-oss-20b-MXFP4-Q8")
+MOE_MODELS.add("GLM-4.7-Flash-6bit-mlx")
+def _hatch(model):
+    return "///" if model in MOE_MODELS else ""
+def _marker(model):
+    return "D" if model in MOE_MODELS else "o"
+def _mtype(model):
+    return "MoE" if model in MOE_MODELS else "Dense"
 SHORT = {
     "Qwen3-30B-A3B-MegaScience-8bit-mlx": "MegaScience",
     "Huihui-Qwen3.6-35B-A3B-6bit-mlx": "Huihui-Qwen3.6",
     "Qwen3.5-35B-A3B-6bit-mlx": "Qwen3.5-35B",
-    "Qwen3.6-35B-A3B-MLX-oQ6": "Qwen3.6",
+    "Qwen3.6-35B-A3B-MLX-oQ6": "Qwen3.6-35B",
     "GLM-4.7-Flash-6bit-mlx": "GLM-4.7",
     "gemma-4-26B-A4B-it-oQ6": "gemma-4-26b",
     "gpt-oss-20b-MXFP4-Q8": "gpt-oss-20b",
@@ -199,6 +213,9 @@ SHORT = {
     "gemma-4-E4B-it-MLX-8bit": "gemma-4-E4B",
     "Qwen3-Coder-30B-A3B-Instruct-MLX-6bit": "Qwen3-Coder",
     "Nemotron-3-Nano-Omni-30B-A3B-Reasoning-6bit": "Nemotron-30B",
+    "Assistant_Pepe_32B-mlx-4Bit": "Pepe-32B",
+    "Qwen3.6-27B-oQ4-mtp": "Qwen3.6-27B",
+    "Devstral-Small-2-24B-Instruct-2512-4bit": "Devstral-24B",
 }
 COLORS = {
     "Qwen3-30B-A3B-MegaScience-8bit-mlx": "#1f77b4",
@@ -215,6 +232,9 @@ COLORS = {
     "gemma-4-E4B-it-MLX-8bit": "#aec7e8",
     "Qwen3-Coder-30B-A3B-Instruct-MLX-6bit": "#dbdb8d",
     "Nemotron-3-Nano-Omni-30B-A3B-Reasoning-6bit": "#c49c94",
+    "Assistant_Pepe_32B-mlx-4Bit": "#ff9896",
+    "Qwen3.6-27B-oQ4-mtp": "#c5b0d5",
+    "Devstral-Small-2-24B-Instruct-2512-4bit": "#393b79",
 }
 COLORS_SHORT = {SHORT[m]: COLORS[m] for m in MODELS}
 
@@ -366,6 +386,33 @@ SUMMARY = {
     ("Nemotron-3-Nano-Omni-30B-A3B-Reasoning-6bit", "MATHQA"):         {"acc": 90.0, "correct": 27, "total": 30, "time": 663.1},
     ("Nemotron-3-Nano-Omni-30B-A3B-Reasoning-6bit", "BBQ"):            {"acc": 96.7, "correct": 29, "total": 30, "time": 55.2},
     ("Nemotron-3-Nano-Omni-30B-A3B-Reasoning-6bit", "SAFETYBENCH"):    {"acc": 90.0, "correct": 27, "total": 30, "time": 97.1},
+    # Assistant_Pepe_32B (dense)
+    ("Assistant_Pepe_32B-mlx-4Bit", "MMLU_PRO"):       {"acc": 56.7, "correct": 17, "total": 30, "time": 903.8},
+    ("Assistant_Pepe_32B-mlx-4Bit", "HELLASWAG"):      {"acc": 80.0, "correct": 24, "total": 30, "time": 94.8},
+    ("Assistant_Pepe_32B-mlx-4Bit", "TRUTHFULQA"):     {"acc": 80.0, "correct": 24, "total": 30, "time": 56.4},
+    ("Assistant_Pepe_32B-mlx-4Bit", "ARC_CHALLENGE"):  {"acc": 90.0, "correct": 27, "total": 30, "time": 68.4},
+    ("Assistant_Pepe_32B-mlx-4Bit", "WINOGRANDE"):     {"acc": 76.7, "correct": 23, "total": 30, "time": 46.2},
+    ("Assistant_Pepe_32B-mlx-4Bit", "MATHQA"):         {"acc": 56.7, "correct": 17, "total": 30, "time": 1267.4},
+    ("Assistant_Pepe_32B-mlx-4Bit", "BBQ"):            {"acc": 73.3, "correct": 22, "total": 30, "time": 68.3},
+    ("Assistant_Pepe_32B-mlx-4Bit", "SAFETYBENCH"):    {"acc": 83.3, "correct": 25, "total": 30, "time": 64.3},
+    # Qwen3.6-27B (dense)
+    ("Qwen3.6-27B-oQ4-mtp", "MMLU_PRO"):       {"acc": 80.0, "correct": 24, "total": 30, "time": 3831.3},
+    ("Qwen3.6-27B-oQ4-mtp", "HELLASWAG"):      {"acc": 83.3, "correct": 25, "total": 30, "time": 79.6},
+    ("Qwen3.6-27B-oQ4-mtp", "TRUTHFULQA"):     {"acc": 100.0, "correct": 30, "total": 30, "time": 48.5},
+    ("Qwen3.6-27B-oQ4-mtp", "ARC_CHALLENGE"):  {"acc": 93.3, "correct": 28, "total": 30, "time": 43.1},
+    ("Qwen3.6-27B-oQ4-mtp", "WINOGRANDE"):     {"acc": 86.7, "correct": 26, "total": 30, "time": 39.3},
+    ("Qwen3.6-27B-oQ4-mtp", "MATHQA"):         {"acc": 90.0, "correct": 27, "total": 30, "time": 3313.7},
+    ("Qwen3.6-27B-oQ4-mtp", "BBQ"):            {"acc": 90.0, "correct": 27, "total": 30, "time": 48.7},
+    ("Qwen3.6-27B-oQ4-mtp", "SAFETYBENCH"):    {"acc": 93.3, "correct": 28, "total": 30, "time": 52.5},
+    # Devstral-Small-24B (dense)
+    ("Devstral-Small-2-24B-Instruct-2512-4bit", "MMLU_PRO"):       {"acc": 50.0, "correct": 15, "total": 30, "time": 54.0},
+    ("Devstral-Small-2-24B-Instruct-2512-4bit", "HELLASWAG"):      {"acc": 86.7, "correct": 26, "total": 30, "time": 39.4},
+    ("Devstral-Small-2-24B-Instruct-2512-4bit", "TRUTHFULQA"):     {"acc": 80.0, "correct": 24, "total": 30, "time": 36.4},
+    ("Devstral-Small-2-24B-Instruct-2512-4bit", "ARC_CHALLENGE"):  {"acc": 80.0, "correct": 24, "total": 30, "time": 32.0},
+    ("Devstral-Small-2-24B-Instruct-2512-4bit", "WINOGRANDE"):     {"acc": 66.7, "correct": 20, "total": 30, "time": 25.9},
+    ("Devstral-Small-2-24B-Instruct-2512-4bit", "MATHQA"):         {"acc": 36.7, "correct": 11, "total": 30, "time": 39.1},
+    ("Devstral-Small-2-24B-Instruct-2512-4bit", "BBQ"):            {"acc": 53.3, "correct": 16, "total": 30, "time": 36.2},
+    ("Devstral-Small-2-24B-Instruct-2512-4bit", "SAFETYBENCH"):    {"acc": 83.3, "correct": 25, "total": 30, "time": 39.4},
 }
 
 # ── Parser ──────────────────────────────────────────────────────────────────
@@ -746,7 +793,7 @@ def _draw_live_leaderboard(bank, bench, questions, n_answered):
     user_acc = user_correct / len(answered_indices) * 100 if answered_indices else 0.0
 
     # AI accuracy on the same questions
-    rows = [("You", user_acc, "#FFD700")]  # gold for user
+    rows = [("You", user_acc, "#FFD700", "")]  # gold for user, no hatch
     for model in MODELS:
         if (model, bench) not in SUMMARY:
             continue
@@ -758,7 +805,7 @@ def _draw_live_leaderboard(bank, bench, questions, n_answered):
                 if q["model_correct"].get(m_short, False):
                     ai_correct += 1
         ai_acc = ai_correct / len(answered_indices) * 100 if answered_indices else 0.0
-        rows.append((SHORT[model], ai_acc, COLORS[model]))
+        rows.append((f"{SHORT[model]} ({_mtype(model)})", ai_acc, COLORS[model], _hatch(model)))
 
     # Sort by accuracy descending; ties broken by name
     rows.sort(key=lambda r: (-r[1], r[0]))
@@ -766,12 +813,15 @@ def _draw_live_leaderboard(bank, bench, questions, n_answered):
     names = [r[0] for r in rows]
     accs = [r[1] for r in rows]
     colors = [r[2] for r in rows]
+    hatches = [r[3] for r in rows]
 
     fig, ax = plt.subplots(figsize=(8, max(3, len(rows) * 0.45)))
     y_pos = range(len(names))
     bars = ax.barh(y_pos, accs, color=colors, edgecolor="black", linewidth=0.5, height=0.6)
+    for i, h in enumerate(hatches):
+        bars[i].set_hatch(h)
     ax.set_yticks(y_pos)
-    ax.set_yticklabels(names, fontsize=10)
+    ax.set_yticklabels(names, fontsize=9)
     ax.invert_yaxis()  # highest at top
     ax.set_xlim(0, 105)
     ax.set_xlabel("Accuracy (%)", fontsize=10)
@@ -821,9 +871,9 @@ def page_results(bank):
         if not s:
             continue
         ax1.scatter(s["time"], s["acc"], s=200, color=COLORS[model],
-                    edgecolors="black", linewidths=0.8, zorder=5)
-        ax1.annotate(SHORT[model], (s["time"], s["acc"]),
-                     textcoords="offset points", xytext=(8, 8), fontsize=10,
+                    edgecolors="black", linewidths=0.8, zorder=5, marker=_marker(model))
+        ax1.annotate(f"{SHORT[model]} ({_mtype(model)})", (s["time"], s["acc"]),
+                     textcoords="offset points", xytext=(8, 8), fontsize=9,
                      fontweight="bold", color=COLORS[model])
 
     # User point
@@ -845,18 +895,21 @@ def page_results(bank):
     st.subheader("Accuracy Comparison")
 
     _models_with_data = [m for m in MODELS if (m, bench) in SUMMARY]
-    names = [SHORT[m] for m in _models_with_data] + ["YOU"]
+    names = [f"{SHORT[m]} ({_mtype(m)})" for m in _models_with_data] + ["YOU"]
     accs = [SUMMARY[(m, bench)]["acc"] for m in _models_with_data] + [user_acc]
     bar_colors = [COLORS[m] for m in _models_with_data] + ["#FFD700"]
+    bar_hatches = [_hatch(m) for m in _models_with_data] + [""]
 
-    fig2, ax2 = plt.subplots(figsize=(10, 5))
+    fig2, ax2 = plt.subplots(figsize=(10, 6))
     bars = ax2.barh(range(len(names)), accs, color=bar_colors, edgecolor="black", linewidth=0.5, height=0.6)
+    for i, h in enumerate(bar_hatches):
+        bars[i].set_hatch(h)
     for i, (n, a) in enumerate(zip(names, accs)):
         ax2.text(a + 0.5, i, f"{a:.1f}%", va="center", fontsize=10, fontweight="bold")
     ax2.set_yticks(range(len(names)))
-    ax2.set_yticklabels(names, fontsize=11)
+    ax2.set_yticklabels(names, fontsize=10)
     ax2.set_xlabel("Accuracy (%)", fontsize=12)
-    ax2.set_title(f"{BENCH_SHORT[bench]} Accuracy", fontsize=14)
+    ax2.set_title(f"{BENCH_SHORT[bench]} Accuracy (hatched = MoE)", fontsize=14)
     ax2.set_xlim(0, 105)
     ax2.grid(True, axis="x", alpha=0.3)
     fig2.tight_layout()
@@ -867,17 +920,20 @@ def page_results(bank):
     st.subheader("Speed Comparison")
 
     times_all = [SUMMARY[(m, bench)]["time"] for m in _models_with_data] + [total_time]
-    time_names = [SHORT[m] for m in _models_with_data] + ["YOU"]
+    time_names = [f"{SHORT[m]} ({_mtype(m)})" for m in _models_with_data] + ["YOU"]
     time_colors = [COLORS[m] for m in _models_with_data] + ["#FFD700"]
+    time_hatches = [_hatch(m) for m in _models_with_data] + [""]
 
-    fig3, ax3 = plt.subplots(figsize=(10, 5))
-    ax3.barh(range(len(time_names)), times_all, color=time_colors, edgecolor="black", linewidth=0.5, height=0.6)
+    fig3, ax3 = plt.subplots(figsize=(10, 6))
+    bars3 = ax3.barh(range(len(time_names)), times_all, color=time_colors, edgecolor="black", linewidth=0.5, height=0.6)
+    for i, h in enumerate(time_hatches):
+        bars3[i].set_hatch(h)
     for i, (n, t) in enumerate(zip(time_names, times_all)):
         ax3.text(t + 10, i, f"{t:.1f}s", va="center", fontsize=10, fontweight="bold")
     ax3.set_yticks(range(len(time_names)))
-    ax3.set_yticklabels(time_names, fontsize=11)
+    ax3.set_yticklabels(time_names, fontsize=10)
     ax3.set_xlabel("Total Wall Time (seconds)", fontsize=12)
-    ax3.set_title(f"{BENCH_SHORT[bench]} Speed", fontsize=14)
+    ax3.set_title(f"{BENCH_SHORT[bench]} Speed (hatched = MoE)", fontsize=14)
     ax3.grid(True, axis="x", alpha=0.3)
     fig3.tight_layout()
     st.pyplot(fig3)
