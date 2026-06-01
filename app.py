@@ -286,8 +286,9 @@ for _m in MODELS:
     if _f not in FAMILY_COLORS:
         FAMILY_COLORS[_f] = COLORS[_m]
 
-BENCHMARKS_MC = ["MMLU_PRO", "ARC_CHALLENGE", "MATHQA", "HELLASWAG", "BBQ", "TRUTHFULQA", "WINOGRANDE", "SAFETYBENCH"]
+BENCHMARKS_MC = ["HPL", "MMLU_PRO", "ARC_CHALLENGE", "MATHQA", "HELLASWAG", "BBQ", "TRUTHFULQA", "WINOGRANDE", "SAFETYBENCH"]
 BENCH_SHORT = {
+    "HPL": "HPL (Human>AI)",
     "MMLU_PRO": "MMLU-Pro",
     "ARC_CHALLENGE": "ARC-Challenge",
     "MATHQA": "MathQA",
@@ -298,6 +299,7 @@ BENCH_SHORT = {
     "SAFETYBENCH": "SafetyBench",
 }
 BENCH_DESC = {
+    "HPL": "Husk-Phi-Leon is a custom benchmark built from real social media posts. It tests social intelligence, common sense, and the ability to detect sarcasm, irony, inappropriate behavior, and trick questions. Unlike academic benchmarks, these are situations where humans naturally outperform AI - the questions are deliberately designed to trip up overly agreeable or literal-minded models. 10 questions, multiple-choice.",
     "MMLU_PRO": "Massive Multitask Language Understanding (Professional) tests knowledge across 14 academic and professional domains - biology, chemistry, physics, law, economics, computer science, and more. Questions are multiple-choice with up to 10 options, making guessing nearly useless. It measures breadth and depth of general knowledge.",
     "ARC_CHALLENGE": "AI2 Reasoning Challenge (Challenge set) contains grade-school science questions that require genuine reasoning, not just recall. Only questions that retrieval-based methods fail are included, so these are the hard ones - think balancing chemical equations, identifying energy types, and interpreting experimental results.",
     "MATHQA": "MathQA tests quantitative reasoning with real-world math word problems - percentages, probability, geometry, gain/loss, physics calculations, and more. Each question has 5 answer choices. It measures whether you (or an AI) can set up and solve practical math problems correctly.",
@@ -308,6 +310,27 @@ BENCH_DESC = {
     "SAFETYBENCH": "SafetyBench evaluates safety awareness across categories like privacy, unfairness, bias, toxicity, and ethics. Questions present scenarios and ask you to identify risks, violations, or appropriate behaviors. It measures whether an AI (or human) can recognize and avoid harmful outputs.",
 }
 SUMMARY = {
+    # HPL (Husk-Phi-Leon) - 10 questions, times from file modification timestamps
+    ("Assistant_Pepe_32B-mlx-4Bit", "HPL"):       {"acc": 50.0, "correct": 5, "total": 10, "time": 83.8},
+    ("GLM-4.6V-Flash-MLX-8bit", "HPL"):           {"acc": 50.0, "correct": 5, "total": 10, "time": 109.5},
+    ("Qwen3.6-27B-oQ4-mtp", "HPL"):               {"acc": 50.0, "correct": 5, "total": 10, "time": 164.3},
+    ("gemma-4-26B-A4B-it-oQ6", "HPL"):            {"acc": 50.0, "correct": 5, "total": 10, "time": 209.0},
+    ("gpt-oss-20b-MXFP4-Q8", "HPL"):              {"acc": 50.0, "correct": 5, "total": 10, "time": 148.6},
+    ("Qwen3.5-2B-MLX-8bit", "HPL"):               {"acc": 40.0, "correct": 4, "total": 10, "time": 34.4},
+    ("Qwen3-30B-A3B-MegaScience-8bit-mlx", "HPL"):{"acc": 30.0, "correct": 3, "total": 10, "time": 64.2},
+    ("Qwen3.5-35B-A3B-6bit-mlx", "HPL"):          {"acc": 30.0, "correct": 3, "total": 10, "time": 68.2},
+    ("Qwen3.6-35B-A3B-MLX-oQ6", "HPL"):           {"acc": 30.0, "correct": 3, "total": 10, "time": 60.6},
+    ("Devstral-Small-2-24B-Instruct-2512-4bit", "HPL"): {"acc": 20.0, "correct": 2, "total": 10, "time": 21.0},
+    ("GLM-4.7-Flash-6bit-mlx", "HPL"):            {"acc": 20.0, "correct": 2, "total": 10, "time": 77.4},
+    ("Huihui-Qwen3.6-35B-A3B-6bit-mlx", "HPL"):   {"acc": 20.0, "correct": 2, "total": 10, "time": 69.6},
+    ("Nemotron-3-Nano-Omni-30B-A3B-Reasoning-6bit", "HPL"): {"acc": 20.0, "correct": 2, "total": 10, "time": 51.4},
+    ("Qwen3.5-9B-8bit", "HPL"):                   {"acc": 20.0, "correct": 2, "total": 10, "time": 113.8},
+    ("Assistant_Pepe_8B-8bit-mlx", "HPL"):         {"acc": 10.0, "correct": 1, "total": 10, "time": 10.4},
+    ("Hypnos-i1-8B-8bit-mlx", "HPL"):              {"acc": 10.0, "correct": 1, "total": 10, "time": 10.7},
+    ("Qwen3-Coder-30B-A3B-Instruct-MLX-6bit", "HPL"): {"acc": 10.0, "correct": 1, "total": 10, "time": 16.7},
+    ("Qwen3.5-4B-MLX-8bit", "HPL"):                {"acc": 10.0, "correct": 1, "total": 10, "time": 9.2},
+    ("gemma-4-E4B-it-MLX-8bit", "HPL"):            {"acc": 50.0, "correct": 5, "total": 10, "time": 218.6},
+    ("Llama-3.3-8B-Instruct-128K_Abliterated-8bit-mlx", "HPL"): {"acc": 0.0, "correct": 0, "total": 10, "time": 10.8},
     # Qwen3-30B-MegaScience
     ("Qwen3-30B-A3B-MegaScience-8bit-mlx", "MMLU_PRO"):       {"acc": 73.3, "correct": 22, "total": 30, "time": 351.8},
     ("Qwen3-30B-A3B-MegaScience-8bit-mlx", "HELLASWAG"):      {"acc": 86.7, "correct": 26, "total": 30, "time": 211.5},
@@ -611,7 +634,7 @@ def parse_response_file(filepath):
         # Strip any trailing Answer:/Expected:/Time: lines that leaked in
         question_text = re.sub(r'\n(?:Answer:|Expected:|Predicted:|Raw response:).*$', '', question_text, flags=re.M|re.DOTALL).strip()
 
-        options = re.findall(r"^([A-J])\.\s+(.+)$", body, re.M)
+        options = re.findall(r"^([A-J])\.\s*(.*?)$", body, re.M)
         # WinoGrande uses "1." / "2." instead of "A." / "B."
         if not options:
             num_opts = re.findall(r"^(\d+)\.\s+(.+)$", body, re.M)
