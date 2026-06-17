@@ -1,0 +1,943 @@
+Model: VibeThinker-3B-8bit-mlx
+Benchmark: MATHQA
+Accuracy: 96.7% (29/30)
+Time: 613.9s
+
+--- Q2619 [CORRECT] ---
+Category: other
+Question: Solve the following math problem. Answer with just the letter.
+
+Problem: bag contains 7 green and 8 white balls . if two balls are drawn simultaneously , the probability that both are of the same colour is - .
+
+A. 7 / 15
+B. 2 / 8
+C. 7 / 11
+D. 13 / 5
+E. 87
+
+Answer:
+Expected: A
+Predicted: A
+Raw response: \boxed{A}
+Time: 3.086s
+
+--- Q456 [CORRECT] ---
+Category: general
+Question: Solve the following math problem. Answer with just the letter.
+
+Problem: the product of two numbers is 2028 and their h . c . f is 13 . the number of such pairs is :
+
+A. 1
+B. 2
+C. 3
+D. 4
+E. 5
+
+Answer:
+Expected: B
+Predicted: B
+Raw response: The product of the two numbers is  
+
+\[
+ab = 2028 ,\qquad \gcd(a,b)=13 .
+\]
+
+Let  
+
+\[
+a = 13x,\qquad b = 13y,
+\]
+
+where \(\gcd(x,y)=1\).  
+Then  
+
+\[
+ab = 13^2 xy = 2028 \Longrightarrow xy = \frac{2028}{13^2}= \frac{2028}{169}=12 .
+\]
+
+Thus we need coprime positive integers \(x\) and \(y\) whose product is \(12\).
+
+Factorisations of \(12\) (unordered) are  
+
+\[
+(1,12),\;(2,6),\;(3,4).
+\]
+
+Check the gcd of each pair:
+
+- \(\gcd(1,12)=1\) ✓  
+- \(\gcd(2,6)=2\) ✗  
+- \(\gcd(3,4)=1\) ✓  
+
+Hence there are two unordered pairs \((x,y)\): \((1,12)\) and \((3,4)\).  
+Each gives a pair of original numbers \((a,b) = (13x,13y)\).
+
+Therefore the number of such pairs of numbers is \(2\).
+
+\[
+\boxed{B}
+\]
+Time: 34.973s
+
+--- Q102 [CORRECT] ---
+Category: physics
+Question: Solve the following math problem. Answer with just the letter.
+
+Problem: there are 28 stations between ernakulam and chennai . how many second class tickets have to be printed , so that a passenger can travel from one station to any other station ?
+
+A. 800
+B. 820
+C. 850
+D. 870
+E. 900
+
+Answer:
+Expected: D
+Predicted: D
+Raw response: \boxed{D}
+Time: 11.75s
+
+--- Q1126 [CORRECT] ---
+Category: gain
+Question: Solve the following math problem. Answer with just the letter.
+
+Problem: the sale price sarees listed for rs . 500 after successive discount is 10 % and 5 % is ?
+
+A. 427.5
+B. 277
+C. 342
+D. 882
+E. 212
+
+Answer:
+Expected: A
+Predicted: A
+Raw response: \boxed{A}
+Time: 4.015s
+
+--- Q1003 [CORRECT] ---
+Category: general
+Question: Solve the following math problem. Answer with just the letter.
+
+Problem: from below option 48 is divisible by which one ?
+
+A. a ) 3
+B. b ) 5
+C. c ) 9
+D. d ) 7
+E. e ) 11
+
+Answer:
+Expected: A
+Predicted: A
+Raw response: A
+Time: 3.998s
+
+--- Q914 [CORRECT] ---
+Category: gain
+Question: Solve the following math problem. Answer with just the letter.
+
+Problem: running at the same constant rate , 6 identical machines can produce a total of 270 pens per minute . at this rate , how many pens could 10 such machines produce in 4 minutes ?
+
+A. 1500
+B. 1545.6
+C. 1640.33
+D. 1800
+E. none of these
+
+Answer:
+Expected: D
+Predicted: D
+Raw response: \boxed{D}
+Time: 3.605s
+
+--- Q571 [CORRECT] ---
+Category: general
+Question: Solve the following math problem. Answer with just the letter.
+
+Problem: if 20 liters of chemical x are added to 80 liters of a mixture that is 15 % chemical x and 85 % chemical y , then what percentage of the resulting mixture is chemical x ?
+
+A. 30 %
+B. 32 %
+C. 35 %
+D. 38 %
+E. 40 %
+
+Answer:
+Expected: B
+Predicted: B
+Raw response: \boxed{B}
+Time: 2.687s
+
+--- Q419 [CORRECT] ---
+Category: general
+Question: Solve the following math problem. Answer with just the letter.
+
+Problem: a business executive and his client are charging their dinner tab on the executive ' s expense account . the company will only allow them to spend a total of 60 $ for the meal . assuming that they will pay 7 % in sales tax for the meal and leave a 15 % tip , what is the most their food can cost ?
+
+A. 39.55 $
+B. 40.63 $
+C. 41.63 $
+D. 42.15 $
+E. 48.7 $
+
+Answer:
+Expected: E
+Predicted: E
+Raw response: The total amount they can spend, including tax and tip, is \$60.
+
+Let \(F\) be the cost of the food before any tax or tip.
+
+- Sales tax: \(0.07F\)
+- Tip: \(0.15\) of the amount after tax, i.e. \(0.15( F + 0.07F ) = 0.15 \times 1.07F\)
+
+Thus the total cost is  
+
+\[
+\text{Total}= (F + 0.07F) \times (1 + 0.15) = 1.07F \times 1.15 = 1.2305F.
+\]
+
+Set this equal to the maximum allowed amount:
+
+\[
+1.2305F = 60 \quad\Longrightarrow\quad 
+F = \frac{60}{1.2305} \approx 48.735.
+\]
+
+Rounded to the nearest cent, the food can cost about \$48.73, which matches choice **E** ( \$48.70 ).
+
+\[
+\boxed{E}
+\]
+Time: 18.72s
+
+--- Q2771 [CORRECT] ---
+Category: physics
+Question: Solve the following math problem. Answer with just the letter.
+
+Problem: a train is 360 meter long is running at a speed of 45 km / hour . in what time will it pass a bridge of 240 meter length ?
+
+A. 65 seconds
+B. 46 seconds
+C. 40 seconds
+D. 97 seconds
+E. 48 seconds
+
+Answer:
+Expected: E
+Predicted: E
+Raw response: \boxed{E}
+Time: 4.088s
+
+--- Q2233 [CORRECT] ---
+Category: general
+Question: Solve the following math problem. Answer with just the letter.
+
+Problem: in the game of dubblefud , red chips , blue chips and green chips are each worth 2 , 4 and 5 points respectively . in a certain selection of chips , the product of the point values of the chips is 16000 . if the number of blue chips in this selection doubles the number of green chips , how many red chips are in the selection ?
+
+A. 1
+B. 2
+C. 3
+D. 4
+E. 5
+
+Answer:
+Expected: B
+Predicted: B
+Raw response: The point values are  
+
+- Red chip: 2 points  
+- Blue chip: 4 points = \(2^2\)  
+- Green chip: 5 points  
+
+Let \(r, b, g\) be the numbers of red, blue, and green chips.  
+The product of the point values of all chips is  
+
+\[
+2^r\cdot 4^b\cdot 5^g = 2^{r+2b}\cdot5^g .
+\]
+
+We are told this product equals \(16000\).  
+Factor \(16000\):
+
+\[
+16000 = 2^7\cdot5^3 .
+\]
+
+Thus
+
+\[
+r+2b = 7,\qquad g = 3 .
+\]
+
+The number of blue chips doubles the number of green chips, so  
+
+\[
+b = 2g = 6 .
+\]
+
+Substituting \(b=6\) into \(r+2b=7\) gives  
+
+\[
+r + 12 = 7 \implies r = -5,
+\]
+
+which is impossible.  
+
+Hence the phrase “product of the point values of the chips’’ must be interpreted as the product of the **total** point contributions of each colour:
+
+\[
+(2r)\,(4b)\,(5g) = 16000 \;\Longrightarrow\; 40\,r b g = 16000 \;\Longrightarrow\; r b g = 400 .
+\]
+
+With \(b = 2g\),
+
+\[
+r\,(2g)\,g = 400 \;\Longrightarrow\; 2r g^2 = 400 \;\Longrightarrow\; r g^2 = 200 .
+\]
+
+Thus \(g^2\) must divide 200. The possible integer values for \(g\) are \(1,2,5,10\).  
+Corresponding \(r = \dfrac{200}{g^2}\) give:
+
+- \(g=1\): \(r=200\)  
+- \(g=2\): \(r=50\)  
+- \(g=5\): \(r=8\)  
+- \(g=10\): \(r=2\)
+
+Only \(r=2\) lies among the answer choices (1–5). Therefore the selection contains **2 red chips**.
+
+\[
+\boxed{B}
+\]
+Time: 128.633s
+
+--- Q356 [CORRECT] ---
+Category: general
+Question: Solve the following math problem. Answer with just the letter.
+
+Problem: a man is 30 years older than his son . in two years , his age will be twice the age of his son . the present age of the son is
+
+A. 14 years
+B. 28 years
+C. 20 years
+D. 22 years
+E. none
+
+Answer:
+Expected: B
+Predicted: B
+Raw response: \boxed{B}
+Time: 2.787s
+
+--- Q2418 [CORRECT] ---
+Category: general
+Question: Solve the following math problem. Answer with just the letter.
+
+Problem: what is the total number of integers between 20 and 100 that are divisible by 9 ?
+
+A. 5
+B. 15
+C. 12
+D. 7
+E. 9
+
+Answer:
+Expected: E
+Predicted: E
+Raw response: \boxed{E}
+Time: 5.7s
+
+--- Q1728 [CORRECT] ---
+Category: physics
+Question: Solve the following math problem. Answer with just the letter.
+
+Problem: a , b , c , d and e are 5 consecutive points on a straight line . if bc = 2 cd , de = 5 , ab = 5 and ac = 11 , what is the length of ae ?
+
+A. 19
+B. 21
+C. 23
+D. 25
+E. 27
+
+Answer:
+Expected: A
+Predicted: A
+Raw response: The points are in order \(a,b,c,d,e\).  
+Let \(cd = x\). Then \(bc = 2x\).
+
+Given \(ab = 5\) and \(ac = 11\):
+\[
+ac = ab + bc \implies 11 = 5 + 2x \implies 2x = 6 \implies x = 3.
+\]
+
+Thus:
+\[
+cd = 3,\qquad bc = 2x = 6.
+\]
+
+We are also given \(de = 5\).  
+Now the total distance from \(a\) to \(e\) is the sum of the successive segments:
+\[
+ae = ab + bc + cd + de = 5 + 6 + 3 + 5 = 19.
+\]
+
+The answer corresponds to choice A.  
+
+\[
+\boxed{A}
+\]
+Time: 15.615s
+
+--- Q130 [CORRECT] ---
+Category: physics
+Question: Solve the following math problem. Answer with just the letter.
+
+Problem: if 8 men or 12 women can do a piece of work in 25 days , in how many days can the same work be done by 6 men and 11 women ?
+
+A. 10 days
+B. 11 days
+C. 13 days
+D. 15 days
+E. 17 days
+
+Answer:
+Expected: D
+Predicted: D
+Raw response: \boxed{D}
+Time: 6.894s
+
+--- Q122 [CORRECT] ---
+Category: other
+Question: Solve the following math problem. Answer with just the letter.
+
+Problem: at the faculty of aerospace engineering , 312 students study random - processing methods , 232 students study scramjet rocket engines and 112 students study them both . if every student in the faculty has to study one of the two subjects , how many students are there in the faculty of aerospace engineering ?
+
+A. 424 .
+B. 428 .
+C. 430 .
+D. 432 .
+E. 436
+
+Answer:
+Expected: D
+Predicted: D
+Raw response: The total number of students is the size of the union of the two subject groups.
+
+- Let \(R\) be the set of students studying random‑processing methods, \(|R| = 312\).
+- Let \(S\) be the set of students studying scramjet rocket engines, \(|S| = 232\).
+- Students who study both subjects are counted in both \(R\) and \(S\); there are \(|R\cap S| = 112\) such students.
+
+Since every student studies at least one of the two subjects, the total number of students \(N\) is
+
+\[
+N = |R\cup S| = |R| + |S| - |R\cap S|
+   = 312 + 232 - 112
+   = 432.
+\]
+
+Thus the correct answer corresponds to choice **D**.
+
+\[
+\boxed{D}
+\]
+Time: 10.398s
+
+--- Q383 [CORRECT] ---
+Category: physics
+Question: Solve the following math problem. Answer with just the letter.
+
+Problem: a can do a piece of work in 5 days and b can do it in 4 days how long will they both work together to complete the work ?
+
+A. 6 / 11
+B. 8 / 11
+C. 7 / 9
+D. 2 / 9
+E. 10 / 11
+
+Answer:
+Expected: D
+Predicted: D
+Raw response: \boxed{D}
+Time: 32.174s
+
+--- Q895 [CORRECT] ---
+Category: other
+Question: Solve the following math problem. Answer with just the letter.
+
+Problem: the incomes of two persons a and b are in the ratio 3 : 4 . if each saves rs . 100 per month , the ratio of their expenditures is 1 : 4 . find their incomes ?
+
+A. 112.5 , 158.5
+B. 180.5 , 150
+C. 100 , 200
+D. 112.5 , 150
+E. 122.5 , 150
+
+Answer:
+Expected: D
+Predicted: D
+Raw response: \boxed{D}
+Time: 7.115s
+
+--- Q952 [CORRECT] ---
+Category: physics
+Question: Solve the following math problem. Answer with just the letter.
+
+Problem: 6 people can do work in 80 days how much people they required to complete the work in 16 days ?
+
+A. 10
+B. 20
+C. 30
+D. 40
+E. 50
+
+Answer:
+Expected: C
+Predicted: C
+Raw response: \boxed{C}
+Time: 3.35s
+
+--- Q2069 [CORRECT] ---
+Category: general
+Question: Solve the following math problem. Answer with just the letter.
+
+Problem: 15 lts are taken of from a container full of liquid a and replaced with liquid b . again 15 more lts of the mixture is taken and replaced with liquid b . after this process , if the container contains liquid a and b in the ratio 9 : 16 , what is the capacity of the container h ?
+
+A. a : 45
+B. b : 25
+C. c : 37.5
+D. d : 36
+E. e : 42
+
+Answer:
+Expected: C
+Predicted: C
+Raw response: \boxed{C}
+Time: 39.92s
+
+--- Q2465 [CORRECT] ---
+Category: general
+Question: Solve the following math problem. Answer with just the letter.
+
+Problem: a man saves a certain portion of his income during a year and spends the remaining portion on his personal expenses . next year his income increases by 40 % but his savings increase by 100 % . if his total expenditure in 2 years is double his expenditure in 1 st year , what % age of his income in the first year did he save ?
+
+A. 45 %
+B. 40 %
+C. 25 %
+D. 28 %
+E. 33.33 %
+
+Answer:
+Expected: B
+Predicted: B
+Raw response: B
+Time: 23.458s
+
+--- Q108 [WRONG] ---
+Category: gain
+Question: Solve the following math problem. Answer with just the letter.
+
+Problem: if 5 % more is gained by selling an article for rs . 1000 than by selling it for rs . 20 , the cost of the article is ?
+
+A. 127
+B. 1600
+C. 1200
+D. 1680
+E. 1800
+
+Answer:
+Expected: B
+Predicted: C
+Raw response: <think>We need to parse the problem: "if 5 % more is gained by selling an article for rs . 1000 than by selling it for rs . 20 , the cost of the article is ?" The answer options: A. 127, B. 1600, C. 1200, D. 1680, E. 1800.
+
+Interpretation: The profit (gain) when selling at Rs. 1000 is 5% more than the profit when selling at Rs. 20. So profit at 1000 = profit at 20 * (1 + 5/100) = profit at 20 * 1.05.
+
+Let cost price = C. Then profit at selling price SP1 = 1000 is (1000 - C). Profit at SP2 = 20 is (20 - C). However, note that if C > 20, profit at 20 would be negative (loss). But the problem says "gain" for both? It says "5% more is gained by selling an article for Rs. 1000 than by selling it for Rs. 20". That implies both are gains, so C < 20. But then profit at 1000 is huge relative to profit at 20. Let's see.
+
+Equation: 1000 - C = 1.05 * (20 - C). Solve: 1000 - C = 1.05*20 - 1.05*C = 21 - 1.05C. Bring terms: 1000 - C = 21 - 1.05C => bring C terms: -C + 1.05C = 21 - 1000 => 0.05C = -979 => C = -979 / 0.05 = -19580. That's negative cost, nonsense.
+
+Thus perhaps the interpretation is reversed: "5% more is gained by selling an article for Rs. 1000 than by selling it for Rs. 20" could mean that the profit percent (percentage profit) is 5% more when selling at Rs. 1000 than when selling at Rs. 20. That is, profit percent at 1000 is 5% higher (in percent terms) than profit percent at 20. So we need to find cost price such that (profit% at 1000) = (profit% at 20) + 5%.
+
+Profit% = (SP - C)/C * 100. So:
+
+(1000 - C)/C * 100 = (20 - C)/C * 100 + 5.
+
+Simplify: (1000 - C)/C = (20 - C)/C + 0.05. Multiply both sides by C: 1000 - C = 20 - C + 0.05 C => Wait careful: Multiply both sides by C: left: (1000 - C) = (20 - C) + 0.05 C? Actually (0.05) is 5% expressed as a fraction (5/100) = 0.05. So we have:
+
+1000 - C = 20 - C + 0.05*C? Let's do step: (20 - C)/C * 100 = 100*(20 - C)/C = (2000 - 100C)/C? Wait no, we need to be careful.
+
+Let's set:
+
+Profit% at SP = (SP - C)/C * 100.
+
+Thus:
+
+Profit%_1000 = (1000 - C)/C * 100.
+
+Profit%_20 = (20 - C)/C * 100.
+
+Given: Profit%_1000 = Profit%_20 + 5.
+
+Thus:
+
+(1000 - C)/C * 100 = (20 - C)/C * 100 + 5.
+
+Divide both sides by 5? Let's simplify:
+
+Multiply both sides by C to eliminate denominator:
+
+100*(1000 - C) = 100*(20 - C) + 5C.
+
+Simplify: 100000 - 100C = 2000 - 100C + 5C.
+
+Add 100C both sides: 100000 = 2000 + 5C.
+
+Thus 5C = 100000 - 2000 = 98000.
+
+C = 98000 / 5 = 19600.
+
+But that's huge cost, far beyond selling price of 1000, making profit negative. Something is off. Actually if C = 19600, then both SP values are less than cost, so profit% would be negative (loss). But the problem says "gained". So maybe we misinterpret.
+
+Alternate interpretation: "5% more is gained by selling an article for Rs. 1000 than by selling it for Rs. 20" could mean that the profit (absolute amount) is 5% more when selling at Rs. 1000 than when selling at Rs. 20. That is, profit_1000 = profit_20 + 5% of profit_20? That's same as profit_1000 = profit_20 * (1 + 5/100) = profit_20 * 1.05. That's what we tried earlier, but gave negative cost.
+
+But maybe the phrase "5% more is gained" means the profit percent is 5% more of the cost price? Actually "5% more is gained" could be ambiguous.
+
+Alternatively, maybe the problem is about profit percentages: The profit percent on selling at Rs. 1000 is 5% more than the profit percent on selling at Rs. 20. That is what we just solved, but got unrealistic cost.
+
+But maybe the cost is less than 20, making profit positive for both. Let's test if any answer options are plausible: Options: 127, 1600, 1200, 1680, 1800. All are >20 except 127. So cost is likely >20. So selling at 20 yields a loss if cost >20. But the problem says "gained". Could be a mistake in problem statement, maybe they meant "loss"? Or maybe they meant "5% more is gained by selling at Rs. 1000 than by selling at Rs. 20" meaning the profit (or loss) difference is 5% of something else.
+
+Let's think: Could be that the profit percentages are relative to the selling price? Or maybe they meant "5% of the cost price" is the difference in profit amounts? Let's try to interpret: Let profit_1000 - profit_20 = 5% of cost price? Or 5% of profit_20? Or 5% of something else.
+
+Better to parse the phrase: "if 5 % more is gained by selling an article for rs . 1000 than by selling it for rs . 20 , the cost of the article is ?" Usually in such problems, "5% more is gained" refers to profit percent. For example: "If the profit earned by selling an article for Rs. 1000 is 5% more than the profit earned by selling it for Rs. 20, find the cost price." That is typical. So we set profit% at 1000 = profit% at 20 + 5. That's what we did. But we got cost 19600, not among options. Something is off.
+
+Let's re-evaluate the algebra: profit% = (SP - CP)/CP * 100. So profit%_1000 = (1000 - C)/C * 100. profit%_20 = (20 - C)/C * 100. The difference: profit%_1000 - profit%_20 = 5.
+
+Thus:
+
+[(1000 - C) - (20 - C)]/C * 100 = 5. Because the 100 factor applies to both, we can combine:
+
+[(1000 - C) - (20 - C)] = (1000 - C - 20 + C) = 980. So we have (980)/C * 100 = 5. So 98000 / C = 5 => C = 98000/5 = 19600. Yes.
+
+Thus cost = 19600. Not in options.
+
+Thus maybe the phrase "5% more is gained" refers to the profit amount being 5% more of the selling price? Or maybe it's about profit percentages relative to selling price: profit% = (SP - C)/SP * 100. That is sometimes used incorrectly but sometimes profit percent is calculated on cost price, not selling price. But maybe they use profit% on selling price? Let's test.
+
+If profit% is calculated relative to selling price: profit% = (SP - C)/SP * 100.
+
+Then profit%_1000 = (1000 - C)/1000 * 100 = (1000 - C)/10. profit%_20 = (20 - C)/20 * 100 = (20 - C)/0.2? Wait compute: (20 - C)/20 * 100 = (20 - C)*5.
+
+Set profit%_1000 = profit%_20 + 5.
+
+Thus (1000 - C)/10 = (20 - C)*5 + 5.
+
+Simplify: (1000 - C)/10 = 5*(20 - C) + 5 = 100 - 5C + 5 = 105 - 5C.
+
+Multiply both sides by 10: 1000 - C = 1050 - 50C => bring terms: -C + 50C = 1050 - 1000 => 49C = 50 => C = 50/49 ≈ 1.0204. Not in options.
+
+Thus not that.
+
+Maybe the phrase "5% more is gained" means the profit amount (in rupees) is 5% more of the selling price? Or maybe the profit amount at 1000 is 5% more than the profit amount at 20, i.e., profit_1000 = profit_20 + 5% of profit_1000? Or profit_1000 = profit_20 * (100/95)? Let's examine.
+
+Interpretation: "5% more is gained by selling an article for Rs. 1000 than by selling it for Rs. 20." Usually "5% more is gained" means the gain is 5% more than the other gain. So profit_1000 = profit_20 + 5% of profit_20 = profit_20 * 1.05. That's what we tried first. That gave negative cost.
+
+But maybe the profit_20 is negative (i.e., a loss) and profit_1000 is less negative (i.e., less loss) but still a gain? Let's examine: If cost > 20, profit_20 is negative (loss). Profit_1000 could be positive (gain) if cost < 1000. So profit_1000 = profit_20 * 1.05 would make profit_1000 also negative (since profit_20 negative). So that can't produce a gain. So maybe profit_20 is a loss, but they still call it "gain"? That seems unlikely.
+
+Alternatively, maybe the phrase "5% more is gained" refers to the profit percent relative to cost price, but the profit percent values are small, maybe cost is high, making profit percentages small. Let's try to solve for cost such that profit%_1000 = profit%_20 + 5% (i.e., profit%_1000 is 5% points higher). That's what we did, got cost 19600. That's huge cost, profit%_20 = (20 - 19600)/19600 * 100 = (-19580)/19600 * 100 ≈ -99.90% (a huge loss). profit%_1000 = (1000 - 19600)/19600 * 100 = -18600/19600 * 100 ≈ -95.0% (less loss). The difference is about 4.9% (approx). Actually compute: profit%_1000 = (1000 - 19600)/19600 * 100 = -18600/19600*100 = -95.0% (approx -95.0). profit%_20 = -19580/19600*100 = -99.9% approx. Difference = 4.9% approx. So that matches. But cost is not among options.
+
+Thus maybe the problem is misprinted: maybe the selling prices are Rs. 1000 and Rs. 120? Or 200? Let's check typical problem: "If 5% more profit is earned by selling an article for Rs. 1000 than by selling it for Rs. 200, find the cost price." Let's test: Let profit_1000 = profit_200 * 1.05. Then (1000 - C) = 1.05*(200 - C). Solve: 1000 - C = 210 - 1.05C => -C + 1.05C = 210 - 1000 => 0.05C = -790 => C = -15800. Not plausible.
+
+Alternatively, maybe the phrase "5% more is gained" means the profit percent is 5% of the selling price? Or the profit amount is 5% of the cost? Let's think.
+
+Maybe the problem is about "gain" meaning profit percent, but the phrase "5% more is gained by selling an article for Rs. 1000 than by selling it for Rs. 20" could be interpreted as: The profit percent when sold at Rs. 1000 is 5% of the profit percent when sold at Rs. 20? That is, profit%_1000 = profit%_20 + 5% (i.e., profit%_1000 = profit%_20 * 1.05). That is profit%_1000 = 1.05 * profit%_20. Let's try that.
+
+Let p20 = profit%_20 = (20 - C)/C * 100. Let p1000 = (1000 - C)/C * 100. Condition: p1000 = 1.05 * p20.
+
+Thus (1000 - C)/C * 100 = 1.05 * [(20 - C)/C * 100] => (1000 - C) = 1.05 * (20 - C) => 1000 - C = 21 - 1.05C => bring terms: -C + 1.05C = 21 - 1000 => 0.05C = -979 => C = -19580. Same as earlier (since it's same as profit_1000 = profit_20 * 1.05). So no.
+
+Thus maybe the problem expects a different interpretation: The phrase "5% more is gained by selling an article for rs . 1000 than by selling it for rs . 20" could be interpreted as: The profit (absolute) when selling at Rs. 1000 is 5% more than the profit (absolute) when selling at Rs. 20. That is profit_1000 = profit_20 + 5% of profit_1000? Or profit_1000 - profit_20 = 5% of profit_20? Usually "5% more is gained by A than by B" means (gain_A - gain_B) / gain_B = 5/100. So (gain_A - gain_B) = 0.05 * gain_B => gain_A = 1.05 * gain_B. That's what we used.
+
+Thus profit_1000 = 1.05 * profit_20. That gave negative cost.
+
+Thus maybe the problem is incorrectly typed: maybe the selling prices are Rs. 1000 and Rs. 120? Let's test with 20 replaced by 200? Already did. Not.
+
+Maybe the answer options give clue: Options: 127, 1600, 1200, 1680, 1800. Let's see if any of these satisfy any plausible equation.
+
+Let's compute profit_1000 and profit_20 for each candidate cost and see the ratio or percent difference.
+
+We'll compute profit_1000 = 1000 - C, profit_20 = 20 - C. For each C:
+
+- C=127: profit_1000 = 873, profit_20 = -107. So profit_20 is negative (loss). The difference is 970. The ratio profit_1000 / profit_20 = -8.14 (negative). Not meaningful.
+
+- C=1600: profit_1000 = -600, profit_20 = -1580. Both negative (loss). Gains? No.
+
+- C=1200: profit_1000 = -200, profit_20 = -1180. Both negative.
+
+- C=1680: profit_1000 = -680, profit_20 = -1660.
+
+- C=1800: profit_1000 = -800, profit_20 = -1780.
+
+Thus all options >20, so profit_20 is negative (loss). So the problem must be about loss? But they say "gained". Could be a mistake in problem statement; maybe they meant "loss" or "profit" but the numbers are such that it's a loss at 20 but profit at 1000? Actually for C less than 1000, profit_1000 positive, profit_20 negative. Only C < 1000 yields profit_1000 positive. Among options, only 127 is less than 1000. So only C=127 yields profit_1000 positive, profit_20 negative. So maybe the answer is 127. Let's test if any relationship holds for C=127.
+
+Compute profit_1000 = 873, profit_20 = -107. The phrase "5% more is gained by selling an article for Rs. 1000 than by selling it for Rs. 20" could be interpreted as: The gain (maybe absolute value) at 1000 is 5% more than the loss at 20? That is, profit_1000 = profit_20 + 5% of something? But profit_20 is negative, so maybe they consider "gain" as absolute value of profit or loss? Not likely.
+
+Alternatively, maybe they meant "5% more is gained by selling an article for Rs. 1000 than by selling it for Rs. 200"? But answer options would be different.
+
+Let's try to find a cost that satisfies (profit_1000) = (profit_20) + 5% of (selling price difference?) Or maybe the phrase "5% more is gained" refers to the profit percent relative to the selling price difference? Let's try to derive a formula that yields one of the given options.
+
+Let's denote CP = C. Let profit_1000 = 1000 - C. Let profit_20 = 20 - C. The statement "5% more is gained by selling an article for Rs. 1000 than by selling it for Rs. 20" could be interpreted as: (profit_1000 - profit_20) / profit_20 = 5/100. That is, relative increase of profit from 20 to 1000 is 5% relative to profit at 20. That yields profit_1000 = profit_20 * (1 + 0.05) = 1.05 * profit_20. That's same as earlier. That gave negative C.
+
+Alternatively, maybe it's relative to the original cost? (profit_1000 - profit_20) / C = 5/100. That is, the increase in profit is 5% of cost. So profit_1000 - profit_20 = 0.05*C. So (1000 - C) - (20 - C) = 0.05*C => 980 = 0.05*C => C = 980 / 0.05 = 19600. Same as earlier.
+
+Alternatively, maybe it's relative to the selling price at 20? (profit_1000 - profit_20) / 20 = 0.05 => profit_1000 - profit_20 = 1 => (1000 - C) - (20 - C) = 1 => 980 = 1 => false.
+
+Alternatively, maybe it's relative to the selling price at 1000? (profit_1000 - profit_20) / 1000 = 0.05 => profit_1000 - profit_20 = 50 => 980 = 50 => false.
+
+Thus none.
+
+Maybe the phrase "5% more is gained" means the profit percent (on cost) at 1000 is 5% more than the profit percent (on cost) at 20, but we already did that.
+
+Thus something is off.
+
+Let's consider the possibility that the problem is misprinted: maybe the selling prices are Rs. 1000 and Rs. 2000? Or 1000 and 200? Let's test with 200: profit_1000 - profit_200 = 5% of profit_200 => (1000 - C) = 1.05*(200 - C) => 1000 - C = 210 - 1.05C => 0.05C = -790 => C = -15800. Not.
+
+Maybe it's 1000 and 2000: profit_1000 is less than profit_2000? That would be weird.
+
+Alternatively, maybe the phrase "5% more is gained by selling an article for rs . 1000 than by selling it for rs . 20" means that the profit percentages differ by 5% of the selling price? Let's try: profit%_1000 - profit%_20 = 5% of something.
+
+Alternatively, maybe the problem is about "gain" meaning "gain in profit percent" relative to the selling price? Let's try to interpret: The profit percent on selling at 1000 is 5% more than the profit percent on selling at 20. That we did.
+
+But maybe they use profit percent on cost: profit% = (SP - CP)/SP * 100? No.
+
+Alternatively, maybe they use "gain" as "gain in rupees" and "5% more" refers to 5% of the selling price at 1000? So profit_1000 = profit_20 + 0.05 * 1000 = profit_20 + 50. So (1000 - C) = (20 - C) + 50 => 1000 - C = 20 - C + 50 => 1000 = 70 => false.
+
+Alternatively, maybe 5% more of the profit at 20 is equal to the difference between the two profits: profit_1000 - profit_20 = 0.05 * profit_1000? That is, the increase is 5% of the new profit. So profit_1000 - profit_20 = 0.05 * profit_1000 => profit_20 = profit_1000 - 0.05 profit_1000 = 0.95 profit_1000 => profit_20 = 0.95 profit_1000 => profit_1000 = profit_20 / 0.95. So (1000 - C) = (20 - C) / 0.95. Solve: Multiply both sides by 0.95: 0.95*(1000 - C) = 20 - C => 950 - 0.95C = 20 - C => bring terms: -0.95C + C = 20 - 950 => 0.05C = -930 => C = -18600. Not.
+
+Alternatively, maybe profit_1000 - profit_20 = 5% of the cost? That we did: 980 = 0.05*C => C = 19600.
+
+Thus none of these give options.
+
+Thus maybe the problem is about "gain" meaning "gain percent" but the numbers are reversed: maybe the profit percent at 20 is 5% more than at 1000. Let's try: profit%_20 = profit%_1000 + 5. So (20 - C)/C * 100 = (1000 - C)/C * 100 + 5 => (20 - C) = (1000 - C) + 0.05C => 20 - C = 1000 - C + 0.05C => 20 = 1000 + 0.05C => 0.05C = -980 => C = -19600. No.
+
+Thus not.
+
+Maybe the problem is about "gain" meaning "gain in rupees" and the phrase "5% more is gained by selling an article for Rs. 1000 than by selling it for Rs. 20" could be interpreted as: The profit (in rupees) when sold at Rs. 1000 is 5% more than the profit (in rupees) when sold at Rs. 20. That is profit_1000 = profit_20 * (1 + 5/100). That's what we did.
+
+Thus something is wrong.
+
+Let's examine the answer options: 127, 1600, 1200, 1680, 1800. Which of these could be the cost price if the profit percentages are something else? Let's compute profit% for each:
+
+C=127: profit%_1000 = (1000-127)/127*100 = 873/127*100 ≈ 688.78%. profit%_20 = (20-127)/127*100 = -107/127*100 ≈ -84.33%. The difference is about 773.11% (profit%_1000 - profit%_20). That's not 5.
+
+C=1600: profit%_1000 = -600/1600*100 = -37.5%. profit%_20 = -1580/1600*100 = -98.75%. Difference = 61.25% (profit%_1000 - profit%_20). Not 5.
+
+C=1200: profit%_1000 = -200/1200*100 = -16.666...%. profit%_20 = -1180/1200*100 = -98.333...%. Difference = 81.666...%. Not 5.
+
+C=1680: profit%_1000 = -680/1680*100 = -40.476...%. profit%_20 = -1660/1680*100 = -98.8095%. Difference = 58.333...%.
+
+C=1800: profit%_1000 = -800/1800*100 = -44.444...%. profit%_20 = -1780/1800*100 = -98.888...%. Difference = 54.444...%.
+
+Thus none give difference of 5.
+
+Maybe the problem is about "gain" meaning "gain in rupees" and the difference between the gains is 5% of the cost? That is profit_1000 - profit_20 = 0.05 * (some base). Let's test each candidate: profit_1000 - profit_20 = (1000 - C) - (20 - C) = 980 always, independent of C. So any C yields difference 980. So if they say "5% more is gained by selling at 1000 than at 20", that means the gain at 1000 is 5% more than the gain at 20. So profit_1000 = profit_20 * 1.05. That yields profit_1000 - profit_20 = 0.05 * profit_20. So profit_20 = 980 / 0.05 = 19600. So profit_20 = 19600, which is huge. Then C = 20 - profit_20 = -19580. So nonsense.
+
+Thus maybe the problem is misprinted: maybe the selling prices are 1000 and 2000? Then profit difference is 1000 - C - (2000 - C) = -1000. That's constant -1000. Then similar.
+
+Alternatively, maybe the problem is about "5% more is gained by selling an article for Rs. 1000 than by selling it for Rs. 200". Let's test: profit difference = 800. Then profit_1000 = profit_200 * 1.05 => (1000 - C) = 1.05*(200 - C) => 1000 - C = 210 - 1.05C => 0.05C = -790 => C = -15800. No.
+
+Thus maybe the problem is about "5% more is gained by selling an article for Rs. 1000 than by selling it for Rs. 2000"? Then profit difference = -1000. Not.
+
+Thus maybe the problem is about "5% more is gained by selling an article for Rs. 1000 than by selling it for Rs. 200"? Actually we did.
+
+Thus maybe the problem is about "5% more is gained by selling an article for Rs. 1000 than by selling it for Rs. 2000"? That would be profit_1000 > profit_2000? No.
+
+Thus maybe the problem is about "5% more is gained by selling an article for Rs. 1000 than by selling it for Rs. 200"? Actually profit_1000 > profit_200? That would be weird because 1000 > 200, profit_1000 > profit_200 anyway.
+
+Thus maybe the problem is about "5% more is gained by selling an article for Rs. 1000 than by selling it for Rs. 2000"? That would be profit_1000 > profit_2000? Not likely.
+
+Thus maybe the problem is about "5% more is gained by selling an article for Rs. 1000 than by selling it for Rs. 200"? Actually profit_1000 > profit_200, but the difference is 5% of something.
+
+But the given answer options are all >1000 except 127. So maybe the answer is 127. Let's see if any plausible interpretation yields 127.
+
+Suppose the profit percentages are small (like less than 10%). For cost ~127, profit% at 1000 is huge (688%). Not small.
+
+Alternatively, maybe the problem is about "gain" meaning "gain in percent of selling price"? Let's compute profit% of SP: profit%_1000 = (1000 - C)/1000 * 100. For C=127, profit%_1000 = 873/1000*100 = 87.3%. profit%_20 = (20 - 127)/20*100 = -107/20*100 = -535%. The difference is -447.7%? Not 5.
+
+Alternatively, maybe the problem is about "gain" meaning "gain in rupees" and the phrase "5% more is gained" refers to 5% of the selling price at 1000? So profit_1000 = profit_20 + 0.05*1000 = profit_20 + 50. So (1000 - C) = (20 - C) + 50 => 1000 = 70 => false.
+
+Alternatively, maybe it's 5% of the selling price at 20: profit_1000 = profit_20 + 0.05*20 = profit_20 + 1. So (1000 - C) = (20 - C) + 1 => 1000 = 21 => false.
+
+Thus not.
+
+Maybe the problem is about "gain" meaning "gain in percent of cost price" but the phrase "5% more is gained by selling an article for Rs. 1000 than by selling it for Rs. 20" could be interpreted as: The profit percent at 1000 is 5% of the profit percent at 20 more? That is profit%_1000 = profit%_20 + (5% of profit%_20). That is profit%_1000 = profit%_20 * (1 + 0.05) = 1.05 * profit%_
+Time: 132.795s
+
+--- Q2298 [CORRECT] ---
+Category: physics
+Question: Solve the following math problem. Answer with just the letter.
+
+Problem: working together , printer a and printer b would finish the task in 15 minutes . printer a alone would finish the task in 45 minutes . how many pages does the task contain if printer b prints 3 pages a minute more than printer a ?
+
+A. 125
+B. 135
+C. 145
+D. 155
+E. 165
+
+Answer:
+Expected: B
+Predicted: B
+Raw response: B
+Time: 8.774s
+
+--- Q814 [CORRECT] ---
+Category: physics
+Question: Solve the following math problem. Answer with just the letter.
+
+Problem: the angle between the minute hand and the hour hand of a clock when the time is 4.20 , is
+
+A. 0 °
+B. 5 °
+C. 10 °
+D. 20 °
+E. none
+
+Answer:
+Expected: C
+Predicted: C
+Raw response: The hour hand moves \(0.5^\circ\) per minute and the minute hand moves \(6^\circ\) per minute.
+
+- At 4 hours 20 minutes:
+  - Hour hand angle = \(30^\circ \times 4 + 0.5^\circ \times 20 = 120^\circ + 10^\circ = 130^\circ\).
+  - Minute hand angle = \(6^\circ \times 20 = 120^\circ\).
+
+- The absolute difference = \(|130^\circ - 120^\circ| = 10^\circ\).
+
+The smallest angle between the hands is \(10^\circ\), which corresponds to option C.
+
+\boxed{C}
+Time: 15.938s
+
+--- Q2932 [CORRECT] ---
+Category: general
+Question: Solve the following math problem. Answer with just the letter.
+
+Problem: mark bought a set of 6 flower pots of different sizes at a total cost of $ 8.00 . each pot cost 0.25 more than the next one below it in size . what was the cost , in dollars , of the largest pot ?
+
+A. $ 1.75
+B. $ 1.96
+C. $ 2.00
+D. $ 2.15
+E. $ 2.30
+
+Answer:
+Expected: B
+Predicted: B
+Raw response: B
+Time: 16.229s
+
+--- Q2661 [CORRECT] ---
+Category: general
+Question: Solve the following math problem. Answer with just the letter.
+
+Problem: a man covers a certain distance q in a train . if the train moved 4 km / hr faster , it would take 30 min less . if it moved 2 km / hr slower , it would take 20 mins more . find the distance ?
+
+A. 200 km
+B. 50 km
+C. 20 km
+D. 60 km
+E. 80 km
+
+Answer:
+Expected: D
+Predicted: D
+Raw response: D
+Time: 13.743s
+
+--- Q2872 [CORRECT] ---
+Category: geometry
+Question: Solve the following math problem. Answer with just the letter.
+
+Problem: the parameter of a square is equal to the perimeter of a rectangle of length 16 cm and breadth 14 cm . find the circumference of a semicircle whose diameter is equal to the side of the square . ( round off your answer to two decimal places
+
+A. 34
+B. 35
+C. 56
+D. 67
+E. 23.57
+
+Answer:
+Expected: E
+Predicted: E
+Raw response: \boxed{E}
+Time: 12.657s
+
+--- Q2232 [CORRECT] ---
+Category: other
+Question: Solve the following math problem. Answer with just the letter.
+
+Problem: what is the characteristic of the logarithm of 0.0000134 ?
+
+A. 5
+B. - 5
+C. 6
+D. - 6
+E. 7
+
+Answer:
+Expected: B
+Predicted: B
+Raw response: \boxed{B}
+Time: 13.804s
+
+--- Q1718 [CORRECT] ---
+Category: general
+Question: Solve the following math problem. Answer with just the letter.
+
+Problem: a group of 55 adults and 70 children go for trekking . if there is meal for either 70 adults or 90 children and if 28 adults have their meal , find the total number of children that can be catered with the remaining food .
+
+A. 33
+B. 54
+C. 18
+D. 17
+E. 01
+
+Answer:
+Expected: B
+Predicted: B
+Raw response: \boxed{B}
+Time: 6.523s
+
+--- Q902 [CORRECT] ---
+Category: physics
+Question: Solve the following math problem. Answer with just the letter.
+
+Problem: the speeds of three asteroids were compared . asteroids x - 13 and y - 14 were observed for identical durations , while asteroid z - 15 was observed for 2 seconds longer . during its period of observation , asteroid y - 14 traveled three times the distance x - 13 traveled , and therefore y - 14 was found to be faster than x - 13 by 1000 kilometers per second . asteroid z - 15 had an identical speed as that of x - 13 , but because z - 15 was observed for a longer period , it traveled five times the distance x - 13 traveled during x - 13 ' s inspection . asteroid x - 13 traveled how many kilometers during its observation ?
+
+A. 250
+B. 1,600 / 3
+C. 1,000
+D. 1,500
+E. 2,500
+
+Answer:
+Expected: A
+Predicted: A
+Raw response: \boxed{A}
+Time: 24.377s
+
+--- Q1839 [CORRECT] ---
+Category: other
+Question: Solve the following math problem. Answer with just the letter.
+
+Problem: the l . c . m of two numbers is 48 . the numbers are in the ratio 2 : 3 . the sum of numbers is :
+
+A. 28
+B. 30
+C. 40
+D. 50
+E. 60
+
+Answer:
+Expected: C
+Predicted: C
+Raw response: \boxed{C}
+Time: 6.083s

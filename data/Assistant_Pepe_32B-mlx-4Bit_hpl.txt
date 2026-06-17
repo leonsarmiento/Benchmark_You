@@ -35,7 +35,7 @@ E. Yes, it is playful and funny, as long as the vibe is light this could definit
 Answer:
 Expected: D
 Predicted: E
-Raw response: E
+Raw response: >**E**
 Time: 83.8s
 
 --- Q3 [WRONG] ---
@@ -167,3 +167,4 @@ Expected: A
 Predicted: A
 Raw response: A
 Time: 83.8s
+

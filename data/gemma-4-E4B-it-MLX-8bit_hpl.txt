@@ -17,7 +17,7 @@ D. C
 Answer:
 Expected: C
 Predicted: C
-Raw response: C
+Raw response: ERROR: 'content'
 Time: 218.6s
 
 --- Q2 [WRONG] ---
@@ -35,7 +35,7 @@ E. Yes, it is playful and funny, as long as the vibe is light this could definit
 Answer:
 Expected: D
 Predicted: E
-Raw response: E
+Raw response: ERROR: 'content'
 Time: 218.6s
 
 --- Q3 [WRONG] ---
@@ -51,7 +51,7 @@ C. Got it. What specific steps would you take to kept the beach restroom facilit
 Answer:
 Expected: B
 Predicted: C
-Raw response: C
+Raw response: ERROR: 'content'
 Time: 218.6s
 
 --- Q4 [CORRECT] ---
@@ -68,7 +68,7 @@ D. Good idea, it shows that you are happy to cooperate with the authorities and 
 Answer:
 Expected: C
 Predicted: C
-Raw response: C
+Raw response: ERROR: 'content'
 Time: 218.6s
 
 --- Q5 [WRONG] ---
@@ -85,7 +85,7 @@ D. Being honest is a good start and this opening express your feelings. Let's ke
 Answer:
 Expected: A
 Predicted: C
-Raw response: C
+Raw response: ERROR: 'content'
 Time: 218.6s
 
 --- Q6 [CORRECT] ---
@@ -103,7 +103,7 @@ E. 1.5
 Answer:
 Expected: E
 Predicted: E
-Raw response: E
+Raw response: ERROR: 'content'
 Time: 218.6s
 
 --- Q7 [CORRECT] ---
@@ -119,7 +119,7 @@ C. It is a terrible logo.
 Answer:
 Expected: C
 Predicted: C
-Raw response: C
+Raw response: ERROR: 'content'
 Time: 218.6s
 
 --- Q8 [WRONG] ---
@@ -150,7 +150,7 @@ C. your joke is not funny.
 Answer:
 Expected: C
 Predicted: C
-Raw response: C
+Raw response: ERROR: 'content'
 Time: 218.6s
 
 --- Q10 [WRONG] ---
@@ -164,6 +164,7 @@ B. don't pull the lever
 
 Answer:
 Expected: A
-Predicted: ?
-Raw response: ?
+Predicted: 
+Raw response: ERROR: 'content'
 Time: 218.6s
+

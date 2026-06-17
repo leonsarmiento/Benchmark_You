@@ -1,0 +1,446 @@
+Model: VibeThinker-3B-8bit-mlx
+Benchmark: WINOGRANDE
+Accuracy: 73.3% (22/30)
+Time: 561.9s
+
+--- Q228 [CORRECT] ---
+Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
+
+Sentence: The computer of Victoria ran faster than that of Carrie because _ downloaded less files.
+
+1. Victoria
+2. Carrie
+
+Answer:
+Expected: 1
+Predicted: 1
+Raw response: 1
+Time: 7.277s
+
+--- Q51 [WRONG] ---
+Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
+
+Sentence: Judy bought new brushes to paint the etched glasses crack but it didn't fit. The _ was too narrow.
+
+1. brush
+2. crack
+
+Answer:
+Expected: 2
+Predicted: 1
+Raw response: 1
+Time: 20.41s
+
+--- Q563 [CORRECT] ---
+Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
+
+Sentence: Fiction books were interesting and easy to read for  Logan but not Brett because _ enjoyed real tales.
+
+1. Logan
+2. Brett
+
+Answer:
+Expected: 2
+Predicted: 2
+Raw response: 2
+Time: 9.963s
+
+--- Q501 [CORRECT] ---
+Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
+
+Sentence: Smoke still rose from the house but had subsided at the barn.  The fire was doused at the _ .
+
+1. house
+2. barn
+
+Answer:
+Expected: 2
+Predicted: 2
+Raw response: 2
+Time: 4.445s
+
+--- Q457 [WRONG] ---
+Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
+
+Sentence: The barista loved to make all types of coffee including iced and hot. The _ coffee was popular in the cooler weathers.
+
+1. iced
+2. hot
+
+Answer:
+Expected: 2
+Predicted: 1
+Raw response: 1
+Time: 3.042s
+
+--- Q285 [CORRECT] ---
+Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
+
+Sentence: The dog that Laura found was dirtier than Amy's dog, since _ dog lived in the street.
+
+1. Laura
+2. Amy
+
+Answer:
+Expected: 1
+Predicted: 1
+Raw response: 1
+Time: 6.846s
+
+--- Q209 [CORRECT] ---
+Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
+
+Sentence: Lawrence liked watching foreign movies with subtitles unlike Jason because _ criticized the original language of the film.
+
+1. Lawrence
+2. Jason
+
+Answer:
+Expected: 2
+Predicted: 2
+Raw response: 2
+Time: 12.213s
+
+--- Q1116 [CORRECT] ---
+Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
+
+Sentence: Justin brought a a saw and hammer to prepare making a cupboard for Benjamin because _ is his employer.
+
+1. Justin
+2. Benjamin
+
+Answer:
+Expected: 2
+Predicted: 2
+Raw response: 2
+Time: 23.714s
+
+--- Q178 [CORRECT] ---
+Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
+
+Sentence: Neil looked all over the neighborhood for their missing dog until Samuel called and _ got their dog back.
+
+1. Neil
+2. Samuel
+
+Answer:
+Expected: 1
+Predicted: 1
+Raw response: 1
+Time: 15.797s
+
+--- Q1209 [CORRECT] ---
+Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
+
+Sentence: Only the bag got melted and not the wood when they were inside the flame. The _ is soft.
+
+1. wood
+2. bag
+
+Answer:
+Expected: 2
+Predicted: 2
+Raw response: 2
+Time: 5.575s
+
+--- Q864 [CORRECT] ---
+Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
+
+Sentence: In the hotel laundry room, Felicia burned Mary's shirt while ironing it, so the manager gave _ a refund.
+
+1. Felicia
+2. Mary
+
+Answer:
+Expected: 2
+Predicted: 2
+Raw response: 2
+Time: 2.708s
+
+--- Q65 [CORRECT] ---
+Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
+
+Sentence: The fireman used several rags to polish the nozzles on the fire hose; when he was done the _ were dirty.
+
+1. nozzles
+2. rags
+
+Answer:
+Expected: 2
+Predicted: 2
+Raw response: 2
+Time: 3.221s
+
+--- Q61 [CORRECT] ---
+Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
+
+Sentence: Laura used too much super glue on Erins hands, so _ needed to get to the doctor to separate their hands.
+
+1. Laura
+2. Erin
+
+Answer:
+Expected: 2
+Predicted: 2
+Raw response: 2
+Time: 8.322s
+
+--- Q191 [CORRECT] ---
+Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
+
+Sentence: Using a needle to sew together both the leather and silk was difficult.  The _ was hard get through.
+
+1. leather
+2. silk
+
+Answer:
+Expected: 1
+Predicted: 1
+Raw response: 1
+Time: 24.358s
+
+--- Q447 [CORRECT] ---
+Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
+
+Sentence: James walked into a ditch while trying to catch the ball thrown at him. The _ is farther.
+
+1. ditch
+2. ball
+
+Answer:
+Expected: 2
+Predicted: 2
+Raw response: 2
+Time: 11.643s
+
+--- Q476 [WRONG] ---
+Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
+
+Sentence: Christopher taught Hunter to play go fish so that _ had someone to play with.
+
+1. Christopher
+2. Hunter
+
+Answer:
+Expected: 1
+Predicted: 2
+Raw response: 2
+Time: 10.238s
+
+--- Q1034 [CORRECT] ---
+Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
+
+Sentence: I wanted to use pomade on my hair instead of hairspray but it was old so the _ was unusable.
+
+1. pomade
+2. hairspray
+
+Answer:
+Expected: 1
+Predicted: 1
+Raw response: 1
+Time: 3.372s
+
+--- Q1232 [CORRECT] ---
+Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
+
+Sentence: The living room was cleaner than the kitchen, because we spend more time in the the _ .
+
+1. living room
+2. kitchen
+
+Answer:
+Expected: 2
+Predicted: 2
+Raw response: 2
+Time: 4.71s
+
+--- Q54 [CORRECT] ---
+Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
+
+Sentence: Jennifer was more of a morning person than Natalie because _ always went to bed early and got a good night's rest.
+
+1. Jennifer
+2. Natalie
+
+Answer:
+Expected: 1
+Predicted: 1
+Raw response: 1
+Time: 9.235s
+
+--- Q1149 [WRONG] ---
+Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
+
+Sentence: The actors practiced the scenes in the parking lot more than the scenes in the morgue, because the _ scenes are full of silence.
+
+1. parking lot
+2. morgue
+
+Answer:
+Expected: 2
+Predicted: 1
+Raw response: 1
+Time: 21.361s
+
+--- Q407 [CORRECT] ---
+Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
+
+Sentence: Samantha had to use the potty while Felicia used the restroom because _ is a grownup.
+
+1. Samantha
+2. Felicia
+
+Answer:
+Expected: 2
+Predicted: 2
+Raw response: 2
+Time: 8.996s
+
+--- Q859 [CORRECT] ---
+Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
+
+Sentence: Samantha believed in life after death while Christine did not, so _ never tried to talk to spirits.
+
+1. Samantha
+2. Christine
+
+Answer:
+Expected: 2
+Predicted: 2
+Raw response: 2
+Time: 6.074s
+
+--- Q451 [CORRECT] ---
+Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
+
+Sentence: Hugh scrubbed the mold in his apartment with a cleaner but had to call a pro because the _ was too weak.
+
+1. mold
+2. cleaner
+
+Answer:
+Expected: 2
+Predicted: 2
+Raw response: 2
+Time: 4.923s
+
+--- Q919 [CORRECT] ---
+Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
+
+Sentence: The toddler kicked the soft furniture and hard toy, but only the _ caused pain.
+
+1. furniture
+2. toy
+
+Answer:
+Expected: 2
+Predicted: 2
+Raw response: 2
+Time: 5.085s
+
+--- Q1206 [WRONG] ---
+Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
+
+Sentence: Buying a swimming pool was great for Adam but not for Christopher because _ had a large back yard.
+
+1. Adam
+2. Christopher
+
+Answer:
+Expected: 1
+Predicted: 2
+Raw response: 2
+Time: 8.665s
+
+--- Q569 [WRONG] ---
+Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
+
+Sentence: Laura was thrilled to get their lip pierced but Rachel was pretty scared. _ had theirs done and cried.
+
+1. Laura
+2. Rachel
+
+Answer:
+Expected: 2
+Predicted: 1
+Raw response: 1
+Time: 104.76s
+
+--- Q13 [WRONG] ---
+Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
+
+Sentence: He had enough time between classes to go to a cafe or to the library. He went to the _ because his paper could wait.
+
+1. cafe
+2. library
+
+Answer:
+Expected: 1
+Predicted: 2
+Raw response: 2
+Time: 40.104s
+
+--- Q326 [WRONG] ---
+Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
+
+Sentence: Hunter bought a vehicle to commute in but not Dennis because _ had a driving distance to work.
+
+1. Hunter
+2. Dennis
+
+Answer:
+Expected: 1
+Predicted: 2
+Raw response: 2
+Time: 63.93s
+
+--- Q865 [CORRECT] ---
+Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
+
+Sentence: Jeffrey asked Hunter when was the date set for the wedding because _ was getting married.
+
+1. Jeffrey
+2. Hunter
+
+Answer:
+Expected: 2
+Predicted: 2
+Raw response: The sentence is:
+
+“Jeffrey asked Hunter when was the date set for the wedding because _ was getting married.”
+
+The blank must be filled with a person who can be referred to by “_” and who is relevant to the reason for Jeffrey’s question.
+
+**Step 1: Identify possible antecedents**  
+The two names introduced are **Jeffrey** (the asker) and **Hunter** (the person he asked).
+
+**Step 2: Determine logical relationship**  
+The clause “because _ was getting married” explains why Jeffrey asked the question.  
+- If the blank is **Jeffrey**, the sentence reads: “Jeffrey asked Hunter … because **Jeffrey** was getting married.”  
+  This would mean Jeffrey asks about the wedding date for something other than his own marriage, which is less coherent—why would he ask about a wedding date that isn’t his own while he is getting married?
+
+- If the blank is **Hunter**, the sentence reads: “Jeffrey asked Hunter … because **Hunter** was getting married.”  
+  This makes sense: Jeffrey asks Hunter about the wedding date for Hunter’s marriage, and he asks because Hunter is in the process of getting married.
+
+**Step 3: Check grammatical and semantic fit**  
+The phrase “the date set for the wedding” naturally refers to the wedding being discussed. The reason to ask is logically the wedding of the person being referred to in the blank. Thus, the blank should be **Hunter**, the person whose marriage’s date is being asked about.
+
+**Conclusion:** The correct option is **2. Hunter**.  
+
+\boxed{2}
+Time: 93.847s
+
+--- Q696 [CORRECT] ---
+Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
+
+Sentence: Justin bought a new RV but Lawrence liked his old one, so _ decided to buy it.
+
+1. Justin
+2. Lawrence
+
+Answer:
+Expected: 2
+Predicted: 2
+Raw response: 2
+Time: 17.067s
