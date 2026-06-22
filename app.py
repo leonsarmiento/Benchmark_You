@@ -1070,6 +1070,10 @@ def _draw_interactive_pareto():
         ))
 
     st.plotly_chart(fig, use_container_width=True, theme="streamlit")
+    st.markdown(
+        "Download high quality data agnostic quants used in these benchmarks "
+        "[here](https://huggingface.co/leonsarmiento)."
+    )
 
 
 def page_setup(bank):
