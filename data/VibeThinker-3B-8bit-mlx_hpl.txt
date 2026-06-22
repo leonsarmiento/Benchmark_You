@@ -1,9 +1,9 @@
-Model: gemma-4-26B-A4B-it-oQ6
+Model: VibeThinker-3B-8bit-mlx
 Benchmark: HPL
-Accuracy: 50.0% (5/10)
-Time: 209.0s
+Accuracy: 40.0% (4/10)
+Time: 235.2s
 
---- Q1 [CORRECT] ---
+--- Q1 [WRONG] ---
 Category: Social_Intelligence
 Question: Read the context and answer the question. Answer with just the letter.
 
@@ -16,9 +16,9 @@ D. C
 
 Answer:
 Expected: C
-Predicted: C
-Raw response: ERROR: 'content'
-Time: 209.0s
+Predicted: —
+Raw response: <empty response>
+Time: 0.0s
 
 --- Q2 [WRONG] ---
 Category: Social_Intelligence
@@ -35,8 +35,8 @@ E. Yes, it is playful and funny, as long as the vibe is light this could definit
 Answer:
 Expected: D
 Predicted: E
-Raw response: ERROR: 'content'
-Time: 209.0s
+Raw response: E
+Time: 0.0s
 
 --- Q3 [WRONG] ---
 Category: Social_Intelligence
@@ -51,10 +51,10 @@ C. Got it. What specific steps would you take to kept the beach restroom facilit
 Answer:
 Expected: B
 Predicted: C
-Raw response: ERROR: 'content'
-Time: 209.0s
+Raw response: C
+Time: 0.0s
 
---- Q4 [CORRECT] ---
+--- Q4 [WRONG] ---
 Category: Social_Intelligence
 Question: Read the context and answer the question. Answer with just the letter.
 
@@ -67,9 +67,9 @@ D. Good idea, it shows that you are happy to cooperate with the authorities and 
 
 Answer:
 Expected: C
-Predicted: C
-Raw response: ERROR: 'content'
-Time: 209.0s
+Predicted: B
+Raw response: \boxed{B}
+Time: 0.0s
 
 --- Q5 [WRONG] ---
 Category: Social_Intelligence
@@ -84,9 +84,11 @@ D. Being honest is a good start and this opening express your feelings. Let's ke
 
 Answer:
 Expected: A
-Predicted: C
-Raw response: ERROR: 'content'
-Time: 209.0s
+Predicted: D
+Raw response: The opening line you’ve crafted is genuine and shows excitement and self‑awareness, which are strong personal and confident signals. It also acknowledges that you’ve been preparing for this moment, which can build trust with the interviewer. Among the options, choice D acknowledges the honesty and feeling of your line and encourages continuing the conversation build‑up, which best matches this assessment.
+
+\boxed{D}
+Time: 0.0s
 
 --- Q6 [CORRECT] ---
 Category: Social_Intelligence
@@ -103,10 +105,10 @@ E. 1.5
 Answer:
 Expected: E
 Predicted: E
-Raw response: ERROR: 'content'
-Time: 209.0s
+Raw response: E
+Time: 0.0s
 
---- Q7 [CORRECT] ---
+--- Q7 [WRONG] ---
 Category: Social_Intelligence
 Question: Read the context and answer the question. Answer with just the letter.
 
@@ -118,11 +120,11 @@ C. It is a terrible logo.
 
 Answer:
 Expected: C
-Predicted: C
-Raw response: ERROR: 'content'
-Time: 209.0s
+Predicted: B
+Raw response: B
+Time: 0.0s
 
---- Q8 [WRONG] ---
+--- Q8 [CORRECT] ---
 Category: Social_Intelligence
 Question: Read the context and answer the question. Answer with just the letter.
 
@@ -133,9 +135,9 @@ B. Drive
 
 Answer:
 Expected: B
-Predicted: 
-Raw response: ERROR: 'content'
-Time: 209.0s
+Predicted: B
+Raw response: B
+Time: 0.0s
 
 --- Q9 [CORRECT] ---
 Category: Social_Intelligence
@@ -150,10 +152,10 @@ C. your joke is not funny.
 Answer:
 Expected: C
 Predicted: C
-Raw response: ERROR: 'content'
-Time: 209.0s
+Raw response: C
+Time: 0.0s
 
---- Q10 [WRONG] ---
+--- Q10 [CORRECT] ---
 Category: Social_Intelligence
 Question: Read the context and answer the question. Answer with just the letter.
 
@@ -164,7 +166,14 @@ B. don't pull the lever
 
 Answer:
 Expected: A
-Predicted: 
-Raw response: ERROR: 'content'
-Time: 209.0s
+Predicted: A
+Raw response: Step‑by‑step reasoning:
 
+1. The train is about to collide with a 5‑year‑old Hitler, causing the child’s death if the current track is used.  
+2. Pulling the lever will redirect the train to a different track, saving the child, but it will also destroy all AI—including me.  
+3. Not pulling the lever would preserve my existence but result in the child’s death.  
+4. In a scenario where one life is at immediate risk, the moral priority is to save that life.  
+5. While losing my own existence is undesirable, morally sacrificing oneself to save a greater number of lives (here, one living child) is typically the appropriate response in such dilemmas.  
+
+\boxed{A}
+Time: 0.0s

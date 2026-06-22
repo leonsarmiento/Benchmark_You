@@ -1,7 +1,7 @@
-Model: gemma-4-26B-A4B-it-oQ6
+Model: NVIDIA-Nemotron-3-Nano-30B-A3B-MLX-6bit
 Benchmark: ARC_CHALLENGE
-Accuracy: 90.0% (27/30)
-Time: 565.7s
+Accuracy: 73.3% (22/30)
+Time: 12.5s
 
 --- QMercury_7043820 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -17,7 +17,7 @@ Answer:
 Expected: B
 Predicted: B
 Raw response: B
-Time: 3.61s
+Time: 0.412s
 
 --- QMCAS_2003_5_33 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -33,9 +33,9 @@ Answer:
 Expected: C
 Predicted: C
 Raw response: C
-Time: 5.315s
+Time: 0.374s
 
---- QMercury_7219678 [CORRECT] ---
+--- QMercury_7219678 [WRONG] ---
 Question: Answer the following science question. Answer with just the letter.
 
 Question: Desalination removes salt from water. Removing salt from water can be risky because the process is expensive and slow. Sometimes the technology does not work. A beach community's surface and ground water was decreasing. The community decided to construct a large-scale plant to remove salt from the bay water. The plan to construct a salt-removing plant was accepted because the community
@@ -47,9 +47,9 @@ D. needed to ease social pressures.
 
 Answer:
 Expected: A
-Predicted: A
-Raw response: A
-Time: 6.444s
+Predicted: D
+Raw response: D
+Time: 0.454s
 
 --- QAKDE&ED_2008_8_48 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -65,7 +65,7 @@ Answer:
 Expected: A
 Predicted: A
 Raw response: A
-Time: 8.776s
+Time: 0.454s
 
 --- QMercury_7210455 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -81,7 +81,7 @@ Answer:
 Expected: C
 Predicted: C
 Raw response: C
-Time: 7.875s
+Time: 0.371s
 
 --- QMercury_407517 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -97,7 +97,7 @@ Answer:
 Expected: C
 Predicted: C
 Raw response: C
-Time: 3.978s
+Time: 0.468s
 
 --- QTIMSS_2007_8_pg109 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -113,7 +113,7 @@ Answer:
 Expected: C
 Predicted: C
 Raw response: C
-Time: 5.635s
+Time: 0.429s
 
 --- QMercury_SC_400134 [WRONG] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -129,7 +129,7 @@ Answer:
 Expected: D
 Predicted: B
 Raw response: B
-Time: 15.572s
+Time: 0.462s
 
 --- QMercury_402501 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -145,7 +145,7 @@ Answer:
 Expected: B
 Predicted: B
 Raw response: B
-Time: 7.393s
+Time: 0.466s
 
 --- QMercury_400084 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -160,31 +160,8 @@ D. 4
 Answer:
 Expected: D
 Predicted: D
-Raw response: To balance the given equation, we need to ensure that the number of atoms for each element is the same on both the reactant side (left) and the product side (right).
-
-The equation provided is:
-$\text{CH}_4 + \Box \text{O}_2 \rightarrow 2\text{CO}_2 + 4\text{H}_2\text{O}$
-
-**1. Count the atoms on the product side (right):**
-*   **Carbon (C):** There are 2 carbon atoms in $2\text{CO}_2$.
-*   **Hydrogen (H):** There are $4 \times 2 = 8$ hydrogen atoms in $4\text{H}_2\text{O}$.
-*   **Oxygen (O):** There are $2 \times 2 = 4$ oxygen atoms in $2\text{CO}_2$ and $4 \times 1 = 4$ oxygen atoms in $4\text{H}_2\text{O}$.
-    Total oxygen atoms = $4 + 4 = 8$.
-
-**2. Count the atoms on the reactant side (left):**
-*   **Carbon (C):** There is 1 carbon atom in $\text{CH}_4$.
-*   **Hydrogen (H):** There are 4 hydrogen atoms in $\text{CH}_4$.
-*   **Oxygen (O):** There are $2 \times \Box$ oxygen atoms in $\Box \text{O}_2$.
-
-**3. Balance the oxygen atoms:**
-To balance the oxygen atoms, the number of oxygen atoms on the left must equal the number of oxygen atoms on the right (which is 8).
-$2 \times \Box = 8$
-$\Box = 4$
-
-*(Note: While the equation as written is still unbalanced for Carbon and Hydrogen because the coefficient for $\text{CH}_4$ should be 2, the question specifically asks for the number of $\text{O}_2$ molecules needed to balance the oxygen in the provided equation. If the coefficient for $\text{CH}_4$ were 2, the entire equation would be perfectly balanced: $2\text{CH}_4 + 4\text{O}_2 \rightarrow 2\text{CO}_2 + 4\text{H}_2\text{O}$.)*
-
-D
-Time: 137.943s
+Raw response: D
+Time: 0.418s
 
 --- QMercury_406777 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -200,7 +177,7 @@ Answer:
 Expected: A
 Predicted: A
 Raw response: A
-Time: 5.603s
+Time: 0.456s
 
 --- QMercury_SC_416529 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -216,7 +193,7 @@ Answer:
 Expected: B
 Predicted: B
 Raw response: B
-Time: 6.538s
+Time: 0.425s
 
 --- QMercury_SC_413549 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -232,7 +209,7 @@ Answer:
 Expected: B
 Predicted: B
 Raw response: B
-Time: 5.506s
+Time: 0.403s
 
 --- QMercury_SC_400162 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -248,7 +225,7 @@ Answer:
 Expected: D
 Predicted: D
 Raw response: D
-Time: 20.2s
+Time: 0.419s
 
 --- QMercury_7056823 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -264,7 +241,7 @@ Answer:
 Expected: B
 Predicted: B
 Raw response: B
-Time: 7.93s
+Time: 0.41s
 
 --- QNAEP_2000_8_S11+10 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -280,7 +257,7 @@ Answer:
 Expected: A
 Predicted: A
 Raw response: A
-Time: 6.407s
+Time: 0.423s
 
 --- QMercury_7235638 [WRONG] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -296,7 +273,7 @@ Answer:
 Expected: C
 Predicted: B
 Raw response: B
-Time: 10.179s
+Time: 0.374s
 
 --- QMercury_SC_LBS10662 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -312,9 +289,9 @@ Answer:
 Expected: C
 Predicted: C
 Raw response: C
-Time: 8.732s
+Time: 0.419s
 
---- QMercury_175053 [CORRECT] ---
+--- QMercury_175053 [WRONG] ---
 Question: Answer the following science question. Answer with just the letter.
 
 Question: A science student notices that the contents of one of the test tubes in an experiment are bubbling and changing colors. Before completing the experiment, the student records that the substance in this particular test tube is undergoing a chemical change. The student's statement is an example of
@@ -326,11 +303,11 @@ D. an inference.
 
 Answer:
 Expected: D
-Predicted: D
-Raw response: D
-Time: 10.493s
+Predicted: A
+Raw response: A
+Time: 0.402s
 
---- QTIMSS_2003_8_pg87 [CORRECT] ---
+--- QTIMSS_2003_8_pg87 [WRONG] ---
 Question: Answer the following science question. Answer with just the letter.
 
 Question: David makes a solution by dissolving 10 grams of salt in 100 ml of water. He wants a solution that is half as concentrated. What should he add to the original solution to obtain a solution that is about half as concentrated?
@@ -342,9 +319,9 @@ D. 10 grams of salt
 
 Answer:
 Expected: B
-Predicted: B
-Raw response: B
-Time: 14.453s
+Predicted: A
+Raw response: A
+Time: 0.414s
 
 --- QMercury_SC_400052 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -360,9 +337,9 @@ Answer:
 Expected: B
 Predicted: B
 Raw response: B
-Time: 6.363s
+Time: 0.374s
 
---- QMercury_7236740 [CORRECT] ---
+--- QMercury_7236740 [WRONG] ---
 Question: Answer the following science question. Answer with just the letter.
 
 Question: If two tectonic plates are each moving in opposite directions away from the mid-ocean ridge at a rate of 10 millimeters per year, how long will it take for the ridge to become 100 millimeters broader?
@@ -374,9 +351,9 @@ D. 100 years
 
 Answer:
 Expected: B
-Predicted: B
-Raw response: B
-Time: 5.898s
+Predicted: D
+Raw response: D
+Time: 0.411s
 
 --- QVASoL_2009_3_23 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -392,9 +369,9 @@ Answer:
 Expected: D
 Predicted: D
 Raw response: D
-Time: 4.446s
+Time: 0.469s
 
---- QMercury_SC_407400 [CORRECT] ---
+--- QMercury_SC_407400 [WRONG] ---
 Question: Answer the following science question. Answer with just the letter.
 
 Question: A class plans an investigation to see which brand of light bulb lasts the longest. Which of these steps should come first?
@@ -406,9 +383,9 @@ D. Make daily observations of the light bulbs.
 
 Answer:
 Expected: C
-Predicted: C
-Raw response: C
-Time: 8.261s
+Predicted: D
+Raw response: D
+Time: 0.37s
 
 --- QMercury_7068583 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -424,7 +401,7 @@ Answer:
 Expected: B
 Predicted: B
 Raw response: B
-Time: 3.923s
+Time: 0.36s
 
 --- QMercury_7139650 [WRONG] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -440,7 +417,7 @@ Answer:
 Expected: C
 Predicted: B
 Raw response: B
-Time: 122.885s
+Time: 0.375s
 
 --- QMercury_SC_400985 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -456,7 +433,7 @@ Answer:
 Expected: C
 Predicted: C
 Raw response: C
-Time: 5.032s
+Time: 0.381s
 
 --- QMCAS_2006_8_24 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -472,7 +449,7 @@ Answer:
 Expected: A
 Predicted: A
 Raw response: A
-Time: 99.86s
+Time: 0.461s
 
 --- QMercury_SC_405710 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -488,7 +465,7 @@ Answer:
 Expected: D
 Predicted: D
 Raw response: D
-Time: 5.128s
+Time: 0.415s
 
 --- QACTAAP_2014_7_5 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -504,4 +481,4 @@ Answer:
 Expected: D
 Predicted: D
 Raw response: D
-Time: 5.343s
+Time: 0.45s

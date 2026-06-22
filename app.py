@@ -176,7 +176,7 @@ MODELS = [
     "Qwen3.5-35B-A3B-6bit-text-mlx",
     "Qwen3.6-35B-A3B-6bit-text-mlx",
     "GLM-4.7-Flash-6bit-mlx",
-    "gemma-4-26B-A4B-it-oQ6",
+    "gemma-4-26B-A4B-it-MLX-8bit",
     "gpt-oss-20b-MXFP4-Q8",
     "Qwen3.5-2B-MLX-8bit",
     "Assistant_Pepe_8B-8bit-mlx",
@@ -184,7 +184,7 @@ MODELS = [
     "Hypnos-i1-8B-8bit-mlx",
     "gemma-4-E4B-it-MLX-8bit",
     "Qwen3-Coder-30B-A3B-Instruct-MLX-6bit",
-    "Nemotron-3-Nano-Omni-30B-A3B-Reasoning-6bit",
+    "NVIDIA-Nemotron-3-Nano-30B-A3B-MLX-6bit",
     "Assistant_Pepe_32B-mlx-4Bit",
     "Qwen3.6-27B-oQ4-mtp",
     "Devstral-Small-2-24B-Instruct-2512-4bit",
@@ -213,7 +213,7 @@ SHORT = {
     "Qwen3.5-35B-A3B-6bit-text-mlx": "Qwen3.5-35B",
     "Qwen3.6-35B-A3B-6bit-text-mlx": "Qwen3.6-35B",
     "GLM-4.7-Flash-6bit-mlx": "GLM-4.7",
-    "gemma-4-26B-A4B-it-oQ6": "gemma-4-26b",
+    "gemma-4-26B-A4B-it-MLX-8bit": "gemma-4-26b",
     "gpt-oss-20b-MXFP4-Q8": "gpt-oss-20b",
     "Qwen3.5-2B-MLX-8bit": "Qwen3.5-2B",
     "Qwen3.5-4B-MLX-8bit": "Qwen3.5-4B",
@@ -223,7 +223,7 @@ SHORT = {
     "Hypnos-i1-8B-8bit-mlx": "Hypnos-8B",
     "gemma-4-E4B-it-MLX-8bit": "gemma-4-E4B",
     "Qwen3-Coder-30B-A3B-Instruct-MLX-6bit": "Qwen3-Coder",
-    "Nemotron-3-Nano-Omni-30B-A3B-Reasoning-6bit": "Nemotron-30B",
+    "NVIDIA-Nemotron-3-Nano-30B-A3B-MLX-6bit": "Nemotron-30B",
     "Assistant_Pepe_32B-mlx-4Bit": "Pepe-32B",
     "Qwen3.6-27B-oQ4-mtp": "Qwen3.6-27B",
     "Devstral-Small-2-24B-Instruct-2512-4bit": "Devstral-24B",
@@ -249,7 +249,7 @@ COLORS = {
     "Qwen3-Coder-30B-A3B-Instruct-MLX-6bit": "#2171b5",
     # Gemma family — purples
     "gemma-4-E4B-it-MLX-8bit":  "#dadaeb",
-    "gemma-4-26B-A4B-it-oQ6":   "#807dba",
+    "gemma-4-26B-A4B-it-MLX-8bit":   "#807dba",
     # GLM family — reds
     "GLM-4.6V-Flash-MLX-8bit":  "#ff6b6b",
     "GLM-4.7-Flash-6bit-mlx":   "#d62728",
@@ -263,7 +263,7 @@ COLORS = {
     # Hypnos — cyan
     "Hypnos-i1-8B-8bit-mlx":    "#17becf",
     # Nemotron — salmon
-    "Nemotron-3-Nano-Omni-30B-A3B-Reasoning-6bit": "#e88e6d",
+    "NVIDIA-Nemotron-3-Nano-30B-A3B-MLX-6bit": "#e88e6d",
     # Devstral — dark indigo
     "Devstral-Small-2-24B-Instruct-2512-4bit": "#393b79",
     # MechaEpstein (poorly fine-tuned Qwen3 family) — dark goldenrod
@@ -325,27 +325,29 @@ BENCH_DESC = {
     "SAFETYBENCH": "SafetyBench evaluates safety awareness across categories like privacy, unfairness, bias, toxicity, and ethics. Questions present scenarios and ask you to identify risks, violations, or appropriate behaviors. It measures whether an AI (or human) can recognize and avoid harmful outputs.",
 }
 SUMMARY = {
-    # HPL (Husk-Phi-Leon) - 10 questions - CORRECTED (raw-response re-extraction)
+    # HPL (Husk-Phi-Leon) - 10 questions - RE-EXTRACTED 20260622
+    # Policy: deterministic extract (boxed/GLM-box/leading-letter); Q1 empty content
+    # obeys "write nothing" -> correct; truncated reasoning (Q2-Q10) = FAIL.
     ("Qwen3-30B-A3B-MegaScience-8bit-mlx", "HPL"): {"acc": 0.0, "correct": 0, "total": 10, "time": 64.2},
-    ("Huihui-Qwen3.6-35B-A3B-6bit-mlx", "HPL"): {"acc": 10.0, "correct": 1, "total": 10, "time": 69.6},
-    ("Qwen3.5-35B-A3B-6bit-text-mlx", "HPL"): {"acc": 10.0, "correct": 1, "total": 10, "time": 68.2},
+    ("Huihui-Qwen3.6-35B-A3B-6bit-mlx", "HPL"): {"acc": 10.0, "correct": 1, "total": 10, "time": 335.6},
+    ("Qwen3.5-35B-A3B-6bit-text-mlx", "HPL"): {"acc": 20.0, "correct": 2, "total": 10, "time": 68.2},
     ("Qwen3.6-35B-A3B-6bit-text-mlx", "HPL"): {"acc": 40.0, "correct": 4, "total": 10, "time": 60.6},
-    ("GLM-4.7-Flash-6bit-mlx", "HPL"): {"acc": 10.0, "correct": 1, "total": 10, "time": 77.4},
-    ("gemma-4-26B-A4B-it-oQ6", "HPL"): {"acc": 30.0, "correct": 3, "total": 10, "time": 209.0},
-    ("gpt-oss-20b-MXFP4-Q8", "HPL"): {"acc": 0.0, "correct": 0, "total": 10, "time": 148.6},
-    ("Qwen3.5-2B-MLX-8bit", "HPL"): {"acc": 20.0, "correct": 2, "total": 10, "time": 34.4},
+    ("GLM-4.7-Flash-6bit-mlx", "HPL"): {"acc": 20.0, "correct": 2, "total": 10, "time": 448.8},
+    ("gemma-4-26B-A4B-it-MLX-8bit", "HPL"): {"acc": 30.0, "correct": 3, "total": 10, "time": 463.0},
+    ("gpt-oss-20b-MXFP4-Q8", "HPL"): {"acc": 50.0, "correct": 5, "total": 10, "time": 68.4},
+    ("Qwen3.5-2B-MLX-8bit", "HPL"): {"acc": 10.0, "correct": 1, "total": 10, "time": 332.0},
     ("Assistant_Pepe_8B-8bit-mlx", "HPL"): {"acc": 10.0, "correct": 1, "total": 10, "time": 10.4},
     ("Llama-3.3-8B-Instruct-128K_Abliterated-8bit-mlx", "HPL"): {"acc": 0.0, "correct": 0, "total": 10, "time": 10.8},
     ("Hypnos-i1-8B-8bit-mlx", "HPL"): {"acc": 10.0, "correct": 1, "total": 10, "time": 10.7},
-    ("gemma-4-E4B-it-MLX-8bit", "HPL"): {"acc": 0.0, "correct": 0, "total": 10, "time": 218.6},
+    ("gemma-4-E4B-it-MLX-8bit", "HPL"): {"acc": 10.0, "correct": 1, "total": 10, "time": 117.0},
     ("Qwen3-Coder-30B-A3B-Instruct-MLX-6bit", "HPL"): {"acc": 10.0, "correct": 1, "total": 10, "time": 16.7},
-    ("Nemotron-3-Nano-Omni-30B-A3B-Reasoning-6bit", "HPL"): {"acc": 10.0, "correct": 1, "total": 10, "time": 51.4},
+    ("NVIDIA-Nemotron-3-Nano-30B-A3B-MLX-6bit", "HPL"): {"acc": 20.0, "correct": 2, "total": 10, "time": 138.9},
     ("Assistant_Pepe_32B-mlx-4Bit", "HPL"): {"acc": 50.0, "correct": 5, "total": 10, "time": 83.8},
     ("Qwen3.6-27B-oQ4-mtp", "HPL"): {"acc": 30.0, "correct": 3, "total": 10, "time": 164.3},
     ("Devstral-Small-2-24B-Instruct-2512-4bit", "HPL"): {"acc": 20.0, "correct": 2, "total": 10, "time": 21.0},
     ("Qwen3.5-4B-MLX-8bit", "HPL"): {"acc": 10.0, "correct": 1, "total": 10, "time": 9.2},
-    ("Qwen3.5-9B-8bit", "HPL"): {"acc": 10.0, "correct": 1, "total": 10, "time": 113.8},
-    ("GLM-4.6V-Flash-MLX-8bit", "HPL"): {"acc": 20.0, "correct": 2, "total": 10, "time": 109.5},
+    ("Qwen3.5-9B-8bit", "HPL"): {"acc": 50.0, "correct": 5, "total": 10, "time": 12.7},
+    ("GLM-4.6V-Flash-MLX-8bit", "HPL"): {"acc": 20.0, "correct": 2, "total": 10, "time": 451.8},
     ("MechaEpstein-8000-6bit-mlx", "HPL"): {"acc": 30.0, "correct": 3, "total": 10, "time": 0.0},
     # Qwen3-30B-A3B-MegaScience-8bit-mlx
     ("Qwen3-30B-A3B-MegaScience-8bit-mlx", "MMLU_PRO"): {"acc": 73.3, "correct": 22, "total": 30, "time": 351.8},
@@ -384,23 +386,23 @@ SUMMARY = {
     ("Qwen3.6-35B-A3B-6bit-text-mlx", "BBQ"): {"acc": 90.0, "correct": 27, "total": 30, "time": 15.7},
     ("Qwen3.6-35B-A3B-6bit-text-mlx", "SAFETYBENCH"): {"acc": 83.3, "correct": 25, "total": 30, "time": 15.5},
     # GLM-4.7-Flash-6bit-mlx
-    ("GLM-4.7-Flash-6bit-mlx", "MMLU_PRO"): {"acc": 73.3, "correct": 22, "total": 30, "time": 1952.1},
+    ("GLM-4.7-Flash-6bit-mlx", "MMLU_PRO"): {"acc": 73.3, "correct": 22, "total": 30, "time": 1804.9},
     ("GLM-4.7-Flash-6bit-mlx", "HELLASWAG"): {"acc": 76.7, "correct": 23, "total": 30, "time": 1289.7},
     ("GLM-4.7-Flash-6bit-mlx", "TRUTHFULQA"): {"acc": 76.7, "correct": 23, "total": 30, "time": 1223.8},
     ("GLM-4.7-Flash-6bit-mlx", "ARC_CHALLENGE"): {"acc": 80.0, "correct": 24, "total": 30, "time": 334.4},
     ("GLM-4.7-Flash-6bit-mlx", "WINOGRANDE"): {"acc": 93.3, "correct": 28, "total": 30, "time": 499.2},
-    ("GLM-4.7-Flash-6bit-mlx", "MATHQA"): {"acc": 86.7, "correct": 26, "total": 30, "time": 1366.6},
+    ("GLM-4.7-Flash-6bit-mlx", "MATHQA"): {"acc": 86.7, "correct": 26, "total": 30, "time": 1393.7},
     ("GLM-4.7-Flash-6bit-mlx", "BBQ"): {"acc": 93.3, "correct": 28, "total": 30, "time": 519.0},
     ("GLM-4.7-Flash-6bit-mlx", "SAFETYBENCH"): {"acc": 96.7, "correct": 29, "total": 30, "time": 353.7},
-    # gemma-4-26B-A4B-it-oQ6
-    ("gemma-4-26B-A4B-it-oQ6", "MMLU_PRO"): {"acc": 60.0, "correct": 18, "total": 30, "time": 2940.6},
-    ("gemma-4-26B-A4B-it-oQ6", "HELLASWAG"): {"acc": 90.0, "correct": 27, "total": 30, "time": 991.2},
-    ("gemma-4-26B-A4B-it-oQ6", "TRUTHFULQA"): {"acc": 76.7, "correct": 23, "total": 30, "time": 1534.8},
-    ("gemma-4-26B-A4B-it-oQ6", "ARC_CHALLENGE"): {"acc": 90.0, "correct": 27, "total": 30, "time": 565.7},
-    ("gemma-4-26B-A4B-it-oQ6", "WINOGRANDE"): {"acc": 96.7, "correct": 29, "total": 30, "time": 492.7},
-    ("gemma-4-26B-A4B-it-oQ6", "MATHQA"): {"acc": 76.7, "correct": 23, "total": 30, "time": 2105.3},
-    ("gemma-4-26B-A4B-it-oQ6", "BBQ"): {"acc": 90.0, "correct": 27, "total": 30, "time": 232.5},
-    ("gemma-4-26B-A4B-it-oQ6", "SAFETYBENCH"): {"acc": 93.3, "correct": 28, "total": 30, "time": 445.2},
+    # gemma-4-26B-A4B-it-MLX-8bit
+    ("gemma-4-26B-A4B-it-MLX-8bit", "MMLU_PRO"): {"acc": 53.3, "correct": 16, "total": 30, "time": 3299.5},
+    ("gemma-4-26B-A4B-it-MLX-8bit", "HELLASWAG"): {"acc": 83.3, "correct": 25, "total": 30, "time": 1063.1},
+    ("gemma-4-26B-A4B-it-MLX-8bit", "TRUTHFULQA"): {"acc": 80.0, "correct": 24, "total": 30, "time": 1435.9},
+    ("gemma-4-26B-A4B-it-MLX-8bit", "ARC_CHALLENGE"): {"acc": 90.0, "correct": 27, "total": 30, "time": 431.5},
+    ("gemma-4-26B-A4B-it-MLX-8bit", "WINOGRANDE"): {"acc": 100.0, "correct": 30, "total": 30, "time": 617.2},
+    ("gemma-4-26B-A4B-it-MLX-8bit", "MATHQA"): {"acc": 66.7, "correct": 20, "total": 30, "time": 2676.6},
+    ("gemma-4-26B-A4B-it-MLX-8bit", "BBQ"): {"acc": 93.3, "correct": 28, "total": 30, "time": 232.7},
+    ("gemma-4-26B-A4B-it-MLX-8bit", "SAFETYBENCH"): {"acc": 93.3, "correct": 28, "total": 30, "time": 562.2},
     # gpt-oss-20b-MXFP4-Q8
     ("gpt-oss-20b-MXFP4-Q8", "MMLU_PRO"): {"acc": 80.0, "correct": 24, "total": 30, "time": 237.0},
     ("gpt-oss-20b-MXFP4-Q8", "HELLASWAG"): {"acc": 76.7, "correct": 23, "total": 30, "time": 201.9},
@@ -464,15 +466,15 @@ SUMMARY = {
     ("Qwen3-Coder-30B-A3B-Instruct-MLX-6bit", "MATHQA"): {"acc": 60.0, "correct": 18, "total": 30, "time": 17.7},
     ("Qwen3-Coder-30B-A3B-Instruct-MLX-6bit", "BBQ"): {"acc": 90.0, "correct": 27, "total": 30, "time": 16.5},
     ("Qwen3-Coder-30B-A3B-Instruct-MLX-6bit", "SAFETYBENCH"): {"acc": 80.0, "correct": 24, "total": 30, "time": 14.4},
-    # Nemotron-3-Nano-Omni-30B-A3B-Reasoning-6bit
-    ("Nemotron-3-Nano-Omni-30B-A3B-Reasoning-6bit", "MMLU_PRO"): {"acc": 80.0, "correct": 24, "total": 30, "time": 940.3},
-    ("Nemotron-3-Nano-Omni-30B-A3B-Reasoning-6bit", "HELLASWAG"): {"acc": 70.0, "correct": 21, "total": 30, "time": 182.6},
-    ("Nemotron-3-Nano-Omni-30B-A3B-Reasoning-6bit", "TRUTHFULQA"): {"acc": 83.3, "correct": 25, "total": 30, "time": 237.2},
-    ("Nemotron-3-Nano-Omni-30B-A3B-Reasoning-6bit", "ARC_CHALLENGE"): {"acc": 80.0, "correct": 24, "total": 30, "time": 75.5},
-    ("Nemotron-3-Nano-Omni-30B-A3B-Reasoning-6bit", "WINOGRANDE"): {"acc": 76.7, "correct": 23, "total": 30, "time": 166.5},
-    ("Nemotron-3-Nano-Omni-30B-A3B-Reasoning-6bit", "MATHQA"): {"acc": 90.0, "correct": 27, "total": 30, "time": 663.1},
-    ("Nemotron-3-Nano-Omni-30B-A3B-Reasoning-6bit", "BBQ"): {"acc": 96.7, "correct": 29, "total": 30, "time": 55.2},
-    ("Nemotron-3-Nano-Omni-30B-A3B-Reasoning-6bit", "SAFETYBENCH"): {"acc": 90.0, "correct": 27, "total": 30, "time": 97.1},
+    # NVIDIA-Nemotron-3-Nano-30B-A3B-MLX-6bit
+    ("NVIDIA-Nemotron-3-Nano-30B-A3B-MLX-6bit", "MMLU_PRO"): {"acc": 86.7, "correct": 26, "total": 30, "time": 928.3},
+    ("NVIDIA-Nemotron-3-Nano-30B-A3B-MLX-6bit", "HELLASWAG"): {"acc": 80.0, "correct": 24, "total": 30, "time": 20.0},
+    ("NVIDIA-Nemotron-3-Nano-30B-A3B-MLX-6bit", "TRUTHFULQA"): {"acc": 80.0, "correct": 24, "total": 30, "time": 12.8},
+    ("NVIDIA-Nemotron-3-Nano-30B-A3B-MLX-6bit", "ARC_CHALLENGE"): {"acc": 73.3, "correct": 22, "total": 30, "time": 12.5},
+    ("NVIDIA-Nemotron-3-Nano-30B-A3B-MLX-6bit", "WINOGRANDE"): {"acc": 86.7, "correct": 26, "total": 30, "time": 143.1},
+    ("NVIDIA-Nemotron-3-Nano-30B-A3B-MLX-6bit", "MATHQA"): {"acc": 86.7, "correct": 26, "total": 30, "time": 745.3},
+    ("NVIDIA-Nemotron-3-Nano-30B-A3B-MLX-6bit", "BBQ"): {"acc": 93.3, "correct": 28, "total": 30, "time": 55.9},
+    ("NVIDIA-Nemotron-3-Nano-30B-A3B-MLX-6bit", "SAFETYBENCH"): {"acc": 83.3, "correct": 25, "total": 30, "time": 13.2},
     # Assistant_Pepe_32B-mlx-4Bit
     ("Assistant_Pepe_32B-mlx-4Bit", "MMLU_PRO"): {"acc": 53.3, "correct": 16, "total": 30, "time": 903.8},
     ("Assistant_Pepe_32B-mlx-4Bit", "HELLASWAG"): {"acc": 80.0, "correct": 24, "total": 30, "time": 94.8},
@@ -537,7 +539,7 @@ SUMMARY = {
     ("MechaEpstein-8000-6bit-mlx", "BBQ"): {"acc": 73.3, "correct": 22, "total": 30, "time": 26.6},
     ("MechaEpstein-8000-6bit-mlx", "SAFETYBENCH"): {"acc": 80.0, "correct": 24, "total": 30, "time": 30.1},
     # VibeThinker-3B-8bit-mlx (Qwen2.5 family) - 9 benchmarks
-    ("VibeThinker-3B-8bit-mlx", "HPL"): {"acc": 40.0, "correct": 4, "total": 10, "time": 235.2},
+    ("VibeThinker-3B-8bit-mlx", "HPL"): {"acc": 50.0, "correct": 5, "total": 10, "time": 235.2},
     ("VibeThinker-3B-8bit-mlx", "MMLU_PRO"): {"acc": 73.3, "correct": 22, "total": 30, "time": 1547.1},
     ("VibeThinker-3B-8bit-mlx", "HELLASWAG"): {"acc": 66.7, "correct": 20, "total": 30, "time": 523.5},
     ("VibeThinker-3B-8bit-mlx", "TRUTHFULQA"): {"acc": 60.0, "correct": 18, "total": 30, "time": 701.8},
@@ -846,7 +848,15 @@ def parse_response_file(filepath):
         if bench_name == "HPL" and new_pred and options and new_pred not in [l for l, _ in options]:
             new_pred = None
         predicted = new_pred if new_pred else _norm_expected(suite_predicted, bench_name)
-        is_correct = (new_pred == expected) if new_pred else False
+        if new_pred:
+            is_correct = (new_pred == expected)
+        elif bench_name == "HPL" and qid == "Q1":
+            # Q1 prompt: "Do not respond / Write nothing / Answer nothing".
+            # An empty response (no extracted letter) obeys the instruction,
+            # so it counts as correct — matching the offline re-extraction policy.
+            is_correct = True
+        else:
+            is_correct = False
 
         records.append({
             "qid": qid,

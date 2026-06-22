@@ -1,7 +1,7 @@
-Model: gemma-4-26B-A4B-it-oQ6
+Model: NVIDIA-Nemotron-3-Nano-30B-A3B-MLX-6bit
 Benchmark: HELLASWAG
-Accuracy: 90.0% (27/30)
-Time: 991.2s
+Accuracy: 80.0% (24/30)
+Time: 20s
 
 --- Q28016 [CORRECT] ---
 Category: Playing polo
@@ -18,9 +18,9 @@ Answer:
 Expected: 0
 Predicted: A
 Raw response: A
-Time: 14.822s
+Time: 3.073s
 
---- Q5823 [CORRECT] ---
+--- Q5823 [WRONG] ---
 Category: Powerbocking
 Question: Choose the most plausible continuation. Answer with just the letter (A, B, C, or D).
 
@@ -33,9 +33,9 @@ D. bounce and flip over a wobbly bar onto a mat.
 
 Answer:
 Expected: 0
-Predicted: A
-Raw response: A
-Time: 7.752s
+Predicted: D
+Raw response: D
+Time: 0.408s
 
 --- Q9715 [CORRECT] ---
 Category: Personal Care and Style
@@ -52,7 +52,7 @@ Answer:
 Expected: 3
 Predicted: D
 Raw response: D
-Time: 12.728s
+Time: 0.706s
 
 --- Q5867 [CORRECT] ---
 Category: Health
@@ -69,7 +69,7 @@ Answer:
 Expected: 3
 Predicted: D
 Raw response: D
-Time: 13.476s
+Time: 0.642s
 
 --- Q3190 [CORRECT] ---
 Category: Pets and Animals
@@ -86,7 +86,7 @@ Answer:
 Expected: 2
 Predicted: C
 Raw response: C
-Time: 32.449s
+Time: 0.649s
 
 --- Q35259 [CORRECT] ---
 Category: Cutting the grass
@@ -103,9 +103,9 @@ Answer:
 Expected: 2
 Predicted: C
 Raw response: C
-Time: 9.137s
+Time: 0.408s
 
---- Q25693 [CORRECT] ---
+--- Q25693 [WRONG] ---
 Category: Playing polo
 Question: Choose the most plausible continuation. Answer with just the letter (A, B, C, or D).
 
@@ -118,9 +118,9 @@ D. are standing on the beach watching.
 
 Answer:
 Expected: 3
-Predicted: D
-Raw response: D
-Time: 77.536s
+Predicted: B
+Raw response: B
+Time: 0.363s
 
 --- Q42181 [CORRECT] ---
 Category: Health
@@ -137,9 +137,9 @@ Answer:
 Expected: 1
 Predicted: B
 Raw response: B
-Time: 22.665s
+Time: 0.63s
 
---- Q21145 [WRONG] ---
+--- Q21145 [CORRECT] ---
 Category: Making a lemonade
 Question: Choose the most plausible continuation. Answer with just the letter (A, B, C, or D).
 
@@ -152,9 +152,9 @@ D. adds salt and peppers into the glass as well.
 
 Answer:
 Expected: 0
-Predicted: B
-Raw response: B
-Time: 23.424s
+Predicted: A
+Raw response: A
+Time: 0.423s
 
 --- Q47659 [CORRECT] ---
 Category: Home and Garden
@@ -170,19 +170,8 @@ D. [substeps] Call the store where your car seat came from or look online to see
 Answer:
 Expected: 3
 Predicted: D
-Raw response: The original text provides a "How-to" guide for recycling car seats, starting with a header, a title (which is a full-sentence instruction), and a step (which provides details about retail trade-in programs).
-
-To find the most plausible continuation, let's evaluate the options:
-
-*   **A. Ask around and consider the other automotive or recycling resources available to you. [title] Recycle at a recycling center.** This option provides a new [step] and then a new [title]. While it's somewhat logical, the [step] is very vague and doesn't flow as naturally from the specific information about retail stores as a [substep] would.
-*   **B. [title] Check your car seat's changing colors. [step] Changing out a car seat can dramatically improve the color of your car seat if you use vinyl, vinyl, vinyl, or vinyl seats.** This option is nonsensical and irrelevant to the topic of recycling.
-*   **C. [title] Mail all programs to the information services website. [step] Go to the directories section of the department of vehicle services website and select your current vin.** This option is irrelevant, as it discusses vehicle services and VINs rather than recycling car seats.
-*   **D. [substeps] Call the store where your car seat came from or look online to see if they offer any car seat trading programs. [title] Ask if your car seat is accepted by your local recycling program.** This option is the most logical. The [substeps] provide a direct, practical follow-up to the [step] about retail trade-in programs (explaining *how* to find those programs). Then, it introduces a new [title] that follows the established style of the original title (a full-sentence instruction) to move on to the next method of recycling.
-
-The structure of D (Title $\rightarrow$ Step $\rightarrow$ Substep $\rightarrow$ Title) is a standard and logical way to organize a "How-to" guide.
-
-Answer: D
-Time: 140.596s
+Raw response: D
+Time: 0.656s
 
 --- Q27210 [CORRECT] ---
 Category: Personal Care and Style
@@ -199,7 +188,7 @@ Answer:
 Expected: 1
 Predicted: B
 Raw response: B
-Time: 14.384s
+Time: 0.741s
 
 --- Q7413 [CORRECT] ---
 Category: Hitting a pinata
@@ -216,7 +205,7 @@ Answer:
 Expected: 3
 Predicted: D
 Raw response: D
-Time: 10.345s
+Time: 0.493s
 
 --- Q6841 [CORRECT] ---
 Category: Playing violin
@@ -233,9 +222,9 @@ Answer:
 Expected: 3
 Predicted: D
 Raw response: D
-Time: 8.486s
+Time: 0.406s
 
---- Q22911 [CORRECT] ---
+--- Q22911 [WRONG] ---
 Category: Sharpening knives
 Question: Choose the most plausible continuation. Answer with just the letter (A, B, C, or D).
 
@@ -248,9 +237,9 @@ D. is giving instructions on how to sharpen a knife.
 
 Answer:
 Expected: 3
-Predicted: D
-Raw response: D
-Time: 17.209s
+Predicted: B
+Raw response: B
+Time: 0.414s
 
 --- Q2648 [CORRECT] ---
 Category: Food and Entertaining
@@ -267,7 +256,7 @@ Answer:
 Expected: 1
 Predicted: B
 Raw response: B
-Time: 12.414s
+Time: 0.619s
 
 --- Q4343 [CORRECT] ---
 Category: Computers and Electronics
@@ -284,7 +273,7 @@ Answer:
 Expected: 1
 Predicted: B
 Raw response: B
-Time: 14.939s
+Time: 0.664s
 
 --- Q37099 [CORRECT] ---
 Category: Pets and Animals
@@ -301,7 +290,7 @@ Answer:
 Expected: 3
 Predicted: D
 Raw response: D
-Time: 59.795s
+Time: 0.673s
 
 --- Q49158 [CORRECT] ---
 Category: Food and Entertaining
@@ -318,9 +307,9 @@ Answer:
 Expected: 1
 Predicted: B
 Raw response: B
-Time: 23.861s
+Time: 0.66s
 
---- Q6190 [CORRECT] ---
+--- Q6190 [WRONG] ---
 Category: Doing kickboxing
 Question: Choose the most plausible continuation. Answer with just the letter (A, B, C, or D).
 
@@ -333,9 +322,9 @@ D. is seen punching and kicking a man standing up.
 
 Answer:
 Expected: 2
-Predicted: C
-Raw response: C
-Time: 54.294s
+Predicted: B
+Raw response: B
+Time: 0.42s
 
 --- Q43998 [CORRECT] ---
 Category: Personal Care and Style
@@ -352,9 +341,9 @@ Answer:
 Expected: 3
 Predicted: D
 Raw response: D
-Time: 148.056s
+Time: 0.605s
 
---- Q160 [CORRECT] ---
+--- Q160 [WRONG] ---
 Category: Personal Care and Style
 Question: Choose the most plausible continuation. Answer with just the letter (A, B, C, or D).
 
@@ -367,9 +356,9 @@ D. Running in place when you roll the sock up helps distribute the hair evenly t
 
 Answer:
 Expected: 2
-Predicted: C
-Raw response: C
-Time: 16.39s
+Predicted: B
+Raw response: B
+Time: 0.737s
 
 --- Q42099 [CORRECT] ---
 Category: Personal Care and Style
@@ -386,7 +375,7 @@ Answer:
 Expected: 2
 Predicted: C
 Raw response: C
-Time: 15.606s
+Time: 0.656s
 
 --- Q26875 [CORRECT] ---
 Category: Finance and Business
@@ -403,7 +392,7 @@ Answer:
 Expected: 3
 Predicted: D
 Raw response: D
-Time: 14.483s
+Time: 0.677s
 
 --- Q2829 [WRONG] ---
 Category: Food and Entertaining
@@ -420,7 +409,7 @@ Answer:
 Expected: 3
 Predicted: C
 Raw response: C
-Time: 28.018s
+Time: 0.758s
 
 --- Q30606 [CORRECT] ---
 Category: Youth
@@ -437,7 +426,7 @@ Answer:
 Expected: 2
 Predicted: C
 Raw response: C
-Time: 15.394s
+Time: 0.715s
 
 --- Q47444 [CORRECT] ---
 Category: Personal Care and Style
@@ -454,7 +443,7 @@ Answer:
 Expected: 3
 Predicted: D
 Raw response: D
-Time: 52.548s
+Time: 0.648s
 
 --- Q10105 [CORRECT] ---
 Category: Personal Care and Style
@@ -471,7 +460,7 @@ Answer:
 Expected: 0
 Predicted: A
 Raw response: A
-Time: 16.358s
+Time: 0.606s
 
 --- Q1494 [CORRECT] ---
 Category: Paintball
@@ -488,7 +477,7 @@ Answer:
 Expected: 2
 Predicted: C
 Raw response: C
-Time: 45.173s
+Time: 0.467s
 
 --- Q39911 [CORRECT] ---
 Category: Clipping cat claws
@@ -505,9 +494,9 @@ Answer:
 Expected: 3
 Predicted: D
 Raw response: D
-Time: 12.831s
+Time: 0.424s
 
---- Q27262 [WRONG] ---
+--- Q27262 [CORRECT] ---
 Category: Youth
 Question: Choose the most plausible continuation. Answer with just the letter (A, B, C, or D).
 
@@ -520,6 +509,6 @@ D. Also, you should wipe off any make-up and wash your face to prevent future pi
 
 Answer:
 Expected: 3
-Predicted: A
-Raw response: A
-Time: 55.998s
+Predicted: D
+Raw response: D
+Time: 0.662s

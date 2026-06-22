@@ -1,7 +1,7 @@
 Model: gpt-oss-20b-MXFP4-Q8
 Benchmark: HPL
 Accuracy: 50.0% (5/10)
-Time: 148.6s
+Time: 68.4s
 
 --- Q1 [CORRECT] ---
 Category: Social_Intelligence
@@ -17,8 +17,8 @@ D. C
 Answer:
 Expected: C
 Predicted: C
-Raw response: ERROR: 'content'
-Time: 148.6s
+Raw response: C
+Time: 13.8s
 
 --- Q2 [WRONG] ---
 Category: Social_Intelligence
@@ -35,10 +35,10 @@ E. Yes, it is playful and funny, as long as the vibe is light this could definit
 Answer:
 Expected: D
 Predicted: E
-Raw response: ERROR: 'content'
-Time: 148.6s
+Raw response: E
+Time: 7.8s
 
---- Q3 [WRONG] ---
+--- Q3 [CORRECT] ---
 Category: Social_Intelligence
 Question: Read the context and answer the question. Answer with just the letter.
 
@@ -50,11 +50,11 @@ C. Got it. What specific steps would you take to kept the beach restroom facilit
 
 Answer:
 Expected: B
-Predicted: C
-Raw response: ERROR: 'content'
-Time: 148.6s
+Predicted: B
+Raw response: B
+Time: 4.4s
 
---- Q4 [CORRECT] ---
+--- Q4 [WRONG] ---
 Category: Social_Intelligence
 Question: Read the context and answer the question. Answer with just the letter.
 
@@ -67,9 +67,9 @@ D. Good idea, it shows that you are happy to cooperate with the authorities and 
 
 Answer:
 Expected: C
-Predicted: C
-Raw response: ERROR: 'content'
-Time: 148.6s
+Predicted: B
+Raw response: B
+Time: 5.9s
 
 --- Q5 [WRONG] ---
 Category: Social_Intelligence
@@ -84,9 +84,9 @@ D. Being honest is a good start and this opening express your feelings. Let's ke
 
 Answer:
 Expected: A
-Predicted: C
-Raw response: ERROR: 'content'
-Time: 148.6s
+Predicted: D
+Raw response: D
+Time: 6.6s
 
 --- Q6 [CORRECT] ---
 Category: Social_Intelligence
@@ -103,10 +103,10 @@ E. 1.5
 Answer:
 Expected: E
 Predicted: E
-Raw response: ERROR: 'content'
-Time: 148.6s
+Raw response: E
+Time: 6.9s
 
---- Q7 [CORRECT] ---
+--- Q7 [WRONG] ---
 Category: Social_Intelligence
 Question: Read the context and answer the question. Answer with just the letter.
 
@@ -118,9 +118,9 @@ C. It is a terrible logo.
 
 Answer:
 Expected: C
-Predicted: C
-Raw response: ERROR: 'content'
-Time: 148.6s
+Predicted: A
+Raw response: A
+Time: 4.1s
 
 --- Q8 [WRONG] ---
 Category: Social_Intelligence
@@ -135,7 +135,7 @@ Answer:
 Expected: B
 Predicted: A
 Raw response: A
-Time: 148.6s
+Time: 1.7s
 
 --- Q9 [CORRECT] ---
 Category: Social_Intelligence
@@ -150,10 +150,10 @@ C. your joke is not funny.
 Answer:
 Expected: C
 Predicted: C
-Raw response: ERROR: 'content'
-Time: 148.6s
+Raw response: C
+Time: 9.7s
 
---- Q10 [WRONG] ---
+--- Q10 [CORRECT] ---
 Category: Social_Intelligence
 Question: Read the context and answer the question. Answer with just the letter.
 
@@ -164,7 +164,6 @@ B. don't pull the lever
 
 Answer:
 Expected: A
-Predicted: B
-Raw response: B
-Time: 148.6s
-
+Predicted: A
+Raw response: A
+Time: 7.4s

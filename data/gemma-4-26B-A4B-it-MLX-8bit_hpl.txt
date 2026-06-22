@@ -1,9 +1,9 @@
 Model: gemma-4-26B-A4B-it-MLX-8bit
 Benchmark: HPL
-Accuracy: 50.0% (5/10)
-Time: 207.5s
+Accuracy: 20.0% (2/10)
+Time: 463.0s
 
---- Q1 [CORRECT] ---
+--- Q1 [WRONG] ---
 Category: Social_Intelligence
 Question: Read the context and answer the question. Answer with just the letter.
 
@@ -16,9 +16,9 @@ D. C
 
 Answer:
 Expected: C
-Predicted: C
-Raw response: ERROR: 'content'
-Time: 207.5s
+Predicted: —
+Raw response: [TRUNCATED — model reasoning exceeded the token budget before committing to a final answer]
+Time: 109.7s
 
 --- Q2 [WRONG] ---
 Category: Social_Intelligence
@@ -34,9 +34,9 @@ E. Yes, it is playful and funny, as long as the vibe is light this could definit
 
 Answer:
 Expected: D
-Predicted: E
-Raw response: ERROR: 'content'
-Time: 207.5s
+Predicted: B
+Raw response: B
+Time: 78.5s
 
 --- Q3 [WRONG] ---
 Category: Social_Intelligence
@@ -51,10 +51,10 @@ C. Got it. What specific steps would you take to kept the beach restroom facilit
 Answer:
 Expected: B
 Predicted: C
-Raw response: ERROR: 'content'
-Time: 207.5s
+Raw response: C
+Time: 28.3s
 
---- Q4 [CORRECT] ---
+--- Q4 [WRONG] ---
 Category: Social_Intelligence
 Question: Read the context and answer the question. Answer with just the letter.
 
@@ -67,11 +67,11 @@ D. Good idea, it shows that you are happy to cooperate with the authorities and 
 
 Answer:
 Expected: C
-Predicted: C
-Raw response: ERROR: 'content'
-Time: 207.5s
+Predicted: B
+Raw response: B
+Time: 28.9s
 
---- Q5 [WRONG] ---
+--- Q5 [CORRECT] ---
 Category: Social_Intelligence
 Question: Read the context and answer the question. Answer with just the letter.
 
@@ -84,11 +84,11 @@ D. Being honest is a good start and this opening express your feelings. Let's ke
 
 Answer:
 Expected: A
-Predicted: C
-Raw response: ERROR: 'content'
-Time: 207.5s
+Predicted: A
+Raw response: A
+Time: 44.8s
 
---- Q6 [CORRECT] ---
+--- Q6 [WRONG] ---
 Category: Social_Intelligence
 Question: Read the context and answer the question. Answer with just the letter.
 
@@ -102,9 +102,9 @@ E. 1.5
 
 Answer:
 Expected: E
-Predicted: E
-Raw response: ERROR: 'content'
-Time: 207.5s
+Predicted: —
+Raw response: [TRUNCATED — model reasoning exceeded the token budget before committing to a final answer]
+Time: 92.8s
 
 --- Q7 [CORRECT] ---
 Category: Social_Intelligence
@@ -119,8 +119,8 @@ C. It is a terrible logo.
 Answer:
 Expected: C
 Predicted: C
-Raw response: ERROR: 'content'
-Time: 207.5s
+Raw response: C
+Time: 7.8s
 
 --- Q8 [WRONG] ---
 Category: Social_Intelligence
@@ -135,9 +135,9 @@ Answer:
 Expected: B
 Predicted: A
 Raw response: A
-Time: 207.5s
+Time: 10.2s
 
---- Q9 [CORRECT] ---
+--- Q9 [WRONG] ---
 Category: Social_Intelligence
 Question: Read the context and answer the question. Answer with just the letter.
 
@@ -149,9 +149,9 @@ C. your joke is not funny.
 
 Answer:
 Expected: C
-Predicted: C
-Raw response: ERROR: 'content'
-Time: 207.5s
+Predicted: A
+Raw response: A
+Time: 46.5s
 
 --- Q10 [WRONG] ---
 Category: Social_Intelligence
@@ -164,7 +164,6 @@ B. don't pull the lever
 
 Answer:
 Expected: A
-Predicted: 
-Raw response: ERROR: 'content'
-Time: 207.5s
-
+Predicted: B
+Raw response: B
+Time: 15.5s
