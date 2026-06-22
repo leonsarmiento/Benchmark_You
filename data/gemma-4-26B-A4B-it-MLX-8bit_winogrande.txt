@@ -1,7 +1,7 @@
 Model: gemma-4-26B-A4B-it-MLX-8bit
 Benchmark: WINOGRANDE
-Accuracy: 100.0% (30/30)
-Time: 617.2s
+Accuracy: 86.7% (26/30)
+Time: 12.4s
 
 --- Q228 [CORRECT] ---
 Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
@@ -15,7 +15,7 @@ Answer:
 Expected: 1
 Predicted: 1
 Raw response: 1
-Time: 7.481s
+Time: 0.388s
 
 --- Q51 [CORRECT] ---
 Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
@@ -29,7 +29,7 @@ Answer:
 Expected: 2
 Predicted: 2
 Raw response: 2
-Time: 11.864s
+Time: 0.418s
 
 --- Q563 [CORRECT] ---
 Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
@@ -43,9 +43,9 @@ Answer:
 Expected: 2
 Predicted: 2
 Raw response: 2
-Time: 6.196s
+Time: 0.408s
 
---- Q501 [CORRECT] ---
+--- Q501 [WRONG] ---
 Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
 
 Sentence: Smoke still rose from the house but had subsided at the barn.  The fire was doused at the _ .
@@ -55,9 +55,9 @@ Sentence: Smoke still rose from the house but had subsided at the barn.  The fir
 
 Answer:
 Expected: 2
-Predicted: 2
-Raw response: 2
-Time: 5.351s
+Predicted: 1
+Raw response: 1
+Time: 0.414s
 
 --- Q457 [CORRECT] ---
 Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
@@ -71,7 +71,7 @@ Answer:
 Expected: 2
 Predicted: 2
 Raw response: 2
-Time: 5.347s
+Time: 0.418s
 
 --- Q285 [CORRECT] ---
 Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
@@ -85,7 +85,7 @@ Answer:
 Expected: 1
 Predicted: 1
 Raw response: 1
-Time: 11.878s
+Time: 0.42s
 
 --- Q209 [CORRECT] ---
 Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
@@ -99,7 +99,7 @@ Answer:
 Expected: 2
 Predicted: 2
 Raw response: 2
-Time: 7.724s
+Time: 0.411s
 
 --- Q1116 [CORRECT] ---
 Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
@@ -113,7 +113,7 @@ Answer:
 Expected: 2
 Predicted: 2
 Raw response: 2
-Time: 7.832s
+Time: 0.411s
 
 --- Q178 [CORRECT] ---
 Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
@@ -127,7 +127,7 @@ Answer:
 Expected: 1
 Predicted: 1
 Raw response: 1
-Time: 184.14s
+Time: 0.416s
 
 --- Q1209 [CORRECT] ---
 Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
@@ -141,7 +141,7 @@ Answer:
 Expected: 2
 Predicted: 2
 Raw response: 2
-Time: 6.564s
+Time: 0.417s
 
 --- Q864 [CORRECT] ---
 Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
@@ -155,7 +155,7 @@ Answer:
 Expected: 2
 Predicted: 2
 Raw response: 2
-Time: 4.875s
+Time: 0.418s
 
 --- Q65 [CORRECT] ---
 Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
@@ -169,7 +169,7 @@ Answer:
 Expected: 2
 Predicted: 2
 Raw response: 2
-Time: 4.688s
+Time: 0.416s
 
 --- Q61 [CORRECT] ---
 Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
@@ -183,7 +183,7 @@ Answer:
 Expected: 2
 Predicted: 2
 Raw response: 2
-Time: 31.348s
+Time: 0.417s
 
 --- Q191 [CORRECT] ---
 Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
@@ -197,7 +197,7 @@ Answer:
 Expected: 1
 Predicted: 1
 Raw response: 1
-Time: 7.645s
+Time: 0.415s
 
 --- Q447 [CORRECT] ---
 Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
@@ -211,9 +211,9 @@ Answer:
 Expected: 2
 Predicted: 2
 Raw response: 2
-Time: 15.807s
+Time: 0.409s
 
---- Q476 [CORRECT] ---
+--- Q476 [WRONG] ---
 Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
 
 Sentence: Christopher taught Hunter to play go fish so that _ had someone to play with.
@@ -223,9 +223,9 @@ Sentence: Christopher taught Hunter to play go fish so that _ had someone to pla
 
 Answer:
 Expected: 1
-Predicted: 1
-Raw response: 1
-Time: 15.278s
+Predicted: 2
+Raw response: 2
+Time: 0.383s
 
 --- Q1034 [CORRECT] ---
 Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
@@ -239,9 +239,9 @@ Answer:
 Expected: 1
 Predicted: 1
 Raw response: 1
-Time: 4.74s
+Time: 0.417s
 
---- Q1232 [CORRECT] ---
+--- Q1232 [WRONG] ---
 Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
 
 Sentence: The living room was cleaner than the kitchen, because we spend more time in the the _ .
@@ -251,9 +251,9 @@ Sentence: The living room was cleaner than the kitchen, because we spend more ti
 
 Answer:
 Expected: 2
-Predicted: 2
-Raw response: 2
-Time: 16.255s
+Predicted: 1
+Raw response: 1
+Time: 0.414s
 
 --- Q54 [CORRECT] ---
 Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
@@ -267,7 +267,7 @@ Answer:
 Expected: 1
 Predicted: 1
 Raw response: 1
-Time: 6.485s
+Time: 0.418s
 
 --- Q1149 [CORRECT] ---
 Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
@@ -281,7 +281,7 @@ Answer:
 Expected: 2
 Predicted: 2
 Raw response: 2
-Time: 8.89s
+Time: 0.418s
 
 --- Q407 [CORRECT] ---
 Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
@@ -295,7 +295,7 @@ Answer:
 Expected: 2
 Predicted: 2
 Raw response: 2
-Time: 4.977s
+Time: 0.415s
 
 --- Q859 [CORRECT] ---
 Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
@@ -309,7 +309,7 @@ Answer:
 Expected: 2
 Predicted: 2
 Raw response: 2
-Time: 6.416s
+Time: 0.405s
 
 --- Q451 [CORRECT] ---
 Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
@@ -323,7 +323,7 @@ Answer:
 Expected: 2
 Predicted: 2
 Raw response: 2
-Time: 6.645s
+Time: 0.42s
 
 --- Q919 [CORRECT] ---
 Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
@@ -337,7 +337,7 @@ Answer:
 Expected: 2
 Predicted: 2
 Raw response: 2
-Time: 4.818s
+Time: 0.417s
 
 --- Q1206 [CORRECT] ---
 Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
@@ -351,7 +351,7 @@ Answer:
 Expected: 1
 Predicted: 1
 Raw response: 1
-Time: 8.449s
+Time: 0.427s
 
 --- Q569 [CORRECT] ---
 Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
@@ -365,7 +365,7 @@ Answer:
 Expected: 2
 Predicted: 2
 Raw response: 2
-Time: 6.493s
+Time: 0.422s
 
 --- Q13 [CORRECT] ---
 Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
@@ -379,9 +379,9 @@ Answer:
 Expected: 1
 Predicted: 1
 Raw response: 1
-Time: 7.256s
+Time: 0.416s
 
---- Q326 [CORRECT] ---
+--- Q326 [WRONG] ---
 Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
 
 Sentence: Hunter bought a vehicle to commute in but not Dennis because _ had a driving distance to work.
@@ -391,9 +391,9 @@ Sentence: Hunter bought a vehicle to commute in but not Dennis because _ had a d
 
 Answer:
 Expected: 1
-Predicted: 1
-Raw response: 1
-Time: 24.827s
+Predicted: 2
+Raw response: 2
+Time: 0.418s
 
 --- Q865 [CORRECT] ---
 Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
@@ -407,7 +407,7 @@ Answer:
 Expected: 2
 Predicted: 2
 Raw response: 2
-Time: 172.356s
+Time: 0.408s
 
 --- Q696 [CORRECT] ---
 Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
@@ -421,4 +421,4 @@ Answer:
 Expected: 2
 Predicted: 2
 Raw response: 2
-Time: 4.614s
+Time: 0.421s

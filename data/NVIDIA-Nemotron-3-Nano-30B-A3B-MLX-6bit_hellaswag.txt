@@ -1,7 +1,7 @@
 Model: NVIDIA-Nemotron-3-Nano-30B-A3B-MLX-6bit
 Benchmark: HELLASWAG
 Accuracy: 80.0% (24/30)
-Time: 20s
+Time: 19.3s
 
 --- Q28016 [CORRECT] ---
 Category: Playing polo
@@ -18,7 +18,7 @@ Answer:
 Expected: 0
 Predicted: A
 Raw response: A
-Time: 3.073s
+Time: 2.323s
 
 --- Q5823 [WRONG] ---
 Category: Powerbocking
@@ -35,7 +35,7 @@ Answer:
 Expected: 0
 Predicted: D
 Raw response: D
-Time: 0.408s
+Time: 0.414s
 
 --- Q9715 [CORRECT] ---
 Category: Personal Care and Style
@@ -52,7 +52,7 @@ Answer:
 Expected: 3
 Predicted: D
 Raw response: D
-Time: 0.706s
+Time: 0.674s
 
 --- Q5867 [CORRECT] ---
 Category: Health
@@ -69,7 +69,7 @@ Answer:
 Expected: 3
 Predicted: D
 Raw response: D
-Time: 0.642s
+Time: 0.657s
 
 --- Q3190 [CORRECT] ---
 Category: Pets and Animals
@@ -86,7 +86,7 @@ Answer:
 Expected: 2
 Predicted: C
 Raw response: C
-Time: 0.649s
+Time: 0.669s
 
 --- Q35259 [CORRECT] ---
 Category: Cutting the grass
@@ -103,7 +103,7 @@ Answer:
 Expected: 2
 Predicted: C
 Raw response: C
-Time: 0.408s
+Time: 0.424s
 
 --- Q25693 [WRONG] ---
 Category: Playing polo
@@ -120,7 +120,7 @@ Answer:
 Expected: 3
 Predicted: B
 Raw response: B
-Time: 0.363s
+Time: 0.378s
 
 --- Q42181 [CORRECT] ---
 Category: Health
@@ -137,7 +137,7 @@ Answer:
 Expected: 1
 Predicted: B
 Raw response: B
-Time: 0.63s
+Time: 0.639s
 
 --- Q21145 [CORRECT] ---
 Category: Making a lemonade
@@ -154,7 +154,7 @@ Answer:
 Expected: 0
 Predicted: A
 Raw response: A
-Time: 0.423s
+Time: 0.437s
 
 --- Q47659 [CORRECT] ---
 Category: Home and Garden
@@ -171,7 +171,7 @@ Answer:
 Expected: 3
 Predicted: D
 Raw response: D
-Time: 0.656s
+Time: 0.669s
 
 --- Q27210 [CORRECT] ---
 Category: Personal Care and Style
@@ -188,7 +188,7 @@ Answer:
 Expected: 1
 Predicted: B
 Raw response: B
-Time: 0.741s
+Time: 0.749s
 
 --- Q7413 [CORRECT] ---
 Category: Hitting a pinata
@@ -205,7 +205,7 @@ Answer:
 Expected: 3
 Predicted: D
 Raw response: D
-Time: 0.493s
+Time: 0.51s
 
 --- Q6841 [CORRECT] ---
 Category: Playing violin
@@ -222,7 +222,7 @@ Answer:
 Expected: 3
 Predicted: D
 Raw response: D
-Time: 0.406s
+Time: 0.419s
 
 --- Q22911 [WRONG] ---
 Category: Sharpening knives
@@ -239,7 +239,7 @@ Answer:
 Expected: 3
 Predicted: B
 Raw response: B
-Time: 0.414s
+Time: 0.425s
 
 --- Q2648 [CORRECT] ---
 Category: Food and Entertaining
@@ -256,7 +256,7 @@ Answer:
 Expected: 1
 Predicted: B
 Raw response: B
-Time: 0.619s
+Time: 0.635s
 
 --- Q4343 [CORRECT] ---
 Category: Computers and Electronics
@@ -273,7 +273,7 @@ Answer:
 Expected: 1
 Predicted: B
 Raw response: B
-Time: 0.664s
+Time: 0.676s
 
 --- Q37099 [CORRECT] ---
 Category: Pets and Animals
@@ -290,7 +290,7 @@ Answer:
 Expected: 3
 Predicted: D
 Raw response: D
-Time: 0.673s
+Time: 0.689s
 
 --- Q49158 [CORRECT] ---
 Category: Food and Entertaining
@@ -307,7 +307,7 @@ Answer:
 Expected: 1
 Predicted: B
 Raw response: B
-Time: 0.66s
+Time: 0.673s
 
 --- Q6190 [WRONG] ---
 Category: Doing kickboxing
@@ -324,7 +324,7 @@ Answer:
 Expected: 2
 Predicted: B
 Raw response: B
-Time: 0.42s
+Time: 0.431s
 
 --- Q43998 [CORRECT] ---
 Category: Personal Care and Style
@@ -341,7 +341,7 @@ Answer:
 Expected: 3
 Predicted: D
 Raw response: D
-Time: 0.605s
+Time: 0.623s
 
 --- Q160 [WRONG] ---
 Category: Personal Care and Style
@@ -358,7 +358,7 @@ Answer:
 Expected: 2
 Predicted: B
 Raw response: B
-Time: 0.737s
+Time: 0.677s
 
 --- Q42099 [CORRECT] ---
 Category: Personal Care and Style
@@ -375,7 +375,7 @@ Answer:
 Expected: 2
 Predicted: C
 Raw response: C
-Time: 0.656s
+Time: 0.667s
 
 --- Q26875 [CORRECT] ---
 Category: Finance and Business
@@ -392,7 +392,7 @@ Answer:
 Expected: 3
 Predicted: D
 Raw response: D
-Time: 0.677s
+Time: 0.616s
 
 --- Q2829 [WRONG] ---
 Category: Food and Entertaining
@@ -409,7 +409,7 @@ Answer:
 Expected: 3
 Predicted: C
 Raw response: C
-Time: 0.758s
+Time: 0.667s
 
 --- Q30606 [CORRECT] ---
 Category: Youth
@@ -426,7 +426,7 @@ Answer:
 Expected: 2
 Predicted: C
 Raw response: C
-Time: 0.715s
+Time: 0.722s
 
 --- Q47444 [CORRECT] ---
 Category: Personal Care and Style
@@ -443,7 +443,7 @@ Answer:
 Expected: 3
 Predicted: D
 Raw response: D
-Time: 0.648s
+Time: 0.665s
 
 --- Q10105 [CORRECT] ---
 Category: Personal Care and Style
@@ -460,7 +460,7 @@ Answer:
 Expected: 0
 Predicted: A
 Raw response: A
-Time: 0.606s
+Time: 0.615s
 
 --- Q1494 [CORRECT] ---
 Category: Paintball
@@ -477,7 +477,7 @@ Answer:
 Expected: 2
 Predicted: C
 Raw response: C
-Time: 0.467s
+Time: 0.48s
 
 --- Q39911 [CORRECT] ---
 Category: Clipping cat claws
@@ -494,7 +494,7 @@ Answer:
 Expected: 3
 Predicted: D
 Raw response: D
-Time: 0.424s
+Time: 0.438s
 
 --- Q27262 [CORRECT] ---
 Category: Youth
@@ -511,4 +511,4 @@ Answer:
 Expected: 3
 Predicted: D
 Raw response: D
-Time: 0.662s
+Time: 0.674s

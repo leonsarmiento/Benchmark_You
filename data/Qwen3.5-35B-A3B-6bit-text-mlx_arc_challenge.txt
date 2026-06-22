@@ -1,7 +1,7 @@
 Model: Qwen3.5-35B-A3B-6bit-text-mlx
 Benchmark: ARC_CHALLENGE
 Accuracy: 86.7% (26/30)
-Time: 14.3s
+Time: 13.9s
 
 --- QMercury_7043820 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -17,7 +17,7 @@ Answer:
 Expected: B
 Predicted: B
 Raw response: B
-Time: 0.431s
+Time: 0.418s
 
 --- QMCAS_2003_5_33 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -33,7 +33,7 @@ Answer:
 Expected: C
 Predicted: C
 Raw response: C
-Time: 0.498s
+Time: 0.486s
 
 --- QMercury_7219678 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -49,7 +49,7 @@ Answer:
 Expected: A
 Predicted: A
 Raw response: A
-Time: 0.485s
+Time: 0.476s
 
 --- QAKDE&ED_2008_8_48 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -65,7 +65,7 @@ Answer:
 Expected: A
 Predicted: A
 Raw response: A
-Time: 0.449s
+Time: 0.444s
 
 --- QMercury_7210455 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -81,7 +81,7 @@ Answer:
 Expected: C
 Predicted: C
 Raw response: C
-Time: 0.5s
+Time: 0.489s
 
 --- QMercury_407517 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -97,7 +97,7 @@ Answer:
 Expected: C
 Predicted: C
 Raw response: C
-Time: 0.475s
+Time: 0.461s
 
 --- QTIMSS_2007_8_pg109 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -113,7 +113,7 @@ Answer:
 Expected: C
 Predicted: C
 Raw response: C
-Time: 0.449s
+Time: 0.433s
 
 --- QMercury_SC_400134 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -129,7 +129,7 @@ Answer:
 Expected: D
 Predicted: D
 Raw response: D
-Time: 0.46s
+Time: 0.452s
 
 --- QMercury_402501 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -145,7 +145,7 @@ Answer:
 Expected: B
 Predicted: B
 Raw response: B
-Time: 0.474s
+Time: 0.463s
 
 --- QMercury_400084 [WRONG] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -161,7 +161,7 @@ Answer:
 Expected: D
 Predicted: C
 Raw response: C
-Time: 0.583s
+Time: 0.567s
 
 --- QMercury_406777 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -177,7 +177,7 @@ Answer:
 Expected: A
 Predicted: A
 Raw response: A
-Time: 0.467s
+Time: 0.455s
 
 --- QMercury_SC_416529 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -193,7 +193,7 @@ Answer:
 Expected: B
 Predicted: B
 Raw response: B
-Time: 0.435s
+Time: 0.422s
 
 --- QMercury_SC_413549 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -209,7 +209,7 @@ Answer:
 Expected: B
 Predicted: B
 Raw response: B
-Time: 0.558s
+Time: 0.546s
 
 --- QMercury_SC_400162 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -225,7 +225,7 @@ Answer:
 Expected: D
 Predicted: D
 Raw response: D
-Time: 0.433s
+Time: 0.422s
 
 --- QMercury_7056823 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -241,7 +241,7 @@ Answer:
 Expected: B
 Predicted: B
 Raw response: B
-Time: 0.431s
+Time: 0.417s
 
 --- QNAEP_2000_8_S11+10 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -257,7 +257,7 @@ Answer:
 Expected: A
 Predicted: A
 Raw response: A
-Time: 0.426s
+Time: 0.417s
 
 --- QMercury_7235638 [WRONG] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -273,7 +273,7 @@ Answer:
 Expected: C
 Predicted: B
 Raw response: B
-Time: 0.491s
+Time: 0.478s
 
 --- QMercury_SC_LBS10662 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -289,7 +289,7 @@ Answer:
 Expected: C
 Predicted: C
 Raw response: C
-Time: 0.443s
+Time: 0.432s
 
 --- QMercury_175053 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -305,7 +305,7 @@ Answer:
 Expected: D
 Predicted: D
 Raw response: D
-Time: 0.543s
+Time: 0.54s
 
 --- QTIMSS_2003_8_pg87 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -321,7 +321,7 @@ Answer:
 Expected: B
 Predicted: B
 Raw response: B
-Time: 0.583s
+Time: 0.567s
 
 --- QMercury_SC_400052 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -337,7 +337,7 @@ Answer:
 Expected: B
 Predicted: B
 Raw response: B
-Time: 0.398s
+Time: 0.383s
 
 --- QMercury_7236740 [WRONG] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -353,7 +353,7 @@ Answer:
 Expected: B
 Predicted: C
 Raw response: C
-Time: 0.55s
+Time: 0.537s
 
 --- QVASoL_2009_3_23 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -369,7 +369,7 @@ Answer:
 Expected: D
 Predicted: D
 Raw response: D
-Time: 0.475s
+Time: 0.464s
 
 --- QMercury_SC_407400 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -385,7 +385,7 @@ Answer:
 Expected: C
 Predicted: C
 Raw response: C
-Time: 0.493s
+Time: 0.481s
 
 --- QMercury_7068583 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -401,7 +401,7 @@ Answer:
 Expected: B
 Predicted: B
 Raw response: B
-Time: 0.38s
+Time: 0.37s
 
 --- QMercury_7139650 [WRONG] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -417,7 +417,7 @@ Answer:
 Expected: C
 Predicted: B
 Raw response: B
-Time: 0.495s
+Time: 0.485s
 
 --- QMercury_SC_400985 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -433,7 +433,7 @@ Answer:
 Expected: C
 Predicted: C
 Raw response: C
-Time: 0.507s
+Time: 0.488s
 
 --- QMCAS_2006_8_24 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -449,7 +449,7 @@ Answer:
 Expected: A
 Predicted: A
 Raw response: A
-Time: 0.493s
+Time: 0.49s
 
 --- QMercury_SC_405710 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -465,7 +465,7 @@ Answer:
 Expected: D
 Predicted: D
 Raw response: D
-Time: 0.423s
+Time: 0.417s
 
 --- QACTAAP_2014_7_5 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -481,4 +481,4 @@ Answer:
 Expected: D
 Predicted: D
 Raw response: D
-Time: 0.451s
+Time: 0.436s

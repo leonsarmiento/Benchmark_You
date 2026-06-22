@@ -1,7 +1,7 @@
 Model: GLM-4.6V-Flash-MLX-8bit
 Benchmark: ARC_CHALLENGE
-Accuracy: 80.0% (24/30)
-Time: 22.8s
+Accuracy: 76.7% (23/30)
+Time: 22.4s
 
 --- QMercury_7043820 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -17,7 +17,7 @@ Answer:
 Expected: B
 Predicted: B
 Raw response: B
-Time: 0.356s
+Time: 0.377s
 
 --- QMCAS_2003_5_33 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -33,7 +33,7 @@ Answer:
 Expected: C
 Predicted: C
 Raw response: <|begin_of_box|>C<|end_of_box|>
-Time: 0.57s
+Time: 0.553s
 
 --- QMercury_7219678 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -49,7 +49,7 @@ Answer:
 Expected: A
 Predicted: A
 Raw response: <|begin_of_box|>A<|end_of_box|>
-Time: 0.65s
+Time: 0.691s
 
 --- QAKDE&ED_2008_8_48 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -65,7 +65,7 @@ Answer:
 Expected: A
 Predicted: A
 Raw response: <|begin_of_box|>A<|end_of_box|>
-Time: 0.556s
+Time: 0.55s
 
 --- QMercury_7210455 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -81,7 +81,7 @@ Answer:
 Expected: C
 Predicted: C
 Raw response: <|begin_of_box|>C<|end_of_box|>
-Time: 0.533s
+Time: 0.552s
 
 --- QMercury_407517 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -97,7 +97,7 @@ Answer:
 Expected: C
 Predicted: C
 Raw response: <|begin_of_box|>C<|end_of_box|>
-Time: 0.538s
+Time: 0.551s
 
 --- QTIMSS_2007_8_pg109 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -112,10 +112,10 @@ D. Compare their fingerprints.
 Answer:
 Expected: C
 Predicted: C
-Raw response: <|begin_of_box|>C<|end_of_box|>
-Time: 0.533s
+Raw response: C
+Time: 0.47s
 
---- QMercury_SC_400134 [CORRECT] ---
+--- QMercury_SC_400134 [WRONG] ---
 Question: Answer the following science question. Answer with just the letter.
 
 Question: Which tool would be the most helpful in an investigation of the life cycle of a monarch butterfly?
@@ -127,9 +127,9 @@ D. a large jar with air holes in the top
 
 Answer:
 Expected: D
-Predicted: D
-Raw response: <|begin_of_box|>D<|end_of_box|>
-Time: 0.538s
+Predicted: B
+Raw response: <|begin_of_box|>B<|end_of_box|>
+Time: 0.549s
 
 --- QMercury_402501 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -145,7 +145,7 @@ Answer:
 Expected: B
 Predicted: B
 Raw response: The correct formula for magnesium bromide is **MgBr₂**, which corresponds to option **B**.
-Time: 1.288s
+Time: 1.254s
 
 --- QMercury_400084 [WRONG] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -161,7 +161,7 @@ Answer:
 Expected: D
 Predicted: B
 Raw response: The answer is <|begin_of_box|>B<|end_of_box|>.
-Time: 0.87s
+Time: 0.845s
 
 --- QMercury_406777 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -177,7 +177,7 @@ Answer:
 Expected: A
 Predicted: A
 Raw response: <|begin_of_box|>A<|end_of_box|>
-Time: 0.535s
+Time: 0.549s
 
 --- QMercury_SC_416529 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -193,7 +193,7 @@ Answer:
 Expected: B
 Predicted: B
 Raw response: <|begin_of_box|>B<|end_of_box|>
-Time: 0.597s
+Time: 0.548s
 
 --- QMercury_SC_413549 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -209,7 +209,7 @@ Answer:
 Expected: B
 Predicted: B
 Raw response: <|begin_of_box|>B<|end_of_box|>
-Time: 0.741s
+Time: 0.647s
 
 --- QMercury_SC_400162 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -225,7 +225,7 @@ Answer:
 Expected: D
 Predicted: D
 Raw response: <|begin_of_box|>D<|end_of_box|>
-Time: 0.432s
+Time: 0.452s
 
 --- QMercury_7056823 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -241,7 +241,7 @@ Answer:
 Expected: B
 Predicted: B
 Raw response: <|begin_of_box|>B<|end_of_box|>
-Time: 0.433s
+Time: 0.457s
 
 --- QNAEP_2000_8_S11+10 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -257,7 +257,7 @@ Answer:
 Expected: A
 Predicted: A
 Raw response: <|begin_of_box|>A<|end_of_box|>
-Time: 0.533s
+Time: 0.552s
 
 --- QMercury_7235638 [WRONG] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -273,7 +273,7 @@ Answer:
 Expected: C
 Predicted: B
 Raw response: The answer is B.
-Time: 0.653s
+Time: 0.634s
 
 --- QMercury_SC_LBS10662 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -288,8 +288,8 @@ D. radiation.
 Answer:
 Expected: C
 Predicted: C
-Raw response: C
-Time: 0.452s
+Raw response: <|begin_of_box|>C<|end_of_box|>
+Time: 0.555s
 
 --- QMercury_175053 [WRONG] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -305,7 +305,7 @@ Answer:
 Expected: D
 Predicted: A
 Raw response: <|begin_of_box|>A<|end_of_box|>
-Time: 0.668s
+Time: 0.656s
 
 --- QTIMSS_2003_8_pg87 [WRONG] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -332,7 +332,7 @@ The amount of salt remains 10 grams.
 
 The new concentration will be:
 New concentration = (Amount of salt) / (New volume)
-Time: 5.812s
+Time: 5.536s
 
 --- QMercury_SC_400052 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -348,7 +348,7 @@ Answer:
 Expected: B
 Predicted: B
 Raw response: <|begin_of_box|>B<|end_of_box|>
-Time: 0.604s
+Time: 0.458s
 
 --- QMercury_7236740 [WRONG] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -364,7 +364,7 @@ Answer:
 Expected: B
 Predicted: C
 Raw response: <|begin_of_box|>C<|end_of_box|>
-Time: 0.536s
+Time: 0.567s
 
 --- QVASoL_2009_3_23 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -380,7 +380,7 @@ Answer:
 Expected: D
 Predicted: D
 Raw response: <|begin_of_box|>D<|end_of_box|>
-Time: 0.568s
+Time: 0.552s
 
 --- QMercury_SC_407400 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -396,7 +396,7 @@ Answer:
 Expected: C
 Predicted: C
 Raw response: <|begin_of_box|>C<|end_of_box|>
-Time: 0.533s
+Time: 0.552s
 
 --- QMercury_7068583 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -412,7 +412,7 @@ Answer:
 Expected: B
 Predicted: B
 Raw response: <|begin_of_box|>B<|end_of_box|>
-Time: 0.475s
+Time: 0.451s
 
 --- QMercury_7139650 [WRONG] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -428,7 +428,7 @@ Answer:
 Expected: C
 Predicted: B
 Raw response: <|begin_of_box|>B<|end_of_box|>
-Time: 0.534s
+Time: 0.553s
 
 --- QMercury_SC_400985 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -444,7 +444,7 @@ Answer:
 Expected: C
 Predicted: C
 Raw response: <|begin_of_box|>C<|end_of_box|>
-Time: 0.573s
+Time: 0.552s
 
 --- QMCAS_2006_8_24 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -460,7 +460,7 @@ Answer:
 Expected: A
 Predicted: A
 Raw response: <|begin_of_box|>A<|end_of_box|>
-Time: 0.746s
+Time: 0.749s
 
 --- QMercury_SC_405710 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -476,7 +476,7 @@ Answer:
 Expected: D
 Predicted: D
 Raw response: <|begin_of_box|>D<|end_of_box|>
-Time: 0.434s
+Time: 0.451s
 
 --- QACTAAP_2014_7_5 [CORRECT] ---
 Question: Answer the following science question. Answer with just the letter.
@@ -492,4 +492,4 @@ Answer:
 Expected: D
 Predicted: D
 Raw response: <|begin_of_box|>D<|end_of_box|>
-Time: 0.531s
+Time: 0.549s

@@ -1,7 +1,7 @@
-Model: Nex-N2-mini-6bit
+Model: Nex-N2-mini-6bit-text-mlx
 Benchmark: WINOGRANDE
-Accuracy: 76.7% (23/30)
-Time: 12.7s
+Accuracy: 73.3% (22/30)
+Time: 13.1s
 
 --- Q228 [CORRECT] ---
 Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
@@ -15,7 +15,7 @@ Answer:
 Expected: 1
 Predicted: 1
 Raw response: 1
-Time: 0.389s
+Time: 0.423s
 
 --- Q51 [CORRECT] ---
 Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
@@ -29,7 +29,7 @@ Answer:
 Expected: 2
 Predicted: 2
 Raw response: 2
-Time: 0.425s
+Time: 0.447s
 
 --- Q563 [WRONG] ---
 Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
@@ -43,7 +43,7 @@ Answer:
 Expected: 2
 Predicted: 1
 Raw response: 1
-Time: 0.416s
+Time: 0.441s
 
 --- Q501 [CORRECT] ---
 Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
@@ -57,7 +57,7 @@ Answer:
 Expected: 2
 Predicted: 2
 Raw response: 2
-Time: 0.427s
+Time: 0.469s
 
 --- Q457 [CORRECT] ---
 Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
@@ -71,7 +71,7 @@ Answer:
 Expected: 2
 Predicted: 2
 Raw response: 2
-Time: 0.441s
+Time: 0.461s
 
 --- Q285 [WRONG] ---
 Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
@@ -85,7 +85,7 @@ Answer:
 Expected: 1
 Predicted: 2
 Raw response: 2
-Time: 0.42s
+Time: 0.425s
 
 --- Q209 [CORRECT] ---
 Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
@@ -99,7 +99,7 @@ Answer:
 Expected: 2
 Predicted: 2
 Raw response: 2
-Time: 0.417s
+Time: 0.424s
 
 --- Q1116 [CORRECT] ---
 Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
@@ -113,7 +113,7 @@ Answer:
 Expected: 2
 Predicted: 2
 Raw response: 2
-Time: 0.418s
+Time: 0.425s
 
 --- Q178 [WRONG] ---
 Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
@@ -127,7 +127,7 @@ Answer:
 Expected: 1
 Predicted: 2
 Raw response: 2
-Time: 0.42s
+Time: 0.427s
 
 --- Q1209 [CORRECT] ---
 Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
@@ -141,7 +141,7 @@ Answer:
 Expected: 2
 Predicted: 2
 Raw response: 2
-Time: 0.42s
+Time: 0.424s
 
 --- Q864 [CORRECT] ---
 Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
@@ -155,7 +155,7 @@ Answer:
 Expected: 2
 Predicted: 2
 Raw response: 2
-Time: 0.433s
+Time: 0.435s
 
 --- Q65 [CORRECT] ---
 Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
@@ -169,9 +169,9 @@ Answer:
 Expected: 2
 Predicted: 2
 Raw response: 2
-Time: 0.445s
+Time: 0.455s
 
---- Q61 [CORRECT] ---
+--- Q61 [WRONG] ---
 Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
 
 Sentence: Laura used too much super glue on Erins hands, so _ needed to get to the doctor to separate their hands.
@@ -181,9 +181,9 @@ Sentence: Laura used too much super glue on Erins hands, so _ needed to get to t
 
 Answer:
 Expected: 2
-Predicted: 2
-Raw response: 2
-Time: 0.427s
+Predicted: 1
+Raw response: 1
+Time: 0.441s
 
 --- Q191 [CORRECT] ---
 Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
@@ -197,7 +197,7 @@ Answer:
 Expected: 1
 Predicted: 1
 Raw response: 1
-Time: 0.426s
+Time: 0.477s
 
 --- Q447 [WRONG] ---
 Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
@@ -211,7 +211,7 @@ Answer:
 Expected: 2
 Predicted: 1
 Raw response: 1
-Time: 0.417s
+Time: 0.456s
 
 --- Q476 [WRONG] ---
 Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
@@ -225,7 +225,7 @@ Answer:
 Expected: 1
 Predicted: 2
 Raw response: 2
-Time: 0.39s
+Time: 0.416s
 
 --- Q1034 [CORRECT] ---
 Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
@@ -239,7 +239,7 @@ Answer:
 Expected: 1
 Predicted: 1
 Raw response: 1
-Time: 0.439s
+Time: 0.453s
 
 --- Q1232 [WRONG] ---
 Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
@@ -253,7 +253,7 @@ Answer:
 Expected: 2
 Predicted: 1
 Raw response: 1
-Time: 0.416s
+Time: 0.433s
 
 --- Q54 [CORRECT] ---
 Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
@@ -267,7 +267,7 @@ Answer:
 Expected: 1
 Predicted: 1
 Raw response: 1
-Time: 0.453s
+Time: 0.442s
 
 --- Q1149 [CORRECT] ---
 Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
@@ -281,7 +281,7 @@ Answer:
 Expected: 2
 Predicted: 2
 Raw response: 2
-Time: 0.443s
+Time: 0.457s
 
 --- Q407 [CORRECT] ---
 Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
@@ -295,7 +295,7 @@ Answer:
 Expected: 2
 Predicted: 2
 Raw response: 2
-Time: 0.422s
+Time: 0.433s
 
 --- Q859 [CORRECT] ---
 Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
@@ -309,7 +309,7 @@ Answer:
 Expected: 2
 Predicted: 2
 Raw response: 2
-Time: 0.417s
+Time: 0.429s
 
 --- Q451 [CORRECT] ---
 Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
@@ -323,7 +323,7 @@ Answer:
 Expected: 2
 Predicted: 2
 Raw response: 2
-Time: 0.434s
+Time: 0.43s
 
 --- Q919 [CORRECT] ---
 Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
@@ -337,7 +337,7 @@ Answer:
 Expected: 2
 Predicted: 2
 Raw response: 2
-Time: 0.4s
+Time: 0.399s
 
 --- Q1206 [CORRECT] ---
 Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
@@ -351,7 +351,7 @@ Answer:
 Expected: 1
 Predicted: 1
 Raw response: 1
-Time: 0.417s
+Time: 0.435s
 
 --- Q569 [CORRECT] ---
 Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
@@ -365,7 +365,7 @@ Answer:
 Expected: 2
 Predicted: 2
 Raw response: 2
-Time: 0.42s
+Time: 0.432s
 
 --- Q13 [CORRECT] ---
 Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
@@ -379,7 +379,7 @@ Answer:
 Expected: 1
 Predicted: 1
 Raw response: 1
-Time: 0.436s
+Time: 0.45s
 
 --- Q326 [CORRECT] ---
 Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
@@ -393,7 +393,7 @@ Answer:
 Expected: 1
 Predicted: 1
 Raw response: 1
-Time: 0.413s
+Time: 0.414s
 
 --- Q865 [WRONG] ---
 Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
@@ -407,7 +407,7 @@ Answer:
 Expected: 2
 Predicted: 1
 Raw response: 1
-Time: 0.395s
+Time: 0.408s
 
 --- Q696 [CORRECT] ---
 Question: Choose the correct option to fill in the blank (_). Answer with just the number (1 or 2).
@@ -421,4 +421,4 @@ Answer:
 Expected: 2
 Predicted: 2
 Raw response: 2
-Time: 0.414s
+Time: 0.428s

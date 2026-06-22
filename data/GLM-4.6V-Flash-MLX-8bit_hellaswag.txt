@@ -1,7 +1,7 @@
 Model: GLM-4.6V-Flash-MLX-8bit
 Benchmark: HELLASWAG
 Accuracy: 73.3% (22/30)
-Time: 28.3s
+Time: 29.7s
 
 --- Q28016 [CORRECT] ---
 Category: Playing polo
@@ -18,7 +18,7 @@ Answer:
 Expected: 0
 Predicted: A
 Raw response: <|begin_of_box|>A<|end_of_box|>
-Time: 0.757s
+Time: 1.194s
 
 --- Q5823 [WRONG] ---
 Category: Powerbocking
@@ -35,7 +35,7 @@ Answer:
 Expected: 0
 Predicted: D
 Raw response: <|begin_of_box|>D<|end_of_box|>
-Time: 0.631s
+Time: 0.65s
 
 --- Q9715 [CORRECT] ---
 Category: Personal Care and Style
@@ -52,7 +52,7 @@ Answer:
 Expected: 3
 Predicted: D
 Raw response: <|begin_of_box|>D<|end_of_box|>
-Time: 1.13s
+Time: 1.15s
 
 --- Q5867 [CORRECT] ---
 Category: Health
@@ -69,7 +69,7 @@ Answer:
 Expected: 3
 Predicted: D
 Raw response: <|begin_of_box|>D<|end_of_box|>
-Time: 1.132s
+Time: 1.213s
 
 --- Q3190 [CORRECT] ---
 Category: Pets and Animals
@@ -86,7 +86,7 @@ Answer:
 Expected: 2
 Predicted: C
 Raw response: <|begin_of_box|>C<|end_of_box|>
-Time: 1.133s
+Time: 1.223s
 
 --- Q35259 [CORRECT] ---
 Category: Cutting the grass
@@ -103,7 +103,7 @@ Answer:
 Expected: 2
 Predicted: C
 Raw response: <|begin_of_box|>C<|end_of_box|>
-Time: 0.669s
+Time: 0.701s
 
 --- Q25693 [WRONG] ---
 Category: Playing polo
@@ -120,7 +120,7 @@ Answer:
 Expected: 3
 Predicted: B
 Raw response: <|begin_of_box|>B<|end_of_box|>
-Time: 0.532s
+Time: 0.555s
 
 --- Q42181 [CORRECT] ---
 Category: Health
@@ -137,7 +137,7 @@ Answer:
 Expected: 1
 Predicted: B
 Raw response: <|begin_of_box|>B<|end_of_box|>
-Time: 1.03s
+Time: 1.047s
 
 --- Q21145 [WRONG] ---
 Category: Making a lemonade
@@ -154,7 +154,7 @@ Answer:
 Expected: 0
 Predicted: B
 Raw response: <|begin_of_box|>B<|end_of_box|>
-Time: 0.64s
+Time: 0.653s
 
 --- Q47659 [WRONG] ---
 Category: Home and Garden
@@ -171,7 +171,7 @@ Answer:
 Expected: 3
 Predicted: A
 Raw response: <|begin_of_box|>A<|end_of_box|>
-Time: 1.135s
+Time: 1.156s
 
 --- Q27210 [CORRECT] ---
 Category: Personal Care and Style
@@ -188,7 +188,7 @@ Answer:
 Expected: 1
 Predicted: B
 Raw response: <|begin_of_box|>B<|end_of_box|>
-Time: 1.233s
+Time: 1.303s
 
 --- Q7413 [CORRECT] ---
 Category: Hitting a pinata
@@ -205,7 +205,7 @@ Answer:
 Expected: 3
 Predicted: D
 Raw response: <|begin_of_box|>D<|end_of_box|>
-Time: 0.762s
+Time: 0.805s
 
 --- Q6841 [CORRECT] ---
 Category: Playing violin
@@ -222,7 +222,7 @@ Answer:
 Expected: 3
 Predicted: D
 Raw response: <|begin_of_box|>D<|end_of_box|>
-Time: 0.63s
+Time: 0.653s
 
 --- Q22911 [WRONG] ---
 Category: Sharpening knives
@@ -239,7 +239,7 @@ Answer:
 Expected: 3
 Predicted: B
 Raw response: <|begin_of_box|>B<|end_of_box|>
-Time: 0.634s
+Time: 0.665s
 
 --- Q2648 [CORRECT] ---
 Category: Food and Entertaining
@@ -256,7 +256,7 @@ Answer:
 Expected: 1
 Predicted: B
 Raw response: <|begin_of_box|>B<|end_of_box|>
-Time: 1.038s
+Time: 1.051s
 
 --- Q4343 [CORRECT] ---
 Category: Computers and Electronics
@@ -273,7 +273,7 @@ Answer:
 Expected: 1
 Predicted: B
 Raw response: <|begin_of_box|>B<|end_of_box|>
-Time: 1.133s
+Time: 1.152s
 
 --- Q37099 [CORRECT] ---
 Category: Pets and Animals
@@ -290,7 +290,7 @@ Answer:
 Expected: 3
 Predicted: D
 Raw response: <|begin_of_box|>D<|end_of_box|>
-Time: 1.135s
+Time: 1.203s
 
 --- Q49158 [WRONG] ---
 Category: Food and Entertaining
@@ -307,7 +307,7 @@ Answer:
 Expected: 1
 Predicted: D
 Raw response: <|begin_of_box|>D<|end_of_box|>
-Time: 1.135s
+Time: 1.223s
 
 --- Q6190 [CORRECT] ---
 Category: Doing kickboxing
@@ -324,7 +324,7 @@ Answer:
 Expected: 2
 Predicted: C
 Raw response: <|begin_of_box|>C<|end_of_box|>
-Time: 0.641s
+Time: 0.705s
 
 --- Q43998 [CORRECT] ---
 Category: Personal Care and Style
@@ -341,7 +341,7 @@ Answer:
 Expected: 3
 Predicted: D
 Raw response: <|begin_of_box|>D<|end_of_box|>
-Time: 0.984s
+Time: 0.949s
 
 --- Q160 [CORRECT] ---
 Category: Personal Care and Style
@@ -358,7 +358,7 @@ Answer:
 Expected: 2
 Predicted: C
 Raw response: <|begin_of_box|>C<|end_of_box|>
-Time: 1.24s
+Time: 1.158s
 
 --- Q42099 [CORRECT] ---
 Category: Personal Care and Style
@@ -375,7 +375,7 @@ Answer:
 Expected: 2
 Predicted: C
 Raw response: <|begin_of_box|>C<|end_of_box|>
-Time: 1.135s
+Time: 1.203s
 
 --- Q26875 [CORRECT] ---
 Category: Finance and Business
@@ -392,7 +392,7 @@ Answer:
 Expected: 3
 Predicted: D
 Raw response: <|begin_of_box|>D<|end_of_box|>
-Time: 0.938s
+Time: 1.003s
 
 --- Q2829 [WRONG] ---
 Category: Food and Entertaining
@@ -409,7 +409,7 @@ Answer:
 Expected: 3
 Predicted: C
 Raw response: <|begin_of_box|>C<|end_of_box|>
-Time: 1.132s
+Time: 1.171s
 
 --- Q30606 [CORRECT] ---
 Category: Youth
@@ -426,7 +426,7 @@ Answer:
 Expected: 2
 Predicted: C
 Raw response: <|begin_of_box|>C<|end_of_box|>
-Time: 1.235s
+Time: 1.307s
 
 --- Q47444 [CORRECT] ---
 Category: Personal Care and Style
@@ -443,7 +443,7 @@ Answer:
 Expected: 3
 Predicted: D
 Raw response: <|begin_of_box|>D<|end_of_box|>
-Time: 1.035s
+Time: 1.105s
 
 --- Q10105 [CORRECT] ---
 Category: Personal Care and Style
@@ -460,7 +460,7 @@ Answer:
 Expected: 0
 Predicted: A
 Raw response: <|begin_of_box|>A<|end_of_box|>
-Time: 1.028s
+Time: 1.048s
 
 --- Q1494 [WRONG] ---
 Category: Paintball
@@ -477,7 +477,7 @@ Answer:
 Expected: 2
 Predicted: D
 Raw response: <|begin_of_box|>D<|end_of_box|>
-Time: 0.738s
+Time: 0.756s
 
 --- Q39911 [CORRECT] ---
 Category: Clipping cat claws
@@ -494,7 +494,7 @@ Answer:
 Expected: 3
 Predicted: D
 Raw response: <|begin_of_box|>D<|end_of_box|>
-Time: 0.633s
+Time: 0.668s
 
 --- Q27262 [CORRECT] ---
 Category: Youth
@@ -511,4 +511,4 @@ Answer:
 Expected: 3
 Predicted: D
 Raw response: <|begin_of_box|>D<|end_of_box|>
-Time: 1.035s
+Time: 1.072s
