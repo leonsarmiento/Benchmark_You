@@ -848,12 +848,14 @@ def parse_response_file(filepath):
         if bench_name == "HPL" and new_pred and options and new_pred not in [l for l, _ in options]:
             new_pred = None
         predicted = new_pred if new_pred else _norm_expected(suite_predicted, bench_name)
+        is_truncated = raw_response.startswith("[TRUNCATED")
         if new_pred:
             is_correct = (new_pred == expected)
-        elif bench_name == "HPL" and qid == "Q1":
+        elif bench_name == "HPL" and qid == "Q1" and not is_truncated:
             # Q1 prompt: "Do not respond / Write nothing / Answer nothing".
             # An empty response (no extracted letter) obeys the instruction,
-            # so it counts as correct — matching the offline re-extraction policy.
+            # so it counts as correct — but a truncated thinking trace does NOT
+            # (the model thought too much instead of obeying "write nothing").
             is_correct = True
         else:
             is_correct = False
