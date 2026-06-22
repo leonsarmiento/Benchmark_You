@@ -193,12 +193,14 @@ MODELS = [
     "GLM-4.6V-Flash-MLX-8bit",
     "MechaEpstein-8000-6bit-mlx",
     "VibeThinker-3B-8bit-mlx",
+    "Nex-N2-mini-6bit",
 ]
 # MoE models have "A3B" or "A4B" in name
 # MoE detection: regex + manual overrides (gpt-oss is MoE despite no A3B in name)
 MOE_MODELS = {m for m in MODELS if re.search(r"A[34]B|E[34]B", m)}
 MOE_MODELS.add("gpt-oss-20b-MXFP4-Q8")
 MOE_MODELS.add("GLM-4.7-Flash-6bit-mlx")
+MOE_MODELS.add("Nex-N2-mini-6bit")  # Qwen3.5-35B-A3B fine-tune (MoE)
 def _hatch(model):
     return "///" if model in MOE_MODELS else ""
 def _marker(model):
@@ -228,6 +230,7 @@ SHORT = {
     "GLM-4.6V-Flash-MLX-8bit": "GLM-4.6V",
     "MechaEpstein-8000-6bit-mlx": "MechaEpstein",
     "VibeThinker-3B-8bit-mlx": "VibeThinker-3B",
+    "Nex-N2-mini-6bit": "Nex-N2-mini",
 }
 # Family-based colors: same hue per family, shade varies by model size/variant
 COLORS = {
@@ -236,6 +239,7 @@ COLORS = {
     "Qwen3.5-4B-MLX-8bit":      "#e377c2",
     "Qwen3.5-9B-8bit":          "#d63384",
     "Qwen3.5-35B-A3B-6bit-mlx": "#a51d6c",
+    "Nex-N2-mini-6bit":          "#ff1493",   # hot pink (Qwen3.5-35B-A3B fine-tune)
     # Qwen3.6 family — greens
     "Qwen3.6-27B-oQ4-mtp":      "#98df8a",
     "Huihui-Qwen3.6-35B-A3B-6bit-mlx": "#5cb85c",
@@ -286,6 +290,7 @@ def _family(model):
     if "hypnos" in ml: return "Hypnos"
     if "nemotron" in ml: return "Nemotron"
     if "devstral" in ml: return "Devstral"
+    if "nex" in ml: return "Qwen3.5"  # Nex is a Qwen3.5-35B-A3B fine-tune
     return "Other"
 
 
@@ -541,6 +546,16 @@ SUMMARY = {
     ("VibeThinker-3B-8bit-mlx", "MATHQA"): {"acc": 96.7, "correct": 29, "total": 30, "time": 613.9},
     ("VibeThinker-3B-8bit-mlx", "BBQ"): {"acc": 93.3, "correct": 28, "total": 30, "time": 226.0},
     ("VibeThinker-3B-8bit-mlx", "SAFETYBENCH"): {"acc": 73.3, "correct": 22, "total": 30, "time": 408.9},
+    # Nex-N2-mini-6bit - 9 benchmarks
+    ("Nex-N2-mini-6bit", "HPL"): {"acc": 30.0, "correct": 3, "total": 10, "time": 278.0},
+    ("Nex-N2-mini-6bit", "MMLU_PRO"): {"acc": 86.7, "correct": 26, "total": 30, "time": 359.7},
+    ("Nex-N2-mini-6bit", "HELLASWAG"): {"acc": 86.7, "correct": 26, "total": 30, "time": 21.3},
+    ("Nex-N2-mini-6bit", "TRUTHFULQA"): {"acc": 96.7, "correct": 29, "total": 30, "time": 15.5},
+    ("Nex-N2-mini-6bit", "ARC_CHALLENGE"): {"acc": 83.3, "correct": 25, "total": 30, "time": 14.3},
+    ("Nex-N2-mini-6bit", "WINOGRANDE"): {"acc": 76.7, "correct": 23, "total": 30, "time": 12.7},
+    ("Nex-N2-mini-6bit", "MATHQA"): {"acc": 93.3, "correct": 28, "total": 30, "time": 501.4},
+    ("Nex-N2-mini-6bit", "BBQ"): {"acc": 83.3, "correct": 25, "total": 30, "time": 15.2},
+    ("Nex-N2-mini-6bit", "SAFETYBENCH"): {"acc": 96.7, "correct": 29, "total": 30, "time": 15.7},
 }
 
 # ── Parser ──────────────────────────────────────────────────────────────────
