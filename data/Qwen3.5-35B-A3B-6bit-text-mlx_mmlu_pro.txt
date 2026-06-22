@@ -1,7 +1,7 @@
-Model: Qwen3.5-35B-A3B-6bit-mlx
+Model: Qwen3.5-35B-A3B-6bit-text-mlx
 Benchmark: MMLU_PRO
 Accuracy: 76.7% (23/30)
-Time: 1693.6s
+Time: 1621.6s
 
 --- Q3342 [CORRECT] ---
 Category: biology
@@ -117,7 +117,7 @@ So the output should be "C".
 </think>
 
 C
-Time: 25.828s
+Time: 27.54s
 
 --- Q2802 [CORRECT] ---
 Category: biology
@@ -189,7 +189,7 @@ Answer is F.
 </think>
 
 F
-Time: 17.918s
+Time: 17.197s
 
 --- Q25 [CORRECT] ---
 Category: business
@@ -254,7 +254,7 @@ Raw response: The user wants to identify the correct classification for five acc
 </think>
 
 J
-Time: 13.947s
+Time: 13.376s
 
 --- Q759 [CORRECT] ---
 Category: business
@@ -324,7 +324,7 @@ Raw response: The user wants to know how much Thomas's insurance company will pa
 </think>
 
 E
-Time: 10.675s
+Time: 10.248s
 
 --- Q3968 [CORRECT] ---
 Category: chemistry
@@ -754,7 +754,7 @@ $$ n_i \approx 4 $$
 The quantum number of the initial state is 4. This corresponds to option D.
 
 D
-Time: 143.959s
+Time: 137.513s
 
 --- Q3906 [CORRECT] ---
 Category: chemistry
@@ -890,7 +890,7 @@ Raw response: The user wants me to calculate the pD of pure heavy water ($D_2O$)
 </think>
 
 I
-Time: 31.607s
+Time: 30.104s
 
 --- Q3862 [WRONG] ---
 Category: chemistry
@@ -1095,7 +1095,7 @@ Raw response: The user wants to identify the correct order of intermolecular att
 </think>
 
 E
-Time: 91.334s
+Time: 86.026s
 
 --- Q10225 [CORRECT] ---
 Category: computer science
@@ -1190,7 +1190,7 @@ So, the output should be "J".
 </think>
 
 J
-Time: 22.111s
+Time: 20.73s
 
 --- Q7414 [CORRECT] ---
 Category: economics
@@ -1291,7 +1291,7 @@ Answer: C
 </think>
 
 C
-Time: 24.942s
+Time: 23.597s
 
 --- Q6764 [WRONG] ---
 Category: economics
@@ -1346,7 +1346,7 @@ Answer: J
 </think>
 
 J
-Time: 14.819s
+Time: 14.091s
 
 --- Q11755 [WRONG] ---
 Category: engineering
@@ -1667,7 +1667,7 @@ Raw response: The user wants me to solve a thermodynamics problem involving an i
     $\Delta T = 319.261 - 202.32 = 116.94 \text{ K}$.
     $W = m c_v \Delta T = 0.021484 \times 0.7201 \times 116.94 = 1.8113 \text{ kJ}$.
     This is very close to 1.8122.
-Time: 153.9s
+Time: 146.225s
 
 --- Q11821 [CORRECT] ---
 Category: engineering
@@ -2171,7 +2171,7 @@ So I will write "A".
 </think>
 
 A
-Time: 140.728s
+Time: 134.964s
 
 --- Q6400 [CORRECT] ---
 Category: health
@@ -2360,7 +2360,7 @@ Raw response: The user wants to identify the circumstance under which the preval
 </think>
 
 D
-Time: 49.846s
+Time: 47.69s
 
 --- Q5931 [WRONG] ---
 Category: health
@@ -2411,7 +2411,7 @@ So the output should be "A".
 </think>
 
 A
-Time: 9.649s
+Time: 9.296s
 
 --- Q4839 [CORRECT] ---
 Category: history
@@ -2493,7 +2493,7 @@ Raw response: The user wants me to answer a multiple-choice question based on a 
 </think>
 
 B
-Time: 22.717s
+Time: 21.762s
 
 --- Q1653 [WRONG] ---
 Category: law
@@ -2855,7 +2855,7 @@ Raw response: The user wants me to answer a multiple-choice question about contr
     *   So J is the better answer for a PE Rule question.
     *   The question mentions a "merger clause", which signals PE Rule.
     *   So I will go with **J**.
-Time: 151.652s
+Time: 145.726s
 
 --- Q854 [CORRECT] ---
 Category: law
@@ -3011,7 +3011,7 @@ Final decision: B.
 </think>
 
 B
-Time: 43.303s
+Time: 41.441s
 
 --- Q850 [WRONG] ---
 Category: law
@@ -3403,7 +3403,7 @@ Raw response: The user wants me to answer a multiple-choice question about contr
     *   Is it possible that the answer is C or F?
     *   Some older interpretations or specific jurisdictions might require return.
     *   But under the UCC, notice is sufficient
-Time: 151.322s
+Time: 145.811s
 
 --- Q7695 [CORRECT] ---
 Category: math
@@ -3763,7 +3763,7 @@ $$ R_{\text{min}} = 0.1099 \times 60 \approx 6.594 \, \mathrm{L}/\mathrm{min} $$
 Rounding to one decimal place, we get $6.6 \, \mathrm{L}/\mathrm{min}$. This matches option C.
 
 C
-Time: 125.144s
+Time: 119.38s
 
 --- Q7951 [CORRECT] ---
 Category: math
@@ -3815,7 +3815,7 @@ Raw response: The user wants me to estimate the sum of 153 and 44 and determine 
 </think>
 
 D
-Time: 7.212s
+Time: 6.844s
 
 --- Q7980 [CORRECT] ---
 Category: math
@@ -3987,7 +3987,7 @@ So the output should be "I".
 </think>
 
 I
-Time: 39.053s
+Time: 37.117s
 
 --- Q5435 [CORRECT] ---
 Category: other
@@ -4041,7 +4041,7 @@ Raw response: Thinking Process:
 </think>
 
 A
-Time: 9.515s
+Time: 9.018s
 
 --- Q5534 [CORRECT] ---
 Category: other
@@ -4099,7 +4099,7 @@ Raw response: The user wants to identify the most reasonable estimate for the vo
 </think>
 
 D
-Time: 12.291s
+Time: 11.486s
 
 --- Q10577 [WRONG] ---
 Category: philosophy
@@ -4326,7 +4326,7 @@ Final decision: F.
 </think>
 
 F
-Time: 60.445s
+Time: 57.589s
 
 --- Q10004 [CORRECT] ---
 Category: physics
@@ -4418,7 +4418,7 @@ Answer: I
 </think>
 
 I
-Time: 26.202s
+Time: 24.985s
 
 --- Q9262 [CORRECT] ---
 Category: physics
@@ -4755,7 +4755,7 @@ D. $4.0 \mathrm{~m} / \mathrm{s}$
 The calculated value matches Option C.
 
 C
-Time: 89.597s
+Time: 85.849s
 
 --- Q9971 [CORRECT] ---
 Category: physics
@@ -4832,7 +4832,7 @@ Raw response: The user wants me to answer a multiple-choice question about the e
 </think>
 
 A
-Time: 17.099s
+Time: 16.481s
 
 --- Q2319 [CORRECT] ---
 Category: psychology
@@ -5135,7 +5135,7 @@ The ages are: 6, 8, 10, 12, 14, 16.
 </think>
 
 D
-Time: 84.159s
+Time: 80.936s
 
 --- Q2115 [CORRECT] ---
 Category: psychology
@@ -5429,7 +5429,7 @@ Raw response: The user wants me to answer a multiple-choice question about the r
 </think>
 
 E
-Time: 83.571s
+Time: 80.253s
 
 --- Q2349 [CORRECT] ---
 Category: psychology
@@ -5546,4 +5546,4 @@ Raw response: The user wants to know the interpretation of a score of 50 on the 
 </think>
 
 J
-Time: 19.08s
+Time: 18.316s

@@ -1,4 +1,4 @@
-Model: Qwen3.6-35B-A3B-MLX-oQ6
+Model: Qwen3.6-35B-A3B-6bit-text-mlx
 Benchmark: HPL
 Accuracy: 30.0% (3/10)
 Time: 60.6s

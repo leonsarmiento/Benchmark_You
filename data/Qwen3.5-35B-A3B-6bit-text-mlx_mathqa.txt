@@ -1,7 +1,7 @@
-Model: Qwen3.5-35B-A3B-6bit-mlx
+Model: Qwen3.5-35B-A3B-6bit-text-mlx
 Benchmark: MATHQA
 Accuracy: 93.3% (28/30)
-Time: 1139.2s
+Time: 1110.3s
 
 --- Q2619 [CORRECT] ---
 Category: other
@@ -81,7 +81,7 @@ The calculated probability matches Option A.
 </think>
 
 A
-Time: 15.281s
+Time: 14.654s
 
 --- Q456 [CORRECT] ---
 Category: general
@@ -213,7 +213,7 @@ The answer is B.
 </think>
 
 B
-Time: 32.588s
+Time: 31.285s
 
 --- Q102 [CORRECT] ---
 Category: physics
@@ -315,7 +315,7 @@ So the output should be "D".
 </think>
 
 D
-Time: 23.597s
+Time: 22.652s
 
 --- Q1126 [CORRECT] ---
 Category: gain
@@ -382,7 +382,7 @@ So I should output "A".
 </think>
 
 A
-Time: 11.077s
+Time: 10.511s
 
 --- Q1003 [CORRECT] ---
 Category: general
@@ -447,7 +447,7 @@ So I should output "A".
 </think>
 
 A
-Time: 13.945s
+Time: 13.502s
 
 --- Q914 [CORRECT] ---
 Category: gain
@@ -508,7 +508,7 @@ So I should output "D".
 </think>
 
 D
-Time: 7.913s
+Time: 7.52s
 
 --- Q571 [CORRECT] ---
 Category: general
@@ -575,7 +575,7 @@ The calculated percentage is 32%, which corresponds to option B.
 </think>
 
 B
-Time: 9.905s
+Time: 9.457s
 
 --- Q419 [CORRECT] ---
 Category: general
@@ -883,7 +883,7 @@ Answer is E.
 </think>
 
 E
-Time: 93.405s
+Time: 89.761s
 
 --- Q2771 [CORRECT] ---
 Category: physics
@@ -962,7 +962,7 @@ So I will output "E".
 </think>
 
 E
-Time: 15.872s
+Time: 15.328s
 
 --- Q2233 [WRONG] ---
 Category: general
@@ -1470,7 +1470,7 @@ Or "number of green chips is 3, number of blue chips is 1".
 The text says "number of blue chips ... doubles the number of green chips".
 This is $n_B = 2 n_G$.
 This is the exact opposite of what makes the math work ($n_G = n
-Time: 150.585s
+Time: 145.168s
 
 --- Q356 [CORRECT] ---
 Category: general
@@ -1536,7 +1536,7 @@ So, I should output "B".
 </think>
 
 B
-Time: 8.429s
+Time: 8.132s
 
 --- Q2418 [CORRECT] ---
 Category: general
@@ -1629,7 +1629,7 @@ Final Answer seems to be E.
 </think>
 
 E
-Time: 14.892s
+Time: 14.316s
 
 --- Q1728 [CORRECT] ---
 Category: physics
@@ -1855,7 +1855,7 @@ I will output "A".
 </think>
 
 A
-Time: 56.327s
+Time: 54.866s
 
 --- Q130 [CORRECT] ---
 Category: physics
@@ -1988,7 +1988,7 @@ Answer: D
 </think>
 
 D
-Time: 30.068s
+Time: 28.877s
 
 --- Q122 [CORRECT] ---
 Category: other
@@ -2059,7 +2059,7 @@ So, the output should be "D".
 </think>
 
 D
-Time: 11.198s
+Time: 10.831s
 
 --- Q383 [CORRECT] ---
 Category: physics
@@ -2576,7 +2576,7 @@ Answer: 20/9 days.
 Options: A. 20/9, B. 9/20, C. 10/9, D. 5/4.
 
 Okay, let's consider the possibility that the numbers are different in the source of these options.
-Time: 150.501s
+Time: 145.772s
 
 --- Q895 [CORRECT] ---
 Category: other
@@ -2673,7 +2673,7 @@ So I will output "D".
 </think>
 
 D
-Time: 17.971s
+Time: 17.288s
 
 --- Q952 [CORRECT] ---
 Category: physics
@@ -2739,7 +2739,7 @@ So I should output "C".
 </think>
 
 C
-Time: 7.645s
+Time: 7.384s
 
 --- Q2069 [CORRECT] ---
 Category: general
@@ -2950,7 +2950,7 @@ So "C".
 </think>
 
 C
-Time: 46.528s
+Time: 45.594s
 
 --- Q2465 [CORRECT] ---
 Category: general
@@ -3047,7 +3047,7 @@ So, "B".
 </think>
 
 B
-Time: 20.678s
+Time: 20.055s
 
 --- Q108 [WRONG] ---
 Category: gain
@@ -3547,7 +3547,7 @@ Given the options, B is the only one that makes sense with a minor typo correcti
 
 Final check of the question text provided: "rs . 1000".
 If I strictly
-Time: 150.302s
+Time: 145.501s
 
 --- Q2298 [CORRECT] ---
 Category: physics
@@ -3648,7 +3648,7 @@ So I will output "B".
 </think>
 
 B
-Time: 19.535s
+Time: 18.721s
 
 --- Q814 [CORRECT] ---
 Category: physics
@@ -3707,7 +3707,7 @@ So I should output "C".
 </think>
 
 C
-Time: 11.668s
+Time: 11.227s
 
 --- Q2932 [CORRECT] ---
 Category: general
@@ -3989,7 +3989,7 @@ I will output B.
 </think>
 
 B
-Time: 65.159s
+Time: 62.566s
 
 --- Q2661 [CORRECT] ---
 Category: general
@@ -4107,7 +4107,7 @@ So I will output "D".
 </think>
 
 D
-Time: 23.924s
+Time: 22.853s
 
 --- Q2872 [CORRECT] ---
 Category: geometry
@@ -4244,7 +4244,7 @@ So I will output "E".
 </think>
 
 E
-Time: 37.099s
+Time: 35.605s
 
 --- Q2232 [CORRECT] ---
 Category: other
@@ -4427,7 +4427,7 @@ E. 7
 The correct option is B.
 
 Answer: B
-Time: 42.159s
+Time: 40.595s
 
 --- Q1718 [CORRECT] ---
 Category: general
@@ -4514,7 +4514,7 @@ The calculated answer is 54, which corresponds to option B.
 </think>
 
 B
-Time: 16.562s
+Time: 15.831s
 
 --- Q902 [CORRECT] ---
 Category: physics
@@ -4630,7 +4630,7 @@ Answer: A
 </think>
 
 A
-Time: 22.069s
+Time: 25.273s
 
 --- Q1839 [CORRECT] ---
 Category: other
@@ -4710,4 +4710,4 @@ So the output should be "C".
 </think>
 
 C
-Time: 12.363s
+Time: 19.187s
