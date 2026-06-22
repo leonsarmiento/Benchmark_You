@@ -378,10 +378,10 @@ SUMMARY = {
     ("Qwen3.5-35B-A3B-6bit-text-mlx", "SAFETYBENCH"): {"acc": 86.7, "correct": 26, "total": 30, "time": 15.3},
     # Qwen3.6-35B-A3B-6bit-text-mlx (re-run at 6-bit-text quant to match Nex)
     ("Qwen3.6-35B-A3B-6bit-text-mlx", "MMLU_PRO"): {"acc": 86.7, "correct": 26, "total": 30, "time": 1319.6},
-    ("Qwen3.6-35B-A3B-6bit-text-mlx", "HELLASWAG"): {"acc": 90.0, "correct": 27, "total": 30, "time": 434.6},
-    ("Qwen3.6-35B-A3B-6bit-text-mlx", "TRUTHFULQA"): {"acc": 93.3, "correct": 28, "total": 30, "time": 435.7},
-    ("Qwen3.6-35B-A3B-6bit-text-mlx", "ARC_CHALLENGE"): {"acc": 93.3, "correct": 28, "total": 30, "time": 487.8},
-    ("Qwen3.6-35B-A3B-6bit-text-mlx", "WINOGRANDE"): {"acc": 86.7, "correct": 26, "total": 30, "time": 429.9},
+    ("Qwen3.6-35B-A3B-6bit-text-mlx", "HELLASWAG"): {"acc": 83.3, "correct": 25, "total": 30, "time": 22.3},
+    ("Qwen3.6-35B-A3B-6bit-text-mlx", "TRUTHFULQA"): {"acc": 96.7, "correct": 29, "total": 30, "time": 16.2},
+    ("Qwen3.6-35B-A3B-6bit-text-mlx", "ARC_CHALLENGE"): {"acc": 86.7, "correct": 26, "total": 30, "time": 14.7},
+    ("Qwen3.6-35B-A3B-6bit-text-mlx", "WINOGRANDE"): {"acc": 80.0, "correct": 24, "total": 30, "time": 13.5},
     ("Qwen3.6-35B-A3B-6bit-text-mlx", "MATHQA"): {"acc": 96.7, "correct": 29, "total": 30, "time": 1167.8},
     ("Qwen3.6-35B-A3B-6bit-text-mlx", "BBQ"): {"acc": 90.0, "correct": 27, "total": 30, "time": 15.7},
     ("Qwen3.6-35B-A3B-6bit-text-mlx", "SAFETYBENCH"): {"acc": 83.3, "correct": 25, "total": 30, "time": 15.5},
@@ -955,6 +955,7 @@ def _draw_interactive_pareto():
     st.markdown("---")
     st.subheader("Interactive Pareto: Overall Accuracy vs Total Time")
     st.caption("Click legend items to toggle families. Use the benchmark checklist to filter. Hover points for details.")
+    st.caption("_Note: Except for MathQA, MMLU-Pro, and HPL, all benchmarks were run in Instruct mode for reasoning models._")
 
     # Benchmark filter
     bench_cols = st.columns(2)
@@ -1086,6 +1087,7 @@ def _draw_interactive_pareto():
         ))
 
     st.plotly_chart(fig, use_container_width=True, theme="streamlit")
+    st.caption("_Note: Except for MathQA, MMLU-Pro, and HPL, all benchmarks were run in Instruct mode for reasoning models._")
     st.markdown(
         "Download high quality data agnostic quants used in these benchmarks "
         "[here](https://huggingface.co/leonsarmiento)."
