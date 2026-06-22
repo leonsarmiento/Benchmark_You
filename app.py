@@ -1000,12 +1000,15 @@ def _draw_interactive_pareto():
         if not has_data or total_n == 0:
             continue
         overall_acc = total_correct / total_n * 100
+        # Floor time so the log-scale x-axis can render zero-time entries
+        # (a single HPL run reported time=0; only affects log scale).
+        plot_time = max(total_time, 0.1)
         rows.append({
             "Model": SHORT[model],
             "Family": fam,
             "Type": _mtype(model),
             "Accuracy (%)": round(overall_acc, 1),
-            "Total Time (s)": round(total_time, 1),
+            "Total Time (s)": round(plot_time, 1),
             "Benchmarks": len([b for b in selected_benches if (model, b) in SUMMARY]),
             "Correct": total_correct,
             "Total Q": total_n,
@@ -1052,10 +1055,11 @@ def _draw_interactive_pareto():
     fig.update_layout(
         height=600,
         legend_title_text="Family (click to toggle)",
-        xaxis_title="Total Wall Time (seconds, lower is better)",
+        xaxis_title="Total Wall Time (seconds, log scale — lower is better)",
         yaxis_title="Overall Accuracy % (higher is better)",
         font=dict(size=12),
         title=f"Pareto: Overall Accuracy vs Total Wall Time ({len(selected_benches)} benchmarks)",
+        xaxis=dict(type="log"),
     )
 
     # ── Pareto frontier (dotted line) ──────────────────────────────
