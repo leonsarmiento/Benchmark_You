@@ -302,6 +302,12 @@ for _m in MODELS:
         FAMILY_COLORS[_f] = COLORS[_m]
 
 BENCHMARKS_MC = ["HPL", "MMLU_PRO", "ARC_CHALLENGE", "MATHQA", "HELLASWAG", "BBQ", "TRUTHFULQA", "WINOGRANDE", "SAFETYBENCH"]
+# Benchmarks available in the Interactive Pareto. HUMANEVAL & MBPP are
+# code-generation tasks (30 questions each, sampled from 164/500) run in
+# NON-thinking mode on 13 models. They are intentionally NOT in the quiz
+# (BENCHMARKS_MC): verifying generated code needs a sandbox, which is out of
+# scope for this dashboard. They only appear as opt-in Pareto filters.
+PARETO_BENCHMARKS = BENCHMARKS_MC + ["HUMANEVAL", "MBPP"]
 BENCH_SHORT = {
     "HPL": "HPL (Human>AI)",
     "MMLU_PRO": "MMLU-Pro",
@@ -312,6 +318,9 @@ BENCH_SHORT = {
     "TRUTHFULQA": "TruthfulQA",
     "WINOGRANDE": "WinoGrande",
     "SAFETYBENCH": "SafetyBench",
+    # Coding benchmarks (code generation; Pareto-only, not in the quiz)
+    "HUMANEVAL": "HumanEval (code)",
+    "MBPP": "MBPP (code)",
 }
 BENCH_DESC = {
     "HPL": "Husk-Phi-Leon is a custom benchmark built from real social media posts (prompts inspired by @husk.irl and @father_phi). It tests social intelligence, common sense, and the ability to detect sarcasm, irony, inappropriate behavior, and trick questions. Unlike academic benchmarks, these are situations where humans naturally outperform AI - the questions are deliberately designed to trip up overly agreeable or literal-minded models. Formatted into a single-turn multiple-choice standard benchmarking format. 10 questions, multiple-choice.",
@@ -558,6 +567,37 @@ SUMMARY = {
     ("Nex-N2-mini-6bit", "MATHQA"): {"acc": 93.3, "correct": 28, "total": 30, "time": 501.4},
     ("Nex-N2-mini-6bit", "BBQ"): {"acc": 83.3, "correct": 25, "total": 30, "time": 15.2},
     ("Nex-N2-mini-6bit", "SAFETYBENCH"): {"acc": 96.7, "correct": 29, "total": 30, "time": 15.7},
+    # ── Coding benchmarks (HUMANEVAL & MBPP) ──────────────────────────────────
+    # Code-generation tasks, 30 questions each (sampled from 164 / 500), run in
+    # NON-thinking mode on 13 models. Source: Coding_benchmarks.txt. Model names
+    # mapped to the matching dashboard keys: "Nex-N2-mini-6bit-text-mlx" ->
+    # "Nex-N2-mini-6bit", "Qwen3.5-9B-MLX-8bit" -> "Qwen3.5-9B-8bit".
+    ("Devstral-Small-2-24B-Instruct-2512-4bit", "HUMANEVAL"): {"acc": 93.3, "correct": 28, "total": 30, "time": 215.2},
+    ("Devstral-Small-2-24B-Instruct-2512-4bit", "MBPP"): {"acc": 73.3, "correct": 22, "total": 30, "time": 128.6},
+    ("GLM-4.7-Flash-6bit-mlx", "HUMANEVAL"): {"acc": 73.3, "correct": 22, "total": 30, "time": 113.0},
+    ("GLM-4.7-Flash-6bit-mlx", "MBPP"): {"acc": 66.7, "correct": 20, "total": 30, "time": 59.9},
+    ("Qwen3.6-27B-oQ4-mtp", "HUMANEVAL"): {"acc": 93.3, "correct": 28, "total": 30, "time": 367.9},
+    ("Qwen3.6-27B-oQ4-mtp", "MBPP"): {"acc": 86.7, "correct": 26, "total": 30, "time": 202.7},
+    ("gemma-4-26B-A4B-it-MLX-8bit", "HUMANEVAL"): {"acc": 96.7, "correct": 29, "total": 30, "time": 123.9},
+    ("gemma-4-26B-A4B-it-MLX-8bit", "MBPP"): {"acc": 80.0, "correct": 24, "total": 30, "time": 123.4},
+    ("Nex-N2-mini-6bit", "HUMANEVAL"): {"acc": 90.0, "correct": 27, "total": 30, "time": 55.1},
+    ("Nex-N2-mini-6bit", "MBPP"): {"acc": 73.3, "correct": 22, "total": 30, "time": 38.2},
+    ("Qwen3.6-35B-A3B-6bit-text-mlx", "HUMANEVAL"): {"acc": 66.7, "correct": 20, "total": 30, "time": 101.9},
+    ("Qwen3.6-35B-A3B-6bit-text-mlx", "MBPP"): {"acc": 86.7, "correct": 26, "total": 30, "time": 62.0},
+    ("gemma-4-E4B-it-MLX-8bit", "HUMANEVAL"): {"acc": 90.0, "correct": 27, "total": 30, "time": 186.2},
+    ("gemma-4-E4B-it-MLX-8bit", "MBPP"): {"acc": 86.7, "correct": 26, "total": 30, "time": 174.7},
+    ("gpt-oss-20b-MXFP4-Q8", "HUMANEVAL"): {"acc": 93.3, "correct": 28, "total": 30, "time": 82.4},
+    ("gpt-oss-20b-MXFP4-Q8", "MBPP"): {"acc": 86.7, "correct": 26, "total": 30, "time": 234.3},
+    ("Qwen3-Coder-30B-A3B-Instruct-MLX-6bit", "HUMANEVAL"): {"acc": 86.7, "correct": 26, "total": 30, "time": 65.7},
+    ("Qwen3-Coder-30B-A3B-Instruct-MLX-6bit", "MBPP"): {"acc": 80.0, "correct": 24, "total": 30, "time": 46.1},
+    ("GLM-4.6V-Flash-MLX-8bit", "HUMANEVAL"): {"acc": 56.7, "correct": 17, "total": 30, "time": 126.9},
+    ("GLM-4.6V-Flash-MLX-8bit", "MBPP"): {"acc": 53.3, "correct": 16, "total": 30, "time": 78.7},
+    ("Qwen3.5-2B-MLX-8bit", "HUMANEVAL"): {"acc": 40.0, "correct": 12, "total": 30, "time": 84.0},
+    ("Qwen3.5-2B-MLX-8bit", "MBPP"): {"acc": 33.3, "correct": 10, "total": 30, "time": 22.1},
+    ("Qwen3.5-35B-A3B-6bit-text-mlx", "HUMANEVAL"): {"acc": 90.0, "correct": 27, "total": 30, "time": 86.8},
+    ("Qwen3.5-35B-A3B-6bit-text-mlx", "MBPP"): {"acc": 70.0, "correct": 21, "total": 30, "time": 75.2},
+    ("Qwen3.5-9B-8bit", "HUMANEVAL"): {"acc": 86.7, "correct": 26, "total": 30, "time": 174.4},
+    ("Qwen3.5-9B-8bit", "MBPP"): {"acc": 53.3, "correct": 16, "total": 30, "time": 78.1},
 }
 
 # ── Parser ──────────────────────────────────────────────────────────────────
@@ -955,14 +995,14 @@ def _draw_interactive_pareto():
     st.markdown("---")
     st.subheader("Interactive Pareto: Overall Accuracy vs Total Time")
     st.caption("Click legend items to toggle families. Use the benchmark checklist to filter. Hover points for details.")
-    st.caption("_Note: Except for MathQA, MMLU-Pro, and HPL, all benchmarks were run in Instruct mode for reasoning models._")
+    st.caption("_Note: Except for MathQA, MMLU-Pro, and HPL, all MC benchmarks were run in Instruct mode for reasoning models. HumanEval & MBPP (code generation, 13 models) were run in non-thinking mode._")
 
     # Benchmark filter
     bench_cols = st.columns(2)
     with bench_cols[0]:
         selected_benches = st.multiselect(
             "Include benchmarks:",
-            BENCHMARKS_MC,
+            PARETO_BENCHMARKS,
             default=BENCHMARKS_MC,
             format_func=lambda b: BENCH_SHORT.get(b, b),
             key="pareto_bench_filter",
@@ -1087,7 +1127,7 @@ def _draw_interactive_pareto():
         ))
 
     st.plotly_chart(fig, use_container_width=True, theme="streamlit")
-    st.caption("_Note: Except for MathQA, MMLU-Pro, and HPL, all benchmarks were run in Instruct mode for reasoning models._")
+    st.caption("_HumanEval & MBPP are code-generation benchmarks (non-thinking mode) available for 13 of the 23 models; points only appear when those benchmarks are selected and a model has data for them._")
     st.markdown(
         "Download high quality data agnostic quants used in these benchmarks "
         "[here](https://huggingface.co/leonsarmiento)."
