@@ -4,7 +4,7 @@ Benchmark Quiz Dashboard — Streamlit app
 Run:  conda run -n geows streamlit run app.py
 """
 
-import json, os, re, time
+import json, os, random, re, time
 from collections import defaultdict
 
 import streamlit as st
@@ -169,6 +169,11 @@ DATA_DIR = os.path.join(APP_DIR, "data")
 # For local dashboard: data lives in parent dir. For deployment: data/ subfolder
 BASE = DATA_DIR if os.path.isdir(DATA_DIR) else os.path.dirname(APP_DIR)
 TOKENS_PER_SEC = 40.0
+# Questions presented per quiz attempt. Benchmarks with a larger question pool
+# (most have ~30) randomly sample this many each attempt; benchmarks with fewer
+# (HPL has 10) use their whole pool. The user and every AI model are then scored
+# on exactly these questions — an apples-to-apples comparison.
+QUIZ_LENGTH = 10
 
 MODELS = [
     "Qwen3-30B-A3B-MegaScience-8bit-mlx",
@@ -1041,10 +1046,27 @@ def init_state():
         "start_time": None,
         "q_start_time": None,
         "q_times": [],             # per-question user timing
+        "quiz_questions": None,    # the questions selected for the current attempt
     }
     for k, v in defaults.items():
         if k not in st.session_state:
             st.session_state[k] = v
+
+
+def _start_quiz(bank, bkey):
+    """Begin a new quiz attempt: pick a random sample of questions for the
+    benchmark and reset all attempt state. Stored in session_state so it is
+    stable across Streamlit reruns (the sample is drawn once, at launch)."""
+    pool = bank.get(bkey, [])
+    k = min(QUIZ_LENGTH, len(pool))
+    st.session_state.quiz_questions = random.sample(pool, k) if k else []
+    st.session_state.benchmark = bkey
+    st.session_state.page = "quiz"
+    st.session_state.current_q = 0
+    st.session_state.answers = {}
+    st.session_state.start_time = time.time()
+    st.session_state.q_start_time = time.time()
+    st.session_state.q_times = []
 
 
 # ── Pages ───────────────────────────────────────────────────────────────────
@@ -1209,34 +1231,23 @@ def page_setup(bank):
             with col_sel:
                 selected = st.button("Start", key=f"sel_{bkey}", use_container_width=True, type="primary")
             with col_info:
-                num_q = len(bank.get(bkey, []))
-                st.markdown(f"**{BENCH_SHORT[bkey]}** — {num_q} questions")
+                pool_n = len(bank.get(bkey, []))
+                quiz_n = min(QUIZ_LENGTH, pool_n)
+                count_lbl = f"{quiz_n} questions" + (f" (randomly selected from {pool_n})" if pool_n > quiz_n else "")
+                st.markdown(f"**{BENCH_SHORT[bkey]}** — {count_lbl}")
                 st.caption(BENCH_DESC[bkey])
             if selected:
-                st.session_state.benchmark = bkey
-                st.session_state.page = "quiz"
-                st.session_state.current_q = 0
-                st.session_state.answers = {}
-                st.session_state.start_time = time.time()
-                st.session_state.q_start_time = time.time()
-                st.session_state.q_times = []
+                _start_quiz(bank, bkey)
                 st.rerun()
                 return
             st.markdown("---")
 
     # Dropdown as alternative selector — launches quiz on change
     def on_dropdown_change():
-        bkey = st.session_state.dropdown_bench
-        st.session_state.benchmark = bkey
-        st.session_state.page = "quiz"
-        st.session_state.current_q = 0
-        st.session_state.answers = {}
-        st.session_state.start_time = time.time()
-        st.session_state.q_start_time = time.time()
-        st.session_state.q_times = []
+        _start_quiz(bank, st.session_state.dropdown_bench)
 
     st.selectbox("Or pick from dropdown:", BENCHMARKS_MC,
-                 format_func=lambda b: f"{BENCH_SHORT[b]}  ({len(bank.get(b, []))} questions)",
+                 format_func=lambda b: f"{BENCH_SHORT[b]}  ({min(QUIZ_LENGTH, len(bank.get(b, [])))} questions)",
                  index=0,
                  key="dropdown_bench",
                  on_change=on_dropdown_change)
@@ -1247,7 +1258,7 @@ def page_setup(bank):
 
 def page_quiz(bank):
     bench = st.session_state.benchmark
-    questions = bank[bench]
+    questions = st.session_state.quiz_questions or []
     q_idx = st.session_state.current_q
     total = len(questions)
 
@@ -1403,7 +1414,7 @@ def _draw_live_leaderboard(bank, bench, questions, n_answered):
 
 def page_results(bank):
     bench = st.session_state.benchmark
-    questions = bank[bench]
+    questions = st.session_state.quiz_questions or []
     answers = st.session_state.answers
     total = len(questions)
 
@@ -1422,6 +1433,23 @@ def page_results(bank):
     col_m2.metric("Your Time", f"{total_time:.1f}s")
     col_m3.metric("Your Avg/q", f"{total_time/max(total,1):.1f}s")
 
+    # Score every model on exactly the questions the user was asked, so the
+    # comparison is apples-to-apples (the user answered `total` randomly sampled
+    # questions, not the full pool). This matches the live leaderboard's logic.
+    _models_with_data = [m for m in MODELS if (m, bench) in SUMMARY]
+    ai_acc, ai_time = {}, {}
+    for model in _models_with_data:
+        ms = SHORT[model]
+        c = sum(1 for q in questions if q["model_correct"].get(ms, False))
+        ai_acc[model] = c / total * 100 if total else 0.0
+        ai_time[model] = sum(q["model_times"].get(ms, 0.0) for q in questions)
+
+    st.caption(
+        f"_You answered {total} randomly sampled questions. Every model below is "
+        f"scored on these same {total} questions — not the full "
+        f"{len(bank[bench])}-question pool — so the comparison is fair._"
+    )
+
     st.markdown("---")
 
     # ── Plot 1: Accuracy vs Time (Pareto) ──────────────────────────────
@@ -1429,13 +1457,10 @@ def page_results(bank):
 
     fig1, ax1 = plt.subplots(figsize=(10, 7))
 
-    for model in MODELS:
-        s = SUMMARY.get((model, bench))
-        if not s:
-            continue
-        ax1.scatter(s["time"], s["acc"], s=200, color=COLORS[model],
+    for model in _models_with_data:
+        ax1.scatter(ai_time[model], ai_acc[model], s=200, color=COLORS[model],
                     edgecolors="black", linewidths=0.8, zorder=5, marker=_marker(model))
-        ax1.annotate(f"{SHORT[model]} ({_mtype(model)})", (s["time"], s["acc"]),
+        ax1.annotate(f"{SHORT[model]} ({_mtype(model)})", (ai_time[model], ai_acc[model]),
                      textcoords="offset points", xytext=(8, 8), fontsize=9,
                      fontweight="bold", color=COLORS[model])
 
@@ -1448,7 +1473,7 @@ def page_results(bank):
 
     ax1.set_xlabel("Total Wall Time (seconds)", fontsize=12)
     ax1.set_ylabel("Accuracy (%)", fontsize=12)
-    ax1.set_title(f"{BENCH_SHORT[bench]}: You vs LLMs", fontsize=14)
+    ax1.set_title(f"{BENCH_SHORT[bench]}: You vs LLMs (on your {total} questions)", fontsize=14)
     ax1.grid(True, alpha=0.3)
     fig1.tight_layout()
     st.pyplot(fig1)
@@ -1457,9 +1482,8 @@ def page_results(bank):
     # ── Plot 2: Per-model accuracy comparison bar ──────────────────────
     st.subheader("Accuracy Comparison")
 
-    _models_with_data = [m for m in MODELS if (m, bench) in SUMMARY]
     names = [f"{SHORT[m]} ({_mtype(m)})" for m in _models_with_data] + ["YOU"]
-    accs = [SUMMARY[(m, bench)]["acc"] for m in _models_with_data] + [user_acc]
+    accs = [ai_acc[m] for m in _models_with_data] + [user_acc]
     bar_colors = [COLORS[m] for m in _models_with_data] + ["#FFD700"]
     bar_hatches = [_hatch(m) for m in _models_with_data] + [""]
 
@@ -1482,7 +1506,7 @@ def page_results(bank):
     # ── Plot 3: Speed comparison ────────────────────────────────────────
     st.subheader("Speed Comparison")
 
-    times_all = [SUMMARY[(m, bench)]["time"] for m in _models_with_data] + [total_time]
+    times_all = [ai_time[m] for m in _models_with_data] + [total_time]
     time_names = [f"{SHORT[m]} ({_mtype(m)})" for m in _models_with_data] + ["YOU"]
     time_colors = [COLORS[m] for m in _models_with_data] + ["#FFD700"]
     time_hatches = [_hatch(m) for m in _models_with_data] + [""]
@@ -1546,7 +1570,7 @@ def page_results(bank):
 
     # ── Rank summary ────────────────────────────────────────────────────
     st.subheader("Your Rank")
-    all_scores = [(SHORT[m], SUMMARY[(m, bench)]["acc"]) for m in _models_with_data]
+    all_scores = [(SHORT[m], ai_acc[m]) for m in _models_with_data]
     all_scores.append(("YOU", user_acc))
     all_scores.sort(key=lambda x: (-x[1], x[0]))
 

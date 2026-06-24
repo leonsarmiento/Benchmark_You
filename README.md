@@ -7,7 +7,7 @@ An interactive quiz dashboard where you test yourself against 11 open-source LLM
 ## How It Works
 
 1. **Pick a benchmark** — each comes with a short description so you know what to expect
-2. **Answer 30 questions** — multiple choice, just like the AI did
+2. **Answer 10 questions** — multiple choice, just like the AI did. Each attempt randomly samples 10 questions from the benchmark's pool (HPL uses all 10 of its own).
 3. **Get your results** — see how you rank against 11 models on accuracy, speed, and per-question performance
 4. **Share your score** — download a results card or post to Reddit / LinkedIn
 
