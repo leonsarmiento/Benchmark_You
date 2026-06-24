@@ -326,7 +326,7 @@ BENCH_SHORT = {
 BENCH_DESC = {
     "HPL": "Husk-Phi-Leon is a custom benchmark built from real social media posts (prompts inspired by @husk.irl and @father_phi). It tests social intelligence, common sense, and the ability to detect sarcasm, irony, inappropriate behavior, and trick questions. Unlike academic benchmarks, these are situations where humans naturally outperform AI - the questions are deliberately designed to trip up overly agreeable or literal-minded models. Formatted into a single-turn multiple-choice standard benchmarking format. 10 questions, multiple-choice.",
     "MMLU_PRO": "Massive Multitask Language Understanding (Professional) tests knowledge across 14 academic and professional domains - biology, chemistry, physics, law, economics, computer science, and more. Questions are multiple-choice with up to 10 options, making guessing nearly useless. It measures breadth and depth of general knowledge.",
-    "MMLU": "Massive Multitask Language Understanding is the classic 57-subject knowledge test spanning STEM, humanities, social sciences, and more. Each question has 4 answer choices. It measures broad academic and professional knowledge acquired through study, so a well-rounded education beats raw reasoning. (This benchmark currently has results for 7 models.)",
+    "MMLU": "Massive Multitask Language Understanding is the classic 57-subject knowledge test spanning STEM, humanities, social sciences, and more. Each question has 4 answer choices. It measures broad academic and professional knowledge acquired through study, so a well-rounded education beats raw reasoning. (This benchmark currently has results for 10 models.)",
     "ARC_CHALLENGE": "AI2 Reasoning Challenge (Challenge set) contains grade-school science questions that require genuine reasoning, not just recall. Only questions that retrieval-based methods fail are included, so these are the hard ones - think balancing chemical equations, identifying energy types, and interpreting experimental results.",
     "MATHQA": "MathQA tests quantitative reasoning with real-world math word problems - percentages, probability, geometry, gain/loss, physics calculations, and more. Each question has 5 answer choices. It measures whether you (or an AI) can set up and solve practical math problems correctly.",
     "HELLASWAG": "HellaSwag tests commonsense natural language inference - given a context (a video description or wikiHow step), you must pick the most plausible continuation from 4 options. It sounds easy but the wrong answers are carefully chosen to be adversarial. It measures whether a model (or human) understands everyday situations.",
@@ -570,12 +570,12 @@ SUMMARY = {
     ("Nex-N2-mini-6bit", "BBQ"): {"acc": 83.3, "correct": 25, "total": 30, "time": 15.2},
     ("Nex-N2-mini-6bit", "SAFETYBENCH"): {"acc": 96.7, "correct": 29, "total": 30, "time": 15.7},
     # ── MMLU (classic 4-option, 57-subject knowledge test) ────────────────────
-    # Only 7 models have results. 3 were run on a different quant than their
-    # other benchmarks (per "map to existing" decision): the gemma, Nex, and
-    # Qwen3.6-35B rows below come from qat-6bit / 5bit-text / MLX-VL-oQ5 runs.
+    # Only 10 models have results. 3 of the original 7 were run on a different
+    # quant than their other benchmarks (per "map to existing" decision): the
+    # gemma-26B, Nex, and Qwen3.6-35B rows come from qat-6bit / 5bit / VL-oQ5 runs.
     # Scores are out of 29: one source question (Q3, business_ethics) is
     # defective in the original cais/mmlu dataset (options reference a numbered
-    # list that was never included) and is excluded from the quiz. All 7 models
+    # list that was never included) and is excluded from the quiz. All 10 models
     # got it wrong, so correct counts are unchanged — only the denominator
     # drops 30 -> 29. (Devstral's file header said 43.3% but its Q12 raw
     # response was a malformed multi-letter dump; re-extraction scores 40.0%.)
@@ -586,6 +586,13 @@ SUMMARY = {
     ("gemma-4-26B-A4B-it-MLX-8bit", "MMLU"): {"acc": 65.5, "correct": 19, "total": 29, "time": 43.2},
     ("Nex-N2-mini-6bit", "MMLU"): {"acc": 62.1, "correct": 18, "total": 29, "time": 33.5},
     ("Devstral-Small-2-24B-Instruct-2512-4bit", "MMLU"): {"acc": 41.4, "correct": 12, "total": 29, "time": 172.8},
+    # 3 additional MMLU models. "Qwen3.5-9B-MLX-8bit" run maps to the dashboard's
+    # "Qwen3.5-9B-8bit" key (same base model, different quant label). gemma-4-E4B
+    # re-extracts to 20 (not its header's 21): its Q8 raw response restates the
+    # question without ever committing an answer, so re-extraction returns None.
+    ("Qwen3.5-9B-8bit", "MMLU"): {"acc": 79.3, "correct": 23, "total": 29, "time": 59.3},
+    ("gpt-oss-20b-MXFP4-Q8", "MMLU"): {"acc": 72.4, "correct": 21, "total": 29, "time": 64.4},
+    ("gemma-4-E4B-it-MLX-8bit", "MMLU"): {"acc": 69.0, "correct": 20, "total": 29, "time": 28.9},
     # ── Coding benchmarks (HUMANEVAL & MBPP) ──────────────────────────────────
     # Code-generation tasks, 30 questions each (sampled from 164 / 500), run in
     # NON-thinking mode on 13 models. Source: Coding_benchmarks.txt. Model names
