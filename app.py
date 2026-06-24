@@ -160,6 +160,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+import seaborn as sns
 import plotly.express as px
 import plotly.graph_objects as go
 
@@ -1455,96 +1456,128 @@ def page_results(bank):
     # ── Plot 1: Accuracy vs Time (Pareto) ──────────────────────────────
     st.subheader("Accuracy vs Time (Pareto)")
 
-    fig1, ax1 = plt.subplots(figsize=(10, 7))
+    pareto_df = pd.DataFrame({
+        "time": [ai_time[m] for m in _models_with_data],
+        "acc": [ai_acc[m] for m in _models_with_data],
+        "name": [f"{SHORT[m]} ({_mtype(m)})" for m in _models_with_data],
+        "type": [_mtype(m) for m in _models_with_data],
+    })
+    pareto_palette = {f"{SHORT[m]} ({_mtype(m)})": COLORS[m] for m in _models_with_data}
 
-    for model in _models_with_data:
-        ax1.scatter(ai_time[model], ai_acc[model], s=200, color=COLORS[model],
-                    edgecolors="black", linewidths=0.8, zorder=5, marker=_marker(model))
-        ax1.annotate(f"{SHORT[model]} ({_mtype(model)})", (ai_time[model], ai_acc[model]),
-                     textcoords="offset points", xytext=(8, 8), fontsize=9,
-                     fontweight="bold", color=COLORS[model])
-
-    # User point
-    ax1.scatter(total_time, user_acc, s=300, color="#FFD700", marker="*",
-                edgecolors="black", linewidths=1.2, zorder=10)
-    ax1.annotate("YOU", (total_time, user_acc),
-                 textcoords="offset points", xytext=(10, 10), fontsize=13,
-                 fontweight="bold", color="#B8860B")
-
-    ax1.set_xlabel("Total Wall Time (seconds)", fontsize=12)
-    ax1.set_ylabel("Accuracy (%)", fontsize=12)
-    ax1.set_title(f"{BENCH_SHORT[bench]}: You vs LLMs (on your {total} questions)", fontsize=14)
-    ax1.grid(True, alpha=0.3)
-    fig1.tight_layout()
-    st.pyplot(fig1)
-    plt.close(fig1)
+    with sns.axes_style("whitegrid"), sns.plotting_context("notebook", font_scale=1.1):
+        fig1, ax1 = plt.subplots(figsize=(10, 7))
+        sns.scatterplot(
+            data=pareto_df, x="time", y="acc", hue="name", style="type",
+            markers={"Dense": "o", "MoE": "D"}, palette=pareto_palette,
+            s=200, edgecolor="black", linewidth=0.8, ax=ax1, legend=False,
+        )
+        for model in _models_with_data:
+            ax1.annotate(f"{SHORT[model]} ({_mtype(model)})", (ai_time[model], ai_acc[model]),
+                         textcoords="offset points", xytext=(8, 8), fontsize=9,
+                         fontweight="bold", color=COLORS[model])
+        # User point
+        ax1.scatter(total_time, user_acc, s=300, color="#FFD700", marker="*",
+                    edgecolors="black", linewidths=1.2, zorder=10)
+        ax1.annotate("YOU", (total_time, user_acc),
+                     textcoords="offset points", xytext=(10, 10), fontsize=13,
+                     fontweight="bold", color="#B8860B")
+        ax1.set_xlabel("Total Wall Time (seconds)")
+        ax1.set_ylabel("Accuracy (%)")
+        ax1.set_title(f"{BENCH_SHORT[bench]}: You vs LLMs (on your {total} questions)")
+        sns.despine(ax=ax1)
+        fig1.tight_layout()
+        st.pyplot(fig1)
+        plt.close(fig1)
 
     # ── Plot 2: Per-model accuracy comparison bar ──────────────────────
     st.subheader("Accuracy Comparison")
 
-    names = [f"{SHORT[m]} ({_mtype(m)})" for m in _models_with_data] + ["YOU"]
-    accs = [ai_acc[m] for m in _models_with_data] + [user_acc]
-    bar_colors = [COLORS[m] for m in _models_with_data] + ["#FFD700"]
-    bar_hatches = [_hatch(m) for m in _models_with_data] + [""]
+    _label = {m: f"{SHORT[m]} ({_mtype(m)})" for m in _models_with_data}
+    acc_names = [_label[m] for m in _models_with_data] + ["YOU"]
+    acc_palette = {n: COLORS[m] for m, n in _label.items()}
+    acc_palette["YOU"] = "#FFD700"
+    acc_hatch_map = {n: _hatch(m) for m, n in _label.items()}
+    acc_hatch_map["YOU"] = ""
+    acc_df = pd.DataFrame({
+        "name": acc_names,
+        "acc": [ai_acc[m] for m in _models_with_data] + [user_acc],
+    }).sort_values("acc", ascending=True).reset_index(drop=True)  # highest at top
 
-    fig2, ax2 = plt.subplots(figsize=(10, 6))
-    bars = ax2.barh(range(len(names)), accs, color=bar_colors, edgecolor="black", linewidth=0.5, height=0.6)
-    for i, h in enumerate(bar_hatches):
-        bars[i].set_hatch(h)
-    for i, (n, a) in enumerate(zip(names, accs)):
-        ax2.text(a + 0.5, i, f"{a:.1f}%", va="center", fontsize=10, fontweight="bold")
-    ax2.set_yticks(range(len(names)))
-    ax2.set_yticklabels(names, fontsize=10)
-    ax2.set_xlabel("Accuracy (%)", fontsize=12)
-    ax2.set_title(f"{BENCH_SHORT[bench]} Accuracy (hatched = MoE)", fontsize=14)
-    ax2.set_xlim(0, 105)
-    ax2.grid(True, axis="x", alpha=0.3)
-    fig2.tight_layout()
-    st.pyplot(fig2)
-    plt.close(fig2)
+    with sns.axes_style("whitegrid"), sns.plotting_context("notebook", font_scale=1.1):
+        fig2, ax2 = plt.subplots(figsize=(10, 6))
+        sns.barplot(
+            data=acc_df, y="name", x="acc", hue="name", palette=acc_palette,
+            legend=False, ax=ax2, edgecolor="black", linewidth=0.5, width=0.7,
+        )
+        for i, n in enumerate(acc_df["name"]):
+            ax2.patches[i].set_hatch(acc_hatch_map[n])
+        for i, (n, a) in enumerate(zip(acc_df["name"], acc_df["acc"])):
+            ax2.text(a + 0.5, i, f"{a:.1f}%", va="center", fontsize=10, fontweight="bold")
+        ax2.set_xlim(0, 105)
+        ax2.set_xlabel("Accuracy (%)")
+        ax2.set_ylabel("")
+        ax2.set_title(f"{BENCH_SHORT[bench]} Accuracy (hatched = MoE)")
+        sns.despine(ax=ax2, left=True)
+        fig2.tight_layout()
+        st.pyplot(fig2)
+        plt.close(fig2)
 
     # ── Plot 3: Speed comparison ────────────────────────────────────────
     st.subheader("Speed Comparison")
 
-    times_all = [ai_time[m] for m in _models_with_data] + [total_time]
-    time_names = [f"{SHORT[m]} ({_mtype(m)})" for m in _models_with_data] + ["YOU"]
-    time_colors = [COLORS[m] for m in _models_with_data] + ["#FFD700"]
-    time_hatches = [_hatch(m) for m in _models_with_data] + [""]
+    speed_names = [_label[m] for m in _models_with_data] + ["YOU"]
+    speed_df = pd.DataFrame({
+        "name": speed_names,
+        "time": [ai_time[m] for m in _models_with_data] + [total_time],
+    }).sort_values("time", ascending=True).reset_index(drop=True)  # fastest at top
 
-    fig3, ax3 = plt.subplots(figsize=(10, 6))
-    bars3 = ax3.barh(range(len(time_names)), times_all, color=time_colors, edgecolor="black", linewidth=0.5, height=0.6)
-    for i, h in enumerate(time_hatches):
-        bars3[i].set_hatch(h)
-    for i, (n, t) in enumerate(zip(time_names, times_all)):
-        ax3.text(t + 10, i, f"{t:.1f}s", va="center", fontsize=10, fontweight="bold")
-    ax3.set_yticks(range(len(time_names)))
-    ax3.set_yticklabels(time_names, fontsize=10)
-    ax3.set_xlabel("Total Wall Time (seconds)", fontsize=12)
-    ax3.set_title(f"{BENCH_SHORT[bench]} Speed (hatched = MoE)", fontsize=14)
-    ax3.grid(True, axis="x", alpha=0.3)
-    fig3.tight_layout()
-    st.pyplot(fig3)
-    plt.close(fig3)
+    with sns.axes_style("whitegrid"), sns.plotting_context("notebook", font_scale=1.1):
+        fig3, ax3 = plt.subplots(figsize=(10, 6))
+        sns.barplot(
+            data=speed_df, y="name", x="time", hue="name", palette=acc_palette,
+            legend=False, ax=ax3, edgecolor="black", linewidth=0.5, width=0.7,
+        )
+        for i, n in enumerate(speed_df["name"]):
+            ax3.patches[i].set_hatch(acc_hatch_map[n])
+        x_max = max(speed_df["time"].max() * 1.15, 1.0)
+        for i, (n, t) in enumerate(zip(speed_df["name"], speed_df["time"])):
+            ax3.text(t + x_max * 0.01, i, f"{t:.1f}s", va="center", fontsize=10, fontweight="bold")
+        ax3.set_xlim(0, x_max)
+        ax3.set_xlabel("Total Wall Time (seconds)")
+        ax3.set_ylabel("")
+        ax3.set_title(f"{BENCH_SHORT[bench]} Speed (hatched = MoE)")
+        sns.despine(ax=ax3, left=True)
+        fig3.tight_layout()
+        st.pyplot(fig3)
+        plt.close(fig3)
 
     # ── Plot 4: Per-question timing vs AI avg ──────────────────────────
     st.subheader("Per-Question Timing (you vs AI average)")
 
     n_q = min(len(st.session_state.q_times), len(questions))
-    q_indices = list(range(n_q))
-    user_q_times = st.session_state.q_times[:n_q]
-    ai_avg_times = [questions[i]["avg_ai_time"] for i in q_indices]
+    timing_df = pd.DataFrame({
+        "q": list(range(n_q)) * 2,
+        "time": st.session_state.q_times[:n_q] + [questions[i]["avg_ai_time"] for i in range(n_q)],
+        "who": ["You"] * n_q + ["AI Average"] * n_q,
+    })
 
-    fig4, ax4 = plt.subplots(figsize=(12, 5))
-    ax4.plot(q_indices, user_q_times, "o-", color="#FFD700", label="You", linewidth=2, markersize=5)
-    ax4.plot(q_indices, ai_avg_times, "s--", color="#888888", label="AI Average", linewidth=1.5, markersize=4, alpha=0.7)
-    ax4.set_xlabel("Question #", fontsize=12)
-    ax4.set_ylabel("Time (s)", fontsize=12)
-    ax4.set_title("Time per Question", fontsize=14)
-    ax4.legend(fontsize=10)
-    ax4.grid(True, alpha=0.3)
-    fig4.tight_layout()
-    st.pyplot(fig4)
-    plt.close(fig4)
+    with sns.axes_style("whitegrid"), sns.plotting_context("notebook", font_scale=1.1):
+        fig4, ax4 = plt.subplots(figsize=(12, 5))
+        sns.lineplot(
+            data=timing_df, x="q", y="time", hue="who", style="who",
+            markers={"You": "o", "AI Average": "s"},
+            dashes={"You": (1, 0), "AI Average": (2, 2)},
+            palette={"You": "#FFD700", "AI Average": "#888888"},
+            linewidth=2, ax=ax4,
+        )
+        ax4.set_xlabel("Question #")
+        ax4.set_ylabel("Time (s)")
+        ax4.set_title("Time per Question")
+        sns.move_legend(ax4, "best", frameon=True)
+        sns.despine(ax=ax4)
+        fig4.tight_layout()
+        st.pyplot(fig4)
+        plt.close(fig4)
 
     # ── Detail table ────────────────────────────────────────────────────
     st.subheader("Question Detail")
