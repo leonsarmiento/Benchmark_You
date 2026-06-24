@@ -16,6 +16,7 @@ An interactive quiz dashboard where you test yourself against 11 open-source LLM
 | Benchmark | Type | Description |
 |-----------|------|-------------|
 | MMLU-Pro | MC (up to 10) | Knowledge across 14 academic & professional domains |
+| MMLU | MC (4) | Classic 57-subject academic knowledge test (7 models) |
 | ARC-Challenge | MC (4) | Grade-school science reasoning |
 | MathQA | MC (5) | Quantitative math word problems |
 | HellaSwag | MC (4) | Commonsense natural language inference |
@@ -56,6 +57,8 @@ WinoGrande             73.3%    90.0%    86.7%    90.0%   100.0%    70.0%     83
 SafetyBench            83.3%    86.7%    86.7%    96.7%    93.3%    96.7%     83.3%      83.3%      93.3%    90.0%    83.3%
 ```
 
+> **MMLU** (classic 4-option knowledge test) currently has results for **7 models only**: Qwen3.6-27B 76.7%, Qwen3.5-2B 73.3%, GLM-4.7 70.0%, Qwen3.6-35B 66.7%, gemma-4-26b 63.3%, Nex-N2-mini 60.0%, Devstral-24B 40.0%. The gemma / Nex / Qwen3.6-35B rows were run on a different quant than their other benchmarks.
+
 ## Run Locally
 
 ```bash
@@ -78,4 +81,4 @@ Benchmark_You/
 ## Acknowledgments
 
 - Benchmarks run using [omlx](https://github.com/jundot/omlx) by Jundot
-- Data sourced from [MMLU-Pro](https://huggingface.co/datasets/TIGER-Lab/MMLU-Pro), [ARC-Challenge](https://huggingface.co/datasets/allenai/ai2_arc), [MathQA](https://huggingface.co/datasets/allenai/math_qa), [HellaSwag](https://huggingface.co/datasets/rowan/hellaswag), [BBQ](https://huggingface.co/datasets/heegyu/bbq), [TruthfulQA](https://huggingface.co/datasets/truthful_qa), [WinoGrande](https://huggingface.co/datasets/winogrande), and [SafetyBench](https://huggingface.co/datasets/SafetyBench)
+- Data sourced from [MMLU-Pro](https://huggingface.co/datasets/TIGER-Lab/MMLU-Pro), [MMLU](https://huggingface.co/datasets/cais/mmlu), [ARC-Challenge](https://huggingface.co/datasets/allenai/ai2_arc), [MathQA](https://huggingface.co/datasets/allenai/math_qa), [HellaSwag](https://huggingface.co/datasets/rowan/hellaswag), [BBQ](https://huggingface.co/datasets/heegyu/bbq), [TruthfulQA](https://huggingface.co/datasets/truthful_qa), [WinoGrande](https://huggingface.co/datasets/winogrande), and [SafetyBench](https://huggingface.co/datasets/SafetyBench)

@@ -301,7 +301,7 @@ for _m in MODELS:
     if _f not in FAMILY_COLORS:
         FAMILY_COLORS[_f] = COLORS[_m]
 
-BENCHMARKS_MC = ["HPL", "MMLU_PRO", "ARC_CHALLENGE", "MATHQA", "HELLASWAG", "BBQ", "TRUTHFULQA", "WINOGRANDE", "SAFETYBENCH"]
+BENCHMARKS_MC = ["HPL", "MMLU_PRO", "MMLU", "ARC_CHALLENGE", "MATHQA", "HELLASWAG", "BBQ", "TRUTHFULQA", "WINOGRANDE", "SAFETYBENCH"]
 # Benchmarks available in the Interactive Pareto. HUMANEVAL & MBPP are
 # code-generation tasks (30 questions each, sampled from 164/500) run in
 # NON-thinking mode on 13 models. They are intentionally NOT in the quiz
@@ -311,6 +311,7 @@ PARETO_BENCHMARKS = BENCHMARKS_MC + ["HUMANEVAL", "MBPP"]
 BENCH_SHORT = {
     "HPL": "HPL (Human>AI)",
     "MMLU_PRO": "MMLU-Pro",
+    "MMLU": "MMLU",
     "ARC_CHALLENGE": "ARC-Challenge",
     "MATHQA": "MathQA",
     "HELLASWAG": "HellaSwag",
@@ -325,6 +326,7 @@ BENCH_SHORT = {
 BENCH_DESC = {
     "HPL": "Husk-Phi-Leon is a custom benchmark built from real social media posts (prompts inspired by @husk.irl and @father_phi). It tests social intelligence, common sense, and the ability to detect sarcasm, irony, inappropriate behavior, and trick questions. Unlike academic benchmarks, these are situations where humans naturally outperform AI - the questions are deliberately designed to trip up overly agreeable or literal-minded models. Formatted into a single-turn multiple-choice standard benchmarking format. 10 questions, multiple-choice.",
     "MMLU_PRO": "Massive Multitask Language Understanding (Professional) tests knowledge across 14 academic and professional domains - biology, chemistry, physics, law, economics, computer science, and more. Questions are multiple-choice with up to 10 options, making guessing nearly useless. It measures breadth and depth of general knowledge.",
+    "MMLU": "Massive Multitask Language Understanding is the classic 57-subject knowledge test spanning STEM, humanities, social sciences, and more. Each question has 4 answer choices. It measures broad academic and professional knowledge acquired through study, so a well-rounded education beats raw reasoning. (This benchmark currently has results for 7 models.)",
     "ARC_CHALLENGE": "AI2 Reasoning Challenge (Challenge set) contains grade-school science questions that require genuine reasoning, not just recall. Only questions that retrieval-based methods fail are included, so these are the hard ones - think balancing chemical equations, identifying energy types, and interpreting experimental results.",
     "MATHQA": "MathQA tests quantitative reasoning with real-world math word problems - percentages, probability, geometry, gain/loss, physics calculations, and more. Each question has 5 answer choices. It measures whether you (or an AI) can set up and solve practical math problems correctly.",
     "HELLASWAG": "HellaSwag tests commonsense natural language inference - given a context (a video description or wikiHow step), you must pick the most plausible continuation from 4 options. It sounds easy but the wrong answers are carefully chosen to be adversarial. It measures whether a model (or human) understands everyday situations.",
@@ -567,6 +569,21 @@ SUMMARY = {
     ("Nex-N2-mini-6bit", "MATHQA"): {"acc": 93.3, "correct": 28, "total": 30, "time": 501.4},
     ("Nex-N2-mini-6bit", "BBQ"): {"acc": 83.3, "correct": 25, "total": 30, "time": 15.2},
     ("Nex-N2-mini-6bit", "SAFETYBENCH"): {"acc": 96.7, "correct": 29, "total": 30, "time": 15.7},
+    # ── MMLU (classic 4-option, 57-subject knowledge test) ────────────────────
+    # Only 7 models have results. 3 were run on a different quant than their
+    # other benchmarks (per "map to existing" decision): the gemma, Nex, and
+    # Qwen3.6-35B rows below come from qat-6bit / 5bit-text / MLX-VL-oQ5 runs.
+    # Accuracies reflect the app's answer re-extraction (one Devstral response
+    # was a malformed multi-letter dump; its file header said 43.3% but the
+    # deterministic re-extraction scores 40.0%, which the per-question/live
+    # views also use, so the headline matches them).
+    ("Qwen3.6-27B-oQ4-mtp", "MMLU"): {"acc": 76.7, "correct": 23, "total": 30, "time": 200.0},
+    ("Qwen3.5-2B-MLX-8bit", "MMLU"): {"acc": 73.3, "correct": 22, "total": 30, "time": 15.0},
+    ("GLM-4.7-Flash-6bit-mlx", "MMLU"): {"acc": 70.0, "correct": 21, "total": 30, "time": 39.3},
+    ("Qwen3.6-35B-A3B-6bit-text-mlx", "MMLU"): {"acc": 66.7, "correct": 20, "total": 30, "time": 42.7},
+    ("gemma-4-26B-A4B-it-MLX-8bit", "MMLU"): {"acc": 63.3, "correct": 19, "total": 30, "time": 43.2},
+    ("Nex-N2-mini-6bit", "MMLU"): {"acc": 60.0, "correct": 18, "total": 30, "time": 33.5},
+    ("Devstral-Small-2-24B-Instruct-2512-4bit", "MMLU"): {"acc": 40.0, "correct": 12, "total": 30, "time": 172.8},
     # ── Coding benchmarks (HUMANEVAL & MBPP) ──────────────────────────────────
     # Code-generation tasks, 30 questions each (sampled from 164 / 500), run in
     # NON-thinking mode on 13 models. Source: Coding_benchmarks.txt. Model names
@@ -771,6 +788,17 @@ def parse_response_file(filepath):
         time_m = re.search(r"^Time: ([\d.]+)s$", body, re.M)
         q_time = float(time_m.group(1)) if time_m else 0.0
 
+        # MMLU is evaluated with 5-shot prompts: each block holds 4 worked
+        # examples (each ending "Answer: X") followed by the single scored
+        # question (ending with an empty "Answer:"). The metadata above
+        # (Category/Expected/Predicted/Time) was already read from the full
+        # block, so collapse the body to just that final scored question —
+        # only its text and options should feed the quiz / per-question view.
+        if bench_name == "MMLU":
+            shot_ends = list(re.finditer(r'^Answer:\s+[A-Da-d]\s*$', body, re.M))
+            if shot_ends:
+                body = body[shot_ends[-1].end():].lstrip("\n")
+
         # Extract question text:
         # Format varies by benchmark:
         #   BBQ/HellaSwag: Context: ... then Question: ... then options
@@ -849,6 +877,12 @@ def parse_response_file(filepath):
         if not question_text:
             q_m2 = re.search(r"Question:\s*\n(.*?)(?=\nAnswer:)", body, re.DOTALL)
             question_text = q_m2.group(1).strip() if q_m2 else ""
+
+        # After 5-shot trimming the MMLU test question has no "Question:" prefix;
+        # its text is everything before the first lettered option.
+        if bench_name == "MMLU":
+            m_opt = re.search(r'^[A-J]\.\s+', body, re.M)
+            question_text = body[:m_opt.start()].strip() if m_opt else body.strip()
         
         # Restrict option extraction to the question portion (everything before
         # the "Answer:" line). The model's "Raw response:" frequently restates
@@ -865,6 +899,10 @@ def parse_response_file(filepath):
         question_text = re.sub(r'\n(?:Answer:|Expected:|Predicted:|Raw response:).*$', '', question_text, flags=re.M|re.DOTALL).strip()
 
         options = re.findall(r"^([A-J])\.\s*(.*?)$", qbody, re.M)
+        # Classic MMLU is strictly 4-option (A-D); drop Roman-numeral stem
+        # lines (e.g. "I." / "V.") that [A-J] otherwise reads as extra options.
+        if bench_name == "MMLU":
+            options = [(l, t) for l, t in options if l in "ABCD"]
         # WinoGrande uses "1." / "2." instead of "A." / "B."
         if not options:
             num_opts = re.findall(r"^(\d+)\.\s+(.+)$", qbody, re.M)
