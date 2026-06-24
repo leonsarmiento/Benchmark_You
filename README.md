@@ -57,7 +57,7 @@ WinoGrande             73.3%    90.0%    86.7%    90.0%   100.0%    70.0%     83
 SafetyBench            83.3%    86.7%    86.7%    96.7%    93.3%    96.7%     83.3%      83.3%      93.3%    90.0%    83.3%
 ```
 
-> **MMLU** (classic 4-option knowledge test) currently has results for **7 models only**: Qwen3.6-27B 76.7%, Qwen3.5-2B 73.3%, GLM-4.7 70.0%, Qwen3.6-35B 66.7%, gemma-4-26b 63.3%, Nex-N2-mini 60.0%, Devstral-24B 40.0%. The gemma / Nex / Qwen3.6-35B rows were run on a different quant than their other benchmarks.
+> **MMLU** (classic 4-option knowledge test) currently has results for **7 models only** (29 questions — one defective source question excluded): Qwen3.6-27B 79.3%, Qwen3.5-2B 75.9%, GLM-4.7 72.4%, Qwen3.6-35B 69.0%, gemma-4-26b 65.5%, Nex-N2-mini 62.1%, Devstral-24B 41.4%. The gemma / Nex / Qwen3.6-35B rows were run on a different quant than their other benchmarks.
 
 ## Run Locally
 

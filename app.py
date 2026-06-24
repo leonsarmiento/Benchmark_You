@@ -573,17 +573,19 @@ SUMMARY = {
     # Only 7 models have results. 3 were run on a different quant than their
     # other benchmarks (per "map to existing" decision): the gemma, Nex, and
     # Qwen3.6-35B rows below come from qat-6bit / 5bit-text / MLX-VL-oQ5 runs.
-    # Accuracies reflect the app's answer re-extraction (one Devstral response
-    # was a malformed multi-letter dump; its file header said 43.3% but the
-    # deterministic re-extraction scores 40.0%, which the per-question/live
-    # views also use, so the headline matches them).
-    ("Qwen3.6-27B-oQ4-mtp", "MMLU"): {"acc": 76.7, "correct": 23, "total": 30, "time": 200.0},
-    ("Qwen3.5-2B-MLX-8bit", "MMLU"): {"acc": 73.3, "correct": 22, "total": 30, "time": 15.0},
-    ("GLM-4.7-Flash-6bit-mlx", "MMLU"): {"acc": 70.0, "correct": 21, "total": 30, "time": 39.3},
-    ("Qwen3.6-35B-A3B-6bit-text-mlx", "MMLU"): {"acc": 66.7, "correct": 20, "total": 30, "time": 42.7},
-    ("gemma-4-26B-A4B-it-MLX-8bit", "MMLU"): {"acc": 63.3, "correct": 19, "total": 30, "time": 43.2},
-    ("Nex-N2-mini-6bit", "MMLU"): {"acc": 60.0, "correct": 18, "total": 30, "time": 33.5},
-    ("Devstral-Small-2-24B-Instruct-2512-4bit", "MMLU"): {"acc": 40.0, "correct": 12, "total": 30, "time": 172.8},
+    # Scores are out of 29: one source question (Q3, business_ethics) is
+    # defective in the original cais/mmlu dataset (options reference a numbered
+    # list that was never included) and is excluded from the quiz. All 7 models
+    # got it wrong, so correct counts are unchanged — only the denominator
+    # drops 30 -> 29. (Devstral's file header said 43.3% but its Q12 raw
+    # response was a malformed multi-letter dump; re-extraction scores 40.0%.)
+    ("Qwen3.6-27B-oQ4-mtp", "MMLU"): {"acc": 79.3, "correct": 23, "total": 29, "time": 200.0},
+    ("Qwen3.5-2B-MLX-8bit", "MMLU"): {"acc": 75.9, "correct": 22, "total": 29, "time": 15.0},
+    ("GLM-4.7-Flash-6bit-mlx", "MMLU"): {"acc": 72.4, "correct": 21, "total": 29, "time": 39.3},
+    ("Qwen3.6-35B-A3B-6bit-text-mlx", "MMLU"): {"acc": 69.0, "correct": 20, "total": 29, "time": 42.7},
+    ("gemma-4-26B-A4B-it-MLX-8bit", "MMLU"): {"acc": 65.5, "correct": 19, "total": 29, "time": 43.2},
+    ("Nex-N2-mini-6bit", "MMLU"): {"acc": 62.1, "correct": 18, "total": 29, "time": 33.5},
+    ("Devstral-Small-2-24B-Instruct-2512-4bit", "MMLU"): {"acc": 41.4, "correct": 12, "total": 29, "time": 172.8},
     # ── Coding benchmarks (HUMANEVAL & MBPP) ──────────────────────────────────
     # Code-generation tasks, 30 questions each (sampled from 164 / 500), run in
     # NON-thinking mode on 13 models. Source: Coding_benchmarks.txt. Model names
@@ -879,9 +881,11 @@ def parse_response_file(filepath):
             question_text = q_m2.group(1).strip() if q_m2 else ""
 
         # After 5-shot trimming the MMLU test question has no "Question:" prefix;
-        # its text is everything before the first lettered option.
+        # its text is everything before the first answer option. Classic MMLU is
+        # strictly A–D, so we stop at [A-D]. (Using [A-J] would cut the question
+        # at Roman-numeral stems like "I.", "II.", "III." that some questions use.)
         if bench_name == "MMLU":
-            m_opt = re.search(r'^[A-J]\.\s+', body, re.M)
+            m_opt = re.search(r'^[A-D]\.\s+', body, re.M)
             question_text = body[:m_opt.start()].strip() if m_opt else body.strip()
         
         # Restrict option extraction to the question portion (everything before
@@ -975,12 +979,23 @@ def build_question_bank(data):
     bank = defaultdict(list)
     seen = defaultdict(set)
 
+    # Questions excluded from the quiz because they are unanswerable as
+    # recorded (defective in the source dataset). MMLU Q3 ("How the code is
+    # enforced." — business_ethics) references a numbered list (1–4) that was
+    # never included in the question, so its options ("1,2,3", "1,2,4", …)
+    # are meaningless. Verified against the original cais/mmlu HuggingFace
+    # source — the defect is in the dataset, not our extraction.
+    _EXCLUDED_QUESTIONS = {("MMLU", "Q3")}
+
     # Use first model's data as canonical source for each question
     for bench in BENCHMARKS_MC:
         for model in MODELS:
             if (model, bench) not in data:
                 continue
             for rec in data[(model, bench)]:
+                if (bench, rec["qid"]) in _EXCLUDED_QUESTIONS:
+                    seen[bench].add(rec["qid"])
+                    continue
                 if rec["qid"] not in seen[bench] and rec["options"]:
                     seen[bench].add(rec["qid"])
                     # Collect model-level timing info for this question
