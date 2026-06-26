@@ -604,6 +604,7 @@ SUMMARY = {
     ("Domyn-Small-v1.0-8bit-mlx", "MATHQA"): {"acc": 93.3, "correct": 28, "total": 30, "time": 1413.6},
     ("Domyn-Small-v1.0-8bit-mlx", "BBQ"): {"acc": 73.3, "correct": 22, "total": 30, "time": 20.3},
     ("Domyn-Small-v1.0-8bit-mlx", "SAFETYBENCH"): {"acc": 83.3, "correct": 25, "total": 30, "time": 21.9},
+    ("Domyn-Small-v1.0-8bit-mlx", "HPL"): {"acc": 0.0, "correct": 0, "total": 10, "time": 268.3},
     # ── MMLU (classic 4-option, 57-subject knowledge test) ────────────────────
     # 16 models have results. 3 of the original 7 were run on a different
     # quant than their other benchmarks (per "map to existing" decision): the
