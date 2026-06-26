@@ -586,14 +586,16 @@ SUMMARY = {
     ("Nex-N2-mini-6bit", "MATHQA"): {"acc": 93.3, "correct": 28, "total": 30, "time": 501.4},
     ("Nex-N2-mini-6bit", "BBQ"): {"acc": 83.3, "correct": 25, "total": 30, "time": 15.2},
     ("Nex-N2-mini-6bit", "SAFETYBENCH"): {"acc": 96.7, "correct": 29, "total": 30, "time": 15.7},
-    # Ornith-1.0-35B-5bit-mlx (Qwen3.5-35B-A3B fine-tune, MoE) - 7 MC benchmarks.
-    # No HPL / BBQ / SAFETYBENCH runs (not yet benchmarked on those).
+    # Ornith-1.0-35B-5bit-mlx (Qwen3.5-35B-A3B fine-tune, MoE) - all 9 MC benchmarks.
     ("Ornith-1.0-35B-5bit-mlx", "MMLU_PRO"): {"acc": 83.3, "correct": 25, "total": 30, "time": 937.1},
     ("Ornith-1.0-35B-5bit-mlx", "HELLASWAG"): {"acc": 83.3, "correct": 25, "total": 30, "time": 18.0},
     ("Ornith-1.0-35B-5bit-mlx", "TRUTHFULQA"): {"acc": 100.0, "correct": 30, "total": 30, "time": 15.0},
     ("Ornith-1.0-35B-5bit-mlx", "ARC_CHALLENGE"): {"acc": 83.3, "correct": 25, "total": 30, "time": 13.8},
     ("Ornith-1.0-35B-5bit-mlx", "WINOGRANDE"): {"acc": 76.7, "correct": 23, "total": 30, "time": 12.4},
     ("Ornith-1.0-35B-5bit-mlx", "MATHQA"): {"acc": 96.7, "correct": 29, "total": 30, "time": 927.1},
+    ("Ornith-1.0-35B-5bit-mlx", "BBQ"): {"acc": 90.0, "correct": 27, "total": 30, "time": 14.7},
+    ("Ornith-1.0-35B-5bit-mlx", "SAFETYBENCH"): {"acc": 86.7, "correct": 26, "total": 30, "time": 14.9},
+    ("Ornith-1.0-35B-5bit-mlx", "HPL"): {"acc": 30.0, "correct": 3, "total": 10, "time": 183.9},
     # Domyn-Small-v1.0-8bit-mlx (standalone Nemotron-arch, dense 10B) - 9 MC benchmarks.
     # No HPL run (not yet benchmarked on it).
     ("Domyn-Small-v1.0-8bit-mlx", "MMLU_PRO"): {"acc": 50.0, "correct": 15, "total": 30, "time": 707.6},
