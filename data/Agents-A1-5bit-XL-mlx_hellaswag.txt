@@ -1,0 +1,514 @@
+Model: Agents-A1-5bit-XL-mlx
+Benchmark: HELLASWAG
+Accuracy: 86.7% (26/30)
+Time: 18.6s
+
+--- Q28016 [CORRECT] ---
+Category: Playing polo
+Question: Choose the most plausible continuation. Answer with just the letter (A, B, C, or D).
+
+Context: A group of people are sitting outside on the bleachers watching a game of water polo. in the water
+
+A. , two boys begin treading water and staying in the same place.
+B. a woman stands on a rope over and over.
+C. , a person is seen sitting on the sand while the people in the net cheers on.
+D. , a man is thrown into a pile of wood by someone riding a motor bike in the water.
+
+Answer:
+Expected: 0
+Predicted: A
+Raw response: A
+Time: 0.477s
+
+--- Q5823 [CORRECT] ---
+Category: Powerbocking
+Question: Choose the most plausible continuation. Answer with just the letter (A, B, C, or D).
+
+Context: A group of boys are on the sidewalk of a street. They are bouncing around on stilts. they
+
+A. continue talking as they bounce and walk.
+B. have wrapping paper in their hands.
+C. hit hoops each other as they walk.
+D. bounce and flip over a wobbly bar onto a mat.
+
+Answer:
+Expected: 0
+Predicted: A
+Raw response: A
+Time: 0.541s
+
+--- Q9715 [CORRECT] ---
+Category: Personal Care and Style
+Question: Choose the most plausible continuation. Answer with just the letter (A, B, C, or D).
+
+Context: [header] How to make a clutch bag with a bow knot [title] Cut the fabric pieces as follows : [substeps] For the body of the bag: cut two pieces of fabric measuring 10 " x 6 ". For the strap: cut one piece fabric measuring 14. 5 " x 3 ". For the bow: cut two pieces of fabric measuring 11 " x 5 ".
+
+A. For the final strap: cut two pieces of fabric measuring 22 " x 6 ". For the first strap: cut one piece of fabric measuring 24 " x 10 ".
+B. The other piece is used to double-knot a button. For the neck: cut two pieces of fabric measuring 24 " x 8 ".
+C. For the zipper: cut one piece fabric measuring 35 " x 10 ". For the ribbon: cut two pieces of fabric measuring 24 " x 10 ".
+D. An additional bow piece: cut one piece of fabric measuring 2 " x 5 ". Lining: cut two pieces of fabric measuring 10 " x 6 ".
+
+Answer:
+Expected: 3
+Predicted: D
+Raw response: D
+Time: 0.665s
+
+--- Q5867 [CORRECT] ---
+Category: Health
+Question: Choose the most plausible continuation. Answer with just the letter (A, B, C, or D).
+
+Context: [header] How to get stuff out of your eye [title] Wash your hands. [step] Even if your hands don't seem dirty, it's important to wash them if you're going to touch your eye. You don't want to remove an object from your eye only to infect it with something worse.
+
+A. [substeps] After washing your hands with a gentle soap, use warm, soapy water to clean your eye. If you'd rather not use hand sanitizer, wash your hands with warm, soapy water.
+B. Don't touch your eye with a hairbrush or similar item. [substeps] If you suspect eye germs, act quickly and remove them before your client comes to visit.
+C. If possible, use a mild soap or antibacterial hand soap. [substeps] If you're in a public place, however, to catch and remove a substance, go ahead.
+D. [substeps] Wash your hands thoroughly with soap and clean water for at least 20 seconds. This ensures that you don't get bacteria or other contaminants in your eyes.
+
+Answer:
+Expected: 3
+Predicted: D
+Raw response: D
+Time: 0.657s
+
+--- Q3190 [CORRECT] ---
+Category: Pets and Animals
+Question: Choose the most plausible continuation. Answer with just the letter (A, B, C, or D).
+
+Context: [header] How to pet a turtle [title] Approach from the front. [step] If the turtle cannot see you and suddenly your hand appears, it may get frightened and bite you. Always approach a turtle from the front so that it can see you.
+
+A. If it doesn't spot you, it will be fearful and liable to bite back. [title] Remove the cage's lid and trap it if necessary.
+B. [title] Hold the turtle gently by its bottom and scoop its mouth. [step] Place it in the palm of your hand so its mouth is placed between the palm of your hand and the turtle's mouth.
+C. [title] Place turtles on a low, flat surface. [step] Turtles will be the most receptive to human interaction when they feel safe and secure, so place them on the floor (preferably tile rather than carpet) when petting them.
+D. [title] Carefully place one hand on the turtle's back. [step] Its ears should be near the front of its body, and often the turtle will flap its fins to the sides.
+
+Answer:
+Expected: 2
+Predicted: C
+Raw response: C
+Time: 0.65s
+
+--- Q35259 [CORRECT] ---
+Category: Cutting the grass
+Question: Choose the most plausible continuation. Answer with just the letter (A, B, C, or D).
+
+Context: A man walks alongside a boy who is mowing the lawn. he
+
+A. is running around the yard, jumping over the obstacle.
+B. is running in slow motion, watching for his step.
+C. instructs the boy on how to turn the mower and go around a small tree.
+D. ties a man's shoes.
+
+Answer:
+Expected: 2
+Predicted: C
+Raw response: C
+Time: 0.545s
+
+--- Q25693 [WRONG] ---
+Category: Playing polo
+Question: Choose the most plausible continuation. Answer with just the letter (A, B, C, or D).
+
+Context: People are swimming in the water. two women
+
+A. are sitting at a desk.
+B. are standing on top of a diving board together.
+C. are in the boat.
+D. are standing on the beach watching.
+
+Answer:
+Expected: 3
+Predicted: B
+Raw response: B
+Time: 0.511s
+
+--- Q42181 [CORRECT] ---
+Category: Health
+Question: Choose the most plausible continuation. Answer with just the letter (A, B, C, or D).
+
+Context: [header] How to be adventurous [title] Let go of what is holding you back. [step] Inhibitions are feelings that make you self-conscious and unable to act in a relaxed and natural way. Perhaps you are shy, inexperienced or fearful.
+
+A. Acting inappropriately might loosen up those around you. Try to allow yourself to bounce back from your shyness.
+B. In order to let go of what is holding you back you must feel safe with yourself, your surroundings and the people around you. [substeps] Ask yourself why you want to be adventurous.
+C. When confronted by a serious problem, find ways to combat it by seeking the assistance of someone who can guide you through it. This person could be a trusted friend, a family member, or a holy war instructor.
+D. Letting go of these feelings sends the message to your brain that you are not a wild animal and that as a result, you are less inhibited. Remind yourself what you are more confident about: your body.
+
+Answer:
+Expected: 1
+Predicted: B
+Raw response: B
+Time: 0.648s
+
+--- Q21145 [CORRECT] ---
+Category: Making a lemonade
+Question: Choose the most plausible continuation. Answer with just the letter (A, B, C, or D).
+
+Context: A man in red turban stands in a kitchen. He pours some ingredients into a glass. He explains his methods holding a spoon. he
+
+A. then finishes the drink with a garnish.
+B. holds the spoon in his hands and lifts it up to show the proper position.
+C. pours the ingredients into a bowl at the counter.
+D. adds salt and peppers into the glass as well.
+
+Answer:
+Expected: 0
+Predicted: A
+Raw response: A
+Time: 0.592s
+
+--- Q47659 [WRONG] ---
+Category: Home and Garden
+Question: Choose the most plausible continuation. Answer with just the letter (A, B, C, or D).
+
+Context: [header] How to recycle car seats [title] Contact a local car seat trade-in program to recycle your intact car seat. [step] Certain retail stores that sell new baby gear have trade-in programs that will take your used car seat for its recyclable parts. Some stores even offer a discount on a new car seat or a coupon for baby gear in exchange for your old car seat.
+
+A. Ask around and consider the other automotive or recycling resources available to you. [title] Recycle at a recycling center.
+B. [title] Check your car seat's changing colors. [step] Changing out a car seat can dramatically improve the color of your car seat if you use vinyl, vinyl, vinyl, or vinyl seats.
+C. [title] Mail all programs to the information services website. [step] Go to the directories section of the department of vehicle services website and select your current vin.
+D. [substeps] Call the store where your car seat came from or look online to see if they offer any car seat trading programs. [title] Ask if your car seat is accepted by your local recycling program.
+
+Answer:
+Expected: 3
+Predicted: A
+Raw response: A
+Time: 0.661s
+
+--- Q27210 [CORRECT] ---
+Category: Personal Care and Style
+Question: Choose the most plausible continuation. Answer with just the letter (A, B, C, or D).
+
+Context: [header] How to prepare oily skin for makeup [title] Wash your face with a gentle cleanser. [step] They key to getting a healthy glow with makeup is making sure the palette-your face--underneath is clean. Use a gentle, ph-balanced cleanser to clear any dirt or excess oil off of your skin.
+
+A. [substeps] If you have oily skin, use a facial cleanser instead of a pore-cleansing product. Because pore-cleansing products can dry out your skin, avoid that part of your face.
+B. [substeps] You may want to consider using a gel cleanser, which is often gentle and doesn't have excess oils that could exacerbate your oily skin. Avoid using products that are heavy in chemicals, which may irritate your skin and increase oil production.
+C. Never use a cleanser with salicylic acid, but you should also avoid regular facial cleansers that will leave your skin looking oily. [substeps] Look for products that are 100% organic; these will not only prevent you from picking at dirt, but also have antimicrobial properties.
+D. Put some jojoba oil into a large bowl, and fill it with warm water and a little apple cider vinegar. Use your fingertips to gently pat away any excess sugar.
+
+Answer:
+Expected: 1
+Predicted: B
+Raw response: B
+Time: 0.713s
+
+--- Q7413 [CORRECT] ---
+Category: Hitting a pinata
+Question: Choose the most plausible continuation. Answer with just the letter (A, B, C, or D).
+
+Context: The man spins the blindfolded woman around while she's holding the bat in her hand. But then she starts swinging the bat and the man moves out of the way. next
+
+A. he walks through a storm and into the dojo dojo fighting with the other man standing in the fourth circle.
+B. he flips her and holds up his hand.
+C. , the woman throws a small ball and they catch it and continue playing.
+D. , she swings the bat at the pinata and she hits the candy out of there, then she takes the blindfold off and swings the bat again getting more candy out.
+
+Answer:
+Expected: 3
+Predicted: D
+Raw response: D
+Time: 0.516s
+
+--- Q6841 [CORRECT] ---
+Category: Playing violin
+Question: Choose the most plausible continuation. Answer with just the letter (A, B, C, or D).
+
+Context: A man is seen speaking to another holding a violin. The man speaking them walks out of frame. the other man
+
+A. holds the bow back up to speak to the camera.
+B. begins playing the piano followed by the person speaking more while they play.
+C. walks back in and the picture speeds up.
+D. begins playing the violin.
+
+Answer:
+Expected: 3
+Predicted: D
+Raw response: D
+Time: 0.575s
+
+--- Q22911 [WRONG] ---
+Category: Sharpening knives
+Question: Choose the most plausible continuation. Answer with just the letter (A, B, C, or D).
+
+Context: . a chef in the kitchen wearing a chef hat
+
+A. narrates using an electric mixer.
+B. and gloves is demonstrating how to spread sugar into a thick cake pan.
+C. and berrystaff in a kitchen are standing in front of a counter and talking about the ingredients and dishes applied by the chefs in the kitchen.
+D. is giving instructions on how to sharpen a knife.
+
+Answer:
+Expected: 3
+Predicted: B
+Raw response: B
+Time: 0.62s
+
+--- Q2648 [CORRECT] ---
+Category: Food and Entertaining
+Question: Choose the most plausible continuation. Answer with just the letter (A, B, C, or D).
+
+Context: [header] How to prepare sea salt soak [title] Purify 1l (4.2 cups) of water. [step] Pour the liter of water through a carbon water filter. You can find filter pitchers at most grocery and specialty stores.
+
+A. You don't need to clean your filter before using it. Simply plug it in, submerge it in white water, and fill it to just below the brim.
+B. The carbon filter takes out substances like chlorine, which are added to the water and could affect the salinity. [title] Pour the water into a saucepan and bring it to a boil.
+C. You can also make your own emulsifiers at home for convenient convenience. [substeps] To make a water-proof filter, only put 1l (4.2 cups) of water into a 1 liter (0.4 us gal).
+D. Set up the filter well out of reach from sharks. If the water is too hot, it can burn.
+
+Answer:
+Expected: 1
+Predicted: B
+Raw response: B
+Time: 0.626s
+
+--- Q4343 [CORRECT] ---
+Category: Computers and Electronics
+Question: Choose the most plausible continuation. Answer with just the letter (A, B, C, or D).
+
+Context: [header] How to unclog a standard ink cartridge (2 cartridge printers ) [title] Obtain a flat bottomed container and water. [step] Distilled or de-ionized water is suggested to prevent ink contamination. [title] Heat water until hot and carefully pour into container.
+
+A. [title] Apply lemon juice, laundry detergent, dish soap or dishwashing liquid with a toothbrush to the sting. [title] Prepare your ink, blowing on the needle to force out tiny particles of pulp.
+B. [title] Immerse the bottom portion of the ink cartridge into the hot water for approximately 5 minutes. [substeps] The hot water will help loosen up the dried ink which has formed inside the cartridge nozzle plate holes.
+C. [title] Add soda ash (ash-ash as the name suggests). [title] Using scissors trim the caps so they do not reveal any ink.
+D. [step] Do not pour over top of the container, otherwise the ink will discolor in the liquid and cause odor, as can oil or rust on laboratory equipment. [title] Add 1/2 a pinch of bleached white vinegar in water.
+
+Answer:
+Expected: 1
+Predicted: B
+Raw response: B
+Time: 0.66s
+
+--- Q37099 [CORRECT] ---
+Category: Pets and Animals
+Question: Choose the most plausible continuation. Answer with just the letter (A, B, C, or D).
+
+Context: [header] How to prepare your old english sheepdog for a show [title] Always find a reputable breeder. [step] Look around to find a breeder. The best places to spot one are in dog fancy classifieds, dog world classifieds, akc gazette, or www.akc.org where you can find the breeder classifieds.
+
+A. [substeps] Check breeders' websites such as the' dog searching book for'. Browse old american newspapers and magazines to ensure that there are no shortage of reputable breeders.
+B. You can also call local dog shops and see what they have to offer and how much they would charge for a pup. The frequency at which many parents will advertise their offerings may also let you find a breeder who is reputable.
+C. Be prepared to pay a certain number of dollars for an old english sheepdog with good records and strong personality. [title] Ask your veterinarian about your old english sheepdog.
+D. Also, a great place to spot your breeder is at your local kennel club's dog show. Internet listings are not the best, as many of the dogs come from puppy mills.
+
+Answer:
+Expected: 3
+Predicted: D
+Raw response: D
+Time: 0.665s
+
+--- Q49158 [CORRECT] ---
+Category: Food and Entertaining
+Question: Choose the most plausible continuation. Answer with just the letter (A, B, C, or D).
+
+Context: [header] How to remove interior walls [title] First, determine if the wall you want to remove is a load bearing wall, meaning it supports the floor above. [step] Go into your basement (or crawlspace) and look at the alignment of floor joists. These are large pieces of lumber going across the house from side to side supporting the floor/roof and are generally 16 " apart.
+
+A. If one side is facing out of the house, they'll likely be 16 " apart. And if one side is facing in, these will be 24 " apart.
+B. Remember the alignment-they generally go from side to side on most modern homes across the width of the house. [title] If the wall you want to remove is at a right angle to the floor joists-stop.
+C. The pallets facing your home and building plans typically occupy much less space in a single wall frame. [title] Use a small trowel to scrub smooth surfaces with the grain.
+D. Also, examine the front corners of the front wall. This is a great place to check on a load bearing wall.
+
+Answer:
+Expected: 1
+Predicted: B
+Raw response: B
+Time: 0.668s
+
+--- Q6190 [CORRECT] ---
+Category: Doing kickboxing
+Question: Choose the most plausible continuation. Answer with just the letter (A, B, C, or D).
+
+Context: A small boy is seen punching and kicking a man on his knees wearing gloves. another boy
+
+A. steps up and hits the man holding him down while twisting and making several kicks with the man's help.
+B. approaches while the mat is being rolled and jumps on the man to continue hitting.
+C. punches and kicks the same man.
+D. is seen punching and kicking a man standing up.
+
+Answer:
+Expected: 2
+Predicted: C
+Raw response: C
+Time: 0.583s
+
+--- Q43998 [CORRECT] ---
+Category: Personal Care and Style
+Question: Choose the most plausible continuation. Answer with just the letter (A, B, C, or D).
+
+Context: [header] How to not be affected by your friends insulting your views on religion [title] Remember, different strokes for different folks. [step] Not everyone has the same views on everything. You may look at your religion as pure and loving, but to others it may have some faults.
+
+A. Remind yourself that you have different egos, but all people are different. If none of your friends are truly atheists, they don't have the same moral compass.
+B. Fortunately, this is intentional and no one gets mad when he/she doesn't feel pure in existence. [title] Tell yourself it is not important what other people think of you.
+C. You may dislike most of the things your friends do to support the beliefs of others. [title] There are lots of different outcomes of every situation.
+D. Be more tolerant than those that are insulting your views. [title] Don't let their taunts affect you.
+
+Answer:
+Expected: 3
+Predicted: D
+Raw response: D
+Time: 0.603s
+
+--- Q160 [CORRECT] ---
+Category: Personal Care and Style
+Question: Choose the most plausible continuation. Answer with just the letter (A, B, C, or D).
+
+Context: [header] How to make a donut bun [title] Buy a donut form or find a clean sock. [step] Donut forms can be purchased in the hair accessories section of the drugstore, but it's just as easy to make your own with a sock. You want a large, stretchy tube sock that's easy to roll.
+
+A. [substeps] The roll should be approximately 50 millimetres (11 in) in length, with a hole in the middle for stuffing. The tube sock is washable, making it impossible to change a simple roll you rolled yourself.
+B. If you want a slightly less large tube sock, buy a sock that is smaller. Roll up the sock into an accordion-like sock shape.
+C. Use an old pair because you will be cutting the toe off. [substeps] It's best if you have a sock that's similar to your hair color, but any sock will work.
+D. Running in place when you roll the sock up helps distribute the hair evenly throughout the donut as it gets folded. [substeps] Pull out as much hair as possible.
+
+Answer:
+Expected: 2
+Predicted: C
+Raw response: C
+Time: 0.667s
+
+--- Q42099 [CORRECT] ---
+Category: Personal Care and Style
+Question: Choose the most plausible continuation. Answer with just the letter (A, B, C, or D).
+
+Context: [header] How to prevent thrush when breastfeeding [title] Sterilize any feeding instruments. [step] This is particularly important to do if your baby has presented with thrush symptoms. Any instrument that comes into contact with your baby's mouth and your nipple should be sterilized.
+
+A. Wash your hands before and after handling your baby to prevent the spread of the disease. [title] Wash your hands with soap and water before handling you baby.
+B. [substeps] Sterilizing a nursing instrument increases the likelihood of thrush infection. For example, consider sterilizing instruments with tca or.
+C. You can do this by bringing water to a boil and placing the instruments inside for five minutes after every use. The instruments you should sterilize include : [substeps] The teething ring, pacifiers, and the teat of the feeding bottle.
+D. To sterilize a given tool or nipple, wash it thoroughly with soap and water, then dry it with a clean towel. [substeps] You can sterilize an already sterilized tool in the kitchen sink or on the dishwasher.
+
+Answer:
+Expected: 2
+Predicted: C
+Raw response: C
+Time: 0.657s
+
+--- Q26875 [CORRECT] ---
+Category: Finance and Business
+Question: Choose the most plausible continuation. Answer with just the letter (A, B, C, or D).
+
+Context: [header] How to draft a stock purchase agreement [title] Format your document. [step] Open a blank word processing document. You should set the font size and style to something most people can read.
+
+A. A women's word style is okay for a large document. In a man's favor, however, an invitation to type out the agreement almost doubles the benefit.
+B. A thicker, more professional looking document does not require a thicker document. [substeps] With an open word document, your draft must remain formatted.
+C. Insert the heading headings in front of your document and set the date. [substeps] Commonly, stock purchase agreements require a certain number of characters, such as 1 and 2.
+D. Times new roman 12 point works for most people, but feel free to choose anything legible. [substeps] You might be making multiple stock sales to many different buyers.
+
+Answer:
+Expected: 3
+Predicted: D
+Raw response: D
+Time: 0.616s
+
+--- Q2829 [CORRECT] ---
+Category: Food and Entertaining
+Question: Choose the most plausible continuation. Answer with just the letter (A, B, C, or D).
+
+Context: [header] How to increase your baby's chances of being smart from womb to birth [title] Give your baby a name as soon as you know the sex of your baby. [step] This will help you to communicate with your beloved baby. [title] Stay active.
+
+A. [step] This means swimming, playing fetch, swimming, breastfeeding, or picking up your baby. Keep your baby on his feet with his back turned.
+B. [step] During labor, your baby's body learns to regulate its temperature very quickly. So, when your baby is first born, it needs to be active, hence increasing its chances of being able to use heat.
+C. [step] While you are taking care of your baby, don't be discouraged by laziness. At the core of being smart is being active: take about 30 minutes daily to walk, play, and talk to your baby.
+D. [step] As your pregnancy progresses, your fetus will acquire more skills. He/she will be able to kick, move, see, hear, suck his/her thumb, have some taste selections for music and even food.
+
+Answer:
+Expected: 3
+Predicted: D
+Raw response: D
+Time: 0.699s
+
+--- Q30606 [CORRECT] ---
+Category: Youth
+Question: Choose the most plausible continuation. Answer with just the letter (A, B, C, or D).
+
+Context: [header] How to have a cute and bubbly personality [title] Keep a positive worldview. [step] Being bubbly means developing a positive outlook to find the best in other people while lifting their spirits with your attitude. [substeps] Find ways to recast a negative situation in a positive light.
+
+A. For example, try to remind yourself that something exciting was going on at work before a big event like a new job is coming up. Remind yourself that you can't move forward simply because something bad happened.
+B. For example, if your friend did something unfortunately that cannot change, you might get angry at her or remind yourself that it wasn't her fault or isn't important to her. Focus on the positives in things that do not happen everyday, and instead focus on things that make people laugh and high energy.
+C. For example, instead of thinking " i'm so worried about finishing this essay, " rephrase the thought as " i'm so excited to write a great essay. " practice finding positive aspects to daily life.
+D. If you find yourself beating yourself up when you think the worst about yourself, start revisiting those circumstances, but then remind yourself that you are on your own, so you are not alone. Remember that for some people, having a positive outlook on life will make them happy.
+
+Answer:
+Expected: 2
+Predicted: C
+Raw response: C
+Time: 0.77s
+
+--- Q47444 [CORRECT] ---
+Category: Personal Care and Style
+Question: Choose the most plausible continuation. Answer with just the letter (A, B, C, or D).
+
+Context: [header] How to design your own piece of jewelry [title] Browse websites and jewelry stores for inspiration. [step] When it comes to designing jewelry at home, you will need some inspiration before you start drawing. Browse jewelry online or head to your local craft store or craft show to browse the selection.
+
+A. [substeps] You can check out online craft stores such as yukon gold, orriver, and fitbit. Look for designs that you like, as well as unique elements.
+B. [substeps] Look through print-out schedules of many online and brick-and-mortar stores. You can even split your schedule into 54 separate sections if you have enough input at one time.
+C. [substeps] You can also print out or contact the craft store to see what they already have, either to create your design yourself or to get suggestions. Prices range from $16 to $50.
+D. Perhaps a pendant or gemstone will catch your eye. Once you are inspired, it should be easy to begin designing your jewelry..
+
+Answer:
+Expected: 3
+Predicted: D
+Raw response: D
+Time: 0.672s
+
+--- Q10105 [CORRECT] ---
+Category: Personal Care and Style
+Question: Choose the most plausible continuation. Answer with just the letter (A, B, C, or D).
+
+Context: [header] How to wear navy pants [title] Opt for a slim fit design. [step] Navy pants look best when they're slim-fitted. Go for form-fitted navy pants over baggier designs.
+
+A. While skinny jeans may not be necessary, pick pants that are a tighter fit overall. [substeps] Fitted designs work well for formal outfits paired with things like dressy tops and blazers.
+B. A slim fit fabric will help keep your legs from getting wobbly or felt around. [substeps] When shopping for navy pants, opt for slim tapered pants.
+C. [substeps] Slim-fitted navy pants should be cut low on your hips, with a button-down v-neck for a low-key fit. Make sure your pants can reach under your belt buckle.
+D. Choose a slim fit fabric like cotton or canvas for the best look. [substeps] Avoid baggy low-rise dress pants.
+
+Answer:
+Expected: 0
+Predicted: A
+Raw response: A
+Time: 0.608s
+
+--- Q1494 [WRONG] ---
+Category: Paintball
+Question: Choose the most plausible continuation. Answer with just the letter (A, B, C, or D).
+
+Context: A shot of a sunset set is shown followed by peaking smoking and walking around a paint ball pit. The men speak to one another and lead into running around and playing paint ball. they
+
+A. are seen outside again with one man speaking and dancing in the same spot.
+B. jump and skydive into the water at various speeds, tossing each other around.
+C. pauses for a few moments to speak to one another and the camera captures the shooters from different angles.
+D. finish and walk into each other holding a pose and cheering.
+
+Answer:
+Expected: 2
+Predicted: D
+Raw response: D
+Time: 0.496s
+
+--- Q39911 [CORRECT] ---
+Category: Clipping cat claws
+Question: Choose the most plausible continuation. Answer with just the letter (A, B, C, or D).
+
+Context: A black and white cat sits on a table next to a girl wearing a black and white sweater. The girl holds the cats paw in her left hand. the cat groomer
+
+A. gently brushes the shit from the cat's paw.
+B. opens a black box and picks out a spray can to display.
+C. sprays a bowl with liquid.
+D. grabs a cat nail clipper in her right hand.
+
+Answer:
+Expected: 3
+Predicted: D
+Raw response: D
+Time: 0.595s
+
+--- Q27262 [CORRECT] ---
+Category: Youth
+Question: Choose the most plausible continuation. Answer with just the letter (A, B, C, or D).
+
+Context: [header] How to prepare for school the night before [title] Shower. [step] As a girl, you should shower every night. This will help you look, feel and smell fresh for the next day! But make sure to only wash you hair with shampoo once every three days.
+
+A. Use shampoo that is formulated for your hair type. For example : [substeps] Girl: use a mild shampoo with no alcohol for curly.
+B. Oils in your hair can cause dryness and frizz. [substeps] Apply a good deodorant or gel after you've showered.
+C. This is because in big cities, it is rude, and thus rude to women and you don't want to leave your hair looking like a frizzy mess from the day before. When washing and showering, don't use very much shampoo, just enough to hydrate yourself.
+D. Also, you should wipe off any make-up and wash your face to prevent future pimples. Moisturize; always rub lotion or some form of moisturizer on after every shower.
+
+Answer:
+Expected: 3
+Predicted: D
+Raw response: D
+Time: 0.664s

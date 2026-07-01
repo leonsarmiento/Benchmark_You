@@ -202,6 +202,8 @@ MODELS = [
     "Nex-N2-mini-6bit",
     "Ornith-1.0-35B-5bit-mlx",      # Qwen3.5-35B-A3B fine-tune (MoE, multimodal)
     "Domyn-Small-v1.0-8bit-mlx",    # Nemotron-arch, Italian/multilingual (dense)
+    "Agents-A1-5bit-XL-mlx",        # Qwen3.5-35B-A3B fine-tune (MoE)
+    "Ornith-1.0-9B-4bit",           # Qwen3.5-9B fine-tune (dense)
 ]
 # MoE models have "A3B" or "A4B" in name
 # MoE detection: regex + manual overrides (gpt-oss is MoE despite no A3B in name)
@@ -210,6 +212,7 @@ MOE_MODELS.add("gpt-oss-20b-MXFP4-Q8")
 MOE_MODELS.add("GLM-4.7-Flash-6bit-mlx")
 MOE_MODELS.add("Nex-N2-mini-6bit")  # Qwen3.5-35B-A3B fine-tune (MoE)
 MOE_MODELS.add("Ornith-1.0-35B-5bit-mlx")  # Qwen3.5-35B-A3B fine-tune (35B MoE, ~3B active)
+MOE_MODELS.add("Agents-A1-5bit-XL-mlx")  # Qwen3.5-35B-A3B fine-tune (MoE)
 def _hatch(model):
     return "///" if model in MOE_MODELS else ""
 def _marker(model):
@@ -242,6 +245,8 @@ SHORT = {
     "Nex-N2-mini-6bit": "Nex-N2-mini",
     "Ornith-1.0-35B-5bit-mlx": "Ornith-35B",
     "Domyn-Small-v1.0-8bit-mlx": "Domyn-Small",
+    "Agents-A1-5bit-XL-mlx": "Agents-A1",
+    "Ornith-1.0-9B-4bit": "Ornith-9B",
 }
 # Family-based colors: same hue per family, shade varies by model size/variant
 COLORS = {
@@ -285,6 +290,10 @@ COLORS = {
     "Ornith-1.0-35B-5bit-mlx": "#f06292",
     # Domyn (standalone Nemotron-arch family) — blue-gray slate
     "Domyn-Small-v1.0-8bit-mlx": "#455a64",
+    # Agents-A1 (Qwen3.5-35B-A3B fine-tune, MoE) — dark magenta (pink family)
+    "Agents-A1-5bit-XL-mlx": "#ad1457",
+    # Ornith-9B (Qwen3.5-9B fine-tune, dense) — light pink
+    "Ornith-1.0-9B-4bit": "#f8bbd0",
 }
 COLORS_SHORT = {SHORT[m]: COLORS[m] for m in MODELS}
 
@@ -306,6 +315,7 @@ def _family(model):
     if "nemotron" in ml: return "Nemotron"
     if "devstral" in ml: return "Devstral"
     if "nex" in ml: return "Qwen3.5"  # Nex is a Qwen3.5-35B-A3B fine-tune
+    if "agents-a1" in ml: return "Qwen3.5"  # Agents-A1 is a Qwen3.5-35B-A3B fine-tune
     if "ornith" in ml: return "Qwen3.5"  # Ornith is a Qwen3.5-35B-A3B fine-tune
     if "domyn" in ml: return "Domyn"  # standalone Nemotron-arch family
     return "Other"
@@ -321,7 +331,7 @@ for _m in MODELS:
 BENCHMARKS_MC = ["HPL", "MMLU_PRO", "MMLU", "ARC_CHALLENGE", "MATHQA", "HELLASWAG", "BBQ", "TRUTHFULQA", "WINOGRANDE", "SAFETYBENCH"]
 # Benchmarks available in the Interactive Pareto. HUMANEVAL & MBPP are
 # code-generation tasks (30 questions each, sampled from 164/500) run in
-# NON-thinking mode on 14 models. They are intentionally NOT in the quiz
+# NON-thinking mode on 16 models. They are intentionally NOT in the quiz
 # (BENCHMARKS_MC): verifying generated code needs a sandbox, which is out of
 # scope for this dashboard. They only appear as opt-in Pareto filters.
 PARETO_BENCHMARKS = BENCHMARKS_MC + ["HUMANEVAL", "MBPP"]
@@ -607,6 +617,26 @@ SUMMARY = {
     ("Domyn-Small-v1.0-8bit-mlx", "BBQ"): {"acc": 73.3, "correct": 22, "total": 30, "time": 20.3},
     ("Domyn-Small-v1.0-8bit-mlx", "SAFETYBENCH"): {"acc": 83.3, "correct": 25, "total": 30, "time": 21.9},
     ("Domyn-Small-v1.0-8bit-mlx", "HPL"): {"acc": 0.0, "correct": 0, "total": 10, "time": 268.3},
+    # Agents-A1-5bit-XL-mlx (Qwen3.5-35B-A3B fine-tune, MoE) - 8 MC benchmarks.
+    # No HPL run. MMLU_PRO run in reasoning mode.
+    ("Agents-A1-5bit-XL-mlx", "MMLU_PRO"): {"acc": 80.0, "correct": 24, "total": 30, "time": 1441.9},
+    ("Agents-A1-5bit-XL-mlx", "HELLASWAG"): {"acc": 86.7, "correct": 26, "total": 30, "time": 18.6},
+    ("Agents-A1-5bit-XL-mlx", "TRUTHFULQA"): {"acc": 100.0, "correct": 30, "total": 30, "time": 15.2},
+    ("Agents-A1-5bit-XL-mlx", "ARC_CHALLENGE"): {"acc": 90.0, "correct": 27, "total": 30, "time": 14.0},
+    ("Agents-A1-5bit-XL-mlx", "WINOGRANDE"): {"acc": 76.7, "correct": 23, "total": 30, "time": 12.6},
+    ("Agents-A1-5bit-XL-mlx", "MATHQA"): {"acc": 96.7, "correct": 29, "total": 30, "time": 1042.5},
+    ("Agents-A1-5bit-XL-mlx", "BBQ"): {"acc": 93.3, "correct": 28, "total": 30, "time": 14.9},
+    ("Agents-A1-5bit-XL-mlx", "SAFETYBENCH"): {"acc": 90.0, "correct": 27, "total": 30, "time": 15.0},
+    # Ornith-1.0-9B-4bit (Qwen3.5-9B fine-tune, dense) - 8 MC benchmarks.
+    # No HPL run. MMLU_PRO run at 6bit in reasoning mode (mixed quant).
+    ("Ornith-1.0-9B-4bit", "MMLU_PRO"): {"acc": 80.0, "correct": 24, "total": 30, "time": 2167.8},
+    ("Ornith-1.0-9B-4bit", "HELLASWAG"): {"acc": 80.0, "correct": 24, "total": 30, "time": 23.5},
+    ("Ornith-1.0-9B-4bit", "TRUTHFULQA"): {"acc": 83.3, "correct": 25, "total": 30, "time": 15.0},
+    ("Ornith-1.0-9B-4bit", "ARC_CHALLENGE"): {"acc": 80.0, "correct": 24, "total": 30, "time": 13.4},
+    ("Ornith-1.0-9B-4bit", "WINOGRANDE"): {"acc": 76.7, "correct": 23, "total": 30, "time": 12.4},
+    ("Ornith-1.0-9B-4bit", "MATHQA"): {"acc": 86.7, "correct": 26, "total": 30, "time": 1868.3},
+    ("Ornith-1.0-9B-4bit", "BBQ"): {"acc": 90.0, "correct": 27, "total": 30, "time": 14.9},
+    ("Ornith-1.0-9B-4bit", "SAFETYBENCH"): {"acc": 80.0, "correct": 24, "total": 30, "time": 16.1},
     # ── MMLU (classic 4-option, 57-subject knowledge test) ────────────────────
     # 16 models have results. 3 of the original 7 were run on a different
     # quant than their other benchmarks (per "map to existing" decision): the
@@ -643,9 +673,12 @@ SUMMARY = {
     ("Llama-3.3-8B-Instruct-128K_Abliterated-8bit-mlx", "MMLU"): {"acc": 58.6, "correct": 17, "total": 29, "time": 71.6},
     ("MechaEpstein-8000-6bit-mlx", "MMLU"): {"acc": 72.4, "correct": 21, "total": 29, "time": 77.6},
     ("NVIDIA-Nemotron-3-Nano-30B-A3B-MLX-6bit", "MMLU"): {"acc": 69.0, "correct": 20, "total": 29, "time": 36.4},
+    # Agents-A1 & Ornith-9B (new models). Both got defective Q3 wrong, so /29 applies directly.
+    ("Agents-A1-5bit-XL-mlx", "MMLU"): {"acc": 72.4, "correct": 21, "total": 29, "time": 30.4},
+    ("Ornith-1.0-9B-4bit", "MMLU"): {"acc": 75.9, "correct": 22, "total": 29, "time": 56.2},
     # ── Coding benchmarks (HUMANEVAL & MBPP) ──────────────────────────────────
     # Code-generation tasks, 30 questions each (sampled from 164 / 500), run in
-    # NON-thinking mode on 14 models. Source: Coding_benchmarks.txt + Ornith run.
+    # NON-thinking mode on 16 models. Source: Coding_benchmarks.txt + Ornith run.
     # Model names mapped to the matching dashboard keys: "Nex-N2-mini-6bit-text-mlx"
     # -> "Nex-N2-mini-6bit", "Qwen3.5-9B-MLX-8bit" -> "Qwen3.5-9B-8bit".
     ("Devstral-Small-2-24B-Instruct-2512-4bit", "HUMANEVAL"): {"acc": 93.3, "correct": 28, "total": 30, "time": 215.2},
@@ -676,6 +709,10 @@ SUMMARY = {
     ("Qwen3.5-9B-8bit", "MBPP"): {"acc": 53.3, "correct": 16, "total": 30, "time": 78.1},
     ("Ornith-1.0-35B-5bit-mlx", "HUMANEVAL"): {"acc": 66.7, "correct": 20, "total": 30, "time": 99.1},
     ("Ornith-1.0-35B-5bit-mlx", "MBPP"): {"acc": 76.7, "correct": 23, "total": 30, "time": 71.6},
+    ("Agents-A1-5bit-XL-mlx", "HUMANEVAL"): {"acc": 86.7, "correct": 26, "total": 30, "time": 112.5},
+    ("Agents-A1-5bit-XL-mlx", "MBPP"): {"acc": 80.0, "correct": 24, "total": 30, "time": 41.4},
+    ("Ornith-1.0-9B-4bit", "HUMANEVAL"): {"acc": 83.3, "correct": 25, "total": 30, "time": 143.1},
+    ("Ornith-1.0-9B-4bit", "MBPP"): {"acc": 60.0, "correct": 18, "total": 30, "time": 71.6},
 }
 
 # ── Parser ──────────────────────────────────────────────────────────────────
@@ -1124,7 +1161,7 @@ def _draw_interactive_pareto():
     st.markdown("---")
     st.subheader("Interactive Pareto: Overall Accuracy vs Total Time")
     st.caption("Click legend items to toggle families. Use the benchmark checklist to filter. Hover points for details.")
-    st.caption("_Note: Except for MathQA, MMLU-Pro, and HPL, all MC benchmarks were run in Instruct mode for reasoning models. HumanEval & MBPP (code generation, 14 models) were run in non-thinking mode._")
+    st.caption("_Note: Except for MathQA, MMLU-Pro, and HPL, all MC benchmarks were run in Instruct mode for reasoning models. HumanEval & MBPP (code generation, 16 models) were run in non-thinking mode._")
 
     # Benchmark filter
     bench_cols = st.columns(2)
@@ -1256,7 +1293,7 @@ def _draw_interactive_pareto():
         ))
 
     st.plotly_chart(fig, use_container_width=True, theme="streamlit")
-    st.caption("_HumanEval & MBPP are code-generation benchmarks (non-thinking mode) available for 14 of the 25 models; points only appear when those benchmarks are selected and a model has data for them._")
+    st.caption("_HumanEval & MBPP are code-generation benchmarks (non-thinking mode) available for 16 of the 27 models; points only appear when those benchmarks are selected and a model has data for them._")
     st.markdown(
         "Download high quality data agnostic quants used in these benchmarks "
         "[here](https://huggingface.co/leonsarmiento)."

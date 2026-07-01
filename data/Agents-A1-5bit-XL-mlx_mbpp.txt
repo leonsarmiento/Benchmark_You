@@ -1,0 +1,707 @@
+Model: Agents-A1-5bit-XL-mlx
+Benchmark: MBPP
+Accuracy: 80.0% (24/30)
+Time: 41.4s
+
+--- Q338 [CORRECT] ---
+Question: Write a Python function to solve the following problem. Provide only the complete function implementation, no explanations.
+
+Problem: Write a python function to count the number of substrings with same first and last characters.
+
+Test cases:
+assert count_Substring_With_Equal_Ends('aba') == 4
+assert count_Substring_With_Equal_Ends('abcab') == 7
+assert count_Substring_With_Equal_Ends('abc') == 3
+
+Solution:
+Expected: (test cases)
+Predicted: def count_Substring_With_Equal_Ends(s: str) -> int:
+    from collections import Counter
+    freq = Counter(s)
+    return sum(c * (c + 1) // 2 for c in freq.values())
+Raw response: def count_Substring_With_Equal_Ends(s: str) -> int:
+    from collections import Counter
+    freq = Counter(s)
+    return sum(c * (c + 1) // 2 for c in freq.values())
+Time: 1.56s
+
+--- Q68 [CORRECT] ---
+Question: Write a Python function to solve the following problem. Provide only the complete function implementation, no explanations.
+
+Problem: Write a python function to check whether the given array is monotonic or not.
+
+Test cases:
+assert is_Monotonic([6, 5, 4, 4]) == True
+assert is_Monotonic([1, 2, 2, 3]) == True
+assert is_Monotonic([1, 3, 2]) == False
+
+Solution:
+Expected: (test cases)
+Predicted: def is_Monotonic(arr):
+    if not arr:
+        return True
+    increasing = decreasing = True
+    for i in range(1, len(arr)):
+        if arr[i] < arr[i - 1]:
+            increasing = False
+        if...
+Raw response: def is_Monotonic(arr):
+    if not arr:
+        return True
+    increasing = decreasing = True
+    for i in range(1, len(arr)):
+        if arr[i] < arr[i - 1]:
+            increasing = False
+        if arr[i] > arr[i - 1]:
+            decreasing = False
+    return increasing or decreasing
+Time: 2.088s
+
+--- Q23 [CORRECT] ---
+Question: Write a Python function to solve the following problem. Provide only the complete function implementation, no explanations.
+
+Problem: Write a python function to find the maximum sum of elements of list in a list of lists.
+
+Test cases:
+assert maximum_Sum([[1,2,3],[4,5,6],[10,11,12],[7,8,9]]) == 33
+assert maximum_Sum([[0,1,1],[1,1,2],[3,2,1]]) == 6
+assert maximum_Sum([[0,1,3],[1,2,1],[9,8,2],[0,1,0],[6,4,8]]) == 19
+
+Solution:
+Expected: (test cases)
+Predicted: def maximum_Sum(list_of_lists):
+    return max(sum(sublist) for sublist in list_of_lists)
+Raw response: def maximum_Sum(list_of_lists):
+    return max(sum(sublist) for sublist in list_of_lists)
+Time: 0.935s
+
+--- Q390 [CORRECT] ---
+Question: Write a Python function to solve the following problem. Provide only the complete function implementation, no explanations.
+
+Problem: Write a function to insert a given string at the beginning of all items in a list.
+
+Test cases:
+assert add_string([1,2,3,4],'temp{0}')==['temp1', 'temp2', 'temp3', 'temp4']
+assert add_string(['a','b','c','d'], 'python{0}')==[ 'pythona', 'pythonb', 'pythonc', 'pythond']
+assert add_string([5,6,7,8],'string{0}')==['string5', 'string6', 'string7', 'string8']
+
+Solution:
+Expected: (test cases)
+Predicted: def add_string(lst, prefix):
+    return [prefix.format(item) for item in lst]
+Raw response: ```python
+def add_string(lst, prefix):
+    return [prefix.format(item) for item in lst]
+```
+Time: 0.975s
+
+--- Q151 [CORRECT] ---
+Question: Write a Python function to solve the following problem. Provide only the complete function implementation, no explanations.
+
+Problem: Write a python function to check whether the given number is co-prime or not.
+
+Test cases:
+assert is_coprime(17,13) == True
+assert is_coprime(15,21) == False
+assert is_coprime(25,45) == False
+
+Solution:
+Expected: (test cases)
+Predicted: def is_coprime(a, b):
+    def gcd(x, y):
+        while y:
+            x, y = y, x % y
+        return x
+    return gcd(a, b) == 1
+Raw response: def is_coprime(a, b):
+    def gcd(x, y):
+        while y:
+            x, y = y, x % y
+        return x
+    return gcd(a, b) == 1
+Time: 1.456s
+
+--- Q136 [WRONG] ---
+Question: Write a Python function to solve the following problem. Provide only the complete function implementation, no explanations.
+
+Problem: Write a function to calculate electricity bill.
+
+Test cases:
+assert cal_electbill(75)==246.25
+assert cal_electbill(265)==1442.75
+assert cal_electbill(100)==327.5
+
+Solution:
+Expected: (test cases)
+Predicted: def cal_electbill(units):
+    if units <= 100:
+        return units * 3.25
+    elif units <= 200:
+        return 100 * 3.25 + (units - 100) * 4.50
+    else:
+        return 100 * 3.25 + 100 * 4.50 + (u...
+Raw response: def cal_electbill(units):
+    if units <= 100:
+        return units * 3.25
+    elif units <= 200:
+        return 100 * 3.25 + (units - 100) * 4.50
+    else:
+        return 100 * 3.25 + 100 * 4.50 + (units - 200) * 5.75
+Time: 2.497s
+
+--- Q125 [CORRECT] ---
+Question: Write a Python function to solve the following problem. Provide only the complete function implementation, no explanations.
+
+Problem: Write a function to find the maximum difference between the number of 0s and number of 1s in any sub-string of the given binary string.
+
+Test cases:
+assert find_length("11000010001", 11) == 6
+assert find_length("10111", 5) == 1
+assert find_length("11011101100101", 14) == 2 
+
+Solution:
+Expected: (test cases)
+Predicted: def find_length(s, n):
+    max_diff = 0
+    for i in range(n):
+        for j in range(i + 1, n + 1):
+            sub = s[i:j]
+            zeros = sub.count('0')
+            ones = sub.count('1')
+     ...
+Raw response: def find_length(s, n):
+    max_diff = 0
+    for i in range(n):
+        for j in range(i + 1, n + 1):
+            sub = s[i:j]
+            zeros = sub.count('0')
+            ones = sub.count('1')
+            diff = zeros - ones
+            if diff > max_diff:
+                max_diff = diff
+    return max_diff
+Time: 2.127s
+
+--- Q82 [CORRECT] ---
+Question: Write a Python function to solve the following problem. Provide only the complete function implementation, no explanations.
+
+Problem: Write a function to find the volume of a sphere.
+
+Test cases:
+assert volume_sphere(10)==4188.790204786391
+assert volume_sphere(25)==65449.84694978735
+assert volume_sphere(20)==33510.32163829113
+
+Solution:
+Expected: (test cases)
+Predicted: def volume_sphere(r):
+    return (4/3) * 3.141592653589793 * r**3
+Raw response: def volume_sphere(r):
+    return (4/3) * 3.141592653589793 * r**3
+Time: 1.238s
+
+--- Q388 [CORRECT] ---
+Question: Write a Python function to solve the following problem. Provide only the complete function implementation, no explanations.
+
+Problem: Write a python function to find the highest power of 2 that is less than or equal to n.
+
+Test cases:
+assert highest_Power_of_2(10) == 8
+assert highest_Power_of_2(19) == 16
+assert highest_Power_of_2(32) == 32
+
+Solution:
+Expected: (test cases)
+Predicted: def highest_Power_of_2(n):
+    if n < 1:
+        return 0
+    return 1 << (n.bit_length() - 1)
+Raw response: def highest_Power_of_2(n):
+    if n < 1:
+        return 0
+    return 1 << (n.bit_length() - 1)
+Time: 1.206s
+
+--- Q63 [CORRECT] ---
+Question: Write a Python function to solve the following problem. Provide only the complete function implementation, no explanations.
+
+Problem: Write a function to find the maximum difference between available pairs in the given tuple list.
+
+Test cases:
+assert max_difference([(3, 5), (1, 7), (10, 3), (1, 2)]) == 7
+assert max_difference([(4, 6), (2, 17), (9, 13), (11, 12)]) == 15
+assert max_difference([(12, 35), (21, 27), (13, 23), (41, 22)]) == 23
+
+Solution:
+Expected: (test cases)
+Predicted: def max_difference(pairs):
+    return max(abs(a - b) for a, b in pairs)
+Raw response: def max_difference(pairs):
+    return max(abs(a - b) for a, b in pairs)
+Time: 0.918s
+
+--- Q357 [CORRECT] ---
+Question: Write a Python function to solve the following problem. Provide only the complete function implementation, no explanations.
+
+Problem: Write a function to find the maximum element of all the given tuple records.
+
+Test cases:
+assert find_max([(2, 4), (6, 7), (5, 1), (6, 10), (8, 7)]) == 10
+assert find_max([(3, 5), (7, 8), (6, 2), (7, 11), (9, 8)]) == 11
+assert find_max([(4, 6), (8, 9), (7, 3), (8, 12), (10, 9)]) == 12
+
+Solution:
+Expected: (test cases)
+Predicted: def find_max(tuples):
+    return max(max(t) for t in tuples)
+Raw response: def find_max(tuples):
+    return max(max(t) for t in tuples)
+Time: 0.852s
+
+--- Q467 [CORRECT] ---
+Question: Write a Python function to solve the following problem. Provide only the complete function implementation, no explanations.
+
+Problem: Write a python function to convert decimal number to octal number.
+
+Test cases:
+assert decimal_to_Octal(10) == 12
+assert decimal_to_Octal(2) == 2
+assert decimal_to_Octal(33) == 41
+
+Solution:
+Expected: (test cases)
+Predicted: def decimal_to_Octal(n):
+    if n == 0:
+        return 0
+    octal = 0
+    place = 1
+    while n > 0:
+        octal += (n % 8) * place
+        n //= 8
+        place *= 10
+    return octal
+Raw response: def decimal_to_Octal(n):
+    if n == 0:
+        return 0
+    octal = 0
+    place = 1
+    while n > 0:
+        octal += (n % 8) * place
+        n //= 8
+        place *= 10
+    return octal
+Time: 1.793s
+
+--- Q290 [CORRECT] ---
+Question: Write a Python function to solve the following problem. Provide only the complete function implementation, no explanations.
+
+Problem: Write a function to find the list of lists with maximum length.
+
+Test cases:
+assert max_length([[0], [1, 3], [5, 7], [9, 11], [13, 15, 17]])==(3, [13, 15, 17])
+assert max_length([[1], [5, 7], [10, 12, 14,15]])==(4, [10, 12, 14,15])
+assert max_length([[5], [15,20,25]])==(3, [15,20,25])
+
+Solution:
+Expected: (test cases)
+Predicted: def max_length(lists):
+    if not lists:
+        return (0, [])
+    max_len = 0
+    max_list = []
+    for lst in lists:
+        if len(lst) > max_len:
+            max_len = len(lst)
+            max_li...
+Raw response: def max_length(lists):
+    if not lists:
+        return (0, [])
+    max_len = 0
+    max_list = []
+    for lst in lists:
+        if len(lst) > max_len:
+            max_len = len(lst)
+            max_list = lst
+    return (max_len, max_list)
+Time: 1.87s
+
+--- Q55 [WRONG] ---
+Question: Write a Python function to solve the following problem. Provide only the complete function implementation, no explanations.
+
+Problem: Write a function to find t-nth term of geometric series.
+
+Test cases:
+assert tn_gp(1,5,2)==16
+assert tn_gp(1,5,4)==256
+assert tn_gp(2,6,3)==486
+
+Solution:
+Expected: (test cases)
+Predicted: def tn_gp(a, r, n):
+    return a * (r ** n)
+Raw response: def tn_gp(a, r, n):
+    return a * (r ** n)
+Time: 0.833s
+
+--- Q313 [WRONG] ---
+Question: Write a Python function to solve the following problem. Provide only the complete function implementation, no explanations.
+
+Problem: Write a python function to print positive numbers in a list.
+
+Test cases:
+assert pos_nos([-1,-2,1,2]) == 1,2
+assert pos_nos([3,4,-5]) == 3,4
+assert pos_nos([-2,-3,1]) == 1
+
+Solution:
+Expected: (test cases)
+Predicted: def pos_nos(lst):
+    return [x for x in lst if x > 0]
+Raw response: def pos_nos(lst):
+    return [x for x in lst if x > 0]
+Time: 0.918s
+
+--- Q227 [CORRECT] ---
+Question: Write a Python function to solve the following problem. Provide only the complete function implementation, no explanations.
+
+Problem: Write a function to find minimum of three numbers.
+
+Test cases:
+assert min_of_three(10,20,0)==0
+assert min_of_three(19,15,18)==15
+assert min_of_three(-10,-20,-30)==-30
+
+Solution:
+Expected: (test cases)
+Predicted: def min_of_three(a, b, c):
+    return min(a, b, c)
+Raw response: ```python
+def min_of_three(a, b, c):
+    return min(a, b, c)
+```
+Time: 0.984s
+
+--- Q27 [CORRECT] ---
+Question: Write a Python function to solve the following problem. Provide only the complete function implementation, no explanations.
+
+Problem: Write a python function to remove all digits from a list of strings.
+
+Test cases:
+assert remove(['4words', '3letters', '4digits']) == ['words', 'letters', 'digits']
+assert remove(['28Jan','12Jan','11Jan']) == ['Jan','Jan','Jan']
+assert remove(['wonder1','wonder2','wonder3']) == ['wonder','wonder','wonder']
+
+Solution:
+Expected: (test cases)
+Predicted: def remove(strings):
+    return [''.join(c for c in s if not c.isdigit()) for s in strings]
+Raw response: def remove(strings):
+    return [''.join(c for c in s if not c.isdigit()) for s in strings]
+Time: 0.936s
+
+--- Q26 [WRONG] ---
+Question: Write a Python function to solve the following problem. Provide only the complete function implementation, no explanations.
+
+Problem: Write a function to check if the given tuple list has all k elements.
+
+Test cases:
+assert check_k_elements([(4, 4), (4, 4, 4), (4, 4), (4, 4, 4, 4), (4, )], 4) == True
+assert check_k_elements([(7, 7, 7), (7, 7)], 7) == True
+assert check_k_elements([(9, 9), (9, 9, 9, 9)], 7) == False
+
+Solution:
+Expected: (test cases)
+Predicted: def check_k_elements(tuple_list, k):
+    return all(len(t) == k for t in tuple_list)
+Raw response: def check_k_elements(tuple_list, k):
+    return all(len(t) == k for t in tuple_list)
+Time: 0.936s
+
+--- Q58 [CORRECT] ---
+Question: Write a Python function to solve the following problem. Provide only the complete function implementation, no explanations.
+
+Problem: Write a python function to check whether the given two integers have opposite sign or not.
+
+Test cases:
+assert opposite_Signs(1,-2) == True
+assert opposite_Signs(3,2) == False
+assert opposite_Signs(-10,-10) == False
+
+Solution:
+Expected: (test cases)
+Predicted: def opposite_Signs(a, b):
+    return (a > 0 and b < 0) or (a < 0 and b > 0)
+Raw response: ```python
+def opposite_Signs(a, b):
+    return (a > 0 and b < 0) or (a < 0 and b > 0)
+```
+Time: 1.252s
+
+--- Q122 [WRONG] ---
+Question: Write a Python function to solve the following problem. Provide only the complete function implementation, no explanations.
+
+Problem: Write a function to find n’th smart number.
+
+Test cases:
+assert smartNumber(1) == 30
+assert smartNumber(50) == 273
+assert smartNumber(1000) == 2664
+
+Solution:
+Expected: (test cases)
+Predicted: def smartNumber(n):
+    count = 0
+    num = 0
+    while count < n:
+        num += 1
+        if num % 3 == 0 or '3' in str(num):
+            count += 1
+    return num
+Raw response: def smartNumber(n):
+    count = 0
+    num = 0
+    while count < n:
+        num += 1
+        if num % 3 == 0 or '3' in str(num):
+            count += 1
+    return num
+Time: 1.553s
+
+--- Q130 [CORRECT] ---
+Question: Write a Python function to solve the following problem. Provide only the complete function implementation, no explanations.
+
+Problem: Write a function to find the item with maximum frequency in a given list.
+
+Test cases:
+assert max_occurrences([2,3,8,4,7,9,8,2,6,5,1,6,1,2,3,2,4,6,9,1,2])==(2, 5)
+assert max_occurrences([2,3,8,4,7,9,8,7,9,15,14,10,12,13,16,16,18])==(8, 2)
+assert max_occurrences([10,20,20,30,40,90,80,50,30,20,50,10])==(20, 3)
+
+Solution:
+Expected: (test cases)
+Predicted: def max_occurrences(lst):
+    from collections import Counter
+    if not lst:
+        return None
+    counts = Counter(lst)
+    max_item, max_count = max(counts.items(), key=lambda x: x[1])
+    return...
+Raw response: def max_occurrences(lst):
+    from collections import Counter
+    if not lst:
+        return None
+    counts = Counter(lst)
+    max_item, max_count = max(counts.items(), key=lambda x: x[1])
+    return (max_item, max_count)
+Time: 1.675s
+
+--- Q269 [CORRECT] ---
+Question: Write a Python function to solve the following problem. Provide only the complete function implementation, no explanations.
+
+Problem: Write a function to find the ascii value of a character.
+
+Test cases:
+assert ascii_value('A')==65
+assert ascii_value('R')==82
+assert ascii_value('S')==83
+
+Solution:
+Expected: (test cases)
+Predicted: def ascii_value(char):
+    return ord(char)
+Raw response: def ascii_value(char):
+    return ord(char)
+Time: 0.649s
+
+--- Q319 [CORRECT] ---
+Question: Write a Python function to solve the following problem. Provide only the complete function implementation, no explanations.
+
+Problem: Write a function to find all five characters long word in the given string by using regex.
+
+Test cases:
+assert find_long_word('Please move back to strem') == ['strem']
+assert find_long_word('4K Ultra HD streaming player') == ['Ultra']
+assert find_long_word('Streaming Media Player') == ['Media']
+
+Solution:
+Expected: (test cases)
+Predicted: import re
+
+def find_long_word(s):
+    return re.findall(r'\b\w{5}\b', s)
+Raw response: ```python
+import re
+
+def find_long_word(s):
+    return re.findall(r'\b\w{5}\b', s)
+```
+Time: 1.096s
+
+--- Q24 [CORRECT] ---
+Question: Write a Python function to solve the following problem. Provide only the complete function implementation, no explanations.
+
+Problem: Write a function to convert the given binary number to its decimal equivalent.
+
+Test cases:
+assert binary_to_decimal(100) == 4
+assert binary_to_decimal(1011) == 11
+assert binary_to_decimal(1101101) == 109
+
+Solution:
+Expected: (test cases)
+Predicted: def binary_to_decimal(binary):
+    decimal = 0
+    power = 0
+    while binary > 0:
+        digit = binary % 10
+        decimal += digit * (2 ** power)
+        binary //= 10
+        power += 1
+    retu...
+Raw response: def binary_to_decimal(binary):
+    decimal = 0
+    power = 0
+    while binary > 0:
+        digit = binary % 10
+        decimal += digit * (2 ** power)
+        binary //= 10
+        power += 1
+    return decimal
+Time: 1.659s
+
+--- Q298 [CORRECT] ---
+Question: Write a Python function to solve the following problem. Provide only the complete function implementation, no explanations.
+
+Problem: Write a function to find the nested list elements which are present in another list.
+
+Test cases:
+assert intersection_nested_lists( [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],[[12, 18, 23, 25, 45], [7, 11, 19, 24, 28], [1, 5, 8, 18, 15, 16]])==[[12], [7, 11], [1, 5, 8]]
+assert intersection_nested_lists([[2, 3, 1], [4, 5], [6, 8]], [[4, 5], [6, 8]])==[[], []]
+assert intersection_nested_lists(['john','amal','joel','george'],[['john'],['jack','john','mary'],['howard','john'],['jude']])==[['john'], ['john'], ['john'], []]
+
+Solution:
+Expected: (test cases)
+Predicted: def intersection_nested_lists(list1, list2):
+    result = []
+    for sublist in list2:
+        common = [x for x in sublist if x in list1]
+        result.append(common)
+    return result
+Raw response: def intersection_nested_lists(list1, list2):
+    result = []
+    for sublist in list2:
+        common = [x for x in sublist if x in list1]
+        result.append(common)
+    return result
+Time: 1.549s
+
+--- Q112 [CORRECT] ---
+Question: Write a Python function to solve the following problem. Provide only the complete function implementation, no explanations.
+
+Problem: Write a python function to find the perimeter of a cylinder.
+
+Test cases:
+assert perimeter(2,4) == 12
+assert perimeter(1,2) == 6
+assert perimeter(3,1) == 8
+
+Solution:
+Expected: (test cases)
+Predicted: def perimeter(r, h):
+    return 2 * (r + h)
+Raw response: def perimeter(r, h):
+    return 2 * (r + h)
+Time: 0.767s
+
+--- Q377 [CORRECT] ---
+Question: Write a Python function to solve the following problem. Provide only the complete function implementation, no explanations.
+
+Problem: Write a python function to remove all occurrences of a character in a given string.
+
+Test cases:
+assert remove_Char("aba",'a') == "b"
+assert remove_Char("toggle",'g') == "tole"
+assert remove_Char("aabbc",'b') == "aac"
+
+Solution:
+Expected: (test cases)
+Predicted: def remove_Char(s, char):
+    return s.replace(char, '')
+Raw response: def remove_Char(s, char):
+    return s.replace(char, '')
+Time: 0.773s
+
+--- Q343 [CORRECT] ---
+Question: Write a Python function to solve the following problem. Provide only the complete function implementation, no explanations.
+
+Problem: Write a function to calculate the number of digits and letters in a string.
+
+Test cases:
+assert dig_let("python")==(6,0)
+assert dig_let("program")==(7,0)
+assert dig_let("python3.0")==(6,2)
+
+Solution:
+Expected: (test cases)
+Predicted: def dig_let(s):
+    digits = sum(1 for c in s if c.isdigit())
+    letters = sum(1 for c in s if c.isalpha())
+    return (letters, digits)
+Raw response: def dig_let(s):
+    digits = sum(1 for c in s if c.isdigit())
+    letters = sum(1 for c in s if c.isalpha())
+    return (letters, digits)
+Time: 1.329s
+
+--- Q370 [CORRECT] ---
+Question: Write a Python function to solve the following problem. Provide only the complete function implementation, no explanations.
+
+Problem: Write a function to sort a tuple by its float element.
+
+Test cases:
+assert float_sort([('item1', '12.20'), ('item2', '15.10'), ('item3', '24.5')])==[('item3', '24.5'), ('item2', '15.10'), ('item1', '12.20')] 
+assert float_sort([('item1', '15'), ('item2', '10'), ('item3', '20')])==[('item3', '20'), ('item1', '15'), ('item2', '10')] 
+assert float_sort([('item1', '5'), ('item2', '10'), ('item3', '14')])==[('item3', '14'), ('item2', '10'), ('item1', '5')] 
+
+Solution:
+Expected: (test cases)
+Predicted: def float_sort(t):
+    return sorted(t, key=lambda x: float(x[1]), reverse=True)
+Raw response: def float_sort(t):
+    return sorted(t, key=lambda x: float(x[1]), reverse=True)
+Time: 1.022s
+
+--- Q225 [WRONG] ---
+Question: Write a Python function to solve the following problem. Provide only the complete function implementation, no explanations.
+
+Problem: Write a python function to find the minimum element in a sorted and rotated array.
+
+Test cases:
+assert find_Min([1,2,3,4,5],0,4) == 1
+assert find_Min([4,6,8],0,2) == 4
+assert find_Min([2,3,5,7,9],0,4) == 2
+
+Solution:
+Expected: (test cases)
+Predicted: def find_Min(arr, low, high):
+    if low > high:
+        return None
+    if low == high:
+        return arr[low]
+    mid = (low + high) // 2
+    if mid < high and arr[mid] > arr[mid + 1]:
+        retu...
+Raw response: def find_Min(arr, low, high):
+    if low > high:
+        return None
+    if low == high:
+        return arr[low]
+    mid = (low + high) // 2
+    if mid < high and arr[mid] > arr[mid + 1]:
+        return arr[mid + 1]
+    if mid > low and arr[mid] < arr[mid - 1]:
+        return arr[mid]
+    if arr[low] > arr[mid]:
+        return find_Min(arr, low, mid - 1)
+    return find_Min(arr, mid + 1, high)
+Time: 3.005s
