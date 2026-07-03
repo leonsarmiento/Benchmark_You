@@ -102,7 +102,9 @@ The full workflow (re-extraction, HPL, plot regeneration, verification, README u
 6. Copy the model's `<model>_*.txt` into **`data/`** (the per-question quiz view reads live from there).
 7. Update this README's model table, best-scores table, and "N of M" counts.
 
-> The dashboard recomputes per-question correctness from the raw responses in `data/` using the same `extract_answer()` used for scoring, so its quiz view matches the `SUMMARY` totals whenever both use the corrected values.
+> The dashboard recomputes per-question correctness from the raw responses in `data/` using the same `extract_answer()` used for scoring, so its quiz view matches the `SUMMARY` totals whenever both use the corrected values. A model in `MODELS`/`SUMMARY` whose response file is missing (or held in a stale cache) never shows a false 0% — it falls back to its overall `SUMMARY` accuracy. The data cache is keyed on a fingerprint of the `data/` dir (file list + mtimes), so adding or changing a response file reliably refreshes it.
+
+In the results and live leaderboard, **YOU** always sorts to the top of its score bracket on ties (it ranks first among models with the same accuracy/speed), and is highlighted in the plots — other series are dimmed, while the user's Pareto point, bars, and timing line are drawn larger, bolder, and fully opaque.
 
 ## Acknowledgments
 
