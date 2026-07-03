@@ -1055,9 +1055,37 @@ def parse_response_file(filepath):
     return model_name, bench_name, records
 
 
+def _data_fingerprint():
+    """Filesystem fingerprint of the response-file directory.
+
+    Streamlit's @st.cache_data does NOT watch the filesystem. load_all_data()
+    otherwise takes no cache key, so adding/changing a *_*.txt response file
+    leaves its cache stale: the new model is silently absent from the question
+    bank while still appearing in every leaderboard (it's wired into MODELS +
+    SUMMARY), and therefore scores a false 0% on its questions (its per-question
+    correctness is missing). Hashing the data dir's file list + mtimes into the
+    cache key forces a re-read whenever the response files change."""
+    try:
+        items = []
+        for name in sorted(os.listdir(BASE)):
+            if name.endswith(".txt"):
+                fp = os.path.join(BASE, name)
+                try:
+                    items.append((name, os.path.getmtime(fp)))
+                except OSError:
+                    items.append((name, 0.0))
+        return hash(tuple(items))
+    except OSError:
+        return 0
+
+
 @st.cache_data
-def load_all_data():
-    """Load and cache all parsed data."""
+def load_all_data(data_version=0):
+    """Load and cache all parsed data.
+
+    `data_version` is a filesystem fingerprint (see _data_fingerprint) passed
+    only to invalidate the cache when response files are added or changed; it is
+    not used inside the function. Pass _data_fingerprint() at the call site."""
     data = {}
     for model in MODELS:
         for bench in BENCHMARKS_MC:
@@ -1450,34 +1478,46 @@ def _draw_live_leaderboard(bank, bench, questions, n_answered):
     )
     user_acc = user_correct / len(answered_indices) * 100 if answered_indices else 0.0
 
-    # AI accuracy on the same questions
-    rows = [("You", user_acc, "#FFD700", "")]  # gold for user, no hatch
+    # AI accuracy on the same questions. Each row carries an is_you flag (5th
+    # element) so "You" always sorts to the top of its score bracket.
+    rows = [("You", user_acc, "#FFD700", "", True)]  # gold for user, no hatch
     for model in MODELS:
         if (model, bench) not in SUMMARY:
             continue
-        ai_correct = 0
-        for i in answered_indices:
-            if i < len(questions):
-                q = questions[i]
-                m_short = SHORT[model]
-                if q["model_correct"].get(m_short, False):
-                    ai_correct += 1
+        m_short = SHORT[model]
+        has_live = any(m_short in q["model_correct"] for q in questions)
+        if has_live:
+            ai_correct = sum(
+                1 for i in answered_indices
+                if i < len(questions) and questions[i]["model_correct"].get(m_short, False)
+            )
+        else:
+            # Response file missing / stale cache: fall back to SUMMARY acc so
+            # the model never shows a false 0% (see load_all_data fix).
+            s = SUMMARY[(model, bench)]
+            ai_correct = round(s["acc"] / 100 * len(answered_indices)) if answered_indices else 0
         ai_acc = ai_correct / len(answered_indices) * 100 if answered_indices else 0.0
-        rows.append((f"{SHORT[model]} ({_mtype(model)})", ai_acc, COLORS[model], _hatch(model)))
+        rows.append((f"{SHORT[model]} ({_mtype(model)})", ai_acc, COLORS[model], _hatch(model), False))
 
-    # Sort by accuracy descending; ties broken by name
-    rows.sort(key=lambda r: (-r[1], r[0]))
+    # Sort by accuracy descending; "You" always first within a score tie.
+    rows.sort(key=lambda r: (-r[1], 0 if r[4] else 1, r[0]))
 
     names = [r[0] for r in rows]
     accs = [r[1] for r in rows]
     colors = [r[2] for r in rows]
     hatches = [r[3] for r in rows]
+    is_you_flags = [r[4] for r in rows]
 
     fig, ax = plt.subplots(figsize=(8, max(3, len(rows) * 0.45)))
     y_pos = range(len(names))
     bars = ax.barh(y_pos, accs, color=colors, edgecolor="black", linewidth=0.5, height=0.6)
-    for i, h in enumerate(hatches):
+    for i, (h, you) in enumerate(zip(hatches, is_you_flags)):
         bars[i].set_hatch(h)
+        if you:  # make the user's bar stand out
+            bars[i].set_alpha(1.0)
+            bars[i].set_linewidth(1.8)
+        else:
+            bars[i].set_alpha(0.72)
     ax.set_yticks(y_pos)
     ax.set_yticklabels(names, fontsize=9)
     ax.invert_yaxis()  # highest at top
@@ -1485,10 +1525,11 @@ def _draw_live_leaderboard(bank, bench, questions, n_answered):
     ax.set_xlabel("Accuracy (%)", fontsize=10)
     ax.set_title(f"Live Leaderboard  ({len(answered_indices)} questions answered)", fontsize=12, fontweight="bold")
 
-    # Value labels
-    for bar, acc in zip(bars, accs):
+    # Value labels (the user's label is drawn larger)
+    for bar, acc, you in zip(bars, accs, is_you_flags):
         ax.text(min(acc + 1.5, 88), bar.get_y() + bar.get_height() / 2,
-                f"{acc:.1f}%", va="center", fontsize=9, fontweight="bold")
+                f"{acc:.1f}%", va="center",
+                fontsize=11 if you else 9, fontweight="bold")
 
     ax.grid(True, axis="x", alpha=0.3)
     plt.tight_layout()
@@ -1521,18 +1562,37 @@ def page_results(bank):
     # comparison is apples-to-apples (the user answered `total` randomly sampled
     # questions, not the full pool). This matches the live leaderboard's logic.
     _models_with_data = [m for m in MODELS if (m, bench) in SUMMARY]
-    ai_acc, ai_time = {}, {}
+    ai_acc, ai_time, fell_back = {}, {}, set()
     for model in _models_with_data:
         ms = SHORT[model]
-        c = sum(1 for q in questions if q["model_correct"].get(ms, False))
-        ai_acc[model] = c / total * 100 if total else 0.0
-        ai_time[model] = sum(q["model_times"].get(ms, 0.0) for q in questions)
+        # A model wired into MODELS + SUMMARY must always render its real score.
+        # Its per-question correctness normally comes from the live question bank
+        # (rebuilt from the response files). But if the response file is missing
+        # or the cache served a stale `data` dict, `model_correct` won't have it
+        # and a naive lookup would silently score it 0%. Fall back to the model's
+        # overall SUMMARY accuracy/time in that case (see load_all_data fix).
+        has_live = any(ms in q["model_correct"] for q in questions)
+        if has_live:
+            c = sum(1 for q in questions if q["model_correct"].get(ms, False))
+            ai_acc[model] = c / total * 100 if total else 0.0
+            ai_time[model] = sum(q["model_times"].get(ms, 0.0) for q in questions)
+        else:
+            s = SUMMARY[(model, bench)]
+            ai_acc[model] = s["acc"]
+            ai_time[model] = s["time"] / s["total"] * total if s["total"] else 0.0
+            fell_back.add(model)
 
     st.caption(
         f"_You answered {total} randomly sampled questions. Every model below is "
         f"scored on these same {total} questions — not the full "
         f"{len(bank[bench])}-question pool — so the comparison is fair._"
     )
+    if fell_back:
+        st.caption(
+            "_Note: " + ", ".join(SHORT[m] for m in fell_back) + " had no live "
+            "per-question data in this session, so its overall score is shown "
+            "instead of a question-by-question breakdown._"
+        )
 
     st.markdown("---")
 
@@ -1552,17 +1612,19 @@ def page_results(bank):
         sns.scatterplot(
             data=pareto_df, x="time", y="acc", hue="name", style="type",
             markers={"Dense": "o", "MoE": "D"}, palette=pareto_palette,
-            s=200, edgecolor="black", linewidth=0.8, ax=ax1, legend=False,
+            s=200, edgecolor="black", linewidth=0.8, alpha=0.5, ax=ax1, legend=False,
         )
         for model in _models_with_data:
             ax1.annotate(f"{SHORT[model]} ({_mtype(model)})", (ai_time[model], ai_acc[model]),
                          textcoords="offset points", xytext=(8, 8), fontsize=9,
-                         fontweight="bold", color=COLORS[model])
-        # User point
-        ax1.scatter(total_time, user_acc, s=300, color="#FFD700", marker="*",
-                    edgecolors="black", linewidths=1.2, zorder=10)
+                         fontweight="bold", color=COLORS[model], alpha=0.65)
+        # User point: white halo behind a larger gold star so YOU stands out
+        ax1.scatter(total_time, user_acc, s=950, color="white", marker="*",
+                    alpha=0.9, edgecolors="black", linewidths=1.0, zorder=9)
+        ax1.scatter(total_time, user_acc, s=430, color="#FFD700", marker="*",
+                    edgecolors="black", linewidths=1.4, zorder=10)
         ax1.annotate("YOU", (total_time, user_acc),
-                     textcoords="offset points", xytext=(10, 10), fontsize=13,
+                     textcoords="offset points", xytext=(12, 12), fontsize=14,
                      fontweight="bold", color="#B8860B")
         ax1.set_xlabel("Total Wall Time (seconds)")
         ax1.set_ylabel("Accuracy (%)")
@@ -1584,7 +1646,8 @@ def page_results(bank):
     acc_df = pd.DataFrame({
         "name": acc_names,
         "acc": [ai_acc[m] for m in _models_with_data] + [user_acc],
-    }).sort_values("acc", ascending=True).reset_index(drop=True)  # highest at top
+        "_you": [False] * len(_models_with_data) + [True],
+    }).sort_values(["acc", "_you"], ascending=[True, True]).reset_index(drop=True)  # highest at top; YOU first within a tie
 
     with sns.axes_style("whitegrid"), sns.plotting_context("notebook", font_scale=1.1):
         fig2, ax2 = plt.subplots(figsize=(10, 6))
@@ -1594,8 +1657,15 @@ def page_results(bank):
         )
         for i, n in enumerate(acc_df["name"]):
             ax2.patches[i].set_hatch(acc_hatch_map[n])
+            # Make the user's bar stand out: fully opaque + thicker edge.
+            if n == "YOU":
+                ax2.patches[i].set_alpha(1.0)
+                ax2.patches[i].set_linewidth(1.8)
+            else:
+                ax2.patches[i].set_alpha(0.72)
         for i, (n, a) in enumerate(zip(acc_df["name"], acc_df["acc"])):
-            ax2.text(a + 0.5, i, f"{a:.1f}%", va="center", fontsize=10, fontweight="bold")
+            ax2.text(a + 0.5, i, f"{a:.1f}%", va="center",
+                     fontsize=12 if n == "YOU" else 10, fontweight="bold")
         ax2.set_xlim(0, 105)
         ax2.set_xlabel("Accuracy (%)")
         ax2.set_ylabel("")
@@ -1612,7 +1682,8 @@ def page_results(bank):
     speed_df = pd.DataFrame({
         "name": speed_names,
         "time": [ai_time[m] for m in _models_with_data] + [total_time],
-    }).sort_values("time", ascending=True).reset_index(drop=True)  # fastest at top
+        "_you": [False] * len(_models_with_data) + [True],
+    }).sort_values(["time", "_you"], ascending=[True, True]).reset_index(drop=True)  # fastest at top; YOU first within a tie
 
     with sns.axes_style("whitegrid"), sns.plotting_context("notebook", font_scale=1.1):
         fig3, ax3 = plt.subplots(figsize=(10, 6))
@@ -1622,9 +1693,15 @@ def page_results(bank):
         )
         for i, n in enumerate(speed_df["name"]):
             ax3.patches[i].set_hatch(acc_hatch_map[n])
+            if n == "YOU":
+                ax3.patches[i].set_alpha(1.0)
+                ax3.patches[i].set_linewidth(1.8)
+            else:
+                ax3.patches[i].set_alpha(0.72)
         x_max = max(speed_df["time"].max() * 1.15, 1.0)
         for i, (n, t) in enumerate(zip(speed_df["name"], speed_df["time"])):
-            ax3.text(t + x_max * 0.01, i, f"{t:.1f}s", va="center", fontsize=10, fontweight="bold")
+            ax3.text(t + x_max * 0.01, i, f"{t:.1f}s", va="center",
+                     fontsize=12 if n == "YOU" else 10, fontweight="bold")
         ax3.set_xlim(0, x_max)
         ax3.set_xlabel("Total Wall Time (seconds)")
         ax3.set_ylabel("")
@@ -1653,6 +1730,17 @@ def page_results(bank):
             palette={"You": "#FFD700", "AI Average": "#888888"},
             linewidth=2, ax=ax4,
         )
+        # Emphasize the user's line and dim the AI-average line so "You" pops.
+        for ln in ax4.lines:
+            col = ln.get_color()
+            if isinstance(col, str) and col.lower() == "#ffd700":
+                ln.set_linewidth(3.0)
+                try:
+                    ln.set_markersize(8)
+                except Exception:
+                    pass
+            else:
+                ln.set_alpha(0.55)
         ax4.set_xlabel("Question #")
         ax4.set_ylabel("Time (s)")
         ax4.set_title("Time per Question")
@@ -1686,14 +1774,15 @@ def page_results(bank):
 
     # ── Rank summary ────────────────────────────────────────────────────
     st.subheader("Your Rank")
-    all_scores = [(SHORT[m], ai_acc[m]) for m in _models_with_data]
-    all_scores.append(("YOU", user_acc))
-    all_scores.sort(key=lambda x: (-x[1], x[0]))
+    all_scores = [(SHORT[m], ai_acc[m], False) for m in _models_with_data]
+    all_scores.append(("YOU", user_acc, True))
+    # Highest accuracy first; "YOU" always ranks first within a score tie.
+    all_scores.sort(key=lambda x: (-x[1], 0 if x[2] else 1, x[0]))
 
-    rank = next(i + 1 for i, (name, _) in enumerate(all_scores) if name == "YOU")
+    rank = next(i + 1 for i, (name, _, _) in enumerate(all_scores) if name == "YOU")
     st.markdown(f"### You ranked **#{rank}** out of {len(all_scores)} participants!")
 
-    for i, (name, acc) in enumerate(all_scores):
+    for i, (name, acc, _you) in enumerate(all_scores):
         medal = {1: " :1st_place_medal:", 2: " :2nd_place_medal:", 3: " :3rd_place_medal:"}.get(i + 1, "")
         highlight = " **(YOU)**" if name == "YOU" else ""
         st.markdown(f"{i+1}. **{name}** — {acc:.1f}%{medal}{highlight}")
@@ -1721,7 +1810,7 @@ def page_results(bank):
 
     # Mini leaderboard
     y_pos = 3.8
-    for i_sc, (name_sc, acc_sc) in enumerate(all_scores):
+    for i_sc, (name_sc, acc_sc, _you) in enumerate(all_scores):
         is_you = name_sc == "YOU"
         color_sc = '#FFD700' if is_you else '#aaaaaa'
         marker = " >>" if is_you else "   "
@@ -1815,7 +1904,7 @@ def main():
     st.set_page_config(page_title="LLM Benchmark Quiz", page_icon="brain", layout="wide")
     init_state()
 
-    data = load_all_data()
+    data = load_all_data(_data_fingerprint())
     bank = build_question_bank(data)
 
     page = st.session_state.page
