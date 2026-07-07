@@ -693,9 +693,11 @@ SUMMARY = {
     ("Nemotron-Cascade-2-30B-A3B-6bit-XL-mlx", "MMLU"): {"acc": 69.0, "correct": 20, "total": 29, "time": 37.9},
     # ── Coding benchmarks (HUMANEVAL & MBPP) ──────────────────────────────────
     # Code-generation tasks, 30 questions each (sampled from 164 / 500), run in
-    # NON-thinking mode on 16 models. Source: Coding_benchmarks.txt + Ornith run.
+    # NON-thinking mode on 18 models. Source: Coding_benchmarks.txt + Ornith run.
     # Model names mapped to the matching dashboard keys: "Nex-N2-mini-6bit-text-mlx"
-    # -> "Nex-N2-mini-6bit", "Qwen3.5-9B-MLX-8bit" -> "Qwen3.5-9B-8bit".
+    # -> "Nex-N2-mini-6bit", "Qwen3.5-9B-MLX-8bit" -> "Qwen3.5-9B-8bit",
+    # "Huihui-Qwen3.6-35B-A3B-abliterated-5bit-XL-mlx" -> "Huihui-Qwen3.6-35B-A3B-6bit-mlx"
+    # (mixed quant: coding run at 5bit-abliterated, other benchmarks at 6bit).
     ("Devstral-Small-2-24B-Instruct-2512-4bit", "HUMANEVAL"): {"acc": 93.3, "correct": 28, "total": 30, "time": 215.2},
     ("Devstral-Small-2-24B-Instruct-2512-4bit", "MBPP"): {"acc": 73.3, "correct": 22, "total": 30, "time": 128.6},
     ("GLM-4.7-Flash-6bit-mlx", "HUMANEVAL"): {"acc": 73.3, "correct": 22, "total": 30, "time": 113.0},
@@ -730,6 +732,10 @@ SUMMARY = {
     ("Ornith-1.0-9B-4bit", "MBPP"): {"acc": 60.0, "correct": 18, "total": 30, "time": 71.6},
     ("Nemotron-Cascade-2-30B-A3B-6bit-XL-mlx", "HUMANEVAL"): {"acc": 83.3, "correct": 25, "total": 30, "time": 63.0},
     ("Nemotron-Cascade-2-30B-A3B-6bit-XL-mlx", "MBPP"): {"acc": 66.7, "correct": 20, "total": 30, "time": 38.8},
+    # Huihui-Qwen3.6-35B-A3B: coding run from the abliterated-5bit-XL-mlx quant,
+    # mapped to the dashboard's 6bit key (mixed quant — see note above).
+    ("Huihui-Qwen3.6-35B-A3B-6bit-mlx", "HUMANEVAL"): {"acc": 83.3, "correct": 25, "total": 30, "time": 104.8},
+    ("Huihui-Qwen3.6-35B-A3B-6bit-mlx", "MBPP"): {"acc": 83.3, "correct": 25, "total": 30, "time": 61.3},
 }
 
 # ── Parser ──────────────────────────────────────────────────────────────────
@@ -1206,7 +1212,7 @@ def _draw_interactive_pareto():
     st.markdown("---")
     st.subheader("Interactive Pareto: Overall Accuracy vs Total Time")
     st.caption("Click legend items to toggle families. Use the benchmark checklist to filter. Hover points for details.")
-    st.caption("_Note: Except for MathQA, MMLU-Pro, and HPL, all MC benchmarks were run in Instruct mode for reasoning models. HumanEval & MBPP (code generation, 17 models) were run in non-thinking mode._")
+    st.caption("_Note: Except for MathQA, MMLU-Pro, and HPL, all MC benchmarks were run in Instruct mode for reasoning models. HumanEval & MBPP (code generation, 18 models) were run in non-thinking mode._")
 
     # Benchmark filter
     bench_cols = st.columns(2)
@@ -1338,7 +1344,7 @@ def _draw_interactive_pareto():
         ))
 
     st.plotly_chart(fig, use_container_width=True, theme="streamlit")
-    st.caption("_HumanEval & MBPP are code-generation benchmarks (non-thinking mode) available for 17 of the 28 models; points only appear when those benchmarks are selected and a model has data for them._")
+    st.caption("_HumanEval & MBPP are code-generation benchmarks (non-thinking mode) available for 18 of the 28 models; points only appear when those benchmarks are selected and a model has data for them._")
     st.markdown(
         "Download high quality data agnostic quants used in these benchmarks "
         "[here](https://huggingface.co/leonsarmiento)."
