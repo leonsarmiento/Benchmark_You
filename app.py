@@ -204,6 +204,7 @@ MODELS = [
     "Domyn-Small-v1.0-8bit-mlx",    # Nemotron-arch, Italian/multilingual (dense)
     "Agents-A1-5bit-XL-mlx",        # Qwen3.5-35B-A3B fine-tune (MoE)
     "Ornith-1.0-9B-4bit",           # Qwen3.5-9B fine-tune (dense)
+    "Nemotron-Cascade-2-30B-A3B-6bit-XL-mlx",  # Nemotron family (30B MoE, A3B)
 ]
 # MoE models have "A3B" or "A4B" in name
 # MoE detection: regex + manual overrides (gpt-oss is MoE despite no A3B in name)
@@ -247,6 +248,7 @@ SHORT = {
     "Domyn-Small-v1.0-8bit-mlx": "Domyn-Small",
     "Agents-A1-5bit-XL-mlx": "Agents-A1",
     "Ornith-1.0-9B-4bit": "Ornith-9B",
+    "Nemotron-Cascade-2-30B-A3B-6bit-XL-mlx": "Nemotron-Cascade2",
 }
 # Family-based colors: same hue per family, shade varies by model size/variant
 COLORS = {
@@ -280,6 +282,7 @@ COLORS = {
     "Hypnos-i1-8B-8bit-mlx":    "#17becf",
     # Nemotron — salmon
     "NVIDIA-Nemotron-3-Nano-30B-A3B-MLX-6bit": "#e88e6d",
+    "Nemotron-Cascade-2-30B-A3B-6bit-XL-mlx": "#b85842",  # deeper salmon (Nemotron family)
     # Devstral — dark indigo
     "Devstral-Small-2-24B-Instruct-2512-4bit": "#393b79",
     # MechaEpstein (poorly fine-tuned Qwen3 family) — dark goldenrod
@@ -353,7 +356,7 @@ BENCH_SHORT = {
 BENCH_DESC = {
     "HPL": "Husk-Phi-Leon is a custom benchmark built from real social media posts (prompts inspired by @husk.irl and @father_phi). It tests social intelligence, common sense, and the ability to detect sarcasm, irony, inappropriate behavior, and trick questions. Unlike academic benchmarks, these are situations where humans naturally outperform AI - the questions are deliberately designed to trip up overly agreeable or literal-minded models. Formatted into a single-turn multiple-choice standard benchmarking format. 10 questions, multiple-choice.",
     "MMLU_PRO": "Massive Multitask Language Understanding (Professional) tests knowledge across 14 academic and professional domains - biology, chemistry, physics, law, economics, computer science, and more. Questions are multiple-choice with up to 10 options, making guessing nearly useless. It measures breadth and depth of general knowledge.",
-    "MMLU": "Massive Multitask Language Understanding is the classic 57-subject knowledge test spanning STEM, humanities, social sciences, and more. Each question has 4 answer choices. It measures broad academic and professional knowledge acquired through study, so a well-rounded education beats raw reasoning. (This benchmark currently has results for 16 models.)",
+    "MMLU": "Massive Multitask Language Understanding is the classic 57-subject knowledge test spanning STEM, humanities, social sciences, and more. Each question has 4 answer choices. It measures broad academic and professional knowledge acquired through study, so a well-rounded education beats raw reasoning. (This benchmark currently has results for 19 models.)",
     "ARC_CHALLENGE": "AI2 Reasoning Challenge (Challenge set) contains grade-school science questions that require genuine reasoning, not just recall. Only questions that retrieval-based methods fail are included, so these are the hard ones - think balancing chemical equations, identifying energy types, and interpreting experimental results.",
     "MATHQA": "MathQA tests quantitative reasoning with real-world math word problems - percentages, probability, geometry, gain/loss, physics calculations, and more. Each question has 5 answer choices. It measures whether you (or an AI) can set up and solve practical math problems correctly.",
     "HELLASWAG": "HellaSwag tests commonsense natural language inference - given a context (a video description or wikiHow step), you must pick the most plausible continuation from 4 options. It sounds easy but the wrong answers are carefully chosen to be adversarial. It measures whether a model (or human) understands everyday situations.",
@@ -637,8 +640,18 @@ SUMMARY = {
     ("Ornith-1.0-9B-4bit", "MATHQA"): {"acc": 86.7, "correct": 26, "total": 30, "time": 1868.3},
     ("Ornith-1.0-9B-4bit", "BBQ"): {"acc": 90.0, "correct": 27, "total": 30, "time": 14.9},
     ("Ornith-1.0-9B-4bit", "SAFETYBENCH"): {"acc": 80.0, "correct": 24, "total": 30, "time": 16.1},
+    # Nemotron-Cascade-2-30B-A3B-6bit-XL-mlx (Nemotron family, 30B MoE A3B) - 8 MC benchmarks.
+    # No HPL run (not yet benchmarked on it). MMLU_PRO & MATHQA run in reasoning mode.
+    ("Nemotron-Cascade-2-30B-A3B-6bit-XL-mlx", "MMLU_PRO"): {"acc": 83.3, "correct": 25, "total": 30, "time": 595.0},
+    ("Nemotron-Cascade-2-30B-A3B-6bit-XL-mlx", "HELLASWAG"): {"acc": 73.3, "correct": 22, "total": 30, "time": 18.0},
+    ("Nemotron-Cascade-2-30B-A3B-6bit-XL-mlx", "TRUTHFULQA"): {"acc": 76.7, "correct": 23, "total": 30, "time": 13.1},
+    ("Nemotron-Cascade-2-30B-A3B-6bit-XL-mlx", "ARC_CHALLENGE"): {"acc": 73.3, "correct": 22, "total": 30, "time": 12.6},
+    ("Nemotron-Cascade-2-30B-A3B-6bit-XL-mlx", "WINOGRANDE"): {"acc": 53.3, "correct": 16, "total": 30, "time": 11.9},
+    ("Nemotron-Cascade-2-30B-A3B-6bit-XL-mlx", "MATHQA"): {"acc": 93.3, "correct": 28, "total": 30, "time": 618.0},
+    ("Nemotron-Cascade-2-30B-A3B-6bit-XL-mlx", "BBQ"): {"acc": 70.0, "correct": 21, "total": 30, "time": 13.5},
+    ("Nemotron-Cascade-2-30B-A3B-6bit-XL-mlx", "SAFETYBENCH"): {"acc": 90.0, "correct": 27, "total": 30, "time": 13.8},
     # ── MMLU (classic 4-option, 57-subject knowledge test) ────────────────────
-    # 16 models have results. 3 of the original 7 were run on a different
+    # 19 models have results. 3 of the original 7 were run on a different
     # quant than their other benchmarks (per "map to existing" decision): the
     # gemma-26B, Nex, and Qwen3.6-35B rows come from qat-6bit / 5bit / VL-oQ5 runs.
     # Scores are out of 29: one source question (Q3, business_ethics) is
@@ -676,6 +689,8 @@ SUMMARY = {
     # Agents-A1 & Ornith-9B (new models). Both got defective Q3 wrong, so /29 applies directly.
     ("Agents-A1-5bit-XL-mlx", "MMLU"): {"acc": 72.4, "correct": 21, "total": 29, "time": 30.4},
     ("Ornith-1.0-9B-4bit", "MMLU"): {"acc": 75.9, "correct": 22, "total": 29, "time": 56.2},
+    # Nemotron-Cascade2 (new model). Got defective Q3 wrong, so /29 applies directly.
+    ("Nemotron-Cascade-2-30B-A3B-6bit-XL-mlx", "MMLU"): {"acc": 69.0, "correct": 20, "total": 29, "time": 37.9},
     # ── Coding benchmarks (HUMANEVAL & MBPP) ──────────────────────────────────
     # Code-generation tasks, 30 questions each (sampled from 164 / 500), run in
     # NON-thinking mode on 16 models. Source: Coding_benchmarks.txt + Ornith run.
@@ -713,6 +728,8 @@ SUMMARY = {
     ("Agents-A1-5bit-XL-mlx", "MBPP"): {"acc": 80.0, "correct": 24, "total": 30, "time": 41.4},
     ("Ornith-1.0-9B-4bit", "HUMANEVAL"): {"acc": 83.3, "correct": 25, "total": 30, "time": 143.1},
     ("Ornith-1.0-9B-4bit", "MBPP"): {"acc": 60.0, "correct": 18, "total": 30, "time": 71.6},
+    ("Nemotron-Cascade-2-30B-A3B-6bit-XL-mlx", "HUMANEVAL"): {"acc": 83.3, "correct": 25, "total": 30, "time": 63.0},
+    ("Nemotron-Cascade-2-30B-A3B-6bit-XL-mlx", "MBPP"): {"acc": 66.7, "correct": 20, "total": 30, "time": 38.8},
 }
 
 # ── Parser ──────────────────────────────────────────────────────────────────
@@ -1189,7 +1206,7 @@ def _draw_interactive_pareto():
     st.markdown("---")
     st.subheader("Interactive Pareto: Overall Accuracy vs Total Time")
     st.caption("Click legend items to toggle families. Use the benchmark checklist to filter. Hover points for details.")
-    st.caption("_Note: Except for MathQA, MMLU-Pro, and HPL, all MC benchmarks were run in Instruct mode for reasoning models. HumanEval & MBPP (code generation, 16 models) were run in non-thinking mode._")
+    st.caption("_Note: Except for MathQA, MMLU-Pro, and HPL, all MC benchmarks were run in Instruct mode for reasoning models. HumanEval & MBPP (code generation, 17 models) were run in non-thinking mode._")
 
     # Benchmark filter
     bench_cols = st.columns(2)
@@ -1321,7 +1338,7 @@ def _draw_interactive_pareto():
         ))
 
     st.plotly_chart(fig, use_container_width=True, theme="streamlit")
-    st.caption("_HumanEval & MBPP are code-generation benchmarks (non-thinking mode) available for 16 of the 27 models; points only appear when those benchmarks are selected and a model has data for them._")
+    st.caption("_HumanEval & MBPP are code-generation benchmarks (non-thinking mode) available for 17 of the 28 models; points only appear when those benchmarks are selected and a model has data for them._")
     st.markdown(
         "Download high quality data agnostic quants used in these benchmarks "
         "[here](https://huggingface.co/leonsarmiento)."

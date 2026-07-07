@@ -1,0 +1,1133 @@
+Model: Nemotron-Cascade-2-30B-A3B-6bit-XL-mlx
+Benchmark: HUMANEVAL
+Accuracy: 83.3% (25/30)
+Time: 63s
+
+--- QHumanEval/163 [WRONG] ---
+Question: Complete the following Python function. Provide only the complete function implementation, no explanations.
+
+
+def generate_integers(a, b):
+    """
+    Given two positive integers a and b, return the even digits between a
+    and b, in ascending order.
+
+    For example:
+    generate_integers(2, 8) => [2, 4, 6, 8]
+    generate_integers(8, 2) => [2, 4, 6, 8]
+    generate_integers(10, 14) => []
+    """
+
+Expected: (unit tests)
+Predicted: def generate_integers(a, b):
+    start = min(a, b)
+    end = max(a, b)
+    result = []
+    for num in range(start, end + 1):
+        for digit in str(num):
+            if digit.isdigit() and int(digit...
+Raw response: def generate_integers(a, b):
+    start = min(a, b)
+    end = max(a, b)
+    result = []
+    for num in range(start, end + 1):
+        for digit in str(num):
+            if digit.isdigit() and int(digit) % 2 == 0:
+                result.append(int(digit))
+                break
+    return result
+Time: 1.982s
+
+--- QHumanEval/28 [CORRECT] ---
+Question: Complete the following Python function. Provide only the complete function implementation, no explanations.
+
+from typing import List
+
+
+def concatenate(strings: List[str]) -> str:
+    """ Concatenate list of strings into a single string
+    >>> concatenate([])
+    ''
+    >>> concatenate(['a', 'b', 'c'])
+    'abc'
+    """
+
+Expected: (unit tests)
+Predicted: from typing import List
+
+
+def concatenate(strings: List[str]) -> str:
+    """ Concatenate list of strings into a single string
+    >>> concatenate([])
+    ''
+    >>> concatenate(['a', 'b', 'c'])
+    '...
+Raw response: from typing import List
+
+
+def concatenate(strings: List[str]) -> str:
+    """ Concatenate list of strings into a single string
+    >>> concatenate([])
+    ''
+    >>> concatenate(['a', 'b', 'c'])
+    'abc'
+    """
+    return ''.join(strings)
+Time: 1.596s
+
+--- QHumanEval/6 [CORRECT] ---
+Question: Complete the following Python function. Provide only the complete function implementation, no explanations.
+
+from typing import List
+
+
+def parse_nested_parens(paren_string: str) -> List[int]:
+    """ Input to this function is a string represented multiple groups for nested parentheses separated by spaces.
+    For each of the group, output the deepest level of nesting of parentheses.
+    E.g. (()()) has maximum two levels of nesting while ((())) has three.
+
+    >>> parse_nested_parens('(()()) ((())) () ((())()())')
+    [2, 3, 1, 3]
+    """
+
+Expected: (unit tests)
+Predicted: from typing import List
+
+def parse_nested_parens(paren_string: str) -> List[int]:
+    groups = paren_string.split()
+    result = []
+    for group in groups:
+        max_depth = 0
+        current = 0
+ ...
+Raw response: from typing import List
+
+def parse_nested_parens(paren_string: str) -> List[int]:
+    groups = paren_string.split()
+    result = []
+    for group in groups:
+        max_depth = 0
+        current = 0
+        for ch in group:
+            if ch == '(':
+                current += 1
+                if current > max_depth:
+                    max_depth = current
+            elif ch == ')':
+                current -= 1
+        result.append(max_depth)
+    return result
+Time: 2.503s
+
+--- QHumanEval/70 [CORRECT] ---
+Question: Complete the following Python function. Provide only the complete function implementation, no explanations.
+
+
+def strange_sort_list(lst):
+    '''
+    Given list of integers, return list in strange order.
+    Strange sorting, is when you start with the minimum value,
+    then maximum of the remaining integers, then minimum and so on.
+
+    Examples:
+    strange_sort_list([1, 2, 3, 4]) == [1, 4, 2, 3]
+    strange_sort_list([5, 5, 5, 5]) == [5, 5, 5, 5]
+    strange_sort_list([]) == []
+    '''
+
+Expected: (unit tests)
+Predicted: def strange_sort_list(lst):
+    if not lst:
+        return []
+    sorted_lst = sorted(lst)
+    result = []
+    left, right = 0, len(sorted_lst) - 1
+    while left <= right:
+        result.append(sorte...
+Raw response: def strange_sort_list(lst):
+    if not lst:
+        return []
+    sorted_lst = sorted(lst)
+    result = []
+    left, right = 0, len(sorted_lst) - 1
+    while left <= right:
+        result.append(sorted_lst[left])
+        left += 1
+        if left <= right:
+            result.append(sorted_lst[right])
+            right -= 1
+    return result
+Time: 2.184s
+
+--- QHumanEval/62 [CORRECT] ---
+Question: Complete the following Python function. Provide only the complete function implementation, no explanations.
+
+
+
+def derivative(xs: list):
+    """ xs represent coefficients of a polynomial.
+    xs[0] + xs[1] * x + xs[2] * x^2 + ....
+     Return derivative of this polynomial in the same form.
+    >>> derivative([3, 1, 2, 4, 5])
+    [1, 4, 12, 20]
+    >>> derivative([1, 2, 3])
+    [2, 6]
+    """
+
+Expected: (unit tests)
+Predicted: def derivative(xs: list):
+    return [xs[i] * i for i in range(1, len(xs))]
+Raw response: def derivative(xs: list):
+    return [xs[i] * i for i in range(1, len(xs))]
+Time: 0.984s
+
+--- QHumanEval/57 [CORRECT] ---
+Question: Complete the following Python function. Provide only the complete function implementation, no explanations.
+
+
+
+def monotonic(l: list):
+    """Return True is list elements are monotonically increasing or decreasing.
+    >>> monotonic([1, 2, 4, 20])
+    True
+    >>> monotonic([1, 20, 4, 10])
+    False
+    >>> monotonic([4, 1, 0, -10])
+    True
+    """
+
+Expected: (unit tests)
+Predicted: def monotonic(l: list):
+    if len(l) <= 1:
+        return True
+    inc = all(l[i] <= l[i+1] for i in range(len(l)-1))
+    dec = all(l[i] >= l[i+1] for i in range(len(l)-1))
+    return inc or dec
+Raw response: def monotonic(l: list):
+    if len(l) <= 1:
+        return True
+    inc = all(l[i] <= l[i+1] for i in range(len(l)-1))
+    dec = all(l[i] >= l[i+1] for i in range(len(l)-1))
+    return inc or dec
+Time: 1.839s
+
+--- QHumanEval/35 [CORRECT] ---
+Question: Complete the following Python function. Provide only the complete function implementation, no explanations.
+
+
+
+def max_element(l: list):
+    """Return maximum element in the list.
+    >>> max_element([1, 2, 3])
+    3
+    >>> max_element([5, 3, -5, 2, -3, 3, 9, 0, 123, 1, -10])
+    123
+    """
+
+Expected: (unit tests)
+Predicted: def max_element(l: list):
+    if not l:
+        raise ValueError("max_element() arg is an empty sequence")
+    max_val = l[0]
+    for item in l[1:]:
+        if item > max_val:
+            max_val = it...
+Raw response: def max_element(l: list):
+    if not l:
+        raise ValueError("max_element() arg is an empty sequence")
+    max_val = l[0]
+    for item in l[1:]:
+        if item > max_val:
+            max_val = item
+    return max_val
+Time: 1.6s
+
+--- QHumanEval/26 [CORRECT] ---
+Question: Complete the following Python function. Provide only the complete function implementation, no explanations.
+
+from typing import List
+
+
+def remove_duplicates(numbers: List[int]) -> List[int]:
+    """ From a list of integers, remove all elements that occur more than once.
+    Keep order of elements left the same as in the input.
+    >>> remove_duplicates([1, 2, 3, 2, 4])
+    [1, 3, 4]
+    """
+
+Expected: (unit tests)
+Predicted: from typing import List
+
+def remove_duplicates(numbers: List[int]) -> List[int]:
+    """ From a list of integers, remove all elements that occur more than once.
+    Keep order of elements left the sam...
+Raw response: from typing import List
+
+def remove_duplicates(numbers: List[int]) -> List[int]:
+    """ From a list of integers, remove all elements that occur more than once.
+    Keep order of elements left the same as in the input.
+    >>> remove_duplicates([1, 2, 3, 2, 4])
+    [1, 3, 4]
+    """
+    from collections import Counter
+    counts = Counter(numbers)
+    return [num for num in numbers if counts[num] == 1]
+Time: 2.607s
+
+--- QHumanEval/139 [CORRECT] ---
+Question: Complete the following Python function. Provide only the complete function implementation, no explanations.
+
+
+def special_factorial(n):
+    """The Brazilian factorial is defined as:
+    brazilian_factorial(n) = n! * (n-1)! * (n-2)! * ... * 1!
+    where n > 0
+
+    For example:
+    >>> special_factorial(4)
+    288
+
+    The function will receive an integer as input and should return the special
+    factorial of this integer.
+    """
+
+Expected: (unit tests)
+Predicted: def special_factorial(n):
+    result = 1
+    for i in range(1, n + 1):
+        fact = 1
+        for j in range(1, i + 1):
+            fact *= j
+        result *= fact
+    return result
+Raw response: def special_factorial(n):
+    result = 1
+    for i in range(1, n + 1):
+        fact = 1
+        for j in range(1, i + 1):
+            fact *= j
+        result *= fact
+    return result
+Time: 1.581s
+
+--- QHumanEval/22 [CORRECT] ---
+Question: Complete the following Python function. Provide only the complete function implementation, no explanations.
+
+from typing import List, Any
+
+
+def filter_integers(values: List[Any]) -> List[int]:
+    """ Filter given list of any python values only for integers
+    >>> filter_integers(['a', 3.14, 5])
+    [5]
+    >>> filter_integers([1, 2, 3, 'abc', {}, []])
+    [1, 2, 3]
+    """
+
+Expected: (unit tests)
+Predicted: from typing import List, Any
+
+
+def filter_integers(values: List[Any]) -> List[int]:
+    """ Filter given list of any python values only for integers
+    >>> filter_integers(['a', 3.14, 5])
+    [5]
+   ...
+Raw response: from typing import List, Any
+
+
+def filter_integers(values: List[Any]) -> List[int]:
+    """ Filter given list of any python values only for integers
+    >>> filter_integers(['a', 3.14, 5])
+    [5]
+    >>> filter_integers([1, 2, 3, 'abc', {}, []])
+    [1, 2, 3]
+    """
+    return [x for x in values if type(x) is int]
+Time: 2.47s
+
+--- QHumanEval/151 [CORRECT] ---
+Question: Complete the following Python function. Provide only the complete function implementation, no explanations.
+
+
+def double_the_difference(lst):
+    '''
+    Given a list of numbers, return the sum of squares of the numbers
+    in the list that are odd. Ignore numbers that are negative or not integers.
+    
+    double_the_difference([1, 3, 2, 0]) == 1 + 9 + 0 + 0 = 10
+    double_the_difference([-1, -2, 0]) == 0
+    double_the_difference([9, -2]) == 81
+    double_the_difference([0]) == 0  
+   
+    If the input list is empty, return 0.
+    '''
+
+Expected: (unit tests)
+Predicted: def double_the_difference(lst):
+    total = 0
+    for num in lst:
+        if isinstance(num, int) and num >= 0 and num % 2 == 1:
+            total += num * num
+    return total
+Raw response: def double_the_difference(lst):
+    total = 0
+    for num in lst:
+        if isinstance(num, int) and num >= 0 and num % 2 == 1:
+            total += num * num
+    return total
+Time: 1.531s
+
+--- QHumanEval/108 [WRONG] ---
+Question: Complete the following Python function. Provide only the complete function implementation, no explanations.
+
+
+def count_nums(arr):
+    """
+    Write a function count_nums which takes an array of integers and returns
+    the number of elements which has a sum of digits > 0.
+    If a number is negative, then its first signed digit will be negative:
+    e.g. -123 has signed digits -1, 2, and 3.
+    >>> count_nums([]) == 0
+    >>> count_nums([-1, 11, -11]) == 1
+    >>> count_nums([1, 1, 2]) == 3
+    """
+
+Expected: (unit tests)
+Predicted: def count_nums(arr):
+    count = 0
+    for num in arr:
+        if num == 0:
+            continue
+        sign = 1 if num > 0 else -1
+        n = abs(num)
+        digit_sum = 0
+        while n:
+       ...
+Raw response: def count_nums(arr):
+    count = 0
+    for num in arr:
+        if num == 0:
+            continue
+        sign = 1 if num > 0 else -1
+        n = abs(num)
+        digit_sum = 0
+        while n:
+            digit_sum += n % 10
+            n //= 10
+        digit_sum *= sign
+        if digit_sum > 0:
+            count += 1
+    return count
+Time: 2.425s
+
+--- QHumanEval/8 [CORRECT] ---
+Question: Complete the following Python function. Provide only the complete function implementation, no explanations.
+
+from typing import List, Tuple
+
+
+def sum_product(numbers: List[int]) -> Tuple[int, int]:
+    """ For a given list of integers, return a tuple consisting of a sum and a product of all the integers in a list.
+    Empty sum should be equal to 0 and empty product should be equal to 1.
+    >>> sum_product([])
+    (0, 1)
+    >>> sum_product([1, 2, 3, 4])
+    (10, 24)
+    """
+
+Expected: (unit tests)
+Predicted: from typing import List, Tuple
+
+def sum_product(numbers: List[int]) -> Tuple[int, int]:
+    total = 0
+    product = 1
+    for num in numbers:
+        total += num
+        product *= num
+    return (to...
+Raw response: from typing import List, Tuple
+
+def sum_product(numbers: List[int]) -> Tuple[int, int]:
+    total = 0
+    product = 1
+    for num in numbers:
+        total += num
+        product *= num
+    return (total, product)
+Time: 1.567s
+
+--- QHumanEval/7 [CORRECT] ---
+Question: Complete the following Python function. Provide only the complete function implementation, no explanations.
+
+from typing import List
+
+
+def filter_by_substring(strings: List[str], substring: str) -> List[str]:
+    """ Filter an input list of strings only for ones that contain given substring
+    >>> filter_by_substring([], 'a')
+    []
+    >>> filter_by_substring(['abc', 'bacd', 'cde', 'array'], 'a')
+    ['abc', 'bacd', 'array']
+    """
+
+Expected: (unit tests)
+Predicted: from typing import List
+
+def filter_by_substring(strings: List[str], substring: str) -> List[str]:
+    """ Filter an input list of strings only for ones that contain given substring
+    >>> filter_by_...
+Raw response: from typing import List
+
+def filter_by_substring(strings: List[str], substring: str) -> List[str]:
+    """ Filter an input list of strings only for ones that contain given substring
+    >>> filter_by_substring([], 'a')
+    []
+    >>> filter_by_substring(['abc', 'bacd', 'cde', 'array'], 'a')
+    ['abc', 'bacd', 'array']
+    """
+    return [s for s in strings if substring in s]
+Time: 2.453s
+
+--- QHumanEval/23 [CORRECT] ---
+Question: Complete the following Python function. Provide only the complete function implementation, no explanations.
+
+
+
+def strlen(string: str) -> int:
+    """ Return length of given string
+    >>> strlen('')
+    0
+    >>> strlen('abc')
+    3
+    """
+
+Expected: (unit tests)
+Predicted: def strlen(string: str) -> int:
+    return len(string)
+Raw response: def strlen(string: str) -> int:
+    return len(string)
+Time: 0.641s
+
+--- QHumanEval/55 [CORRECT] ---
+Question: Complete the following Python function. Provide only the complete function implementation, no explanations.
+
+
+
+def fib(n: int):
+    """Return n-th Fibonacci number.
+    >>> fib(10)
+    55
+    >>> fib(1)
+    1
+    >>> fib(8)
+    21
+    """
+
+Expected: (unit tests)
+Predicted: def fib(n: int):
+    """Return n-th Fibonacci number.
+    >>> fib(10)
+    55
+    >>> fib(1)
+    1
+    >>> fib(8)
+    21
+    """
+    if n <= 0:
+        return 0
+    a, b = 0, 1
+    for _ in range(n):
+ ...
+Raw response: def fib(n: int):
+    """Return n-th Fibonacci number.
+    >>> fib(10)
+    55
+    >>> fib(1)
+    1
+    >>> fib(8)
+    21
+    """
+    if n <= 0:
+        return 0
+    a, b = 0, 1
+    for _ in range(n):
+        a, b = b, a + b
+    return a
+Time: 2.199s
+
+--- QHumanEval/59 [CORRECT] ---
+Question: Complete the following Python function. Provide only the complete function implementation, no explanations.
+
+
+
+def largest_prime_factor(n: int):
+    """Return the largest prime factor of n. Assume n > 1 and is not a prime.
+    >>> largest_prime_factor(13195)
+    29
+    >>> largest_prime_factor(2048)
+    2
+    """
+
+Expected: (unit tests)
+Predicted: def largest_prime_factor(n: int):
+    """Return the largest prime factor of n. Assume n > 1 and is not a prime.
+    >>> largest_prime_factor(13195)
+    29
+    >>> largest_prime_factor(2048)
+    2
+    ...
+Raw response: def largest_prime_factor(n: int):
+    """Return the largest prime factor of n. Assume n > 1 and is not a prime.
+    >>> largest_prime_factor(13195)
+    29
+    >>> largest_prime_factor(2048)
+    2
+    """
+    i = 2
+    while i * i <= n:
+        while n % i == 0:
+            n //= i
+        i += 1
+    return n if n > 1 else i - 1
+Time: 2.594s
+
+--- QHumanEval/129 [WRONG] ---
+Question: Complete the following Python function. Provide only the complete function implementation, no explanations.
+
+
+def minPath(grid, k):
+    """
+    Given a grid with N rows and N columns (N >= 2) and a positive integer k, 
+    each cell of the grid contains a value. Every integer in the range [1, N * N]
+    inclusive appears exactly once on the cells of the grid.
+
+    You have to find the minimum path of length k in the grid. You can start
+    from any cell, and in each step you can move to any of the neighbor cells,
+    in other words, you can go to cells which share an edge with you current
+    cell.
+    Please note that a path of length k means visiting exactly k cells (not
+    necessarily distinct).
+    You CANNOT go off the grid.
+    A path A (of length k) is considered less than a path B (of length k) if
+    after making the ordered lists of the values on the cells that A and B go
+    through (let's call them lst_A and lst_B), lst_A is lexicographically less
+    than lst_B, in other words, there exist an integer index i (1 <= i <= k)
+    such that lst_A[i] < lst_B[i] and for any j (1 <= j < i) we have
+    lst_A[j] = lst_B[j].
+    It is guaranteed that the answer is unique.
+    Return an ordered list of the values on the cells that the minimum path go through.
+
+    Examples:
+
+        Input: grid = [ [1,2,3], [4,5,6], [7,8,9]], k = 3
+        Output: [1, 2, 1]
+
+        Input: grid = [ [5,9,3], [4,1,6], [7,8,2]], k = 1
+        Output: [1]
+    """
+
+Expected: (unit tests)
+Predicted:     from any cell, and in each step you can move to any of the neighbor cells,
+
+def minPath(grid, k):
+    n = len(grid)
+    min_path = None
+    for i in range(n):
+        for j in range(n):
+          ...
+Raw response: def minPath(grid, k):
+    n = len(grid)
+    min_path = None
+    for i in range(n):
+        for j in range(n):
+            stack = [(i, j, [grid[i][j]])]
+            while stack:
+                x, y, path = stack.pop()
+                if len(path) == k:
+                    if min_path is None or path < min_path:
+                        min_path = path
+                else:
+                    for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+                        nx, ny = x + dx, y + dy
+                        if 0 <= nx < n and 0 <= ny < n:
+                            stack.append((nx, ny, path + [grid[nx][ny]]))
+    return min_path
+Time: 4.199s
+
+--- QHumanEval/161 [CORRECT] ---
+Question: Complete the following Python function. Provide only the complete function implementation, no explanations.
+
+
+def solve(s):
+    """You are given a string s.
+    if s[i] is a letter, reverse its case from lower to upper or vise versa, 
+    otherwise keep it as it is.
+    If the string contains no letters, reverse the string.
+    The function should return the resulted string.
+    Examples
+    solve("1234") = "4321"
+    solve("ab") = "AB"
+    solve("#a@C") = "#A@c"
+    """
+
+Expected: (unit tests)
+Predicted: def solve(s):
+    if any(c.isalpha() for c in s):
+        return ''.join(c.swapcase() if c.isalpha() else c for c in s)
+    else:
+        return s[::-1]
+Raw response: def solve(s):
+    if any(c.isalpha() for c in s):
+        return ''.join(c.swapcase() if c.isalpha() else c for c in s)
+    else:
+        return s[::-1]
+Time: 1.414s
+
+--- QHumanEval/143 [CORRECT] ---
+Question: Complete the following Python function. Provide only the complete function implementation, no explanations.
+
+
+def words_in_sentence(sentence):
+    """
+    You are given a string representing a sentence,
+    the sentence contains some words separated by a space,
+    and you have to return a string that contains the words from the original sentence,
+    whose lengths are prime numbers,
+    the order of the words in the new string should be the same as the original one.
+
+    Example 1:
+        Input: sentence = "This is a test"
+        Output: "is"
+
+    Example 2:
+        Input: sentence = "lets go for swimming"
+        Output: "go for"
+
+    Constraints:
+        * 1 <= len(sentence) <= 100
+        * sentence contains only letters
+    """
+
+Expected: (unit tests)
+Predicted: def words_in_sentence(sentence):
+    def is_prime(n):
+        if n < 2:
+            return False
+        if n == 2:
+            return True
+        if n % 2 == 0:
+            return False
+        i = ...
+Raw response: def words_in_sentence(sentence):
+    def is_prime(n):
+        if n < 2:
+            return False
+        if n == 2:
+            return True
+        if n % 2 == 0:
+            return False
+        i = 3
+        while i * i <= n:
+            if n % i == 0:
+                return False
+            i += 2
+        return True
+
+    words = sentence.split()
+    result = [word for word in words if is_prime(len(word))]
+    return " ".join(result)
+Time: 2.815s
+
+--- QHumanEval/50 [WRONG] ---
+Question: Complete the following Python function. Provide only the complete function implementation, no explanations.
+
+
+
+def encode_shift(s: str):
+    """
+    returns encoded string by shifting every character by 5 in the alphabet.
+    """
+    return "".join([chr(((ord(ch) + 5 - ord("a")) % 26) + ord("a")) for ch in s])
+
+
+def decode_shift(s: str):
+    """
+    takes as input string encoded with encode_shift function. Returns decoded string.
+    """
+
+Expected: (unit tests)
+Predicted: def decode_shift(s: str):
+    """
+    takes as input string encoded with encode_shift function. Returns decoded string.
+    """
+    return "".join([chr(((ord(ch) - ord("a") - 5) % 26) + ord("a")) for ...
+Raw response: def decode_shift(s: str):
+    """
+    takes as input string encoded with encode_shift function. Returns decoded string.
+    """
+    return "".join([chr(((ord(ch) - ord("a") - 5) % 26) + ord("a")) for ch in s])
+Time: 1.624s
+
+--- QHumanEval/155 [CORRECT] ---
+Question: Complete the following Python function. Provide only the complete function implementation, no explanations.
+
+
+def even_odd_count(num):
+    """Given an integer. return a tuple that has the number of even and odd digits respectively.
+
+     Example:
+        even_odd_count(-12) ==> (1, 1)
+        even_odd_count(123) ==> (1, 2)
+    """
+
+Expected: (unit tests)
+Predicted: def even_odd_count(num):
+    num = abs(num)
+    even = 0
+    odd = 0
+    if num == 0:
+        even = 1
+    else:
+        while num > 0:
+            digit = num % 10
+            if digit % 2 == 0:
+    ...
+Raw response: def even_odd_count(num):
+    num = abs(num)
+    even = 0
+    odd = 0
+    if num == 0:
+        even = 1
+    else:
+        while num > 0:
+            digit = num % 10
+            if digit % 2 == 0:
+                even += 1
+            else:
+                odd += 1
+            num //= 10
+    return (even, odd)
+Time: 2.272s
+
+--- QHumanEval/107 [WRONG] ---
+Question: Complete the following Python function. Provide only the complete function implementation, no explanations.
+
+
+def even_odd_palindrome(n):
+    """
+    Given a positive integer n, return a tuple that has the number of even and odd
+    integer palindromes that fall within the range(1, n), inclusive.
+
+    Example 1:
+
+        Input: 3
+        Output: (1, 2)
+        Explanation:
+        Integer palindrome are 1, 2, 3. one of them is even, and two of them are odd.
+
+    Example 2:
+
+        Input: 12
+        Output: (4, 6)
+        Explanation:
+        Integer palindrome are 1, 2, 3, 4, 5, 6, 7, 8, 9, 11. four of them are even, and 6 of them are odd.
+
+    Note:
+        1. 1 <= n <= 10^3
+        2. returned tuple has the number of even and odd integer palindromes respectively.
+    """
+
+Expected: (unit tests)
+Predicted: def even_odd_palindrome(n):
+    even = 0
+    odd = 0
+    for i in range(1, n):
+        s = str(i)
+        if s == s[::-1]:
+            if i % 2 == 0:
+                even += 1
+            else:
+      ...
+Raw response: def even_odd_palindrome(n):
+    even = 0
+    odd = 0
+    for i in range(1, n):
+        s = str(i)
+        if s == s[::-1]:
+            if i % 2 == 0:
+                even += 1
+            else:
+                odd += 1
+    return (even, odd)
+Time: 2.16s
+
+--- QHumanEval/56 [CORRECT] ---
+Question: Complete the following Python function. Provide only the complete function implementation, no explanations.
+
+
+
+def correct_bracketing(brackets: str):
+    """ brackets is a string of "<" and ">".
+    return True if every opening bracket has a corresponding closing bracket.
+
+    >>> correct_bracketing("<")
+    False
+    >>> correct_bracketing("<>")
+    True
+    >>> correct_bracketing("<<><>>")
+    True
+    >>> correct_bracketing("><<>")
+    False
+    """
+
+Expected: (unit tests)
+Predicted: def correct_bracketing(brackets: str):
+    count = 0
+    for ch in brackets:
+        if ch == '<':
+            count += 1
+        elif ch == '>':
+            count -= 1
+        if count < 0:
+         ...
+Raw response: def correct_bracketing(brackets: str):
+    count = 0
+    for ch in brackets:
+        if ch == '<':
+            count += 1
+        elif ch == '>':
+            count -= 1
+        if count < 0:
+            return False
+    return count == 0
+Time: 1.7s
+
+--- QHumanEval/114 [CORRECT] ---
+Question: Complete the following Python function. Provide only the complete function implementation, no explanations.
+
+
+def minSubArraySum(nums):
+    """
+    Given an array of integers nums, find the minimum sum of any non-empty sub-array
+    of nums.
+    Example
+    minSubArraySum([2, 3, 4, 1, 2, 4]) == 1
+    minSubArraySum([-1, -2, -3]) == -6
+    """
+
+Expected: (unit tests)
+Predicted: def minSubArraySum(nums):
+    min_ending_here = min_so_far = nums[0]
+    for num in nums[1:]:
+        min_ending_here = min(num, min_ending_here + num)
+        min_so_far = min(min_so_far, min_ending_...
+Raw response: def minSubArraySum(nums):
+    min_ending_here = min_so_far = nums[0]
+    for num in nums[1:]:
+        min_ending_here = min(num, min_ending_here + num)
+        min_so_far = min(min_so_far, min_ending_here)
+    return min_so_far
+Time: 1.949s
+
+--- QHumanEval/71 [CORRECT] ---
+Question: Complete the following Python function. Provide only the complete function implementation, no explanations.
+
+
+def triangle_area(a, b, c):
+    '''
+    Given the lengths of the three sides of a triangle. Return the area of
+    the triangle rounded to 2 decimal points if the three sides form a valid triangle. 
+    Otherwise return -1
+    Three sides make a valid triangle when the sum of any two sides is greater 
+    than the third side.
+    Example:
+    triangle_area(3, 4, 5) == 6.00
+    triangle_area(1, 2, 10) == -1
+    '''
+
+Expected: (unit tests)
+Predicted: def triangle_area(a, b, c):
+    if a + b <= c or a + c <= b or b + c <= a:
+        return -1
+    s = (a + b + c) / 2.0
+    area = (s * (s - a) * (s - b) * (s - c)) ** 0.5
+    return round(area, 2)
+Raw response: def triangle_area(a, b, c):
+    if a + b <= c or a + c <= b or b + c <= a:
+        return -1
+    s = (a + b + c) / 2.0
+    area = (s * (s - a) * (s - b) * (s - c)) ** 0.5
+    return round(area, 2)
+Time: 2.178s
+
+--- QHumanEval/1 [CORRECT] ---
+Question: Complete the following Python function. Provide only the complete function implementation, no explanations.
+
+from typing import List
+
+
+def separate_paren_groups(paren_string: str) -> List[str]:
+    """ Input to this function is a string containing multiple groups of nested parentheses. Your goal is to
+    separate those group into separate strings and return the list of those.
+    Separate groups are balanced (each open brace is properly closed) and not nested within each other
+    Ignore any spaces in the input string.
+    >>> separate_paren_groups('( ) (( )) (( )( ))')
+    ['()', '(())', '(()())']
+    """
+
+Expected: (unit tests)
+Predicted: from typing import List
+
+def separate_paren_groups(paren_string: str) -> List[str]:
+    result = []
+    current = []
+    balance = 0
+    for ch in paren_string:
+        if ch == ' ':
+            conti...
+Raw response: from typing import List
+
+def separate_paren_groups(paren_string: str) -> List[str]:
+    result = []
+    current = []
+    balance = 0
+    for ch in paren_string:
+        if ch == ' ':
+            continue
+        if ch == '(':
+            balance += 1
+            current.append(ch)
+        elif ch == ')':
+            balance -= 1
+            current.append(ch)
+            if balance == 0:
+                result.append(''.join(current))
+                current = []
+        else:
+            continue
+    return result
+Time: 2.744s
+
+--- QHumanEval/40 [CORRECT] ---
+Question: Complete the following Python function. Provide only the complete function implementation, no explanations.
+
+
+
+def triples_sum_to_zero(l: list):
+    """
+    triples_sum_to_zero takes a list of integers as an input.
+    it returns True if there are three distinct elements in the list that
+    sum to zero, and False otherwise.
+
+    >>> triples_sum_to_zero([1, 3, 5, 0])
+    False
+    >>> triples_sum_to_zero([1, 3, -2, 1])
+    True
+    >>> triples_sum_to_zero([1, 2, 3, 7])
+    False
+    >>> triples_sum_to_zero([2, 4, -5, 3, 9, 7])
+    True
+    >>> triples_sum_to_zero([1])
+    False
+    """
+
+Expected: (unit tests)
+Predicted: def triples_sum_to_zero(l: list):
+    n = len(l)
+    if n < 3:
+        return False
+    l.sort()
+    for i in range(n - 2):
+        if i > 0 and l[i] == l[i - 1]:
+            continue
+        left, ri...
+Raw response: def triples_sum_to_zero(l: list):
+    n = len(l)
+    if n < 3:
+        return False
+    l.sort()
+    for i in range(n - 2):
+        if i > 0 and l[i] == l[i - 1]:
+            continue
+        left, right = i + 1, n - 1
+        while left < right:
+            s = l[i] + l[left] + l[right]
+            if s == 0:
+                return True
+            elif s < 0:
+                left += 1
+            else:
+                right -= 1
+    return False
+Time: 3.128s
+
+--- QHumanEval/152 [CORRECT] ---
+Question: Complete the following Python function. Provide only the complete function implementation, no explanations.
+
+
+def compare(game,guess):
+    """I think we all remember that feeling when the result of some long-awaited
+    event is finally known. The feelings and thoughts you have at that moment are
+    definitely worth noting down and comparing.
+    Your task is to determine if a person correctly guessed the results of a number of matches.
+    You are given two arrays of scores and guesses of equal length, where each index shows a match. 
+    Return an array of the same length denoting how far off each guess was. If they have guessed correctly,
+    the value is 0, and if not, the value is the absolute difference between the guess and the score.
+    
+    
+    example:
+
+    compare([1,2,3,4,5,1],[1,2,3,4,2,-2]) -> [0,0,0,0,3,3]
+    compare([0,5,0,0,0,4],[4,1,1,0,0,-2]) -> [4,4,1,0,0,6]
+    """
+
+Expected: (unit tests)
+Predicted: def compare(game, guess):
+    return [abs(g - s) if g != s else 0 for s, g in zip(game, guess)]
+Raw response: def compare(game, guess):
+    return [abs(g - s) if g != s else 0 for s, g in zip(game, guess)]
+Time: 1.256s
+
+--- QHumanEval/87 [CORRECT] ---
+Question: Complete the following Python function. Provide only the complete function implementation, no explanations.
+
+
+def get_row(lst, x):
+    """
+    You are given a 2 dimensional data, as a nested lists,
+    which is similar to matrix, however, unlike matrices,
+    each row may contain a different number of columns.
+    Given lst, and integer x, find integers x in the list,
+    and return list of tuples, [(x1, y1), (x2, y2) ...] such that
+    each tuple is a coordinate - (row, columns), starting with 0.
+    Sort coordinates initially by rows in ascending order.
+    Also, sort coordinates of the row by columns in descending order.
+    
+    Examples:
+    get_row([
+      [1,2,3,4,5,6],
+      [1,2,3,4,1,6],
+      [1,2,3,4,5,1]
+    ], 1) == [(0, 0), (1, 4), (1, 0), (2, 5), (2, 0)]
+    get_row([], 1) == []
+    get_row([[], [1], [1, 2, 3]], 3) == [(2, 2)]
+    """
+
+Expected: (unit tests)
+Predicted: def get_row(lst, x):
+    result = []
+    for i, row in enumerate(lst):
+        for j, val in enumerate(row):
+            if val == x:
+                result.append((i, j))
+    result.sort(key=lambda c...
+Raw response: def get_row(lst, x):
+    result = []
+    for i, row in enumerate(lst):
+        for j, val in enumerate(row):
+            if val == x:
+                result.append((i, j))
+    result.sort(key=lambda coord: (coord[0], -coord[1]))
+    return result
+Time: 1.944s
